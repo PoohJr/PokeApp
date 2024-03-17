@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import './Header.css';
 
 export function Header() {
     const [userInput, setUserInput] = useState("");
