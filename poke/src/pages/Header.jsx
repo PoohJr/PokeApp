@@ -15,7 +15,6 @@ export function Header() {
             const res = await axios.get(apiUrl);
             if (res.status === 200) {
                 setpokeData(res.data);
-                console.log(res.data);
                 navigate("./PokemonData", {state: {pokedata: res.data} });
             } else {
                 throw new Error("Failed to fetch Data");
@@ -32,7 +31,7 @@ export function Header() {
             <div className="container">
                 <form>
                     <div className="display">
-                        <h1 className="heading-text">PokeMon</h1>
+                        <h1 className="heading-text text-9xl ">PokeMon</h1>
                         <input
                             id="in"
                             onChange={(e) => setUserInput(e.target.value)}
