@@ -46,29 +46,34 @@ function Example(){
                 {expoke ? (
                     <div className="flex flex-col">
                         <h2 className=" text-2xl"> id#: {expoke.id}</h2>
+                        <div className="inline-flex">
                         <p className="">Type:</p>
                         <ul className="">
                              {expoke.types.map((type, index) => (
-                                <li className="inline-block" key={index}>{type.type.name}</li>
+                                <li className="inline p-1.5" key={index}>{type.type.name}</li>
                              ))}
                         </ul>
-                        <h2 className=" text-2xl">name: {expoke.name}</h2>
+                        </div>
+                        <h2 className="">name: {expoke.name}</h2>
+                        <p className="">height: {expoke.height}</p>
+                        <p className="">weight: {expoke.weight}</p>
                         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png`} alt="Pokemon Image"/>
-                        <p>Stats: </p>
+                        <p>Stats </p>
                     <ul>
                         {expoke.stats.map((stat, index) => (
                             <li key={index}>{stat.stat.name} {stat.base_stat}</li>
                             ))}
                     </ul>   
                     <button onClick={Playaudio}>PokeMon Cry: </button> 
-                    <p>Abilitlies:</p>
-                    <ul>
-                        {expoke.abilities.map((ability, index) => (
-                            <li key={index}>{ability.ability.name}</li>
-                        ))}
-                    </ul>
-                        <p className=" text-2xl">height: {expoke.height}</p>
-                        <p className=" text-2xl">weight: {expoke.weight}</p>
+                        <div className="inline-flex">
+                            <p>Abilitlies:</p>
+                            <ul className="">
+                                {expoke.abilities.map((ability, index) => (
+                                    <li className="inline" key={index}>{ability.ability.name}</li>
+                                ))}
+                            </ul>
+                        </div>
+
                     </div>
                     ) : (
                         <p>Loading...</p>
