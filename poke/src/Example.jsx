@@ -62,14 +62,36 @@ function Example(){
 
     }
     
-    function Progressbar(items){
-        return items.map((item, index, color) => {
-        <div key={index} className="flex justify-between mb-1">
-            <span className={`text-base font-medium text-${color}-700 dark:text-white`}>{item}</span>
-            <span className="text-sm font-medium text-{}-700 dark:text-white">{item}</span>
-        </div>        
+    function Progressbar(item, base ){
+        
+        switch (item){
+            case "hp":
+            return (
+                <>
+        <div className="flex justify-between mb-1">
+            <span className={`text-base font-medium text-red-700`}>{item}:</span>
+            <span className="text-sm font-medium text-red-700">{base}%</span>
+        </div>   
+                </>
+            );
+            case "defense":
+                return (
+                    <>
+            <div className="flex justify-between mb-1">
+                <span className={`text-base font-medium text-blue-700`}>{item}:</span>
+                <span className="text-sm font-medium text-blue-700">{base}%</span>
+            </div>   
+                    </>
+                );
+            default:
+                return null;
+        }
+        // <div className="flex justify-between mb-1">
+        //     <span className={`text-base font-medium text-black-700 dark:text-white`}>{item}</span>
+        //     <span className="text-sm font-medium text-{}-700 dark:text-white">{item}</span>
+        // </div>        
 
-        })
+       
     }
 
 
@@ -132,10 +154,9 @@ function Example(){
                         <p>Stats </p>
                     <ul>
                         {expoke.stats.map((stat, index) => (
-                            <li key={index}> {stat.stat.name} 
-                            
-                            
-                            {stat.base_stat}</li>
+                            <li key={index}> 
+                            {Progressbar(stat.stat.name, stat.base_stat)}
+                                     </li>
                             
                             ))}
                     </ul>   
