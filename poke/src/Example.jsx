@@ -63,11 +63,12 @@ function Example(){
     }
     
     function Progressbar(items){
-        return items.map((item, index) => {
-            <div class="flex justify-between mb-1">
-                <span class="text-base font-medium text-blue-700 dark:text-white">Flowbite</span>
-                <span class="text-sm font-medium text-blue-700 dark:text-white">45%</span>
-            </div>
+        return items.map((item, index, color) => {
+        <div key={index} className="flex justify-between mb-1">
+            <span className={`text-base font-medium text-${color}-700 dark:text-white`}>{item}</span>
+            <span className="text-sm font-medium text-{}-700 dark:text-white">{item}</span>
+        </div>        
+
         })
     }
 
@@ -131,7 +132,11 @@ function Example(){
                         <p>Stats </p>
                     <ul>
                         {expoke.stats.map((stat, index) => (
-                            <li key={index}>{stat.stat.name} {stat.base_stat}</li>
+                            <li key={index}> {stat.stat.name} 
+                            
+                            
+                            {stat.base_stat}</li>
+                            
                             ))}
                     </ul>   
                     <button onClick={Playaudio}>PokeMon Cry: </button> 
