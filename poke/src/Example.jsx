@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createElement } from "react";
 
 
 function Example(){
@@ -28,14 +28,10 @@ function Example(){
                 return "text-[#6390F0]"
             case "electric":
                 return "text-[#F7D02C]"
-            case "grass":
-                return "text-[#7AC74C]"
             case "ice":
                  return "text-[#96D9D6]"
             case "fighting":
                  return "text-[#C22E28]"
-            case "poison":
-                 return "text-[#A33EA1]" 
             case "ground":
                  return "text-[#E2BF65]"
             case "flying":
@@ -58,7 +54,22 @@ function Example(){
                 return "text-[#D685AD]"
         }
     }
+    function weightConver(){
+
+    }
+
+    function heightConver(){
+
+    }
     
+    function Progressbar(items){
+        return items.map((item, index) => {
+            <div class="flex justify-between mb-1">
+                <span class="text-base font-medium text-blue-700 dark:text-white">Flowbite</span>
+                <span class="text-sm font-medium text-blue-700 dark:text-white">45%</span>
+            </div>
+        })
+    }
 
 
     useEffect(() =>{
@@ -93,26 +104,30 @@ function Example(){
                 <h1 className=" text-center text-3xl p-3 pt-5 font-semibold">PokeMon Examples</h1>
             </div>
 
-           <div className="max-w-md bg-gray-300 h-fit ml-7 pl-5 rounded-md p-4 mb-7">
+           <div className="w-96 bg-gray-300 h-35 m-5 pl-5 rounded-md p-4 mb-7">
                 {expoke ? (
                     <div className="flex flex-col">
                         <div className="flex justify-between">
                             <p className="  "> id#: {expoke.id}</p>
                             <div className="inline-flex">
-                                <p className="">Type:</p>
+                                <p className="px-2"></p>
                                 <ul className="">
                                     {expoke.types.map((type, index) => (
-                                        <li className={`inline p-1.5" ${TypeColor(type.type.name)}`}key={index}>{type.type.name}</li>
+                                        <li className={`"inline p-1.5 text-xl" ${TypeColor(type.type.name)}`}key={index}>{type.type.name}</li>
                                     ))}
                                 </ul>
                             </div>
                         </div>
-                        <h2 className="">name: {expoke.name}</h2>
-                        <p className="">height: {expoke.height}</p>
-                        <p className="">weight: {expoke.weight}</p>
-                            <div className="">
-                                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png`} alt="Pokemon Image"/>
+                        
+                            <div className="flex justify-center ">
+                                    <p className="text-4xl">{firstLetter(expoke.name)}</p>
                             </div>
+                            <div className="flex justify-center ">
+                                 <img className="h-64 w-64" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png`} alt="Pokemon Image"/>
+                            </div>
+                        <p className="text-bold">Height: {expoke.height}</p>
+                        <p className="">Weight: {expoke.weight}</p>
+
                         <p>Stats </p>
                     <ul>
                         {expoke.stats.map((stat, index) => (
@@ -124,7 +139,7 @@ function Example(){
                             <p>Abilitlies:</p>
                             <ul className="">
                                 {expoke.abilities.map((ability, index) => (
-                                    <li className="inline" key={index}>{ability.ability.name}</li>
+                                    <li className="inline px-3" key={index}>{ability.ability.name}</li>
                                 ))}
                             </ul>
                         </div>
