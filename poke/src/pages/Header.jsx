@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import Example from "../Example";
-import Preloader from "../Preloader";
+import Example from "../Example/Example";
+import Preloader from "../Loader/Preloader";
 
 export function Header() {
     const [userInput, setUserInput] = useState("");

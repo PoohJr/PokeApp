@@ -3,29 +3,43 @@ import axios from "axios";
 
 function Example() {
     const [kantoPokemon, setKantoPokemon] = useState([]);
-    const [expoke, setExpoke] = useState(null);
-
-    function firstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1); 
-    }
 
     useEffect(() => {
         async function fetchKantoPokemon() {
             try {
-                const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
-                const pokemonList = response.data.results.map(pokemon => ({
-                    name: pokemon.name,
-                    url: pokemon.url,
-                    
-                }));
+                const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=30');
+                const pokemonList = response.data.results.map(pokemon => pokemon.url);
                 setKantoPokemon(pokemonList);
-                console.log(pokemonList)
             } catch (error) {
                 console.error("Error fetching Kanto Pokémon:", error);
             }
         }
         fetchKantoPokemon();
     }, []);
+
+    useEffect(() => {
+        async function fetchPokemonData() {
+            try {
+                const pokemonDataList = await Promise.all(
+                    kantoPokemon.map(async (url) => {
+                        const response = await fetch(url);
+                        return await response.json();
+                    })
+                );
+                console.log(pokemonDataList);
+            } catch (error) {
+                console.error('Error fetching Pokemon data:', error);
+            }
+        }
+
+        if (kantoPokemon.length > 0) {
+            fetchPokemonData();
+        }
+    }, [kantoPokemon]);
+
+    function htmlLoop(){
+        
+    }
 
     return (
         <>
@@ -37,13 +51,13 @@ function Example() {
             </div>
 
            <div className="max-w-64 bg-gray-300 max-h-fit m-10 rounded-md p-4">
-                {expoke ? (
+                {kantoPokemon ? (
                     <div className="flex flex-col h-55">
 
                         <div className="flex flex-col justify-center">
                             
                                 <div className="flex justify-center ">
-                                        <p className="text-2xl">{firstLetter(expoke.name)}</p>
+                                        <p className="text-2xl">{(kantoPokemon.name)}</p>
                                 </div>
                                 <div className=" flex justify-center rounded-full h-12 w-12 bg-black items-center text-center"></div>
                                 <div className=" h-14 w-40">
