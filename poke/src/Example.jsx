@@ -1,41 +1,31 @@
-import React, { useState, useEffect, } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
+function Example() {
+    const [kantoPokemon, setKantoPokemon] = useState([]);
+    const [expoke, setExpoke] = useState(null);
 
-function Example(){
-    const [pokeEva, setpokeEva] = useState(null)
-    const [expoke, setexpokeData] = useState(null)
-    function firstLetter(string){
+    function firstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1); 
     }
 
-
-
-    
-
-
-
-    useEffect(() =>{
-        async function Sample() { 
+    useEffect(() => {
+        async function fetchKantoPokemon() {
             try {
-                const response = await fetch("https://pokeapi.co/api/v2/pokemon/1");
-                if (response.ok) {
-                    const data = await response.json();
-                    setexpokeData(data)
-                    const res = await fetch(`https://pokeapi.co/api/v2/evolution-chain/1`)
-                    const data2 = await res.json()
-                    setpokeEva(data2)
-                    console.log(data2)
-
-                    console.log("Got Example 1:", data);
-                } else {
-                    console.error("Failed to fetch Example 1:", response.status);
-                }
+                const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=151');
+                const pokemonList = response.data.results.map(pokemon => ({
+                    name: pokemon.name,
+                    url: pokemon.url,
+                    
+                }));
+                setKantoPokemon(pokemonList);
+                console.log(pokemonList)
             } catch (error) {
-                console.error("Error fetching Example 1:", error);
+                console.error("Error fetching Kanto Pokémon:", error);
             }
         }
-        Sample()
-    },[])
+        fetchKantoPokemon();
+    }, []);
 
     return (
         <>
@@ -68,10 +58,7 @@ function Example(){
                     )}
            </div>
         </>
-    )
+    );
 }
-// idea put pokemon favicon in the corner of every poke card
 
-
-
-export default Example
+export default Example;
