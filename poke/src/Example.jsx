@@ -90,8 +90,8 @@ function Example(){
         //     <span className={`text-base font-medium text-black-700 dark:text-white`}>{item}</span>
         //     <span className="text-sm font-medium text-{}-700 dark:text-white">{item}</span>
         // </div>        
-        
 
+       
     }
 
 
@@ -179,12 +179,4 @@ function Example(){
     )
 }
 
-        // BackGround images
-        // https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/sword-shield/dynamax-battle.png
-        //https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/sword-shield/pokemon-in-the-wild.png
-       //https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/tcg/sun-moon-cosmic-eclipse-01.jpg
-
-       //pre Loader 
-       //https://tenor.com/view/pikachu-pokemon-pokemon-day-spinning-gif-12418604455051090178
-       //https://tenor.com/view/charmander-chases-tail-pokemon-nintendo-gif-16189806743405656732
 export default Example

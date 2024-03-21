@@ -9,13 +9,13 @@ function App() {
 
   return (
     <>
-        <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Header />} /> 
-        <Route path="/pokemonData" element={<PokemonData />} /> 
-        {/* { <Route path="*" element={<NonLoad />} /> } */}
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Header />} /> 
+          <Route path="/pokemonData" element={<PokemonData />} /> 
+          {/* { <Route path="*" element={<NonLoad />} /> } */}
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
