@@ -44,7 +44,7 @@ export function Header() {
             {loading ? (
                 <Preloader/>
             ) : (
-                <div>
+                <>
                     <div className="flex w-full h-3/5 ">
                         <form className="flex flex-col w-full">
                             <div className="text-center justify-center items-center h-3/4">
@@ -73,10 +73,11 @@ export function Header() {
                         </form>
                     </div>
                     <Example/>
-                </div>
+                </>
             )}
         </>
     );
+    
 }
 
 export default Header;

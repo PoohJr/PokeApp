@@ -4,46 +4,52 @@ import axios from "axios";
 function Example() {
     const [kantoPokemon, setKantoPokemon] = useState([]);
 
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
     useEffect(() => {
-        async function fetchKantoPokemon() {
+        const PokeArr = async () => {
             try {
-                const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=30');
-                const pokemonList = response.data.results.map(pokemon => pokemon.url);
-                setKantoPokemon(pokemonList);
+                const res = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=1302");
+                const allPoke = res.data.results;
+                setKantoPokemon(allPoke);
             } catch (error) {
-                console.error("Error fetching Kanto Pokémon:", error);
+                console.error(error + " This is the error");
             }
-        }
-        fetchKantoPokemon();
+        };
+    
+        PokeArr(); 
     }, []);
 
     useEffect(() => {
         async function fetchPokemonData() {
             try {
-                const pokemonDataList = await Promise.all(
-                    kantoPokemon.map(async (url) => {
-                        const response = await fetch(url);
-                        return await response.json();
+                const fetchedPokemonData = await Promise.all(
+                    kantoPokemon.map(async (pokemon) => {
+                        const response = await fetch(pokemon.url);
+                        const data = await response.json();
+                        return data;
                     })
                 );
-                console.log(pokemonDataList);
+                console.log(fetchedPokemonData);
             } catch (error) {
-                console.error('Error fetching Pokemon data:', error);
+                console.error(error + " This is the error");
             }
         }
-
-        if (kantoPokemon.length > 0) {
-            fetchPokemonData();
-        }
-    }, [kantoPokemon]);
-
-    function htmlLoop(){
         
-    }
+
+        fetchPokemonData();
+    }, [kantoPokemon]); // Include kantoPokemon as a dependency to trigger the effect when it changes
+    
+    
+
+
+
+ 
 
     return (
         <>
-            <div className="flex justify-center items-center">
+            {/* <div className="flex justify-center items-center">
                 <hr className="w-4/5 bg-grey-500 mt-6 "></hr>
             </div>
             <div className="flex justify-center">
@@ -70,7 +76,20 @@ function Example() {
                     ) : (
                         <p>Loading...</p>
                     )}
-           </div>
+           </div> */
+                <div className=" flex flex-wrap justify-between bg-gray-400 w-35 m-2 rounded-md">
+                    {kantoPokemon.map((pokemon, index) => (
+                    <div className="flex flex-col w-1/12 mx-5 bg-black m-5" key={index}>
+                        <h2 className="text-md text-center mt-2">{capitalizeFirstLetter(pokemon.name)}</h2>
+                        <div className="">
+                            <img className="flex"
+                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
+                                alt={pokemon.name}
+                            />
+                        </div>
+                    </div>
+           ))}
+       </div>}
         </>
     );
 }
