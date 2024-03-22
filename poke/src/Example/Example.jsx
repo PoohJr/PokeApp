@@ -47,24 +47,13 @@ function Example() {
     
 
 
-    const ClickPoke = async (url, pokid) => {
-        try {
-            const getSelctpoke = await Promise.all((pokemon)=>{
-                kantoPokemon.map(async(pokemon) =>{
-                    const res = await fetch(pokemon)
-                    const data = res.json()
-                     {data, url, pokemon.id}
-                     if (response.status == 200) {
-                        setpokeData(res.data);
-                        navigate("./PokemonData", {state: {pokedata: res.data} });
-                    }
-                })
-            })
-            }  
-        catch (error) {
-            console.error("Error Fetching Api", error);
-        }
-        
+    const ClickPoke =  async() => {
+            try{
+                
+            } catch{
+                console.error(error + "That Was the error")
+            }
+              
     };
  
 
