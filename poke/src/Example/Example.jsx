@@ -10,7 +10,7 @@ function Example() {
     useEffect(() => {
         const PokeArr = async () => {
             try {
-                const res = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=1302");
+                const res = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=40");
                 const allPoke = res.data.results;
                 setKantoPokemon(allPoke);
             } catch (error) {
@@ -77,19 +77,22 @@ function Example() {
                         <p>Loading...</p>
                     )}
            </div> */
-                <div className=" flex flex-wrap justify-between bg-gray-400 w-35 m-2 rounded-md">
+                <div className=" flex flex-wrap bg-gray-400 w-full ">
                     {kantoPokemon.map((pokemon, index) => (
-                    <div className="flex flex-col w-1/12 mx-5 bg-black m-5" key={index}>
-                        <h2 className="text-md text-center mt-2">{capitalizeFirstLetter(pokemon.name)}</h2>
-                        <div className="">
-                            <img className="flex"
-                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
-                                alt={pokemon.name}
-                            />
-                        </div>
+                    <div className="flex flex-col w-2/12 h-40 bg-red-500 rounded-full m-5 " key={index}>
+                            <span className="text-md text-center mt-2 text-white">{capitalizeFirstLetter(pokemon.name)}</span>
+                            <div className="flex justify-center">
+                                <div className="bg-white h-28 w-18 rounded-full border-8 border-red-600">
+                                    <div className="h-full flex items-center justify-center">
+                                        <img className="max-h-24 hover:-translate-y-3 ease-in-out duration-200"
+                                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
+                                            alt={pokemon.name} />
+                                    </div>
+                                </div>
+                            </div>
                     </div>
            ))}
-       </div>}
+                </div>}
         </>
     );
 }
