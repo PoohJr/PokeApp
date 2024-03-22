@@ -3,6 +3,7 @@ import axios from "axios";
 
 function Example() {
     const [kantoPokemon, setKantoPokemon] = useState([]);
+    const [clickpokedata, setclickpokedata] = useState()
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -28,23 +29,47 @@ function Example() {
                     kantoPokemon.map(async (pokemon) => {
                         const response = await fetch(pokemon.url);
                         const data = await response.json();
-                        return data;
+                        return {...data, url: pokemon.url};
                     })
                 );
                 console.log(fetchedPokemonData);
             } catch (error) {
                 console.error(error + " This is the error");
+                return []
             }
         }
+
+        const urls = fetchPokemonData();
         
-
-        fetchPokemonData();
-    }, [kantoPokemon]); // Include kantoPokemon as a dependency to trigger the effect when it changes
+    }, [kantoPokemon]);
     
+   
     
 
 
+    const ClickPoke = async (url) => {
+        try {
+            const getSelctpoke = async (pokemon) =>{
+                const res = await axios.get(url)
+               if(res.staus =200){
+                setclickpokedata(res.data)
+               }
+                console.log(pokemon)
+                navigate("./PokemonData", {state: {pokedata: res.data} });
+                console.log(getSelctpoke)
+            }
 
+            if (res.status == 200) {
+                setpokeData(res.data);
+                navigate("./PokemonData", {state: {pokedata: res.data} });
+            } else {
+                throw new Error("Failed to fetch Data");
+            }
+        } catch (error) {
+            console.error("Error Fetching Api", error);
+        }
+        
+    };
  
 
     return (
@@ -84,7 +109,7 @@ function Example() {
                             <div className="flex justify-center">
                                 <div className="bg-white h-28 w-18 rounded-full border-8 border-red-600">
                                     <div className="h-full flex items-center justify-center">
-                                        <img className="max-h-24 hover:-translate-y-3 ease-in-out duration-200"
+                                        <img onClick={ClickPoke} className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
                                             alt={pokemon.name} />
                                     </div>

@@ -15,7 +15,7 @@ export function Header() {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setloading(false);
-          }, 2000);
+          }, 100);
 
           return () => clearTimeout(timeout);
     },[])
