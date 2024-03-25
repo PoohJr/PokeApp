@@ -7,8 +7,8 @@ import { useLocation } from "react-router-dom";
 function Clicked() {
 
     const location = useLocation()
-    const navpokedata = location.state ? location.state.navpokedata : null;
-    console.log(location.state.navpokedata)
+    const clickpokedata = location.state ? location.state.clickpokedata : null;
+    console.log(location.state.clickpokedata)
     
     const Playaudio = () => { 
         if(pokedata){
