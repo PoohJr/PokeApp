@@ -15,7 +15,7 @@ export function Header() {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setloading(false);
-          }, 100);
+          }, 1000);
 
           return () => clearTimeout(timeout);
     },[])
@@ -45,7 +45,7 @@ export function Header() {
                 <Preloader/>
             ) : (
                 <>
-                    <div className=" bg-cover bg-center h-96 z-0" style={{backgroundImage: 
+                    <div className="relative bg-cover bg-center h-screen z-0" style={{backgroundImage: 
                         "url('https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/sword-shield/pokemon-in-the-wild.png')"}}>
                         <div className="flex w-full h-3/5 bg-[url('/bg-img/pokemon-in-the-wild.png)]">
                             <form className="flex flex-col w-full">
@@ -71,9 +71,10 @@ export function Header() {
                                 </div>
                             </form>
                         </div>
+                        <Example/>
                     </div>
 
-                    <Example/>
+                    
                 </>
             )}
         </>
