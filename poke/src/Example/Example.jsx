@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 function Example() {
     const [kantoPokemon, setKantoPokemon] = useState([]);
-    const [clickpokedata, setclickpokedata] = useState()
-
+ 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
@@ -35,7 +36,7 @@ function Example() {
                 console.log(fetchedPokemonData)
             } catch (error) {
                 console.error(error + " This is the error");
-                return []
+                
             }
         }
 
@@ -51,13 +52,15 @@ function Example() {
             try{
                 const gettinPoke = await Promise.all(
                     kantoPokemon.map(async(pokemon) => {
-                        const res = await pokemon.url;
+                        const res = await fetch (pokemon.url);
                         const data = res.json()
                         setclickpokedata(data)
+                        navigate("./PokemonData", {state: {navpokedata: res.data} });
+                        console.log(gettinPoke)
                         
                     })
                 )
-            } catch{
+            } catch (error){
                 console.error(error + "That Was the error")
             }
               
