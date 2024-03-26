@@ -110,7 +110,7 @@ function Example() {
             {
                 <div className=" flex flex-wrap justify-between w-full ">
                     {kantoPokemon.map((pokemon, index) => (
-                    <div className="flex flex-col w-2/12 h-40 bg-red-500 rounded-full  m-2 " key={index}>
+                    <div className="flex flex-col w-2/12 h-40 bg-red-500 rounded-full mt-8 m-2 " key={index}>
                             <span className="text-md text-center mt-2 text-white before:content-[]">{capitalizeFirstLetter(pokemon.name)}</span>
                             <div className="flex justify-center">
                                 <div className="bg-white h-28 w-40 rounded-full border-8 border-red-600 ">

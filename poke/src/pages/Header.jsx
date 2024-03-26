@@ -44,12 +44,12 @@ export function Header() {
                 <Preloader/>
             ) : (
                 <>
-                    <div className="relative bg-cover bg-center h-screen z-0" style={{backgroundImage: 
+                    <div className="relative bg-cover bg-white bg-center h-screen z-0" style={{backgroundImage: 
                         "url('https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/sword-shield/pokemon-in-the-wild.png')"}}>
                         <div className="flex w-full h-3/5 bg-[url('/bg-img/pokemon-in-the-wild.png)]">
                             <form className="flex flex-col w-full">
-                                <div className="text-center justify-center items-center h-3/4">
-                                    <h1 className="text-9xl mt-28 font-extrabold">PokeMon</h1>
+                                <div className="text-center justify-center items-center mt-28 h-3/4">
+                                    <h1 className="text-9xl text-white font-extrabold">PokeMon</h1>
                                     <input
                                         className="mt-16 mb-10 px-3 py-2 font-semibold placeholder-grey-500 text-black rounded-2xl border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2"
                                         id="in"

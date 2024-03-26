@@ -103,7 +103,9 @@ function PokemonData() {
                 <div className="">
                     <div className="flex  mt-16">
                         <h2 className="text-5xl ">{capitalizeFirstLetter(pokedata.name)}</h2>
-                        <button className=" ml-3" onClick={Playaudio}></button>  
+                        <button className=" ml-3" onClick={Playaudio}>
+                           <svg xmlns="http://www.w3.org/2000/svg"></svg> 
+                        </button>  
                         <ul className="flex">
                                         {pokedata.types.map((type, index) => (
                                             <li className={`" mx-3 p-4 bg-lg  text-white rounded-sm" ${TypeColor(type.type.name)}`}key={index}>{type.type.name}</li>
