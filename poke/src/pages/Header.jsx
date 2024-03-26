@@ -7,7 +7,7 @@ import Preloader from "../Loader/Preloader";
 export function Header() {
     const [userInput, setUserInput] = useState("");
     const [pokedata, setpokeData] = useState(null);
-    const [newerror, setNewError] = useState(null);
+    const [newerror, setNewError] = useState(false);
     const [loading, setloading] = useState(true)
     const navigate = useNavigate();
     
@@ -24,18 +24,17 @@ export function Header() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const apiUrl = `https://pokeapi.co/api/v2/pokemon/${userInput}`;
+            const apiUrl = `https://pokeapi.co/api/v2/pokemon/${userInput.toLowerCase()}`;
             const res = await axios.get(apiUrl);
             if (res.status === 200) {
                 setpokeData(res.data);
                 navigate("./PokemonData", {state: {pokedata: res.data} });
-            } else {
-                throw new Error("Failed to fetch Data");
-            }
+            } 
         } catch (error) {
             console.error("Error Fetching Api", error);
             setNewError("Error Fetching Api: " + error.message);
         }
+        
         setUserInput("");
     };
 
@@ -56,9 +55,10 @@ export function Header() {
                                         id="in"
                                         onChange={(e) => setUserInput(e.target.value)}
                                         type="text"
-                                        placeholder="Choose Your Pokemon!"
+                                        placeholder="Choose Your Pokemon!" 
                                         autoComplete="off"
                                         aria-label="Search Pokemon"
+                                        onInvalid={(e)=>{e.target.setCustomValidity("error msg:  Please enter your first name")}}
                                     />
                                     <button
                                         className="hidden"
