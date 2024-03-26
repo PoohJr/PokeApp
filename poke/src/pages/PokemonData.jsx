@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 
 
 
+
 function PokemonData() {
     const location = useLocation();
     const pokedata = location.state ? location.state.pokedata : null;
@@ -102,7 +103,7 @@ function PokemonData() {
                 <div className="">
                     <div className="flex  mt-16">
                         <h2 className="text-5xl ">{capitalizeFirstLetter(pokedata.name)}</h2>
-                        <button className=" ml-3" onClick={Playaudio}>Icon</button> 
+                        <button className=" ml-3" onClick={Playaudio}></button>  
                         <ul className="flex">
                                         {pokedata.types.map((type, index) => (
                                             <li className={`" mx-3 p-4 bg-lg  text-white rounded-sm" ${TypeColor(type.type.name)}`}key={index}>{type.type.name}</li>
@@ -112,17 +113,20 @@ function PokemonData() {
 
                         <div className=" flex  rounded w-full mt-8">
                             <p className="  "> PokeMon #: {pokedata.id}</p>
+                            <p>Abilitlies:</p>
+                            <ul className="">
+                                {pokedata.abilities.map((ability, index) => (
+                                    <tr key={index} >
+                                    <li className="inline px-3" >{ability.ability.name}</li>
+                                    </tr>
+                                ))}
+                            </ul>
                             <p className="">{pokedata.location_area_encounters}</p>
                             <img  className ="ml-auto mr-20 motion-safe:animate-bounce justify-end h-96 "src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
                         </div>
                     
-                <table>
-                    <div className="flex justify-between">
-                            
-                            <div className="inline-flex">
-
-                            </div>
-                        </div>
+                <table >
+                    
                     <p>Height: {pokedata.height}</p>
                     <p>Weight: {pokedata.weight}</p>
                     
@@ -146,15 +150,22 @@ function PokemonData() {
                                 ))}
                         </ul> 
                         <div className="inline-flex">
-                            <p>Abilitlies:</p>
-                            <ul className="">
-                                {pokedata.abilities.map((ability, index) => (
-                                    <tr key={index} >
-                                    <li className="inline px-3" >{ability.ability.name}</li>
-                                    </tr>
-                                ))}
-                            </ul>
+
                         </div>
+                    </table>
+                    <table>
+                        <th>Moves</th>
+                        <tr>
+                            <ul>
+                            {pokedata.moves.map((move, index) => {
+                               
+                                    <li key= {index}>
+                                        {move.moves}
+                                    </li>
+                               
+                            })}
+                            </ul>
+                        </tr>
                     </table>
 
                     
