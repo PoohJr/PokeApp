@@ -2,9 +2,6 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 
-
-
-
 function PokemonData() {
     const location = useLocation();
     const pokedata = location.state ? location.state.pokedata : null;
@@ -25,10 +22,10 @@ function PokemonData() {
 
     function heightConver(){
     }
-        function TypeColor(typename){
-        switch(typename){
+        function TypeColor(typename, text){
+        switch(typename, text){
             case "grass":
-                return "bg-[#7AC74C] "
+                return "bg-[#7AC74C] text-black"
             case "poison":
                 return "bg-[#A33EA1]"
             case "fire":
@@ -104,11 +101,15 @@ function PokemonData() {
                     <div className="flex  mt-16">
                         <h2 className="text-5xl ">{capitalizeFirstLetter(pokedata.name)}</h2>
                         <button className=" ml-3" onClick={Playaudio}>
-                           <svg xmlns="http://www.w3.org/2000/svg"></svg> 
+                           <svg className="" xmlns="http://www.w3.org/2000/svg"></svg> 
                         </button>  
                         <ul className="flex">
                                         {pokedata.types.map((type, index) => (
-                                            <li className={`" mx-3 p-4 bg-lg  text-white rounded-sm" ${TypeColor(type.type.name)}`}key={index}>{type.type.name}</li>
+                                            <li className={`" align-middle mx-3 p-4 bg-lg h-14  text-white rounded-sm" ${TypeColor(type.type.name)}`}key={index}>{type.type.name}
+                                                <svg >
+
+                                                </svg>
+                                            </li>
                                         ))}
                                     </ul>
                     </div>
