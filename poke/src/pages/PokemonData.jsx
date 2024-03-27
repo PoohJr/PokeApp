@@ -99,36 +99,50 @@ function PokemonData() {
             {pokedata && (
                 <div className="">
                     <div className="flex  mt-16">
-                        <h2 className="text-5xl ">{capitalizeFirstLetter(pokedata.name)}</h2>
-                        <button className=" ml-3" onClick={Playaudio}>
-                           <svg className="" xmlns="http://www.w3.org/2000/svg"></svg> 
-                        </button>  
+                        <h2 className="font-sans text-5xl ">{capitalizeFirstLetter(pokedata.name)}</h2>
+                        <svg className="cursor-pointer" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
+                            <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
+                                c0,29.1,23.6,52.7,52.7,52.7h71.6c15.9,25,37.6,46,63.2,61.1c28.7,16.9,61.5,25.8,95,25.8c7.5,0,13.5-6,13.5-13.5V68.65
+                                C296,61.25,290,55.15,282.5,55.15z M118.4,315.95H52.7c-14.2,0-25.7-11.5-25.7-25.7v-95.5c0-14.2,11.5-25.7,25.7-25.7h65.7V315.95
+                                z M269,402.35c-50.7-4.3-96.9-32.8-123.6-76.6v-166.4c26.7-43.8,72.9-72.3,123.6-76.6V402.35z"/>
+                            <path fill="#000000" d="M348.9,137.95c-6.1-4.3-14.5-2.8-18.8,3.4c-4.3,6.1-2.8,14.5,3.4,18.8c27,18.8,43.1,49.7,43.1,82.5s-16.1,63.7-43.1,82.5
+                                c-6.1,4.3-7.6,12.7-3.4,18.8c2.6,3.8,6.8,5.8,11.1,5.8c2.7,0,5.4-0.8,7.7-2.4c34.2-23.9,54.7-63,54.7-104.6
+                                S383.1,161.75,348.9,137.95z"/>
+                            <path fill="#000000" d="M401.1,82.05c-6.1-4.3-14.5-2.8-18.8,3.4c-4.3,6.1-2.8,14.5,3.4,18.8c45.3,31.6,72.3,83.3,72.3,138.3
+                                s-27,106.8-72.3,138.3c-6.1,4.3-7.6,12.7-3.4,18.8c2.6,3.8,6.8,5.8,11.1,5.8c2.7,0,5.4-0.8,7.7-2.4
+                                c52.5-36.6,83.9-96.6,83.9-160.5S453.7,118.65,401.1,82.05z"/>
+                        </svg>
+
+
+
                         <ul className="flex">
                                         {pokedata.types.map((type, index) => (
-                                            <li className={`" align-middle mx-3 p-4 bg-lg h-14  text-white rounded-sm" ${TypeColor(type.type.name)}`}key={index}>{type.type.name}
-                                                <svg >
-
-                                                </svg>
+                                            <li key={index} className={`" align-middle mx-3 p-4 bg-lg h-14  text-white rounded-sm" ${TypeColor(type.type.name)}`}>
+                                                {type.type.name}
                                             </li>
                                         ))}
                                     </ul>
                     </div>
 
                         <div className=" flex  rounded w-full mt-8">
-                            <p className="  "> PokeMon #: {pokedata.id}</p>
-                            <p>Abilitlies:</p>
-                            <ul className="">
-                                {pokedata.abilities.map((ability, index) => (
-                                    <tr key={index} >
-                                    <li className="inline px-3" >{ability.ability.name}</li>
-                                    </tr>
-                                ))}
-                            </ul>
-                            <p className="">{pokedata.location_area_encounters}</p>
-                            <img  className ="ml-auto mr-20 motion-safe:animate-bounce justify-end h-96 "src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
+                            <div className="">
+                                <p className="  "> PokeMon #: {pokedata.id}</p>
+                                <p className="">Abilitlies:</p>
+                                <ul className="">
+                                    {pokedata.abilities.map((ability, index) => (
+                                        
+                                        <li key={index} className="inline px-3" >{ability.ability.name}</li>
+                                        
+                                    ))}
+                                </ul>
+                                <p className="">{pokedata.location_area_encounters}</p>
+                            </div>
+                            <div className="">
+                                <img  className ="ml-auto mr-20 motion-safe:animate-bounce justify-end h-96 "src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
+                            </div>
                         </div>
                     
-                <table >
+                
                     
                     <p>Height: {pokedata.height}</p>
                     <p>Weight: {pokedata.weight}</p>
@@ -155,10 +169,10 @@ function PokemonData() {
                         <div className="inline-flex">
 
                         </div>
-                    </table>
-                    <table>
-                        <th>Moves</th>
-                        <tr>
+                    
+
+                            <h1>Moves</h1>
+
                             <ul>
                             {pokedata.moves.map((move, index) => {
                                
@@ -168,8 +182,8 @@ function PokemonData() {
                                
                             })}
                             </ul>
-                        </tr>
-                    </table>
+                        
+                    
 
                     
                 </div>
