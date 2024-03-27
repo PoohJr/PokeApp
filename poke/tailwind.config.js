@@ -4,7 +4,11 @@ export default {
     "./index.html",
   "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
-    extend: {},
+    extend: { 
+      content:{
+        'grass' : 'url("/type-icons/grass.svg")'
+        }
+      },
   },
   plugins: [],
   daisyui: {

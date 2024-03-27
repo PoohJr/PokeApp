@@ -22,10 +22,10 @@ function PokemonData() {
 
     function heightConver(){
     }
-        function TypeColor(typename, text){
-        switch(typename, text){
+        function TypeColor(typename){
+        switch(typename){
             case "grass":
-                return "bg-[#7AC74C] text-black"
+                return "bg-[#7AC74C]"
             case "poison":
                 return "bg-[#A33EA1]"
             case "fire":
@@ -99,7 +99,7 @@ function PokemonData() {
             {pokedata && (
                 <div className="">
                     <div className="flex  mt-16">
-                        <h2 className="font-sans text-5xl ">{capitalizeFirstLetter(pokedata.name)}</h2>
+                        <h2 className="font-sans text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
                         <svg className="cursor-pointer" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
                             <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
                                 c0,29.1,23.6,52.7,52.7,52.7h71.6c15.9,25,37.6,46,63.2,61.1c28.7,16.9,61.5,25.8,95,25.8c7.5,0,13.5-6,13.5-13.5V68.65
@@ -117,7 +117,7 @@ function PokemonData() {
 
                         <ul className="flex">
                                         {pokedata.types.map((type, index) => (
-                                            <li key={index} className={`" align-middle mx-3 p-4 bg-lg h-14  text-white rounded-sm" ${TypeColor(type.type.name)}`}>
+                                            <li key={index} className={`" before:content-${type} align-middle mx-3 p-4 bg-lg h-14  text-white rounded-sm" ${TypeColor(type.type.name)}`}>
                                                 {type.type.name}
                                             </li>
                                         ))}
@@ -126,8 +126,8 @@ function PokemonData() {
 
                         <div className=" flex  rounded w-full mt-8">
                             <div className="">
-                                <p className="  "> PokeMon #: {pokedata.id}</p>
-                                <p className="">Abilitlies:</p>
+                                <p className=" font-bold"> PokeMon # <span>{pokedata.id}</span></p>
+                                <p className="font-bold">Abilitlies:</p>
                                 <ul className="">
                                     {pokedata.abilities.map((ability, index) => (
                                         
@@ -135,40 +135,39 @@ function PokemonData() {
                                         
                                     ))}
                                 </ul>
-                                <p className="">{pokedata.location_area_encounters}</p>
+                                <p className="">Where to Find em <span>{pokedata.location_area_encounters}</span></p>
                             </div>
-                            <div className="">
+                        <div className=" bg-slate-600">
                                 <img  className ="ml-auto mr-20 motion-safe:animate-bounce justify-end h-96 "src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
                             </div>
                         </div>
                     
                 
-                    
-                    <p>Height: {pokedata.height}</p>
-                    <p>Weight: {pokedata.weight}</p>
-                    
-                    <p>Where ya can find em : {pokedata.location_area_encounters}</p>
+                    .
+                <div className="">
+                        <p>Height: {pokedata.height}</p>
+                        <p>Weight: {pokedata.weight}</p>
+                        
+                        <p>Where ya can find em : {pokedata.location_area_encounters}</p>
 
-                    <p>Moves:</p>
-                    {/* <ul>
-                        {pokedata.moves.map((move, index) => (
-                            <li key={index}>{move.move.name}</li>
-                            
-                        ))}
-                    </ul> */}
-
-                    <p>Stats </p>
+                        <p>Moves:</p>
                         <ul>
-                            {pokedata.stats.map((stat, index) => (
-                                <li key={index}> 
-                                {Progressbar(stat.stat.name, stat.base_stat)}
-                                        </li>
+                            {pokedata.moves.map((move, index) => (
+                                <li key={index}>{move.move.name}</li>
                                 
-                                ))}
-                        </ul> 
-                        <div className="inline-flex">
+                            ))}
+                        </ul>
 
-                        </div>
+                        <p>Stats </p>
+                            <ul>
+                                {pokedata.stats.map((stat, index) => (
+                                    <li key={index}> 
+                                    {Progressbar(stat.stat.name, stat.base_stat)}
+                                            </li>
+                                    
+                                    ))}
+                            </ul> 
+                </div>
                     
 
                             <h1>Moves</h1>
