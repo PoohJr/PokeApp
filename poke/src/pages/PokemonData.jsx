@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 
 function PokemonData() {
     const location = useLocation();
     const pokedata = location.state ? location.state.pokedata : null;
     console.log(location.state.pokedata)
-    
+    const locationURL = pokedata.location_area_encounters;
+
+    const [encounterData, setencounterData] = useState ()
+
+
+    useEffect(() => {
+      const fetchData = async () => {
+            try{
+               const res =  await axios.get(locationURL)
+               const data = res.data
+               setencounterData(data)
+
+               console.log(encounterData)
+
+               
+            } catch (error){
+                console.error('Error fetching encounters data:', error);
+
+            }
+        }
+        fetchData()
+
+    },[])
+
     const Playaudio = () => { 
         if(pokedata){
         new Audio(`https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${pokedata.id}.ogg`).play()
@@ -68,7 +92,7 @@ function PokemonData() {
             case "hp":
             return (
                 <>
-        <div className="flex justify-between mb-1">
+        <div className="flex justify-between mb-4">
             <span className={`bg-base font-medium bg-red-700`}>{item}:</span>
             <span className="bg-sm font-medium bg-red-700">{base}%</span>
         </div>   
@@ -77,9 +101,13 @@ function PokemonData() {
             case "defense":
                 return (
                     <>
-            <div className="flex justify-between mb-1">
-                <span className={`bg-base font-medium bg-blue-700`}>{item}:</span>
-                <span className="bg-sm font-medium bg-blue-700">{base}%</span>
+            <div className="flex justify-between mb-4 w-96">
+                <div className="w-48">
+                <span className={`bg-base font-medium `}>{item}:</span>
+                <div className="w-20 bg-blue-700"></div>
+                <span className="bg-sm font-medium ">{base}%</span>
+                <div className="bg-blue-700"></div>
+                </div>
             </div>   
                     </>
                 );
@@ -117,7 +145,7 @@ function PokemonData() {
 
                         <ul className="flex">
                                         {pokedata.types.map((type, index) => (
-                                            <li key={index} className={`" before:content-${type} align-middle mx-3 p-4 bg-lg h-14  text-white rounded-sm" ${TypeColor(type.type.name)}`}>
+                                            <li key={index} className={`"  before:content-grass align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm" ${TypeColor(type.type.name)}`}>
                                                 {type.type.name}
                                             </li>
                                         ))}
@@ -131,11 +159,19 @@ function PokemonData() {
                                 <ul className="">
                                     {pokedata.abilities.map((ability, index) => (
                                         
-                                        <li key={index} className="inline px-3" >{ability.ability.name}</li>
+                                        <li key={index} className="inline px-3" >{ability.ability.name}
+                                            <p>{ability.ability.name.url}</p>
+                                        </li>
                                         
                                     ))}
                                 </ul>
-                                <p className="">Where to Find em <span>{pokedata.location_area_encounters}</span></p>
+                                <div className="">
+                                    {encounterData && encounterData.map((encounter, index) => (
+                                        <div key={index} className="">
+                                            <p> Where To Find em, in{encounter.location_area.name}</p>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         <div className=" bg-slate-600">
                                 <img  className ="ml-auto mr-20 motion-safe:animate-bounce justify-end h-96 "src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
@@ -145,21 +181,14 @@ function PokemonData() {
                 
                     .
                 <div className="">
-                        <p>Height: {pokedata.height}</p>
-                        <p>Weight: {pokedata.weight}</p>
+                        <p className="font-bold">Height: {pokedata.height}</p>
+                        <p className="font-bold">Weight: {pokedata.weight}</p>
                         
-                        <p>Where ya can find em : {pokedata.location_area_encounters}</p>
-
-                        <p>Moves:</p>
-                        <ul>
-                            {pokedata.moves.map((move, index) => (
-                                <li key={index}>{move.move.name}</li>
-                                
-                            ))}
-                        </ul>
-
-                        <p>Stats </p>
-                            <ul>
+                        <p>Where ya can find em : {}</p>
+                     
+                    <div className="flex">
+                        <p className="font-bold h-12 ">Stats:</p>
+                            <ul className="w-60">
                                 {pokedata.stats.map((stat, index) => (
                                     <li key={index}> 
                                     {Progressbar(stat.stat.name, stat.base_stat)}
@@ -167,21 +196,18 @@ function PokemonData() {
                                     
                                     ))}
                             </ul> 
+                    </div>
                 </div>
-                    
 
-                            <h1>Moves</h1>
-
+                            <div className="">                     
+                            <p className="font-bold">Moves:</p>
                             <ul>
-                            {pokedata.moves.map((move, index) => {
-                               
-                                    <li key= {index}>
-                                        {move.moves}
-                                    </li>
-                               
-                            })}
+                                {pokedata.moves.map((move, index) => (
+                                    <li key={index}>{move.move.name}</li>
+                                    
+                                ))}
                             </ul>
-                        
+                        </div>
                     
 
                     
