@@ -8,8 +8,11 @@ function PokemonData() {
     const pokedata = location.state ? location.state.pokedata : null;
     console.log(location.state.pokedata)
     const locationURL = pokedata.location_area_encounters;
+ 
+    
 
     const [encounterData, setencounterData] = useState ()
+    const [abilityDes, setabilityDes] = useState([])
 
 
     useEffect(() => {
@@ -19,7 +22,7 @@ function PokemonData() {
                const data = res.data
                setencounterData(data)
 
-               console.log(encounterData)
+            //    const res2 = 
 
                
             } catch (error){
@@ -157,13 +160,24 @@ function PokemonData() {
                                 <p className=" font-bold"> PokeMon # <span>{pokedata.id}</span></p>
                                 <p className="font-bold">Abilitlies:</p>
                                 <ul className="">
-                                    {pokedata.abilities.map((ability, index) => (
+                                 {pokedata.abilities.map(async (ability, index) => {
+                                    try {
+                                        const res = await axios.get(ability.ability.url);
+                                        const data = res.data;
                                         
-                                        <li key={index} className="inline px-3" >{ability.ability.name}
-                                            <p>{ability.ability.name.url}</p>
-                                        </li>
-                                        
-                                    ))}
+                                        setabilityDes(data);
+                                        return (
+                                            <li key={index} className="inline px-3">
+                                                {ability.ability.name}
+                                                {abilityDes.effect} 
+                                            </li>
+                                        );
+                                    } catch (error) {
+                                        console.error("There was an error:", error);
+                                    
+                                        return null; 
+                                    }
+                                })}
                                 </ul>
                                 <div className="">
                                     {encounterData && encounterData.map((encounter, index) => (
