@@ -62,8 +62,7 @@ export function Header() {
                                     />
                                     <button
                                         className="hidden"
-                                        onClick={handleSubmit}
-                                    >
+                                        onClick={handleSubmit}>
                                         Search
                                     </button>
                                     <br />

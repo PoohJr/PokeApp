@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import pokestopBackground from './bg-img/pokestop.jpg';
 // import Abilitydes from "../AbilityFold/Abilitydes";
 
 function PokemonData() {
@@ -31,6 +32,12 @@ function PokemonData() {
 
     },[])
 
+   const  
+
+    // async function fetchData() {
+    //     const response = await axios.get('your-api-endpoint');
+    //     return response.data;
+    //   }
     const Playaudio = () => { 
         if(pokedata){
         new Audio(`https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${pokedata.id}.ogg`).play()
@@ -123,7 +130,8 @@ function PokemonData() {
         }
     
     return (
-        <div className="p-10 h-full">
+        <div className="p-10 h-screen bg-cover bg-center"style={{backgroundImage: `url(${pokestopBackground})`}}>
+        
             {pokedata && (
                 <div className="">
                     <div className="flex  mt-16">
@@ -152,48 +160,44 @@ function PokemonData() {
                                     </ul>
                     </div>
 
-                        <div className=" flex  rounded w-full mt-8">
-                            <div className="">
-                                <p className=" font-bold"> PokeMon # <span>{pokedata.id}</span></p>
-                                <p className="font-bold">Abilitlies:</p>
-                                
-                                 <ul className="">
+                    <div className="flex rounded w-full mt-8">
+  
+  <div className="flex flex-col justify-between mr-auto">
+    
+    <p className="font-bold">PokeMon # <span>{pokedata.id}</span></p>
 
-                                    { async function fetchURL() {
-                                        
-                                        const res = await ability.ability.url;
-                                        const data = res.data;
-                                        setabilityDes(data)
-                                     
-                                  pokedata.abilities.map( async (ability, index) => (
-                                      
-                                        
-                                         <li key={index} className="inline px-3" >{ability.ability.name}
-                                            <p>{data.effect}</p>
-                                        </li>
-                                         
-                                    ))}}
-                                </ul> 
-                                <div className="">
-                                    {encounterData && encounterData.map((encounter, index) => (
-                                        <div key={index} className="">
-                                            <p> Where To Find em, in{encounter.location_area.name}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        <div className=" bg-slate-600">
-                                <img  className ="ml-auto mr-20 motion-safe:animate-bounce justify-end h-96 "src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
-                            </div>
-                        </div>
+    <p className="font-bold">Abilities:</p>
+    <ul className="">
+      {pokedata.abilities.map((ability, index) => (
+        <li key={index} className="inline px-3">
+          {ability.ability.name}
+         
+        </li>
+      ))}
+    </ul>
+
+   
+    <div className="">
+      {encounterData && encounterData.map((encounter, index) => (
+        <div key={index} className="">
+          <p>Where To Find em, in {encounter.location_area.name}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  
+  <div className="ml-auto">
+    <img className="h-96" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
+  </div>
+</div>
+
                     
                 
                     .
                 <div className="">
                         <p className="font-bold">Height: {pokedata.height}</p>
                         <p className="font-bold">Weight: {pokedata.weight}</p>
-                        
-                        <p>Where ya can find em : {}</p>
                      
                     <div className="flex">
                         <p className="font-bold h-12 ">Stats:</p>
