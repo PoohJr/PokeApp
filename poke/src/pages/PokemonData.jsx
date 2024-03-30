@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-
+// import Abilitydes from "../AbilityFold/Abilitydes";
 
 function PokemonData() {
     const location = useLocation();
@@ -11,6 +11,7 @@ function PokemonData() {
 
 
     const [encounterData, setencounterData] = useState ()
+    const [abilityDes, setabilityDes] = useState([]);
 
 
 
@@ -21,9 +22,6 @@ function PokemonData() {
                const data = res.data
                setencounterData(data)
 
-               const res2 = axios.get()
-
-               
             } catch (error){
                 console.error('Error fetching encounters data:', error);
 
@@ -158,15 +156,24 @@ function PokemonData() {
                             <div className="">
                                 <p className=" font-bold"> PokeMon # <span>{pokedata.id}</span></p>
                                 <p className="font-bold">Abilitlies:</p>
-                                {/* <ul className="">
-                                    {pokedata.abilities.map((ability, index) => (
+                                
+                                 <ul className="">
+
+                                    { async function fetchURL() {
                                         
-                                        <li key={index} className="inline px-3" >{ability.ability.name}
-                                            <p>{ability.ability.name.url}</p>
+                                        const res = await ability.ability.url;
+                                        const data = res.data;
+                                        setabilityDes(data)
+                                     
+                                  pokedata.abilities.map( async (ability, index) => (
+                                      
+                                        
+                                         <li key={index} className="inline px-3" >{ability.ability.name}
+                                            <p>{data.effect}</p>
                                         </li>
-                                        
-                                    ))}
-                                </ul> */}
+                                         
+                                    ))}}
+                                </ul> 
                                 <div className="">
                                     {encounterData && encounterData.map((encounter, index) => (
                                         <div key={index} className="">

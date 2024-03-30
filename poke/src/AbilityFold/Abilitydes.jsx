@@ -1,52 +1,52 @@
-import { useEffect, useState, useLocation } from "react";
-import axios from "axios";
-import React from "react";
+// import { useEffect, useState, useLocation } from "react";
+// import axios from "axios";
+// import React from "react";
 
-function Abilitydes (){
-    const location = useLocation();
-    const pokedata = location.state ? location.state.pokedata : null;
+// function Abilitydes (){
+//     const location = useLocation();
+//     const pokedata = location.state ? location.state.pokedata : null;
     
-    const [abilityDes, setabilityDes] = useState([]);
+//     const [abilityDes, setabilityDes] = useState([]);
 
-        useEffect(() => {
-            async function getApiData(){
+//         useEffect(() => {
+//             async function getApiData(){
 
-                try{
-                    const res = await axios.get(pokedata.ability.ability.url);
-                    const data = res.data;
-                    setabilityDes(data);
+//                 try{
+//                     const res = await axios.get(pokedata.ability.ability.url);
+//                     const data = res.data;
+//                     setabilityDes(data);
 
-                    getApiData()
-                } catch(error){
-                    console.error( error + "this is the Error")
-                }
-            }
-            getApiData()
+//                     getApiData()
+//                 } catch(error){
+//                     console.error( error + "this is the Error")
+//                 }
+//             }
+//             getApiData()
 
-        },[pokedata.ability.ability.url])
+//         },[pokedata.ability.ability.url])
 
         
-    return(
-        <>
+//     return(
+//         <>
                                
-                                    {pokedata.abilities.map((ability, index) => {
-                                        try {
-                                            return (
-                                                <li key={index} className="inline px-3">
-                                                    {ability.ability.name}
-                                                    {pokedata.abilityDes} 
-                                                </li>
-                                            );
-                                        } catch (error) {
-                                            console.error("There was an error:", error);
+//                                     {pokedata.abilities.map((ability, index) => {
+//                                         try {
+//                                             return (
+//                                                 <li key={index} className="inline px-3">
+//                                                     {ability.ability.name}
+//                                                     {pokedata.abilityDes} 
+//                                                 </li>
+//                                             );
+//                                         } catch (error) {
+//                                             console.error("There was an error:", error);
                                         
-                                            return null; 
-                                        }
-                                        })}
+//                                             return null; 
+//                                         }
+//                                         })}
                                 
-        </>
-    )
+//         </>
+//     )
 
-}
+// }
 
-export default Abilitydes
+// export default Abilitydes
