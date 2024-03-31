@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import pokestopBackground from './bg-img/pokestop.jpg';
 // import Abilitydes from "../AbilityFold/Abilitydes";
 
 function PokemonData() {
@@ -32,12 +31,16 @@ function PokemonData() {
 
     },[])
 
-   const  
+    async function fetchURL(ability){
+        const res = await axios.get(ability.url)
+        const data = res.data;
+        setabilityDes(data)
+    }
 
-    // async function fetchData() {
-    //     const response = await axios.get('your-api-endpoint');
-    //     return response.data;
-    //   }
+    useEffect(() =>{
+        fetchURL()
+    },[])
+
     const Playaudio = () => { 
         if(pokedata){
         new Audio(`https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${pokedata.id}.ogg`).play()
@@ -53,6 +56,7 @@ function PokemonData() {
 
     function heightConver(){
     }
+
         function TypeColor(typename){
         switch(typename){
             case "grass":
@@ -93,6 +97,7 @@ function PokemonData() {
                 return "bg-[#D685AD]"
         }
     }
+
         function Progressbar(item, base ){
         
         switch (item){
@@ -130,7 +135,7 @@ function PokemonData() {
         }
     
     return (
-        <div className="p-10 h-screen bg-cover bg-center"style={{backgroundImage: `url(${pokestopBackground})`}}>
+        <div className="p-10 h-screen ">
         
             {pokedata && (
                 <div className="">
@@ -168,9 +173,10 @@ function PokemonData() {
 
     <p className="font-bold">Abilities:</p>
     <ul className="">
-      {pokedata.abilities.map((ability, index) => (
+      {abilityDes.map((ability, index) => (
         <li key={index} className="inline px-3">
-          {ability.ability.name}
+          {ability.name}
+          {ability.effetc}
          
         </li>
       ))}
