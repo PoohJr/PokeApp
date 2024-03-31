@@ -21,7 +21,7 @@ function PokemonData() {
                const res =  await axios.get(locationURL)
                const data = res.data
                setencounterData(data)
-
+                
             } catch (error){
                 console.error('Error fetching encounters data:', error);
 
@@ -31,15 +31,34 @@ function PokemonData() {
 
     },[])
 
-    async function fetchURL(ability){
-        const res = await axios.get(ability.url)
-        const data = res.data;
-        setabilityDes(data)
+    // useEffect(() =>{
+
+    //     async function fetchURL(later){
+    //         try{
+    //         const res = await axios.get(later)
+    //         const data = res.data;
+    //         setabilityDes(data)
+    //         console.log(pokedata.abilities.ability)
+               
+    //         } catch(error){
+    //             console.error(error + " this is the error")
+    //         }
+    //     }
+    //     fetchURL()
+    // },[])
+
+
+    async function CallApi(url){
+        try{   
+            const res = await axios.get(url)
+            const data = res.data;
+            setabilityDes(data)
+            console.log(data)
+        } catch(error){
+            console.error(error + " this is the error")
+        }
     }
 
-    useEffect(() =>{
-        fetchURL()
-    },[])
 
     const Playaudio = () => { 
         if(pokedata){
@@ -172,15 +191,15 @@ function PokemonData() {
     <p className="font-bold">PokeMon # <span>{pokedata.id}</span></p>
 
     <p className="font-bold">Abilities:</p>
-    <ul className="">
-      {abilityDes.map((ability, index) => (
-        <li key={index} className="inline px-3">
-          {ability.name}
-          {ability.effetc}
-         
-        </li>
-      ))}
+    <ul>
+        {pokedata.abilities.map((ability, index) => (
+            <li key={index}>
+            {ability.ability.name}
+            <p>{CallApi(ability.ability.url)}</p>
+            </li> 
+        ))}
     </ul>
+
 
    
     <div className="">
