@@ -21,6 +21,7 @@ function PokemonData() {
                const res =  await axios.get(locationURL)
                const data = res.data
                setencounterData(data)
+               console.log(data)
                 
             } catch (error){
                 console.error('Error fetching encounters data:', error);
@@ -33,15 +34,12 @@ function PokemonData() {
 
 
     async function CallApi(url){
-        try{   
-            const res = await axios.get(url, {
-                'Accept-Language': 'en'
-            })
-            console.log(res.data.effect_entries[0].effect)
-            return  res.data.effect_entries[0].effect;
-            
-        } catch(error){
-            console.error(error + " this is the error")
+        try {   
+            const res = await axios.get(url);
+            const name = "en";
+            return res.data.effect_entries.find(entry => entry.language.name === name).effect;
+        } catch(error) {
+            console.error(error + " this is the error");
         }
     }
 
@@ -194,15 +192,16 @@ function PokemonData() {
   <div className="flex flex-col justify-between mr-auto">
     
     <p className="font-bold">PokeMon # <span>{pokedata.id}</span></p>
-
-    <p className="font-bold">Abilities:</p>
-    <ul>
-                {abilityDes.map((ability, index) => (
-                    <li key={index}>
-                        <strong>{ability.name}</strong>: {ability.description}
-                    </li>
-                ))}
-            </ul>
+            <div className="">
+                <p className="font-bold">Abilities:</p>
+                <ul>
+                    {abilityDes.map((ability, index) => (
+                        <li key={index}>
+                            <strong>{capitalizeFirstLetter(ability.name)}</strong>: {ability.description}
+                        </li>
+                    ))}
+                </ul>
+            </div>
 
 
    
@@ -250,9 +249,7 @@ function PokemonData() {
                                 ))}
                             </ul>
                         </div>
-                    
 
-                    
                 </div>
             )}
         </div>
