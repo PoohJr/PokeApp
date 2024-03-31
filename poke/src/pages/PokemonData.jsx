@@ -31,33 +31,38 @@ function PokemonData() {
 
     },[])
 
-    // useEffect(() =>{
-
-    //     async function fetchURL(later){
-    //         try{
-    //         const res = await axios.get(later)
-    //         const data = res.data;
-    //         setabilityDes(data)
-    //         console.log(pokedata.abilities.ability)
-               
-    //         } catch(error){
-    //             console.error(error + " this is the error")
-    //         }
-    //     }
-    //     fetchURL()
-    // },[])
-
 
     async function CallApi(url){
         try{   
-            const res = await axios.get(url)
-            const data = res.data;
-            setabilityDes(data)
-            console.log(data)
+            const res = await axios.get(url, {
+                'Accept-Language': 'en'
+            })
+            console.log(res.data.effect_entries[0].effect)
+            return  res.data.effect_entries[0].effect;
+            
         } catch(error){
             console.error(error + " this is the error")
         }
     }
+
+    useEffect(() => {
+        async function fetchAbilityData() {
+            if (pokedata) {
+                const abilitiesWithDetails = await Promise.all(
+                    pokedata.abilities.map(async (ability) => {
+                        const description = await CallApi(ability.ability.url);
+                        return {
+                            name: ability.ability.name,
+                            description: description
+                        };
+                    })
+                );
+                setabilityDes(abilitiesWithDetails);
+            }
+        }
+
+        fetchAbilityData();
+    }, [pokedata]);
 
 
     const Playaudio = () => { 
@@ -192,13 +197,12 @@ function PokemonData() {
 
     <p className="font-bold">Abilities:</p>
     <ul>
-        {pokedata.abilities.map((ability, index) => (
-            <li key={index}>
-            {ability.ability.name}
-            <p>{CallApi(ability.ability.url)}</p>
-            </li> 
-        ))}
-    </ul>
+                {abilityDes.map((ability, index) => (
+                    <li key={index}>
+                        <strong>{ability.name}</strong>: {ability.description}
+                    </li>
+                ))}
+            </ul>
 
 
    
