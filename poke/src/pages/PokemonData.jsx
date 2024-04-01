@@ -196,8 +196,8 @@ function PokemonData() {
                 <p className="font-bold">Abilities:</p>
                 <ul>
                     {abilityDes.map((ability, index) => (
-                        <li key={index}>
-                            <strong>{capitalizeFirstLetter(ability.name)}</strong>: {ability.description}
+                        <li className="" key={index}>
+                            <strong>{capitalizeFirstLetter(ability.name)}</strong>: <p className="">{ability.description}</p>
                         </li>
                     ))}
                 </ul>
@@ -215,8 +215,8 @@ function PokemonData() {
   </div>
 
   
-  <div className="ml-auto">
-    <img className="h-96" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
+  <div className="ml-auto bg-black">
+    <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
   </div>
 </div>
 
@@ -229,14 +229,22 @@ function PokemonData() {
                      
                     <div className="flex">
                         <p className="font-bold h-12 ">Stats:</p>
+                        <div className="">
                             <ul className="w-60">
                                 {pokedata.stats.map((stat, index) => (
-                                    <li key={index}> 
-                                    {Progressbar(stat.stat.name, stat.base_stat)}
-                                            </li>
+                                    
+                                  
+                                    <p key={index}>
+                                    {stat.stat.name}
+                                    <progress className="progress w-56" value={stat.base_stat} max="200"></progress>
+                                </p>
+
+                                           
+                                            
                                     
                                     ))}
                             </ul> 
+                        </div>
                     </div>
                 </div>
 
@@ -249,8 +257,9 @@ function PokemonData() {
                                 ))}
                             </ul>
                         </div>
-
+                                    
                 </div>
+                
             )}
         </div>
     );

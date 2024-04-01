@@ -10,6 +10,7 @@ export function Header() {
     const [newerror, setNewError] = useState(false);
     const [loading, setloading] = useState(true)
     const navigate = useNavigate();
+    const [inputerror, setinputerror] = useState(false)
     
 
     useEffect(() => {
@@ -33,10 +34,14 @@ export function Header() {
         } catch (error) {
             console.error("Error Fetching Api", error);
             setNewError("Error Fetching Api: " + error.message);
+            alert("Enter Vaild Pokemon Name") 
+            userInput("")  
         }
         
-        setUserInput("");
+        
     };
+
+
 
     return (
         <>
@@ -58,7 +63,7 @@ export function Header() {
                                         placeholder="Choose Your Pokemon!" 
                                         autoComplete="off"
                                         aria-label="Search Pokemon"
-                                        onInvalid={(e)=>{e.target.setCustomValidity("error msg:  Please enter your first name")}}
+                                        style={{ borderColor: newerror ? 'red' : 'initial'}}
                                     />
                                     <button
                                         className="hidden"
