@@ -10,7 +10,7 @@ function PokemonData() {
     const locationURL = pokedata.location_area_encounters;
 
 
-    const [encounterData, setencounterData] = useState ()
+    const [encounterData, setencounterData] = useState ({})
     const [abilityDes, setabilityDes] = useState([]);
 
 
@@ -22,6 +22,7 @@ function PokemonData() {
                const data = res.data
                setencounterData(data)
                console.log(data)
+               console.log(encounterData)
                 
             } catch (error){
                 console.error('Error fetching encounters data:', error);
@@ -148,10 +149,7 @@ function PokemonData() {
             default:
                 return null;
         }
-        // <div className="flex justify-between mb-1">
-        //     <span className={`bg-base font-medium bg-black-700 dark:bg-white`}>{item}</span>
-        //     <span className="bg-sm font-medium bg-{}-700 dark:bg-white">{item}</span>
-        // </div>        
+   
 
        
         }
@@ -207,9 +205,13 @@ function PokemonData() {
    
     <div className="">
       {encounterData && encounterData.map((encounter, index) => (
-        <div key={index} className="">
-          <p>Where To Find em, in {encounter.location_area.name}</p>
-        </div>
+        
+          <p key={index}>Where To Find em, in {encounter.location_area.name}</p>
+      ))}
+      {encounterData && encounterData.map((encounter, index) => (
+        // have to run another map here have a div as the key to wrap everything 
+        // whjile at work focus on styling at home focus on functionality
+          <p key={index}>Where To Find em, in {encounter.location_area.name}</p>
       ))}
     </div>
   </div>
@@ -234,10 +236,13 @@ function PokemonData() {
                                 {pokedata.stats.map((stat, index) => (
                                     
                                   
-                                    <p key={index}>
-                                    {stat.stat.name}
-                                    <progress className="progress w-56" value={stat.base_stat} max="200"></progress>
-                                </p>
+                                    <strong className="" key={index}>
+                                        {capitalizeFirstLetter(stat.stat.name )}
+
+                                        <progress className="progress w-56" value={stat.base_stat} max="200"></progress>
+                                        
+                                    </strong>
+                                     
 
                                            
                                             
