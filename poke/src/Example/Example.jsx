@@ -48,6 +48,12 @@ function Example() {
                 return "text-[#D685AD]"
         }
     }
+
+    function addon(TypeColor){
+        const stylesoftype = TypeColor; // make this add like the style of the font types like this guy https://pokeref.app/
+
+    }
+
     useEffect(() => {
         const PokeArr = async () => {
             try {
@@ -108,9 +114,9 @@ function Example() {
     return (
         <>
             {
-                <div className=" flex flex-wrap justify-between w-full ">
+                <div className=" flex flex-wrap justify-evenly w-full ">
                     {kantoPokemon.map((pokemon, index) => (
-                    <div className="flex flex-col w-2/12 h-40 bg-red-500 rounded-full mt-8 m-2 " key={index}>
+                    <div className="flex flex-col w-64 h-40 bg-red-500 rounded mt-8 m-3 " key={index}>
                             <span className="text-md text-center mt-2 text-white before:content-[]">{capitalizeFirstLetter(pokemon.name)}</span>
                             <div className="flex justify-center">
                                 <div className="bg-white h-28 w-40 rounded-full border-8 border-red-600 ">
@@ -118,6 +124,9 @@ function Example() {
                                         <img onClick={ClickPoke} className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
                                             alt={pokemon.name} />
+                                            {/* <div className="after:content-grass after:inline-block after:w-8">
+
+                                            </div> img in not loaded cause route not matched  */}
                                     </div>
                                 </div>
                             </div>

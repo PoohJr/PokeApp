@@ -187,40 +187,33 @@ function PokemonData() {
 
                     <div className="flex rounded w-full mt-8">
   
-  <div className="flex flex-col justify-between mr-auto">
-    
-    <p className="font-bold">PokeMon # <span>{pokedata.id}</span></p>
-            <div className="">
-                <p className="font-bold">Abilities:</p>
-                <ul>
-                    {abilityDes.map((ability, index) => (
-                        <li className="" key={index}>
-                            <strong>{capitalizeFirstLetter(ability.name)}</strong>: <p className="">{ability.description}</p>
-                        </li>
-                    ))}
-                </ul>
+            <div className="flex flex-col justify-between mr-auto">
+        
+                     <p className="font-bold">PokeMon # <span>{pokedata.id}</span></p>
+                        <div className="">
+                            <p className="font-bold">Abilities:</p>
+                            <ul>
+                                {abilityDes.map((ability, index) => (
+                                    <li className="" key={index}>
+                                        <strong>{capitalizeFirstLetter(ability.name)}</strong>: <p className="">{ability.description}</p>
+                                    </li>
+                                ))}
+                            </ul>   
             </div>
 
 
    
-    <div className="">
-      {encounterData && encounterData.map((encounter, index) => (
-        
-          <p key={index}>Where To Find em, in {encounter.location_area.name}</p>
-      ))}
-      {encounterData && encounterData.map((encounter, index) => (
-        // have to run another map here have a div as the key to wrap everything 
-        // whjile at work focus on styling at home focus on functionality
-          <p key={index}>Where To Find em, in {encounter.location_area.name}</p>
-      ))}
-    </div>
-  </div>
+            <div className="">
+                {encounterData && encounterData.map((encounter, index) => (
+                    <p key={index}>Where To Find em, in {encounter.location_area.name}</p>
+                ))}
+            </div> 
 
   
-  <div className="ml-auto bg-black">
-    <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
-  </div>
-</div>
+            <div className="ml-auto bg-black">
+                <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
+            </div>
+            </div>
 
                     
                 
@@ -264,10 +257,12 @@ function PokemonData() {
                         </div>
                                     
                 </div>
-                
+           </div>     
             )}
         </div>
-    );
+        
+);
+
 }
 
 // did is might be to gte the evelotion of the pokemon fetch (`https://pokeapi.co/api/v2/evolution-chain/1/`)
