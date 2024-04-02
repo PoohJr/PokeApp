@@ -83,44 +83,52 @@ function PokemonData() {
         function TypeColor(typename){
         switch(typename){
             case "grass":
-                return "bg-[#7AC74C] uppercase "
+                return "bg-[#7AC74C] uppercase drop-shadow-lg before:content-grass h-min"
             case "poison":
-                return "bg-[#A33EA1] uppercase "
+                return "bg-[#A33EA1] uppercase drop-shadow-lg before:content-poison h-min"
             case "fire":
-                return "bg-[#EE8130] uppercase "
+                return "bg-[#EE8130] uppercase drop-shadow-lg before:content-fire h-min"
             case "normal":
-                return "bg-[#A8A77A] uppercase "
+                return "bg-[#A8A77A] uppercase drop-shadow-lg before:content-normal h-min"
             case "water":
-                return "bg-[#6390F0] uppercase "
+                return "bg-[#6390F0] uppercase drop-shadow-lg before:content-water h-min"
             case "electric":
-                return "bg-[#F7D02C] uppercase "
+                return "bg-[#F7D02C] uppercase drop-shadow-lg before:content-electric h-min"
             case "ice":
-                 return "bg-[#96D9D6] uppercase "
+                 return "bg-[#96D9D6] uppercase drop-shadow-lg before:content-ice h-min"
             case "fighting":
-                 return "bg-[#C22E28] uppercase "
+                 return "bg-[#C22E28] uppercase drop-shadow-lg before:content-fighting h-min"
             case "ground":
-                 return "bg-[#E2BF65] uppercase "
+                 return "bg-[#E2BF65] uppercase drop-shadow-lg before:content-ground h-min"
             case "flying":
-                return "bg-[#A98FF3] uppercase "
+                return "bg-[#A98FF3] uppercase drop-shadow-lg before:content-flying h-min"
             case "psychic":
-                return "bg-[#F95587] uppercase "
+                return "bg-[#F95587] uppercase drop-shadow-lg before:content-psychic h-min"
             case "bug":
-                return "bg-[#A6B91A] uppercase "
+                return "bg-[#A6B91A] uppercase drop-shadow-lg before:content-bug h-min"
             case "rock":
-                return "bg-[#B6A136] uppercase "
+                return "bg-[#B6A136] uppercase drop-shadow-lg before:content-rock h-min"
             case "ghost":
-                return "bg-[#735797] uppercase "
+                return "bg-[#735797] uppercase drop-shadow-lg before:content-ghost h-min"
             case "dragon":
-                return "bg-[#6F35FC] uppercase "
+                return "bg-[#6F35FC] uppercase drop-shadow-lg before:content-dragon h-min"
             case "dark":
-                return "bg-[#705746] uppercase "
+                return "bg-[#705746] uppercase drop-shadow-lg before:content-dark h-min"
             case "steel":
-                return "bg-[#B7B7CE] uppercase "
+                return "bg-[#B7B7CE] uppercase drop-shadow-lg before:content-steel h-min"
             case "fairy":
-                return "bg-[#D685AD] uppercase "
+                return "bg-[#D685AD] uppercase drop-shadow-lg before:content-fairy h-min"
         }
+        typeImg()
     }
 
+    function typeImg(TypeColor){
+        switch(TypeColor.ok){
+            case 'grass':
+                return 'url("/type/grass.svg")';
+        }
+        
+    }
         // function Progressbar(item, base ){
         
         // switch (item){
@@ -172,34 +180,35 @@ function PokemonData() {
         }
     
     return (
-        <div className="p-10 h-screen "> {/* div 1*/}
+        <div className="p-10 h-screen bg- bg-green-700"> {/* div 1*/}
              
             {pokedata && (
                 <div className="">   {/* div 2*/}
                     <div className="flex justify-center mt-16">
                         <h2 className="font-sans  text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
-                        <svg className="cursor-pointer" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
-                            <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
-                                c0,29.1,23.6,52.7,52.7,52.7h71.6c15.9,25,37.6,46,63.2,61.1c28.7,16.9,61.5,25.8,95,25.8c7.5,0,13.5-6,13.5-13.5V68.65
-                                C296,61.25,290,55.15,282.5,55.15z M118.4,315.95H52.7c-14.2,0-25.7-11.5-25.7-25.7v-95.5c0-14.2,11.5-25.7,25.7-25.7h65.7V315.95
-                                z M269,402.35c-50.7-4.3-96.9-32.8-123.6-76.6v-166.4c26.7-43.8,72.9-72.3,123.6-76.6V402.35z"/>
-                            <path fill="#000000" d="M348.9,137.95c-6.1-4.3-14.5-2.8-18.8,3.4c-4.3,6.1-2.8,14.5,3.4,18.8c27,18.8,43.1,49.7,43.1,82.5s-16.1,63.7-43.1,82.5
-                                c-6.1,4.3-7.6,12.7-3.4,18.8c2.6,3.8,6.8,5.8,11.1,5.8c2.7,0,5.4-0.8,7.7-2.4c34.2-23.9,54.7-63,54.7-104.6
-                                S383.1,161.75,348.9,137.95z"/>
-                            <path fill="#000000" d="M401.1,82.05c-6.1-4.3-14.5-2.8-18.8,3.4c-4.3,6.1-2.8,14.5,3.4,18.8c45.3,31.6,72.3,83.3,72.3,138.3
-                                s-27,106.8-72.3,138.3c-6.1,4.3-7.6,12.7-3.4,18.8c2.6,3.8,6.8,5.8,11.1,5.8c2.7,0,5.4-0.8,7.7-2.4
-                                c52.5-36.6,83.9-96.6,83.9-160.5S453.7,118.65,401.1,82.05z"/>
-                        </svg>
+                            <svg className="cursor-pointer" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
+                                <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
+                                    c0,29.1,23.6,52.7,52.7,52.7h71.6c15.9,25,37.6,46,63.2,61.1c28.7,16.9,61.5,25.8,95,25.8c7.5,0,13.5-6,13.5-13.5V68.65
+                                    C296,61.25,290,55.15,282.5,55.15z M118.4,315.95H52.7c-14.2,0-25.7-11.5-25.7-25.7v-95.5c0-14.2,11.5-25.7,25.7-25.7h65.7V315.95
+                                    z M269,402.35c-50.7-4.3-96.9-32.8-123.6-76.6v-166.4c26.7-43.8,72.9-72.3,123.6-76.6V402.35z"/>
+                                <path fill="#000000" d="M348.9,137.95c-6.1-4.3-14.5-2.8-18.8,3.4c-4.3,6.1-2.8,14.5,3.4,18.8c27,18.8,43.1,49.7,43.1,82.5s-16.1,63.7-43.1,82.5
+                                    c-6.1,4.3-7.6,12.7-3.4,18.8c2.6,3.8,6.8,5.8,11.1,5.8c2.7,0,5.4-0.8,7.7-2.4c34.2-23.9,54.7-63,54.7-104.6
+                                    S383.1,161.75,348.9,137.95z"/>
+                                <path fill="#000000" d="M401.1,82.05c-6.1-4.3-14.5-2.8-18.8,3.4c-4.3,6.1-2.8,14.5,3.4,18.8c45.3,31.6,72.3,83.3,72.3,138.3
+                                    s-27,106.8-72.3,138.3c-6.1,4.3-7.6,12.7-3.4,18.8c2.6,3.8,6.8,5.8,11.1,5.8c2.7,0,5.4-0.8,7.7-2.4
+                                    c52.5-36.6,83.9-96.6,83.9-160.5S453.7,118.65,401.1,82.05z"/>
+                            </svg>
 
 
 
                         <ul className="flex">
-                                        {pokedata.types.map((type, index) => (
-                                            <li key={index} className={`"  before:content-grass font  align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm" ${TypeColor(type.type.name)}`}>
-                                                {type.type.name}
-                                            </li>
+                                {pokedata.types.map((type, index) => (
+                            <li key={index} className={` font  align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm
+                                ${TypeColor(type.type.name)}`}>
+                                {type.type.name}
+                            </li>
                                         ))}
-                                    </ul>
+                        </ul>
                     </div>
 
                     
@@ -261,15 +270,17 @@ function PokemonData() {
                                     <ul className="w-60">
                                         {pokedata.stats.map((stat, index) => (
                                             
-                                        
-                                            <strong className="" key={index}>
+                                        <div key={index} className="">
+                                            <strong className="" >
                                                 {capitalizeFirstLetter(stat.stat.name )}
-
-                                                <progress className={`progress w-56 mt-2" ${getColorClass(stat.stat.name)} `}value={stat.base_stat} max="200"></progress>
+                                                </strong>  <strong className="ml-4">{stat.base_stat}%</strong>
+                                                <progress className={`progress w-56 mt-2" ${getColorClass(stat.stat.name)} `}
+                                                value={stat.base_stat} 
+                                                max="200">
+                                                </progress>
                                                 
-                                                
-                                            </strong>    
-                                            
+                                              
+                                                </div>
                                             ))}
                                     </ul> 
                                 </div>
