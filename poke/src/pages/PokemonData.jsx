@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-// import Abilitydes from "../AbilityFold/Abilitydes";
+
 
 function PokemonData() {
     const location = useLocation();
@@ -10,7 +10,7 @@ function PokemonData() {
     const locationURL = pokedata.location_area_encounters;
 
 
-    const [encounterData, setencounterData] = useState ({})
+    const [encounterData, setencounterData] = useState ()
     const [abilityDes, setabilityDes] = useState([]);
 
 
@@ -121,46 +121,46 @@ function PokemonData() {
         }
     }
 
-        function Progressbar(item, base ){
+        // function Progressbar(item, base ){
         
-        switch (item){
-            case "hp":
-            return (
-                <>
-        <div className="flex justify-between mb-4">
-            <span className={`bg-base font-medium bg-red-700`}>{item}:</span>
-            <span className="bg-sm font-medium bg-red-700">{base}%</span>
-        </div>   
-                </>
-            );
-            case "defense":
-                return (
-                    <>
-            <div className="flex justify-between mb-4 w-96">
-                <div className="w-48">
-                <span className={`bg-base font-medium `}>{item}:</span>
-                <div className="w-20 bg-blue-700"></div>
-                <span className="bg-sm font-medium ">{base}%</span>
-                <div className="bg-blue-700"></div>
-                </div>
-            </div>   
-                    </>
-                );
-            default:
-                return null;
-        }
+        // switch (item){
+        //     case "hp":
+        //     return (
+        //         <>
+        // <div className="flex justify-between mb-4">
+        //     <span className={`bg-base font-medium bg-red-700`}>{item}:</span>
+        //     <span className="bg-sm font-medium bg-red-700">{base}%</span>
+        // </div>   
+        //         </>
+        //     );
+        //     case "defense":
+        //         return (
+        //             <>
+        //     <div className="flex justify-between mb-4 w-96">
+        //         <div className="w-48">
+        //         <span className={`bg-base font-medium `}>{item}:</span>
+        //         <div className="w-20 bg-blue-700"></div>
+        //         <span className="bg-sm font-medium ">{base}%</span>
+        //         <div className="bg-blue-700"></div>
+        //         </div>
+        //     </div>   
+        //             </>
+        //         );
+        //     default:
+        //         return null;
+        // }
    
 
        
-        }
+        // }
     
     return (
-        <div className="p-10 h-screen ">
-        
+        <div className="p-10 h-screen "> {/* div 1*/}
+             
             {pokedata && (
-                <div className="">
-                    <div className="flex  mt-16">
-                        <h2 className="font-sans text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
+                <div className="">   {/* div 2*/}
+                    <div className="flex justify-center mt-16">
+                        <h2 className="font-sans  text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
                         <svg className="cursor-pointer" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
                             <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
                                 c0,29.1,23.6,52.7,52.7,52.7h71.6c15.9,25,37.6,46,63.2,61.1c28.7,16.9,61.5,25.8,95,25.8c7.5,0,13.5-6,13.5-13.5V68.65
@@ -178,75 +178,87 @@ function PokemonData() {
 
                         <ul className="flex">
                                         {pokedata.types.map((type, index) => (
-                                            <li key={index} className={`"  before:content-grass align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm" ${TypeColor(type.type.name)}`}>
+                                            <li key={index} className={`"  before:content-grass font  align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm" ${TypeColor(type.type.name)}`}>
                                                 {type.type.name}
                                             </li>
                                         ))}
                                     </ul>
                     </div>
 
-                    <div className="flex rounded w-full mt-8">
-  
-            <div className="flex flex-col justify-between mr-auto">
-        
-                     <p className="font-bold">PokeMon # <span>{pokedata.id}</span></p>
-                        <div className="">
-                            <p className="font-bold">Abilities:</p>
-                            <ul>
-                                {abilityDes.map((ability, index) => (
-                                    <li className="" key={index}>
-                                        <strong>{capitalizeFirstLetter(ability.name)}</strong>: <p className="">{ability.description}</p>
-                                    </li>
-                                ))}
-                            </ul>   
-            </div>
+                    
+                                            
+                    <div className="flex flex-col justify-between mr-auto ">
+                        <h1 className="font-bold text-4xl">PokeMon # <span>{pokedata.id}</span></h1>
+                            <div className="">
+                                    <p className="mt-14 font-bold text-3xl">Abilities:</p>
+
+                                    <ul>
+                                        {abilityDes.map((ability, index) => (
+                                            <div key={index} className="overflow-x-auto ">
+                                                <table className="table-md ">
+                                                    <thead className=""> 
+                                                        <tr className=" flex justify-evenly">
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <td>{capitalizeFirstLetter(ability.name)}</td>
+                                                    </tr>
+                                                                                      
+                                                    <tr>
+                                                    <th>Description</th>
+                                                        <td className="">{ability.description}</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                        ))}
+                                    </ul>   
+                        </div>
 
 
    
-            <div className="">
-                {encounterData && encounterData.map((encounter, index) => (
-                    <p key={index}>Where To Find em, in {encounter.location_area.name}</p>
-                ))}
-            </div> 
+                    <div className="">
+                        {encounterData && encounterData.map((encounter, index) => (
+                            <p key={index}>Where To Find em, in {encounter.location_area.name}</p>
+                        ))}
+                    </div> 
 
   
-            <div className="ml-auto bg-black">
-                <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
-            </div>
-            </div>
-
-                    
-                
-                    .
-                <div className="">
-                        <p className="font-bold">Height: {pokedata.height}</p>
-                        <p className="font-bold">Weight: {pokedata.weight}</p>
-                     
-                    <div className="flex">
-                        <p className="font-bold h-12 ">Stats:</p>
-                        <div className="">
-                            <ul className="w-60">
-                                {pokedata.stats.map((stat, index) => (
-                                    
-                                  
-                                    <strong className="" key={index}>
-                                        {capitalizeFirstLetter(stat.stat.name )}
-
-                                        <progress className="progress w-56" value={stat.base_stat} max="200"></progress>
-                                        
-                                    </strong>
-                                     
-
-                                           
-                                            
-                                    
-                                    ))}
-                            </ul> 
-                        </div>
+                    <div className="ml-auto bg-black">
+                        <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
                     </div>
                 </div>
 
-                            <div className="">                     
+                    
+                
+                    
+                        <div className="">
+                                <p className="font-bold">Height: {pokedata.height}</p>
+                                <p className="font-bold">Weight: {pokedata.weight}</p>
+                            
+                            <div className="flex">
+                                <p className="font-bold h-12 ">Stats:</p>
+                                <div className="">
+                                    <ul className="w-60">
+                                        {pokedata.stats.map((stat, index) => (
+                                            
+                                        
+                                            <strong className="" key={index}>
+                                                {capitalizeFirstLetter(stat.stat.name )}
+
+                                                <progress className="progress w-56" value={stat.base_stat} max="200"></progress>
+                                                
+                                            </strong>    
+                                            
+                                            ))}
+                                    </ul> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="">                     
                             <p className="font-bold">Moves:</p>
                             <ul>
                                 {pokedata.moves.map((move, index) => (
@@ -257,9 +269,54 @@ function PokemonData() {
                         </div>
                                     
                 </div>
-           </div>     
+                
             )}
-        </div>
+            <ul className="timeline timeline-vertical">
+                <li>
+                    <div className="timeline-start">1984</div>
+                    <div className="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+                    </div>
+                    <div className="timeline-end timeline-box">First Macintosh computer</div>
+                    <hr/>
+                </li>
+                <li>
+                    <hr/>
+                    <div className="timeline-start">1998</div>
+                    <div className="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+                    </div>
+                    <div className="timeline-end timeline-box">iMac</div>
+                    <hr/>
+                </li>
+                <li>
+                    <hr/>
+                    <div className="timeline-start">2001</div>
+                    <div className="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+                    </div>
+                    <div className="timeline-end timeline-box">iPod</div>
+                    <hr/>
+                </li>
+                <li>
+                    <hr/>
+                    <div className="timeline-start">2007</div>
+                    <div className="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+                    </div>
+                    <div className="timeline-end timeline-box">iPhone</div>
+                    <hr/>
+                </li>
+                <li>
+                    <hr/>
+                    <div className="timeline-start">2015</div>
+                    <div className="timeline-middle">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
+                    </div>
+                    <div className="timeline-end timeline-box">Apple Watch</div>
+                </li>
+            </ul>
+        </div> // end of 1 div
         
 );
 

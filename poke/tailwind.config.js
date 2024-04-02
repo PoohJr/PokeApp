@@ -6,11 +6,11 @@ export default {
   theme: {
     extend: { 
       content:{
-        'grass' : 'url("/type-icons/grass.svg")'
+        'grass' : 'url("/type/grass.svg")'
         }
       },
   },
-  plugins: [('daisyui')],
+  plugins: [require("daisyui")],
   daisyui: {
     darkTheme: "light",
   },
