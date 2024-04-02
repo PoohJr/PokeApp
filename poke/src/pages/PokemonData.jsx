@@ -83,41 +83,41 @@ function PokemonData() {
         function TypeColor(typename){
         switch(typename){
             case "grass":
-                return "bg-[#7AC74C]"
+                return "bg-[#7AC74C] uppercase "
             case "poison":
-                return "bg-[#A33EA1]"
+                return "bg-[#A33EA1] uppercase "
             case "fire":
-                return "bg-[#EE8130]"
+                return "bg-[#EE8130] uppercase "
             case "normal":
-                return "bg-[#A8A77A]"
+                return "bg-[#A8A77A] uppercase "
             case "water":
-                return "bg-[#6390F0]"
+                return "bg-[#6390F0] uppercase "
             case "electric":
-                return "bg-[#F7D02C]"
+                return "bg-[#F7D02C] uppercase "
             case "ice":
-                 return "bg-[#96D9D6]"
+                 return "bg-[#96D9D6] uppercase "
             case "fighting":
-                 return "bg-[#C22E28]"
+                 return "bg-[#C22E28] uppercase "
             case "ground":
-                 return "bg-[#E2BF65]"
+                 return "bg-[#E2BF65] uppercase "
             case "flying":
-                return "bg-[#A98FF3]"
+                return "bg-[#A98FF3] uppercase "
             case "psychic":
-                return "bg-[#F95587]"
+                return "bg-[#F95587] uppercase "
             case "bug":
-                return "bg-[#A6B91A]"
+                return "bg-[#A6B91A] uppercase "
             case "rock":
-                return "bg-[#B6A136]"
+                return "bg-[#B6A136] uppercase "
             case "ghost":
-                return "bg-[#735797]"
+                return "bg-[#735797] uppercase "
             case "dragon":
-                return "bg-[#6F35FC]"
+                return "bg-[#6F35FC] uppercase "
             case "dark":
-                return "bg-[#705746]"
+                return "bg-[#705746] uppercase "
             case "steel":
-                return "bg-[#B7B7CE]"
+                return "bg-[#B7B7CE] uppercase "
             case "fairy":
-                return "bg-[#D685AD]"
+                return "bg-[#D685AD] uppercase "
         }
     }
 
@@ -153,6 +153,23 @@ function PokemonData() {
 
        
         // }
+
+        function getColorClass(statName){
+            switch (statName){
+                case 'hp':
+            return 'progress-error';
+                case 'attack':
+            return 'progress-secondary';
+                case 'defense':
+            return 'progress-info';
+                case 'special-attack':
+            return 'progress-warning';
+                case 'special-defense':
+            return 'progress-accent';
+                case 'speed':
+            return 'progress-success';
+            }
+        }
     
     return (
         <div className="p-10 h-screen "> {/* div 1*/}
@@ -248,7 +265,8 @@ function PokemonData() {
                                             <strong className="" key={index}>
                                                 {capitalizeFirstLetter(stat.stat.name )}
 
-                                                <progress className="progress w-56" value={stat.base_stat} max="200"></progress>
+                                                <progress className={`progress w-56 mt-2" ${getColorClass(stat.stat.name)} `}value={stat.base_stat} max="200"></progress>
+                                                
                                                 
                                             </strong>    
                                             
