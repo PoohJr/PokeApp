@@ -180,7 +180,7 @@ function PokemonData() {
         }
     
     return (
-        <div className="p-10 h-screen bg- bg-green-700"> {/* div 1*/}
+        <div className={`p-10 h-cover `}> {/* div 1*/}
              
             {pokedata && (
                 <div className="">   {/* div 2*/}
