@@ -56,7 +56,7 @@ export function Header() {
                                 <div className="text-center justify-center items-center mt-28 h-3/4">
                                     <h1 className="text-9xl text-white font-extrabold">PokeMon</h1>
                                     <input
-                                        className="mt-16 mb-10 px-3 py-2 font-semibold placeholder-grey-500 text-black rounded-2xl border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2"
+                                        className="mt-16 mb-10 px-3 py-2 font-semibold placeholder-grey-500 text-black rounded-2xl border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2 align-middle"
                                         id="in"
                                         onChange={(e) => setUserInput(e.target.value)}
                                         type="text"
@@ -71,6 +71,12 @@ export function Header() {
                                         Search
                                     </button>
                                     <br />
+
+                                    <div className="join">
+                                        <button className="join-item btn">«</button>
+                                        <button className="join-item btn">Page 1</button>
+                                        <button className="join-item btn">»</button>
+                                    </div>
 
                                 </div>
                             </form>

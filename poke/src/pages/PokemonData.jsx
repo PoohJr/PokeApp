@@ -212,8 +212,8 @@ function PokemonData() {
                     </div>
 
                     
-                                            
-                    <div className="flex flex-col justify-between mr-auto ">
+                <div className="flex">
+                    <div className="flex flex-col justify-between">
                         <h1 className="font-bold text-4xl">PokeMon # <span>{pokedata.id}</span></h1>
                             <div className="">
                                     <p className="mt-14 font-bold text-3xl">Abilities:</p>
@@ -228,12 +228,12 @@ function PokemonData() {
                                                     </thead>
                                                     <tbody>
                                                     <tr>
-                                                        <th>Name</th>
+                                                        <th>Name:</th>
                                                         <td>{capitalizeFirstLetter(ability.name)}</td>
                                                     </tr>
                                                                                       
                                                     <tr>
-                                                    <th>Description</th>
+                                                    <th>Description:</th>
                                                         <td className="">{ability.description}</td>
                                                         </tr>
                                                         </tbody>
@@ -241,21 +241,28 @@ function PokemonData() {
                                             </div>
                                         ))}
                                     </ul>   
+                                        <div className="">
+                                            {encounterData && encounterData.map((encounter, index) => (
+                                                <p key={index}>Where To Find em, in {encounter.location_area.name}</p>
+                                            ))}
+                                        </div>      
                         </div>
 
+                 
+                     </div>
 
-   
-                    <div className="">
-                        {encounterData && encounterData.map((encounter, index) => (
-                            <p key={index}>Where To Find em, in {encounter.location_area.name}</p>
-                        ))}
-                    </div> 
+                    <div className="mt-16 bg-slate-700 h-80">
+                     <div className="ml-auto mt- h-40 bg-black">
+                            <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
+                        </div>
+                    </div>
+
+                   
+
+                </div>
 
   
-                    <div className="ml-auto bg-black">
-                        <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
-                    </div>
-                </div>
+
 
                     
                 
