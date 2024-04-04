@@ -11,6 +11,7 @@ function PokemonData() {
 
 
     const [encounterData, setencounterData] = useState ()
+    // const [encounterChance, setencounterChance] = useState([])
     const [abilityDes, setabilityDes] = useState([]);
 
 
@@ -22,7 +23,20 @@ function PokemonData() {
                const data = res.data
                setencounterData(data)
                console.log(data)
-               console.log(encounterData)
+            //    if(pokedata){
+            //     const urlDet = await Promise.all(
+            //         pokedata.encounter_details.map(async (e) =>{
+            //            const entDet = await calLoc(e)
+            //            return {
+            //             encounter_details: entDet, 
+
+            //            }
+                       
+            //         }) 
+                   
+            //     )
+            //     // setencounterChance(urlDet) 
+            //    }
                 
             } catch (error){
                 console.error('Error fetching encounters data:', error);
@@ -32,7 +46,14 @@ function PokemonData() {
         fetchData()
 
     },[])
-
+    async function calLoc(url){
+        try {   
+            const res = await axios.get(url);
+            return res.data.encounter_details;
+        } catch(error) {
+            console.error(error + " this is the error");
+        }
+    }
 
     async function CallApi(url){
         try {   
@@ -119,48 +140,8 @@ function PokemonData() {
             case "fairy":
                 return "bg-[#D685AD] uppercase drop-shadow-lg before:content-fairy h-min"
         }
-        typeImg()
     }
 
-    function typeImg(TypeColor){
-        switch(TypeColor.ok){
-            case 'grass':
-                return 'url("/type/grass.svg")';
-        }
-        
-    }
-        // function Progressbar(item, base ){
-        
-        // switch (item){
-        //     case "hp":
-        //     return (
-        //         <>
-        // <div className="flex justify-between mb-4">
-        //     <span className={`bg-base font-medium bg-red-700`}>{item}:</span>
-        //     <span className="bg-sm font-medium bg-red-700">{base}%</span>
-        // </div>   
-        //         </>
-        //     );
-        //     case "defense":
-        //         return (
-        //             <>
-        //     <div className="flex justify-between mb-4 w-96">
-        //         <div className="w-48">
-        //         <span className={`bg-base font-medium `}>{item}:</span>
-        //         <div className="w-20 bg-blue-700"></div>
-        //         <span className="bg-sm font-medium ">{base}%</span>
-        //         <div className="bg-blue-700"></div>
-        //         </div>
-        //     </div>   
-        //             </>
-        //         );
-        //     default:
-        //         return null;
-        // }
-   
-
-       
-        // }
 
         function getColorClass(statName){
             switch (statName){
@@ -243,7 +224,30 @@ function PokemonData() {
                                     </ul>   
                                         <div className="">
                                             {encounterData && encounterData.map((encounter, index) => (
-                                                <p key={index}>Where To Find em, in {encounter.location_area.name}</p>
+                                                <div key={index} className="">
+                                                    <p>Where To Find em, in {encounter.location_area.name}</p>
+                                                    <ul>
+                                                        {encounter.version_details.map((vd ,idx)=>{
+                                                            <li key={idx}>
+                                                                <h3>{vd.max_chance}</h3>
+                                                                <h3>{vd.name}</h3>
+                                                                {console.log(encounter.version_details)}
+
+                                                            <ul>
+                                                                {vd.encounter_details.map((details , e)=>{
+                                                                    <li key={e}>
+                                                                        
+                                                                        <p>Chance: {details.chance}</p>
+                                                                        <p>Method: {details.method}</p>
+                                                                        <p>Min Level: {details.min_level}</p>
+                                                                        <p>Max Chance: {details.max_chance}</p>
+                                                                   </li> 
+                                                                })}
+                                                            </ul>
+                                                        </li>
+                                                        })}
+                                                    </ul>
+                                                </div>
                                             ))}
                                         </div>      
                         </div>
@@ -253,7 +257,7 @@ function PokemonData() {
 
                     <div className="mt-16 bg-slate-700 h-80">
                      <div className="ml-auto mt- h-40 bg-black">
-                            <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} alt="Pokemon Image"/>
+                            <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
                         </div>
                     </div>
 
