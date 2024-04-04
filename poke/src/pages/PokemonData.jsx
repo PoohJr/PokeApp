@@ -160,8 +160,11 @@ function PokemonData() {
             }
         }
     
-    return (
-        <div className={`p-10 h-cover `}> {/* div 1*/}
+        function weakTo(){
+
+        }
+    return ( 
+        <div className={`p-10 h-cover`}style={{backgroundImage: "url('https://t4.ftcdn.net/jpg/05/32/23/87/360_F_532238728_r5mavlVtqGKLStbxBzpBtSV23ruegLwD.jpg')"}} > {/* div 1*/}
              
             {pokedata && (
                 <div className="">   {/* div 2*/}
@@ -195,13 +198,19 @@ function PokemonData() {
                     
                 <div className="flex">
                     <div className="flex flex-col justify-between">
-                        <h1 className="font-bold text-4xl">PokeMon # <span>{pokedata.id}</span></h1>
-                            <div className="">
-                                    <p className="mt-14 font-bold text-3xl">Abilities:</p>
+                        <h1 className="font-bold text-2xl">PokeMon #<span>{pokedata.id}</span></h1>
+                         <div className="bg-slate-200 p-4 mt-5 ">
+                                <div className="mt-6 bg-slate-700 h-80 ">
+                                    <div className=" mt- h-40 bg-black">
+                                        <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
+                                    </div>
+                                </div>
+
+                                    <p className="mt-6 font-bold text-3xl">Abilities:</p>
 
                                     <ul>
                                         {abilityDes.map((ability, index) => (
-                                            <div key={index} className="overflow-x-auto ">
+                                            <div key={index} className="overflow-x-auto bg-slate-300">
                                                 <table className="table-md ">
                                                     <thead className=""> 
                                                         <tr className=" flex justify-evenly">
@@ -230,7 +239,7 @@ function PokemonData() {
                                                         {encounter.version_details.map((vd ,idx)=>{
                                                             <li key={idx}>
                                                                 <h3>{vd.max_chance}</h3>
-                                                                <h3>{vd.name}</h3>
+                                                                   <h3>{vd.name}</h3>
                                                                 {console.log(encounter.version_details)}
 
                                                             <ul>
@@ -255,19 +264,17 @@ function PokemonData() {
                  
                      </div>
 
-                    <div className="mt-16 bg-slate-700 h-80">
-                     <div className="ml-auto mt- h-40 bg-black">
-                            <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
-                        </div>
-                    </div>
-
+                   
                    
 
                 </div>
 
   
 
-
+                    <div className="">
+                        <h1>Weak to </h1> 
+                        {/* Access this in the types there is a url that give you whats weak to that pokemon */}
+                    </div>
                     
                 
                     
@@ -356,6 +363,35 @@ function PokemonData() {
                     <div className="timeline-end timeline-box">Apple Watch</div>
                 </li>
             </ul>
+
+        <div className="bg-black rounded">
+            <div className="carousel rounded-box w-auto">
+                <div className="carousel-item w-1/2">
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} className="w-full" />
+                    <h1 className="text-white">Front Default</h1>
+                </div> 
+                <div className="carousel-item w-1/2">
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokedata.id}.png`} className="w-full"/>
+                    <h1 className="text-white">Back Default</h1>
+                </div> 
+                <div className="carousel-item w-1/2">
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokedata.id}.png`} className="w-full" />
+                    <h1 className="text-white">Front Shiny</h1>
+                </div> 
+                <div className="carousel-item w-1/2">
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${pokedata.id}.png`} className="w-full" />
+                    <h1 className="text-white">Back Shiny</h1>
+                </div> 
+                <div className="carousel-item w-1/2">
+                    <img src={`https://daisyui.com/images/stock/photo-1559181567-c3190ca9959b.jpg`} className="w-full" />
+                </div> 
+                <div className="carousel-item w-1/2">
+                    <img src={`https://daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.jpg`} className="w-full" />
+                </div>
+            </div>
+        </div>
+
+           
         </div> // end of 1 div
         
 );
