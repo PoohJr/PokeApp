@@ -70,15 +70,14 @@ function Example() {
     useEffect(() => {
         async function fetchPokemonData() {
             try {
-                const fetchedPokemonData = await Promise.all(
+                const fetchedPokemon = await Promise.all(
                     kantoPokemon.map(async (pokemon) => {
                         const response = await fetch(pokemon.url);
                         const data = await response.json();
-                        console.log(data)
                         return {data, url: pokemon.url};
                     })
                 );
-                console.log(fetchedPokemonData)
+                console.log(fetchedPokemon)
             
             } catch (error) {
                 console.error(error + " This is the error");
@@ -120,7 +119,7 @@ function Example() {
                     <div key={index} className="flex flex-col  w-96 h-52 bg-red-500 rounded mt-8 m-3 " >
                         {console.log(kantoPokemon)}
                             <div className="text-md text-center bor border-solid border-white bg-black rounded-lg mx-36 mt-3 mb-3">
-                                <span className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.name)}</span>
+                                <span className=" mt-2 text-white ">{pokemon.name}</span>
                             </div>
                             <div className="flex justify-center">
                                 <div className="bg-white h-32 w-40 rounded-full border-8 border-red-600 ">
@@ -128,9 +127,9 @@ function Example() {
                                         <img onClick={ClickPoke} className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
                                             alt={pokemon.name} />
-                                            {pokemon.types.map((type, i)=>(
+                                            {pokemon.type.map((typeObject, i)=>(
                                                 <div key={i} className="">
-                                                    <p>{type.type.name}</p>
+                                                    <p>{typeObject.type.name}</p>
                                                 </div>
 
                                             ))}
