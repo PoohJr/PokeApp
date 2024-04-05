@@ -74,10 +74,12 @@ function Example() {
                     kantoPokemon.map(async (pokemon) => {
                         const response = await fetch(pokemon.url);
                         const data = await response.json();
+                        console.log(data)
                         return {data, url: pokemon.url};
                     })
                 );
                 console.log(fetchedPokemonData)
+            
             } catch (error) {
                 console.error(error + " This is the error");
                 return []
@@ -115,9 +117,8 @@ function Example() {
             {
                 <div className=" flex flex-wrap  justify-evenly w-full ">
                     {kantoPokemon.map((pokemon, index) => (
-                        
-                    <div className="flex flex-col  w-96 h-52 bg-red-500 rounded mt-8 m-3 " key={index}>
-                        {console.log(pokemon)}
+                    <div key={index} className="flex flex-col  w-96 h-52 bg-red-500 rounded mt-8 m-3 " >
+                        {console.log(kantoPokemon)}
                             <div className="text-md text-center bor border-solid border-white bg-black rounded-lg mx-36 mt-3 mb-3">
                                 <span className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.name)}</span>
                             </div>
@@ -127,9 +128,9 @@ function Example() {
                                         <img onClick={ClickPoke} className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
                                             alt={pokemon.name} />
-                                            {kantoPokemon.types.map((type, index)=>(
-                                                <div key={index} className="">
-                                                    <p>{type.name}</p>
+                                            {pokemon.types.map((type, i)=>(
+                                                <div key={i} className="">
+                                                    <p>{type.type.name}</p>
                                                 </div>
 
                                             ))}
