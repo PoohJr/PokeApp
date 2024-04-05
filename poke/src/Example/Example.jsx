@@ -13,53 +13,50 @@ function Example() {
     function TypeColor(typename){
         switch(typename){
             case "grass":
-                return "text-[#7AC74C]"
+                return "bg-[#7AC74C] uppercase drop-shadow-lg before:content-grass h-min"
             case "poison":
-                return "text-[#A33EA1]"
+                return "bg-[#A33EA1] uppercase drop-shadow-lg before:content-poison h-min"
             case "fire":
-                return "text-[#EE8130]"
+                return "bg-[#EE8130] uppercase drop-shadow-lg before:content-fire h-min"
             case "normal":
-                return "text-[#A8A77A]"
+                return "bg-[#A8A77A] uppercase drop-shadow-lg before:content-normal h-min"
             case "water":
-                return "text-[#6390F0]"
+                return "bg-[#6390F0] uppercase drop-shadow-lg before:content-water h-min"
             case "electric":
-                return "text-[#F7D02C]"
+                return "bg-[#F7D02C] uppercase drop-shadow-lg before:content-electric h-min"
             case "ice":
-                 return "text-[#96D9D6]"
+                 return "bg-[#96D9D6] uppercase drop-shadow-lg before:content-ice h-min"
             case "fighting":
-                 return "text-[#C22E28]"
+                 return "bg-[#C22E28] uppercase drop-shadow-lg before:content-fighting h-min"
             case "ground":
-                 return "text-[#E2BF65]"
+                 return "bg-[#E2BF65] uppercase drop-shadow-lg before:content-ground h-min"
             case "flying":
-                return "text-[#A98FF3]"
+                return "bg-[#A98FF3] uppercase drop-shadow-lg before:content-flying h-min"
             case "psychic":
-                return "text-[#F95587]"
+                return "bg-[#F95587] uppercase drop-shadow-lg before:content-psychic h-min"
             case "bug":
-                return "text-[#A6B91A]"
+                return "bg-[#A6B91A] uppercase drop-shadow-lg before:content-bug h-min"
             case "rock":
-                return "text-[#B6A136]"
+                return "bg-[#B6A136] uppercase drop-shadow-lg before:content-rock h-min"
             case "ghost":
-                return "text-[#735797]"
+                return "bg-[#735797] uppercase drop-shadow-lg before:content-ghost h-min"
             case "dragon":
-                return "text-[#6F35FC]"
+                return "bg-[#6F35FC] uppercase drop-shadow-lg before:content-dragon h-min"
             case "dark":
-                return "text-[#705746]"
+                return "bg-[#705746] uppercase drop-shadow-lg before:content-dark h-min"
             case "steel":
-                return "text-[#B7B7CE]"
+                return "bg-[#B7B7CE] uppercase drop-shadow-lg before:content-steel h-min"
             case "fairy":
-                return "text-[#D685AD]"
+                return "bg-[#D685AD] uppercase drop-shadow-lg before:content-fairy h-min"
         }
     }
 
-    function addon(TypeColor){
-        const stylesoftype = TypeColor; // make this add like the style of the font types like this guy https://pokeref.app/
 
-    }
 
     useEffect(() => {
         const PokeArr = async () => {
             try {
-                const res = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=40");
+                const res = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=200");
                 const allPoke = res.data.results;
                 setKantoPokemon(allPoke);
             } catch (error) {
@@ -118,19 +115,24 @@ function Example() {
             {
                 <div className=" flex flex-wrap  justify-evenly w-full ">
                     {kantoPokemon.map((pokemon, index) => (
+                        
                     <div className="flex flex-col  w-96 h-52 bg-red-500 rounded mt-8 m-3 " key={index}>
-                            <div className="text-md text-center bg-black rounded-lg mx-36 mt-3 mb-3">
-                                <span className=" mt-2 text-white before:content-[]">{capitalizeFirstLetter(pokemon.name)}</span>
+                        {console.log(pokemon)}
+                            <div className="text-md text-center bor border-solid border-white bg-black rounded-lg mx-36 mt-3 mb-3">
+                                <span className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.name)}</span>
                             </div>
                             <div className="flex justify-center">
-                                <div className="bg-white h-36 w-40 rounded-full border-8 border-red-600 ">
+                                <div className="bg-white h-32 w-40 rounded-full border-8 border-red-600 ">
                                     <div className="h-full flex items-center justify-center">
                                         <img onClick={ClickPoke} className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
                                             alt={pokemon.name} />
-                                            {/* <div className="after:content-grass after:inline-block after:w-8">
+                                            {kantoPokemon.types.map((type, index)=>(
+                                                <div key={index} className="">
+                                                    <p>{type.name}</p>
+                                                </div>
 
-                                            </div> img in not loaded cause route not matched  */}
+                                            ))}
                                     </div>
                                 </div>
                             </div>
