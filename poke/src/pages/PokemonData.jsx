@@ -164,12 +164,14 @@ function PokemonData() {
 
         }
     return ( 
-        <div className={`p-10 h-cover`}style={{backgroundImage: "url('https://t4.ftcdn.net/jpg/05/32/23/87/360_F_532238728_r5mavlVtqGKLStbxBzpBtSV23ruegLwD.jpg')"}} > {/* div 1*/}
+        <div className={`p-10 h-cover  `}
+        style={{ backgroundImage: "url('https://t4.ftcdn.net/jpg/05/32/23/87/360_F_532238728_r5mavlVtqGKLStbxBzpBtSV23ruegLwD.jpg')",
+                                                   }} > {/* div 1*/}
              
             {pokedata && (
                 <div className="">   {/* div 2*/}
                     <div className="flex justify-center mt-16">
-                        <h2 className="font-sans  text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
+                        <h2 className="font-sans text-white text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
                             <svg className="cursor-pointer" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
                                 <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
                                     c0,29.1,23.6,52.7,52.7,52.7h71.6c15.9,25,37.6,46,63.2,61.1c28.7,16.9,61.5,25.8,95,25.8c7.5,0,13.5-6,13.5-13.5V68.65
