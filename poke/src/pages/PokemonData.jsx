@@ -164,14 +164,12 @@ function PokemonData() {
 
         }
     return ( 
-        <div className={`p-10 h-cover  `}
-        style={{ backgroundImage: "url('https://t4.ftcdn.net/jpg/05/32/23/87/360_F_532238728_r5mavlVtqGKLStbxBzpBtSV23ruegLwD.jpg')",
-                                                   }} > {/* div 1*/}
+        <div className={" relative p-10 h-cover bg-white"}> {/* div 1*/}
              
             {pokedata && (
                 <div className="">   {/* div 2*/}
                     <div className="flex justify-center mt-16">
-                        <h2 className="font-sans text-white text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
+                        <h2 className="font-sans text-black text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
                             <svg className="cursor-pointer" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
                                 <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
                                     c0,29.1,23.6,52.7,52.7,52.7h71.6c15.9,25,37.6,46,63.2,61.1c28.7,16.9,61.5,25.8,95,25.8c7.5,0,13.5-6,13.5-13.5V68.65
@@ -198,41 +196,44 @@ function PokemonData() {
                     </div>
 
                     
-                <div className="flex">
-                    <div className="flex flex-col justify-between">
-                        <h1 className="font-bold text-2xl">PokeMon #<span>{pokedata.id}</span></h1>
-                         <div className="bg-slate-200 p-4 mt-5 ">
-                                <div className="mt-6 bg-slate-700 h-80 ">
-                                    <div className=" mt- h-40 bg-black">
-                                        <img className="h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
+                <div className="flex justify-center">
+                    <div className="flex justify-between">
+                        
+                         <div className= "flex flex-col bg-slate-200 p-4 mt-5 w-full">
+                            <h1 className=" text-center font-bold text-2xl">PokeMon ID# <span>{pokedata.id}</span></h1>
+
+                                <div className=" flex justify-center mt-10 bg-slate-700 h-96 w-fit">
+                                    <div className=" h-40 bg-black">
+                                        <img className="justify-center h-96 animate-bounce " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
                                     </div>
                                 </div>
+                                    <div className="">
+                                        <p className="mt-6 font-bold text-3xl">Abilities:</p>
 
-                                    <p className="mt-6 font-bold text-3xl">Abilities:</p>
-
-                                    <ul>
-                                        {abilityDes.map((ability, index) => (
-                                            <div key={index} className="overflow-x-auto bg-slate-300">
-                                                <table className="table-md ">
-                                                    <thead className=""> 
-                                                        <tr className=" flex justify-evenly">
+                                        <ul>
+                                            {abilityDes.map((ability, index) => (
+                                                <div key={index} className="overflow-x-auto bg-slate-300">
+                                                    <table className="table-md ">
+                                                        <thead className=""> 
+                                                            <tr className=" flex justify-evenly">
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <th>Name:</th>
+                                                            <td>{capitalizeFirstLetter(ability.name)}</td>
                                                         </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <th>Name:</th>
-                                                        <td>{capitalizeFirstLetter(ability.name)}</td>
-                                                    </tr>
-                                                                                      
-                                                    <tr>
-                                                    <th>Description:</th>
-                                                        <td className="">{ability.description}</td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                            </div>
-                                        ))}
-                                    </ul>   
+                                                                                        
+                                                        <tr>
+                                                        <th>Description:</th>
+                                                            <td className="">{ability.description}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                </div>
+                                            ))}
+                                        </ul> 
+                                    </div>  
                                         <div className="">
                                             {encounterData && encounterData.map((encounter, index) => (
                                                 <div key={index} className="">
