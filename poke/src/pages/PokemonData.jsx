@@ -281,8 +281,8 @@ function PokemonData() {
                     
                 
                     
-                        <div className="mt-10 bg-slate-200">
-                            <div className="">
+                        <div className="mt-10 bg-slate-200 ">
+                            <div className=" pl-10S">
                                 <p className="font-bold">Height: {pokedata.height}</p>
                                 <p className="font-bold">Weight: {pokedata.weight}</p>
                             </div>

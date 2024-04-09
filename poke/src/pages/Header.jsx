@@ -54,8 +54,7 @@ export function Header() {
                 <Preloader/>
             ) : (
                 <>
-                    <div className="relative bg-cover bg-white  z-0" style={{backgroundImage: 
-                        "url('https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/sword-shield/pokemon-in-the-wild.png')"}}>
+                    <div className="relative bg-cover   z-0 bg-black" >
                         <div className="flex w-full h-3/5 bg-[url('/bg-img/pokemon-in-the-wild.png)]">
                             <form className="flex flex-col w-full">
                                 <div className="text-center justify-center items-center mt-28 h-3/4">
