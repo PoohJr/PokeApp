@@ -66,13 +66,13 @@ function Example() {
     
         PokeArr(); 
     }, []);
-
+// FIX THE POKEMON.URL ITS NOT GETTONG THE DATA FOR EACH POKEMON
     useEffect(() => {
         async function fetchPokemonData() {
             try {
                 const fetchedPokemon = await Promise.all(
                     kantoPokemon.map(async (pokemon) => {
-                        const response = await fetch(pokemon.url);
+                        const response = await axios.get(pokemon.url);
                         const data = await response.json();
                         return {data, url: pokemon.url};
                     })
@@ -114,15 +114,17 @@ function Example() {
     return (
         <>
             {
-                <div className=" flex flex-wrap  justify-evenly w-full ">
+                // THE REASON ID OR TYPE DONT WORK CAUSE ITS NOTS GETTING THE URL JUST NAME
+                <div className=" flex flex-wrap  justify-around  ">
                     {kantoPokemon.map((pokemon, index) => (
-                    <div key={index} className="flex flex-col w-1/3 h-52 bg-red-500 rounded mt-8 m-3 " >
+                    <div key={index} className="relative flex flex-col w-1/3 h-52  hover:shadow-inner bg-slate-900 rounded mt-8 m-3 " >
                         {console.log(kantoPokemon)}
-                            <div className="text-md text-center bg-white rounded-lg lg:mx-20 mt-3 mb-3">
-                                <strong className=" mt-2 text-red-700 ">{capitalizeFirstLetter(pokemon.name)}</strong>
+                            <div className=" text-md text-center  rounded-lg  mt-3 mb-3">
+                                <div className="text-white absolute top-0 left-0 w-7 h-6 "><strong>{pokemon.id}</strong></div>
+                                <strong className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.name)}</strong>
                             </div>
                             <div className="flex justify-center">
-                                <div className="bg-white h-32 w-40 rounded-full border-8 border-red-600 ">
+                                <div className="bg-white h-32 w-40 rounded-full border-8 border-slate-800 ">
                                     <div className="h-full flex items-center justify-center">
                                         <img onClick={ClickPoke} className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
