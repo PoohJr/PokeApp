@@ -234,10 +234,14 @@ function PokemonData() {
                                             ))}
                                         </ul> 
                                     </div>  
-                                        <div className="">
+                                        <div className=" bg">
+                                          <h1 className="mt-6 font-bold text-3xl text-center">PokeMon Locations</h1>
                                             {encounterData && encounterData.map((encounter, index) => (
-                                                <div key={index} className="">
-                                                    <p>Where To Find em, in {encounter.location_area.name}</p>
+                                                <div key={index} className="pt-2">
+                                
+                                                    <p>{encounter.location_area.name}</p>
+                                                    <p>{encounter.version_details[0].encounter_details[0].chance}</p>
+                                                    <p>{encounter.version_details[0].encounter_details[0].max_level}</p>
                                                     <ul>
                                                         {encounter.version_details.map((vd ,idx)=>{
                                                             <li key={idx}>
@@ -281,19 +285,19 @@ function PokemonData() {
                     
                 
                     
-                        <div className="mt-10 bg-slate-200 ">
-                            <div className=" pl-10S">
+                        <div className="mt-10 pb-4 bg-slate-200 flex flex-wrap">
+                            <div className=" pl-4">
                                 <p className="font-bold">Height: {pokedata.height}</p>
                                 <p className="font-bold">Weight: {pokedata.weight}</p>
                             </div>
                             
-                            <div className="flex">
-                                <p className="font-bold h-12 ">Stats:</p>
+                            
                                 <div className="">
+                                    <p className="font-bold h-12 ">Stats:</p>
+                                </div>
                                     <ul className="w-60">
-                                        {pokedata.stats.map((stat, index) => (
-                                            
-                                        <div key={index} className="">
+                                        {pokedata.stats.map((stat, index) => (   
+                                        <div key={index} className="bg">
                                             <strong className="" >
                                                 {capitalizeFirstLetter(stat.stat.name )}
                                                 </strong>  <strong className="ml-4">{stat.base_stat}%</strong>
@@ -301,13 +305,9 @@ function PokemonData() {
                                                 value={stat.base_stat} 
                                                 max="200">
                                                 </progress>
-                                                
-                                              
-                                                </div>
+                                        </div>
                                             ))}
                                     </ul> 
-                                </div>
-                            </div>
                         </div>
 
                         <div className="">                     
