@@ -240,8 +240,8 @@ function PokemonData() {
                                                 <div key={index} className="pt-2">
                                 
                                                     <p>{encounter.location_area.name}</p>
-                                                    <p>{encounter.version_details[0].encounter_details[0].chance}</p>
-                                                    <p>{encounter.version_details[0].encounter_details[0].max_level}</p>
+                                                    <p> Chance: {encounter.version_details[0].encounter_details[0].chance}</p>
+                                                    <p>Max Level: {encounter.version_details[0].encounter_details[0].max_level}</p>
                                                     <ul>
                                                         {encounter.version_details.map((vd ,idx)=>{
                                                             <li key={idx}>
