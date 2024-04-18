@@ -14,6 +14,9 @@ function PokemonData() {
     // const [encounterChance, setencounterChance] = useState([])
     const [abilityDes, setabilityDes] = useState([]);
 
+    function weakness(){
+        // write the svg pokemon if weak to
+    }
 
 
     useEffect(() => {
@@ -238,31 +241,13 @@ function PokemonData() {
                                           <h1 className="mt-6 font-bold text-3xl text-center">PokeMon Locations</h1>
                                             {encounterData && encounterData.map((encounter, index) => (
                                                 <div key={index} className="pt-2">
-                                
-                                                    <p>{encounter.location_area.name}</p>
-                                                    <p> Chance: {encounter.version_details[0].encounter_details[0].chance}</p>
-                                                    <p>Max Level: {encounter.version_details[0].encounter_details[0].max_level}</p>
-                                                    <ul>
-                                                        {encounter.version_details.map((vd ,idx)=>{
-                                                            <li key={idx}>
-                                                                <h3>{vd.max_chance}</h3>
-                                                                   <h3>{vd.name}</h3>
-                                                                {console.log(encounter.version_details)}
-
-                                                            <ul>
-                                                                {vd.encounter_details.map((details , e)=>{
-                                                                    <li key={e}>
-                                                                        
-                                                                        <p>Chance: {details.chance}</p>
-                                                                        <p>Method: {details.method}</p>
-                                                                        <p>Min Level: {details.min_level}</p>
-                                                                        <p>Max Chance: {details.max_chance}</p>
-                                                                   </li> 
-                                                                })}
-                                                            </ul>
-                                                        </li>
-                                                        })}
-                                                    </ul>
+                                                    <p>Verson: {capitalizeFirstLetter(encounter.version_details[0].version.name)}</p>
+                                                    <p>Location Area:{encounter.location_area.name}</p>
+                                                    <p> Chance: {encounter.version_details[0].encounter_details[0].chance}%</p>
+                                                    <p>Max Level: {encounter.version_details[0].encounter_details[0].max_level}Lv</p>
+                                                    <p>Max Chance: {encounter.version_details[0].max_chance}%</p>
+                                                    <p> Method: {encounter.version_details[0].encounter_details[0].method.name}</p>
+                                                    
                                                 </div>
                                             ))}
                                         </div>      
@@ -278,9 +263,12 @@ function PokemonData() {
 
   
 
-                    <div className="bg-slate-200 mt-4">
-                        <h1 className="text">Weak to </h1> 
-                        {/* Access this in the types there is a url that give you whats weak to that pokemon */}
+                    <div className="bg-slate-200 mt-4 flex">
+                        <div className="justify-center">
+                            <h1 className="  mt-6 font-bold text-3xl">Weak to </h1>
+                        </div>
+                        
+                    
                     </div>
                     
                 
