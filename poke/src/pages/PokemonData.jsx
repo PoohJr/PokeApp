@@ -14,9 +14,7 @@ function PokemonData() {
     // const [encounterChance, setencounterChance] = useState([])
     const [abilityDes, setabilityDes] = useState([]);
 
-    function weakness(){
-        // write the svg pokemon if weak to
-    }
+
 
 
     useEffect(() => {
@@ -49,14 +47,7 @@ function PokemonData() {
         fetchData()
 
     },[])
-    async function calLoc(url){
-        try {   
-            const res = await axios.get(url);
-            return res.data.encounter_details;
-        } catch(error) {
-            console.error(error + " this is the error");
-        }
-    }
+    
 
     async function CallApi(url){
         try {   
@@ -104,7 +95,11 @@ function PokemonData() {
     function heightConver(){
     }
 
-        function TypeColor(typename){
+
+        
+    
+    
+    function TypeColor(typename){
         switch(typename){
             case "grass":
                 return "bg-[#7AC74C] uppercase drop-shadow-lg before:content-grass h-min"
@@ -144,7 +139,51 @@ function PokemonData() {
                 return "bg-[#D685AD] uppercase drop-shadow-lg before:content-fairy h-min"
         }
     }
+    
+    function weakness(typename){
+       
+        switch(typename){
+            case "grass":
+                return "content-fire h-min content-flying h-min content-ice h-min content-psychic h-min"
+            case "poison":
+                return "content-ground content-psychic"
+            case "fire":
+                return ""
+            case "normal":
+                return ""
+            case "water":
+                return ""
+            case "electric":
+                return ""
+            case "ice":
+                 return ""
+            case "fighting":
+                 return ""
+            case "ground":
+                 return ""
+            case "flying":
+                return ""
+            case "psychic":
+                return ""
+            case "bug":
+                return ""
+            case "rock":
+                return ""
+            case "ghost":
+                return ""
+            case "dragon":
+                return ""
+            case "dark":
+                return ""
+            case "steel":
+                return ""
+            case "fairy":
+                return ""
+        }
 
+    }
+
+    
 
         function getColorClass(statName){
             switch (statName){
@@ -163,9 +202,7 @@ function PokemonData() {
             }
         }
     
-        function weakTo(){
 
-        }
     return ( 
         <div className={" relative p-10 h-cover bg-white"}> {/* div 1*/}
              
@@ -237,11 +274,13 @@ function PokemonData() {
                                             ))}
                                         </ul> 
                                     </div>  
+
                                         <div className=" bg">
                                           <h1 className="mt-6 font-bold text-3xl text-center">PokeMon Locations</h1>
+                                        <div className="bg-slate-300">
                                             {encounterData && encounterData.map((encounter, index) => (
                                                 <div key={index} className="pt-2">
-                                                    <p>Verson: {capitalizeFirstLetter(encounter.version_details[0].version.name)}</p>
+                                                    <p className="">Verson: {capitalizeFirstLetter(encounter.version_details[0].version.name)}</p>
                                                     <p>Location Area:{encounter.location_area.name}</p>
                                                     <p> Chance: {encounter.version_details[0].encounter_details[0].chance}%</p>
                                                     <p>Max Level: {encounter.version_details[0].encounter_details[0].max_level}Lv</p>
@@ -251,6 +290,7 @@ function PokemonData() {
                                                 </div>
                                             ))}
                                         </div>      
+                                    </div>
                         </div>
 
                  
@@ -265,7 +305,15 @@ function PokemonData() {
 
                     <div className="bg-slate-200 mt-4 flex">
                         <div className="justify-center">
-                            <h1 className="  mt-6 font-bold text-3xl">Weak to </h1>
+                          <h1 className="  mt-6 font-bold text-3xl">Weak to </h1>
+                           {/* IN here write cause inside the link it gives you the weakness and the good against */}
+                            {pokedata.types.map((index,type) =>(
+                                <div key={index} className="">
+                                    <h1>{type.type}</h1>
+                                </div>
+                            ))}
+                               
+                          
                         </div>
                         
                     
