@@ -13,9 +13,24 @@ function PokemonData() {
     const [encounterData, setencounterData] = useState ()
     // const [encounterChance, setencounterChance] = useState([])
     const [abilityDes, setabilityDes] = useState([]);
+    const [evoPoke, setevoPoke] = useState ([])
 
 
 
+    useEffect (()=> {
+        const EvolutionApi = async () => {
+            try{
+                const res = await axios.get(`https://pokeapi.co/api/v2/evolution-chain/${pokedata.id}/`)
+                const data = res.data
+                setevoPoke(data)
+                console.log(data)
+            } catch (error){
+                console.error('Error fetching encounters data:', error);
+
+            }
+        }
+        EvolutionApi()
+    },[pokedata])
 
     useEffect(() => {
       const fetchData = async () => {
@@ -23,22 +38,7 @@ function PokemonData() {
                const res =  await axios.get(locationURL)
                const data = res.data
                setencounterData(data)
-               console.log(data)
-            //    if(pokedata){
-            //     const urlDet = await Promise.all(
-            //         pokedata.encounter_details.map(async (e) =>{
-            //            const entDet = await calLoc(e)
-            //            return {
-            //             encounter_details: entDet, 
-
-            //            }
-                       
-            //         }) 
-                   
-            //     )
-            //     // setencounterChance(urlDet) 
-            //    }
-                
+ 
             } catch (error){
                 console.error('Error fetching encounters data:', error);
 
@@ -140,7 +140,7 @@ function PokemonData() {
         }
     }
     
-    function weakness(type){
+    function Weakness(type){
         switch(type){
             case "grass":
                 return "content-fire content-flying  content-ice content-psychic "
@@ -178,6 +178,8 @@ function PokemonData() {
                 return ""
             case "fairy":
                 return ""
+            default:
+                return"No Weakness";
         }
 
     }
@@ -302,8 +304,8 @@ function PokemonData() {
                            {/* IN here write cause inside the link it gives you the weakness and the good against */}
                             <ul>
                                 {pokedata.types.map((type , index) =>(
-                                    <li key={index} className={` p-10 ${weakness(type.type.name)}`}>
-                                   
+                                    <li key={index} >
+                                        <h1 className={` p-4 ${Weakness(type.type.name)}`} > b</h1>
                                         <h1>{type.type.url}</h1>
                                     </li>
                                 ))}
@@ -361,7 +363,7 @@ function PokemonData() {
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                         
                     </div>
-                    <div className="timeline-end timeline-box">First Macintosh computer</div>
+                    <div className="timeline-end timeline-box">{capitalizeFirstLetter(pokedata.name)}</div>
                     <hr/>
                 </li>
                 <div className="flex justify-center align-middle h-52 w-52 bg-black mr-auto ml-auto">
@@ -369,11 +371,11 @@ function PokemonData() {
                 </div>
                 <li>
                     <hr/>
-                    <div className="timeline-start">1998</div>
+                    <div className="timeline-start">2nd Evo</div>
                     <div className="timeline-middle">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                     </div>
-                    <div className="timeline-end timeline-box">iMac</div>
+                    <div className="timeline-end timeline-box">{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].species.name)}</div>
                     <hr/>
                 </li>
                         <div className="flex justify-center align-middle h-52 w-52 bg-black mr-auto ml-auto">
@@ -385,7 +387,7 @@ function PokemonData() {
                     <div className="timeline-middle">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                     </div>
-                    <div className="timeline-end timeline-box">iPod</div>
+                    <div className="timeline-end timeline-box">{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].evolves_to[0].species.name)}</div>
                     <hr/>
                 </li>
                         <div className="flex justify-center align-middle h-52 w-52 bg-black mr-auto ml-auto">
