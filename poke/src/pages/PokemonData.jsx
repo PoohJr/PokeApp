@@ -140,11 +140,10 @@ function PokemonData() {
         }
     }
     
-    function weakness(typename){
-       
-        switch(typename){
+    function weakness(type){
+        switch(type){
             case "grass":
-                return "content-fire h-min content-flying h-min content-ice h-min content-psychic h-min"
+                return "bg-black content-fire h-min content-flying h-min content-ice h-min content-psychic h-min"
             case "poison":
                 return "content-ground content-psychic"
             case "fire":
@@ -227,7 +226,7 @@ function PokemonData() {
 
                         <ul className="flex">
                                 {pokedata.types.map((type, index) => (
-                            <li key={index} className={` font  align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm
+                            <li key={index} className={`cursor-pointer font  align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm
                                 ${TypeColor(type.type.name)}`}>
                                 {type.type.name}
                             </li>
@@ -248,11 +247,11 @@ function PokemonData() {
                                     </div>
                                 </div>
                                     <div className="">
-                                        <p className="mt-6 font-bold text-3xl">Abilities:</p>
+                                        <p className="mt-6 font-bold text-3xl  text-center">Abilities</p>
 
                                         <ul>
                                             {abilityDes.map((ability, index) => (
-                                                <div key={index} className="overflow-x-auto bg-slate-300">
+                                                <div key={index} className="mt-6 overflow-x-auto bg-slate-300">
                                                     <table className="table-md ">
                                                         <thead className=""> 
                                                             <tr className=" flex justify-evenly">
@@ -279,7 +278,7 @@ function PokemonData() {
                                           <h1 className="mt-6 font-bold text-3xl text-center">PokeMon Locations</h1>
                                         <div className="bg-slate-300">
                                             {encounterData && encounterData.map((encounter, index) => (
-                                                <div key={index} className="pt-2">
+                                                <div key={index} className=" pt-2 px-5">
                                                     <p className="">Verson: {capitalizeFirstLetter(encounter.version_details[0].version.name)}</p>
                                                     <p>Location Area:{encounter.location_area.name}</p>
                                                     <p> Chance: {encounter.version_details[0].encounter_details[0].chance}%</p>
@@ -292,31 +291,27 @@ function PokemonData() {
                                         </div>      
                                     </div>
                         </div>
-
-                 
                      </div>
-
-                   
-                   
-
                 </div>
 
   
 
                     <div className="bg-slate-200 mt-4 flex">
-                        <div className="justify-center">
-                          <h1 className="  mt-6 font-bold text-3xl">Weak to </h1>
+                        <div className="justify-center text-center">
+                          <h1 className="  mt-6 font-bold text-3xl text-center">Weak to </h1>
                            {/* IN here write cause inside the link it gives you the weakness and the good against */}
-                            {pokedata.types.map((index,type) =>(
-                                <div key={index} className="">
-                                    <h1>{type.type}</h1>
-                                </div>
-                            ))}
+                            <ul>
+                                {pokedata.types.map((type , index) =>(
+                                    <li key={index} className="">
+                                        <h1>{weakness(type.type.name)}</h1>
+                                        <h1>{type.type.url}</h1>
+                                    </li>
+                                ))}
+                            </ul>
                                
                           
                         </div>
-                        
-                    
+
                     </div>
                     
                 
