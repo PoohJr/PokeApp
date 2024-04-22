@@ -143,7 +143,7 @@ function PokemonData() {
     function weakness(type){
         switch(type){
             case "grass":
-                return "bg-black content-fire h-min content-flying h-min content-ice h-min content-psychic h-min"
+                return "content-fire content-flying  content-ice content-psychic "
             case "poison":
                 return "content-ground content-psychic"
             case "fire":
@@ -302,8 +302,8 @@ function PokemonData() {
                            {/* IN here write cause inside the link it gives you the weakness and the good against */}
                             <ul>
                                 {pokedata.types.map((type , index) =>(
-                                    <li key={index} className="">
-                                        <h1>{weakness(type.type.name)}</h1>
+                                    <li key={index} className={` p-10 ${weakness(type.type.name)}`}>
+                                   
                                         <h1>{type.type.url}</h1>
                                     </li>
                                 ))}
