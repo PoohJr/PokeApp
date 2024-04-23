@@ -118,7 +118,7 @@ function Example() {
                 <div className=" flex flex-wrap  justify-around  ">
                     {kantoPokemon.map((pokemon, index) => (
                     <div key={index} className="relative flex flex-col w-1/3 h-52  hover:shadow-inner bg-slate-900 rounded mt-8 m-3 " >
-                        {console.log(kantoPokemon)}
+                    
                             <div className=" text-md text-center  rounded-lg  mt-3 mb-3">
                                 <div className="text-white absolute top-0 left-0 w-7 h-6 "><strong>{pokemon.id}</strong></div>
                                 <strong className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.name)}</strong>

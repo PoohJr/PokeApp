@@ -6,7 +6,7 @@ import axios from "axios";
 function PokemonData() {
     const location = useLocation();
     const pokedata = location.state ? location.state.pokedata : null;
-    console.log(location.state.pokedata)
+    // console.log(location.state.pokedata)
     const locationURL = pokedata.location_area_encounters;
 
 
@@ -21,16 +21,17 @@ function PokemonData() {
         const EvolutionApi = async () => {
             try{
                 const res = await axios.get(`https://pokeapi.co/api/v2/evolution-chain/${pokedata.id}/`)
-                const data = res.data
-                setevoPoke(data)
-                console.log(data)
+                const newData = res.data
+                setevoPoke(newData)
+                console.log(newData)
+                
             } catch (error){
-                console.error('Error fetching encounters data:', error);
+                console.error('Error fetching EvolutionApi data:', error);
 
             }
         }
         EvolutionApi()
-    },[pokedata])
+    },[pokedata.id])
 
     useEffect(() => {
       const fetchData = async () => {
@@ -375,7 +376,9 @@ function PokemonData() {
                     <div className="timeline-middle">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                     </div>
-                    <div className="timeline-end timeline-box">{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].species.name)}</div>
+                    <div className="timeline-end timeline-box">
+                        <p>{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].species.name)}</p>
+                    </div>
                     <hr/>
                 </li>
                         <div className="flex justify-center align-middle h-52 w-52 bg-black mr-auto ml-auto">
@@ -387,7 +390,7 @@ function PokemonData() {
                     <div className="timeline-middle">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                     </div>
-                    <div className="timeline-end timeline-box">{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].evolves_to[0].species.name)}</div>
+                    <div className="timeline-end timeline-box"></div>
                     <hr/>
                 </li>
                         <div className="flex justify-center align-middle h-52 w-52 bg-black mr-auto ml-auto">
