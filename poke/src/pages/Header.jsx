@@ -74,6 +74,7 @@ export function Header() {
                                         style={{ borderColor: newerror ? 'red' : 'initial'}}
                                     />
                                     <button
+                                    type="submit"
                                         className="hidden"
                                         onClick={handleSubmit}>
                                         Search

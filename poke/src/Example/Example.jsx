@@ -72,15 +72,15 @@ function Example() {
             try {
                 const fetchedPokemon = await Promise.all(
                     kantoPokemon.map(async (pokemon) => {
-                        const response = await axios.get(pokemon.url);
-                        const data = await response.json();
-                        return {data, url: pokemon.url};
+                        const response = await axios.get(pokemon.url);   
+                        return {data: response.data, url: pokemon.url};
                     })
                 );
+                
                 console.log(fetchedPokemon)
             
             } catch (error) {
-                console.error(error + " This is the error");
+                console.error(error + " that is the error");
                 return []
             }
         }
