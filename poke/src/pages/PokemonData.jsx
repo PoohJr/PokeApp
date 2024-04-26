@@ -11,11 +11,41 @@ function PokemonData() {
 
 
     const [encounterData, setencounterData] = useState ()
-    // const [encounterChance, setencounterChance] = useState([])
     const [abilityDes, setabilityDes] = useState([]);
     const [evoPoke, setevoPoke] = useState (null)
+    const [movedata, setmovedata] = useState([])
+
+    // useEffect(() =>{
+    //     const FetchAllDataUrl = async () =>{
+
+    //     }
+    // },[pokedata])
+    // This a work around to work on all of them in one useeffect
 
 
+    useEffect (() =>{
+        const fetchMoveData = async () =>{
+            try{
+                if(pokedata && pokedata.moves){
+                const moveDes = await Promise.all(
+                    pokedata.moves.map(async (move) =>{
+                        const UrlMoves = await axios.get(move.move.url) 
+                        
+                        return UrlMoves.data
+
+                    })
+                    
+                )
+                setmovedata(moveDes)
+                console.log(moveDes)
+            }
+            } catch (error){
+                console.error('Error fetching Move data:', error);
+
+            }
+        }
+        fetchMoveData()
+    },[pokedata])
 
     useEffect (()=> {
         const EvolutionApi = async () => {
@@ -46,7 +76,7 @@ function PokemonData() {
         }
         fetchData()
 
-    },[])
+    },[locationURL])
     
 
     async function CallApi(url){
@@ -344,25 +374,31 @@ function PokemonData() {
                         </div>
 
                         <div className="flex justify-between px-20 pt-10">                     
-                           
-                           
-                                
-                                    <div className=""> 
-                                    <p className="mt-6 font-bold text-3xl  ">Moves </p>
-                                        <table className="table-auto">
-                                            <tr >
-                                                <th className="border border-slate-600">Move</th>
-                                                <th className="border border-slate-600">Type</th>
-                                                <th className="border border-slate-600">Lev</th>
+                            <div className="max-h-96 overflow-y-auto "> 
+                                <p className=" mt-6 font-bold text-3xl  text-center">Pokemon Moves Overview </p>
+                                    <table className="mt-2 table-auto">
+                                        <thead className="sticky top-0 bg-red z-10 ">
+                                            <tr className="mb-4 ring-zinc-700">
+                                                <th className="px-4 border border-slate-600">Move</th>
+                                                <th className="px-4 border border-slate-600">Type</th>
+                                                <th className="px-4 border border-slate-600">Accuracy</th>
+                                                <th className="px-4 border border-slate-600">Power</th>
+                                                <th className="px-4 border border-slate-600">PP</th>
                                             </tr>
-                                            {pokedata.moves.map((move, index) => (
-                                            <tr  key={index}>
-                                                <td>{capitalizeFirstLetter(move.move.name)}</td>
-                                                <td></td>
-                                            </tr>
-                                            ))}
-                                        </table>
-                                    </div>
+                                        </thead>
+                                            <tbody>
+                                                {pokedata.moves.map((move, index) => (
+                                                <tr className="rounded-md border-black border-2"  key={index}>
+                                                    <td className="p-2 text-center">{capitalizeFirstLetter(move.move.name)}</td>
+                                                    <td className="text-center">{movedata[index]?.type.name}</td>
+                                                    <td className="text-center">{movedata[index]?.accuracy || "0"}</td>
+                                                    <td className="text-center">{movedata[index]?.power || "0"}</td>
+                                                    <td className="text-center">{movedata[index]?.pp || "0"}</td>
+                                                </tr>
+                                                ))}
+                                            </tbody>
+                                    </table>
+                            </div>
                                     
                                     
                                 
