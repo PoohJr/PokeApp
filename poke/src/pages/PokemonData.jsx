@@ -14,6 +14,7 @@ function PokemonData() {
     const [abilityDes, setabilityDes] = useState([]);
     const [evoPoke, setevoPoke] = useState (null)
     const [movedata, setmovedata] = useState([])
+    const [strongAgainst, setstrongAgainst] = useState ([])
 
     // useEffect(() =>{
     //     const FetchAllDataUrl = async () =>{
@@ -22,6 +23,28 @@ function PokemonData() {
     // },[pokedata])
     // This a work around to work on all of them in one useeffect
 
+    useEffect(() => {
+        const handletypeLink = async() => {
+            try{
+                if(pokedata){
+                    const typeurl = Promise.all(
+                    pokedata.types.map(async(type) =>{
+                        const res = await axios.get(type.type.url)
+                        return res.data
+                    })
+
+                )
+                    setstrongAgainst(typeurl)
+                }
+            } catch(error){
+                console.error('Error fetching type Strength to data:', error);
+
+            }
+        }
+        handletypeLink()
+        console.log(typeurl)
+        
+    },[pokedata])
 
     useEffect (() =>{
         const fetchMoveData = async () =>{
@@ -132,6 +155,10 @@ function PokemonData() {
         //Fix to be exact
     }
 
+    function handleStrongto(i){
+
+    }
+
 
         
     
@@ -180,9 +207,9 @@ function PokemonData() {
     function Weakness(type){
         switch(type){
             case "grass":
-                return ["content-fire h-20 px-2", "content-flying h-20 px-2", "content-ice h-20 px-2", "content-psychic h-20 px-2"];
+                return ["content-fire h-16 px-2", "content-flying h-16 px-2", "content-ice h-16 px-2", "content-psychic h-16 px-2"];
             case "poison":
-                return ["content-ground h-20 px-2", "content-psychic h-20 px-2"]
+                return ["content-ground h-16 px-2", "content-psychic h-16 px-2"]
             case "fire":
                 return ""
             case "normal":
@@ -384,7 +411,10 @@ function PokemonData() {
                      </div>
                 </div>
 
-  
+                    <div className="mt-6 bg-slate-200">
+                        <p className="font-bold text-3xl text-center">Strong Against </p>
+
+                    </div>
 
                     <div className="bg-slate-200 mt-4 flex">
                         <div className="justify-center text-center">
