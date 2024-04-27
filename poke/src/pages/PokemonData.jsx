@@ -180,9 +180,9 @@ function PokemonData() {
     function Weakness(type){
         switch(type){
             case "grass":
-                return " [content-fire, content-flying,  content-ice, content-psychic] "
+                return ["content-fire h-20 px-2", "content-flying h-20 px-2", "content-ice h-20 px-2", "content-psychic h-20 px-2"];
             case "poison":
-                return "content-ground content-psychic"
+                return ["content-ground h-20 px-2", "content-psychic h-20 px-2"]
             case "fire":
                 return ""
             case "normal":
@@ -219,6 +219,46 @@ function PokemonData() {
                 return"No Weakness";
         }
 
+    }
+    function HandletypeColor(typename){
+        switch(typename){
+            case "grass":
+                return "bg-[#7AC74C]"
+            case "poison":
+                return "bg-[#A33EA1] "
+            case "fire":
+                return "bg-[#EE8130] "
+            case "normal":
+                return "bg-[#A8A77A] "
+            case "water":
+                return "bg-[#6390F0] "
+            case "electric":
+                return "bg-[#F7D02C] "
+            case "ice":
+                 return "bg-[#96D9D6] "
+            case "fighting":
+                 return "bg-[#C22E28] "
+            case "ground":
+                 return "bg-[#E2BF65] "
+            case "flying":
+                return "bg-[#A98FF3] "
+            case "psychic":
+                return "bg-[#F95587] "
+            case "bug":
+                return "bg-[#A6B91A] "
+            case "rock":
+                return "bg-[#B6A136] "
+            case "ghost":
+                return "bg-[#735797] "
+            case "dragon":
+                return "bg-[#6F35FC] "
+            case "dark":
+                return "bg-[#705746] "
+            case "steel":
+                return "bg-[#B7B7CE] "
+            case "fairy":
+                return "bg-[#D685AD] "
+        }
     }
 
     
@@ -353,8 +393,13 @@ function PokemonData() {
                             <ul>
                                 {pokedata.types.map((type , index) =>(
                                     <li key={index} >
-                                        <h1 className={` p-4 ${Weakness(type.type.name)}`} > </h1>
-                                        <h1>{type.type.url}</h1>
+                                        <div className={"flex p-4 "} >
+                                             {Weakness(type.type.name).map((className, idx) => (
+                                                <h1 key={idx} className={className}>{console.log(type.type.name)}</h1>
+                    ))}
+                                                <h1>{type.type.url}</h1>
+                                            </div>
+                                        
                                     </li>
                                 ))}
                             </ul>
