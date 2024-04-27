@@ -115,10 +115,10 @@ function PokemonData() {
         }
     }
     function weightConver(hec){
-        
         const eq = hec *  0.2204622622
-        const sum = eq
-        return sum
+        const fixedResults = eq.toFixed(1)+" lbs"
+        return  fixedResults
+        
     }
 
     function capitalizeFirstLetter(string) {
@@ -126,9 +126,10 @@ function PokemonData() {
     }
 
     function heightConver(ht){
-        const eq = ht * math0.3280839895
-        const sum = eq
-        return sum 
+        const eq = ht * 0.3280839895
+        const fixedResults = eq.toFixed(3) + "ft"
+        return  fixedResults
+        //Fix to be exact
     }
 
 
@@ -179,7 +180,7 @@ function PokemonData() {
     function Weakness(type){
         switch(type){
             case "grass":
-                return "content-fire content-flying  content-ice content-psychic "
+                return " [content-fire, content-flying,  content-ice, content-psychic] "
             case "poison":
                 return "content-ground content-psychic"
             case "fire":
@@ -286,10 +287,12 @@ function PokemonData() {
                                 </div>
 
 
-                            <div className=" pl-4">
-                            <h1 className=" text-center font-bold text-2xl">PokeMon ID #<span>{pokedata.id}</span></h1>
-                                <p className="font-bold">Height: {heightConver(pokedata.height)}</p>
-                                <p className="font-bold">Weight: {weightConver(pokedata.weight)}</p>
+                            <div className="">
+                                <div className="pl-4 bg-slate-300">
+                                    <h1 className=" text-center font-bold text-2xl">PokeMon #<span>{pokedata.id}</span></h1>
+                                    <p className="font-bold">Height: {heightConver(pokedata.height)}</p>
+                                    <p className="font-bold">Weight: {weightConver(pokedata.weight)}</p>
+                                </div>
                             </div>
 
 
@@ -350,7 +353,7 @@ function PokemonData() {
                             <ul>
                                 {pokedata.types.map((type , index) =>(
                                     <li key={index} >
-                                        <h1 className={` p-4 ${Weakness(type.type.name)}`} > b</h1>
+                                        <h1 className={` p-4 ${Weakness(type.type.name)}`} > </h1>
                                         <h1>{type.type.url}</h1>
                                     </li>
                                 ))}
