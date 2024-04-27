@@ -114,15 +114,21 @@ function PokemonData() {
         new Audio(`https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${pokedata.id}.ogg`).play()
         }
     }
-    function weightConver(){
-
+    function weightConver(hec){
+        
+        const eq = hec *  0.2204622622
+        const sum = eq
+        return sum
     }
 
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    function heightConver(){
+    function heightConver(ht){
+        const eq = ht * math0.3280839895
+        const sum = eq
+        return sum 
     }
 
 
@@ -271,13 +277,22 @@ function PokemonData() {
                     <div className="flex justify-between">
                         
                          <div className= "flex flex-col bg-slate-200 p-10 mt-5 w-full">
-                            <h1 className=" text-center font-bold text-2xl">PokeMon ID #<span>{pokedata.id}</span></h1>
+                           
 
                                 <div className="  mt-16 w-fit mr-auto ml-auto">
                                     <div className=" h-full  bg-slate-800 bo rounded-3xl border-8  ">
                                         <img className=" h-96 animate-bounce  " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
                                     </div>
                                 </div>
+
+
+                            <div className=" pl-4">
+                            <h1 className=" text-center font-bold text-2xl">PokeMon ID #<span>{pokedata.id}</span></h1>
+                                <p className="font-bold">Height: {heightConver(pokedata.height)}</p>
+                                <p className="font-bold">Weight: {weightConver(pokedata.weight)}</p>
+                            </div>
+
+
                                     <div className="">
                                         <p className="mt-6 font-bold text-3xl  text-center">Abilities</p>
 
@@ -349,10 +364,7 @@ function PokemonData() {
                 
                     
                         <div className="mt-10 pb-4 bg-slate-200 flex flex-wrap">
-                            <div className=" pl-4">
-                                <p className="font-bold">Height: {pokedata.height}</p>
-                                <p className="font-bold">Weight: {pokedata.weight}</p>
-                            </div>
+                            
                             
                             
                                 <div className="">
@@ -373,23 +385,23 @@ function PokemonData() {
                                     </ul> 
                         </div>
 
-                        <div className="flex justify-between px-20 pt-10">                     
-                            <div className="max-h-96 overflow-y-auto "> 
+                        <div className="flex justify-around px-20 pt-10">                     
+                            <div className="max-h-[700px] overflow-y-auto overflow-x-hidden "> 
                                 <p className=" mt-6 font-bold text-3xl  text-center">Pokemon Moves Overview </p>
-                                    <table className="mt-2 table-auto">
-                                        <thead className="sticky top-0 bg-red z-10 ">
-                                            <tr className="mb-4 ring-zinc-700">
+                                    <table className="mt-2 table-auto min-w-full">
+                                        <thead className="sticky top-0 bg-gray-300 p-10 z-10">
+                                            <tr className="">
                                                 <th className="px-4 border border-slate-600">Move</th>
                                                 <th className="px-4 border border-slate-600">Type</th>
                                                 <th className="px-4 border border-slate-600">Accuracy</th>
                                                 <th className="px-4 border border-slate-600">Power</th>
-                                                <th className="px-4 border border-slate-600">PP</th>
+                                                <th className="px-4 border border-slate-600">PP</th> 
                                             </tr>
                                         </thead>
-                                            <tbody>
+                                            <tbody className="p-2">
                                                 {pokedata.moves.map((move, index) => (
-                                                <tr className="rounded-md border-black border-2"  key={index}>
-                                                    <td className="p-2 text-center">{capitalizeFirstLetter(move.move.name)}</td>
+                                                <tr className=" rounded-md border-black border-2"  key={index}>
+                                                    <td className="text-center">{capitalizeFirstLetter(move.move.name)}</td>
                                                     <td className="text-center">{movedata[index]?.type.name}</td>
                                                     <td className="text-center">{movedata[index]?.accuracy || "0"}</td>
                                                     <td className="text-center">{movedata[index]?.power || "0"}</td>
@@ -404,8 +416,10 @@ function PokemonData() {
                                 
                             
                             {evoPoke && (
+                                
                                     <ul className="timeline timeline-vertical">
                                         <li>
+                                            <p className="font-bold text-3xl  text-center">Evloutions </p>
                                             <div className="timeline-start">1st Evo</div>
                                             <div className="timeline-middle">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
@@ -414,7 +428,7 @@ function PokemonData() {
                                             <div className="timeline-end timeline-box">{capitalizeFirstLetter(pokedata.name)}</div>
                                             <hr/>
                                         </li>
-                                        <div className="flex justify-center align-middle h-52 w-52 bg-black mr-auto ml-auto"> 
+                                        <div className="flex justify-center align-middle h-52 w-52 bg-black mx-auto"> 
                                             <div className="h-20 w-20">
                                                 <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
                                             </div>
@@ -431,7 +445,7 @@ function PokemonData() {
                                             </div>
                                             <hr/>
                                         </li>
-                                                <div className="flex justify-center align-middle h-52 w-52 bg-black mr-auto ml-auto">
+                                                <div className="flex justify-center align-middle h-52 w-52 bg-black mx-auto">
                                                     <div className="h-12 w-12">
                                                         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 1}.png` } alt="Pokemon Image"/>
                                                     </div>
@@ -448,7 +462,7 @@ function PokemonData() {
                                             </div>
                                             <hr/>
                                         </li>
-                                                <div className="flex justify-center align-middle h-52 w-52 bg-black mr-auto ml-auto">
+                                                <div className="flex justify-center align-middle h-52 w-52 bg-black mx-auto">
                                                 <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 2}.png` } alt="Pokemon Image"/>
                                                 </div>
 
