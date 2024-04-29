@@ -72,11 +72,12 @@ function Example() {
             try {
                 const fetchedPokemon = await Promise.all(
                     kantoPokemon.map(async (pokemon) => {
-                        const response = await axios.get(pokemon.url);   
+                        const response = await axios.get(pokemon.url);  
+                         
                         return {data: response.data, url: pokemon.url};
                     })
                 );
-                
+                setclickpokedata(fetchedPokemon)
                 console.log(fetchedPokemon)
             
             } catch (error) {
@@ -93,23 +94,26 @@ function Example() {
     
 
 
-    const ClickPoke =  async() => {
-            try{
-                const gettinPoke = (async(pokemon) => {
+    // const ClickPoke =  async() => {
+    //         try{
+    //             const gettinPoke = (async(pokemon) => {
 
                  
-                const res = await fetch (pokemon.url);
-                    const data = res.json()
-                    setclickpokedata(data)
-                    navigate("./Clicked", {state: {clickpokedata: res.data} });
-                    console.log(gettinPoke)
-                }) 
-            } catch(error){
-                console.error(error + "That Was the error")
-            }
+    //             const res = await fetch (pokemon.url);
+    //                 const data = res.json()
+    //                 setclickpokedata(data)
+    //                 navigate("./Clicked", {state: {clickpokedata: res.data} });
+    //                 console.log(gettinPoke)
+    //             }) 
+    //         } catch(error){
+    //             console.error(error + "That Was the error")
+    //         }
               
-    };
- 
+    // };
+    function HandleclickPoke(){
+            
+        console.log(`${clickpokedata[67].data.name} This is the pokemon Clicked`)
+    }
 
     return (
         <>
@@ -126,12 +130,12 @@ function Example() {
                             <div className="flex justify-center">
                                 <div className="bg-white h-32 w-40 rounded-full border-8 border-slate-800 ">
                                     <div className="h-full flex items-center justify-center">
-                                        <img onClick={ClickPoke} className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
+                                        <img onClick={HandleclickPoke} className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
                                             alt={pokemon.name} />
-                                            {/* {pokemon.type.map((typeObject, i)=>(
+                                            {/* {kantoPokemon.types.map((type, i)=>(
                                                 <div key={i} className="">
-                                                    <p>{typeObject.type.name}</p>
+                                                    <p>{type.type.name}</p>
                                                 </div>
 
                                             ))} */}

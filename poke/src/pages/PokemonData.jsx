@@ -306,6 +306,8 @@ function PokemonData() {
             return 'progress-success';
             }
         }
+
+
     
 
     return ( 
