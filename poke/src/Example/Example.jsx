@@ -99,9 +99,9 @@ function Example({setpokeData}) {
            if (clickpokedata) {
                 const pokeid = clickpokedata[i].data.id
                 const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokeid}`;
-                console.log("hi" , apiUrl)
+                
                 const res = await axios.get(apiUrl);
-                console.log(res)
+                // console.log(res)
                 if (res.status === 200) {
                     setpokeData(res.data);
                     navigate("./PokemonData", {state: {pokedata: res.data} });

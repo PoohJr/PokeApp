@@ -160,9 +160,6 @@ function PokemonData() {
 
     }
 
-
-        
-    
     
     function TypeColor(typename){
         switch(typename){
@@ -212,37 +209,37 @@ function PokemonData() {
             case "poison":
                 return ["content-ground h-16 px-2", "content-psychic h-16 px-2"]
             case "fire":
-                return ""
+                return "Nothing Yet"
             case "normal":
-                return ""
+                return "Nothing Yet"
             case "water":
-                return ""
+                return "Nothing Yet"
             case "electric":
-                return ""
+                return "Nothing Yet"
             case "ice":
-                 return ""
+                 return "Nothing Yet"
             case "fighting":
-                 return ""
+                 return "Nothing Yet"
             case "ground":
-                 return ""
+                 return "Nothing Yet"
             case "flying":
-                return ""
+                return "Nothing Yet"
             case "psychic":
-                return ""
+                return "Nothing Yet"
             case "bug":
-                return ""
+                return "Nothing Yet"
             case "rock":
-                return ""
+                return "Nothing Yet"
             case "ghost":
-                return ""
+                return "Nothing Yet"
             case "dragon":
-                return ""
+                return "Nothing Yet"
             case "dark":
-                return ""
+                return "Nothing Yet"
             case "steel":
-                return ""
+                return "Nothing Yet"
             case "fairy":
-                return ""
+                return "Nothing Yet"
             default:
                 return"No Weakness";
         }
@@ -308,8 +305,6 @@ function PokemonData() {
             }
         }
 
-
-    
 
     return ( 
         <div className={" relative p-10 h-cover bg-white"}> {/* div 1*/}
@@ -416,45 +411,7 @@ function PokemonData() {
 
                     
 
-                    <div className="bg-slate-200 mt-4 flex justify-between">
-                        <div className="justify-center text-center bg-slate-300">
-                          <h1 className="mt-6 font-bold text-3xl text-center">Weak to </h1>
-                           {/* IN here write cause inside the link it gives you the weakness and the good against */}
-                            <ul>
-                                {pokedata.types.map((type , index) =>(
-                                    <li key={index} >
-                                        <div className={"flex p-4 "} >
-                                             {Weakness(type.type.name).map((className, idx) => (
-                                                <h1 key={idx} className={className}>
-                                                    {/* {console.log(type.type.name)} */}
-                                                </h1>
-                    ))}
-                                                {/* <h1>{type.type.url}</h1> */}
-                                        </div>
-                                        
-                                    </li>
-                                ))}
-                            </ul>
-                               
-                          
-                        </div>
-                        <div className=" bg-slate-300">
-                            <p className=" mt-6 font-bold text-3xl ">Strong Against </p>
-                            
-                            {/* {pokedata.types.map((type, index) => {
-                                <div key={index}>
-                                    <div className="">
-                                        {(type.type.name).map((className, idx) => (
-                                            <h1 key={idx} className={className}> </h1>
-                                        ))}
-                                    </div>
-                                </div>
-                            })} */}
 
-                        </div>
-
-                    </div>
-                    
                 
                     
                         <div className="mt-10 pb-4 bg-slate-200 flex flex-wrap">
@@ -510,7 +467,6 @@ function PokemonData() {
                                 
                             
                             {evoPoke && (
-                                
                                     <ul className="timeline timeline-vertical">
                                         <li>
                                             <p className="font-bold text-3xl  text-center">Evloutions </p>
