@@ -437,7 +437,7 @@ function PokemonData() {
                         </div>
 
                         <div className="flex justify-around px-20 pt-10">                     
-                            <div className="max-h-[700px] overflow-y-auto overflow-x-hidden "> 
+                            <div className="max-h-[800px] overflow-y-auto overflow-x-hidden "> 
                                 <p className=" mt-6 font-bold text-3xl  text-center">Pokemon Moves Overview </p>
                                     <table className="mt-2 table-auto min-w-full">
                                         <thead className="sticky top-0 bg-gray-300 p-10 z-10">
@@ -528,8 +528,8 @@ function PokemonData() {
         
         
 
-        <div className="bg-black rounded">
-            <div className="carousel rounded-box w-auto">
+        <div className="mt-10 bg-black rounded ">
+            <div className="carousel rounded-box w-auto h-96">
                 <div className="carousel-item w-1/2">
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} className="w-full" />
                     <h1 className="text-white">Front Default</h1>
