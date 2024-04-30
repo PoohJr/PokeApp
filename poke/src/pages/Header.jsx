@@ -16,7 +16,7 @@ export function Header() {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setloading(false);
-          }, 1000);
+          }, 100);
 
           return () => clearTimeout(timeout);
     },[])
@@ -86,7 +86,7 @@ export function Header() {
                             </form>
                         </div>
                        
-                        <Example/>
+                        <Example setpokeData={setpokeData} pokedata ={pokedata}/>
                     </div>
 
                     

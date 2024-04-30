@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-function Example() {
+function Example({setpokeData}) {
     const [kantoPokemon, setKantoPokemon] = useState([]);
-    const [clickpokedata, setclickpokedata] = useState()
+    const [clickpokedata, setclickpokedata] = useState([])
 
     const navigate = useNavigate();
     function capitalizeFirstLetter(string) {
@@ -51,8 +52,6 @@ function Example() {
         }
     }
 
-
-
     useEffect(() => {
         const PokeArr = async () => {
             try {
@@ -66,6 +65,7 @@ function Example() {
     
         PokeArr(); 
     }, []);
+    
 // FIX THE POKEMON.URL ITS NOT GETTONG THE DATA FOR EACH POKEMON
     useEffect(() => {
         async function fetchPokemonData() {
@@ -79,6 +79,8 @@ function Example() {
                 );
                 setclickpokedata(fetchedPokemon)
                 console.log(fetchedPokemon)
+               
+
             
             } catch (error) {
                 console.error(error + " that is the error");
@@ -91,45 +93,48 @@ function Example() {
     }, [kantoPokemon]);
     
    
-    const HandleClick = function HandleClickPoke(){
-        async (e) => {
+    const HandleClick = async (e, i) => {
             e.preventDefault();
             try {
-                const apiUrl = `https://pokeapi.co/api/v2/pokemon/${clickpokedata[0].data}`;
+           if (clickpokedata) {
+                const pokeid = clickpokedata[i].data.id
+                const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokeid}`;
+                console.log("hi" , apiUrl)
                 const res = await axios.get(apiUrl);
+                console.log(res)
                 if (res.status === 200) {
                     setpokeData(res.data);
                     navigate("./PokemonData", {state: {pokedata: res.data} });
                 } 
+              }
             } catch (error) {
                 console.error("Error Fetching Api", error);
-                setNewError("Error Fetching Api: " + error.message);
-                handleError()
-                
+   
             }
-            console.log(clickpokedata[0].data)
+            
+            
         };
-       
-    }
+
 
     return (
         <>
             {
-                // THE REASON ID OR TYPE DONT WORK CAUSE ITS NOTS GETTING THE URL JUST NAME
+              
                 <div className=" flex flex-wrap  justify-around  ">
-                    {kantoPokemon.map((pokemon, index) => (
+                    {clickpokedata.map((pokemon, index) => (
                     <div key={index} className="relative flex flex-col w-1/3 h-52  hover:shadow-inner bg-slate-900 rounded mt-8 m-3 " >
                     
                             <div className=" text-md text-center  rounded-lg  mt-3 mb-3">
-                                <div className="text-white absolute top-0 left-0 w-7 h-6 "><strong>{pokemon.id}</strong></div>
-                                <strong className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.name)}</strong>
+                                <div className="text-white absolute top-0 left-0 w-7 h-6 "><strong>{pokemon.data.id}</strong></div>
+                                <strong className=" mt-2 text-white ">{pokemon.data.name}</strong>
                             </div>
                             <div className="flex justify-center">
                                 <div className="bg-white h-32 w-40 rounded-full border-8 border-slate-800 ">
                                     <div className="h-full flex items-center justify-center">
-                                        <img onClick={HandleClick} className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
+                                        <img onClick={(e) => HandleClick(e, index)} 
+                                            className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
-                                            alt={pokemon.name} />
+                                            alt={pokemon.data.name} />
                                             {/* {kantoPokemon.types.map((type, i)=>(
                                                 <div key={i} className="">
                                                     <p>{type.type.name}</p>
@@ -146,4 +151,7 @@ function Example() {
     );
 }
 
+Example.propTypes = {
+    setpokeData: PropTypes.func.isRequired,
+  };
 export default Example;

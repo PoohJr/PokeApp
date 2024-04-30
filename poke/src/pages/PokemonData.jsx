@@ -35,6 +35,7 @@ function PokemonData() {
 
                 )
                     setstrongAgainst(typeurl)
+                    console.log(typeurl)
                 }
             } catch(error){
                 console.error('Error fetching type Strength to data:', error);
@@ -42,7 +43,7 @@ function PokemonData() {
             }
         }
         handletypeLink()
-        console.log(typeurl)
+        
         
     },[pokedata])
 
@@ -413,30 +414,43 @@ function PokemonData() {
                      </div>
                 </div>
 
-                    <div className="mt-6 bg-slate-200">
-                        <p className="font-bold text-3xl text-center">Strong Against </p>
+                    
 
-                    </div>
-
-                    <div className="bg-slate-200 mt-4 flex">
-                        <div className="justify-center text-center">
-                          <h1 className="  mt-6 font-bold text-3xl text-center">Weak to </h1>
+                    <div className="bg-slate-200 mt-4 flex justify-between">
+                        <div className="justify-center text-center bg-slate-300">
+                          <h1 className="mt-6 font-bold text-3xl text-center">Weak to </h1>
                            {/* IN here write cause inside the link it gives you the weakness and the good against */}
                             <ul>
                                 {pokedata.types.map((type , index) =>(
                                     <li key={index} >
                                         <div className={"flex p-4 "} >
                                              {Weakness(type.type.name).map((className, idx) => (
-                                                <h1 key={idx} className={className}>{console.log(type.type.name)}</h1>
+                                                <h1 key={idx} className={className}>
+                                                    {/* {console.log(type.type.name)} */}
+                                                </h1>
                     ))}
-                                                <h1>{type.type.url}</h1>
-                                            </div>
+                                                {/* <h1>{type.type.url}</h1> */}
+                                        </div>
                                         
                                     </li>
                                 ))}
                             </ul>
                                
                           
+                        </div>
+                        <div className=" bg-slate-300">
+                            <p className=" mt-6 font-bold text-3xl ">Strong Against </p>
+                            
+                            {/* {pokedata.types.map((type, index) => {
+                                <div key={index}>
+                                    <div className="">
+                                        {(type.type.name).map((className, idx) => (
+                                            <h1 key={idx} className={className}> </h1>
+                                        ))}
+                                    </div>
+                                </div>
+                            })} */}
+
                         </div>
 
                     </div>
