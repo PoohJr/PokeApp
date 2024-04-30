@@ -126,7 +126,7 @@ function Example({setpokeData}) {
                     
                             <div className=" text-md text-center  rounded-lg  mt-3 mb-3">
                                 <div className="text-white absolute top-0 left-0 w-7 h-6 "><strong>{pokemon.data.id}</strong></div>
-                                <strong className=" mt-2 text-white ">{pokemon.data.name}</strong>
+                                <strong className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.data.name)}</strong>
                             </div>
                             <div className="flex justify-center">
                                 <div className="bg-white h-32 w-40 rounded-full border-8 border-slate-800 ">
