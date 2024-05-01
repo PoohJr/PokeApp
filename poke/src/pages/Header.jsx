@@ -55,6 +55,21 @@ export function Header() {
             ) : (
                 <>
                     <div className="relative bg-cover   z-0 bg-black" >
+                    <div className="navbar bg-base-400 rounded-box">
+                        <div className="flex-1 px-2 lg:flex-none">
+                            <a className="text-lg font-bold text-slate-50">daisyUI</a>
+                        </div> 
+                        <div className="flex justify-end flex-1 px-2">
+                            <div className="flex items-stretch">
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="text-xl btn btn-ghost rounded-btn text-slate-50">Filter/Types</div>
+                                <div tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-96 h-96 mt-4">
+                                <h1>yoo</h1>
+                                </div>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
                         <div className="flex w-full h-3/5 bg-[url('/bg-img/pokemon-in-the-wild.png)]">
                             <form className="flex flex-col w-full">
                                 <div className="text-center justify-center items-center mt-28 h-3/4">

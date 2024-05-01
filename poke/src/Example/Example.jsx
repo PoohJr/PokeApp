@@ -66,7 +66,6 @@ function Example({setpokeData}) {
         PokeArr(); 
     }, []);
     
-// FIX THE POKEMON.URL ITS NOT GETTONG THE DATA FOR EACH POKEMON
     useEffect(() => {
         async function fetchPokemonData() {
             try {

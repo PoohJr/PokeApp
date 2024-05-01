@@ -311,6 +311,8 @@ function PokemonData() {
              
             {pokedata && (
                 <div className="">   {/* div 2*/}
+                <h1>Add Something that takes up the top portation of the page that gors to thenrxt pokemon</h1>
+            
                     <div className="flex justify-center mt-16">
                         <h2 className="font-sans text-black text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
                             <svg className="cursor-pointer" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
@@ -414,7 +416,7 @@ function PokemonData() {
 
                 
                     
-                        <div className="mt-10 pb-4 bg-slate-200 flex flex-wrap">
+                        <div className=" mt-10 pb-4 bg-slate-200 flex flex-wrap">
                             
                             
                             
@@ -436,7 +438,7 @@ function PokemonData() {
                                     </ul> 
                         </div>
 
-                        <div className="flex justify-around px-20 pt-10">                     
+                        <div className="flex justify-around px-20 xl:px-1 pt-10 ">                     
                             <div className="max-h-[800px] overflow-y-auto overflow-x-hidden "> 
                                 <p className=" mt-6 font-bold text-3xl  text-center">Pokemon Moves Overview </p>
                                     <table className="mt-2 table-auto min-w-full">
@@ -467,7 +469,7 @@ function PokemonData() {
                                 
                             
                             {evoPoke && (
-                                    <ul className="timeline timeline-vertical">
+                                    <ul className="md-32 timeline timeline-vertical">
                                         <li>
                                             <p className="font-bold text-3xl  text-center">Evloutions </p>
                                             <div className="timeline-start">1st Evo</div>
