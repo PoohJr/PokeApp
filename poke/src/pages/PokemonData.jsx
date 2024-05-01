@@ -478,8 +478,8 @@ function PokemonData() {
                                             <div className="timeline-end timeline-box">{capitalizeFirstLetter(pokedata.name)}</div>
                                             <hr/>
                                         </li>
-                                        <div className="flex justify-center align-middle h-52 w-52 bg-black mx-auto"> 
-                                            <div className="h-20 w-20">
+                                        <div className="outline flex justify-center align-middle h-52 w-52 bg-slate-500 mx-auto"> 
+                                            <div className="justify-center">
                                                 <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
                                             </div>
                                         </div>
@@ -495,15 +495,15 @@ function PokemonData() {
                                             </div>
                                             <hr/>
                                         </li>
-                                                <div className="flex justify-center align-middle h-52 w-52 bg-black mx-auto">
-                                                    <div className="h-12 w-12">
+                                                <div className=" outline relative flex justify-center align-middle h-52 w-52 bg-slate-500 mx-auto">
+                                                    <div className="justify-center">
                                                         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 1}.png` } alt="Pokemon Image"/>
                                                     </div>
                                                 </div>
                                         <li>
                                             <hr/>
                                             <div className="timeline-start">3rd Evo</div>
-                                            <div className="timeline-middle">
+                                            <div className="timeline-middle ">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                                             </div>
                                             <div className="timeline-end timeline-box">
@@ -512,8 +512,10 @@ function PokemonData() {
                                             </div>
                                             <hr/>
                                         </li>
-                                                <div className="flex justify-center align-middle h-52 w-52 bg-black mx-auto">
-                                                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 2}.png` } alt="Pokemon Image"/>
+                                                <div className=" outline hover:outline-offset-1  relative flex justify-center align-middle h-52 w-52 bg-slate-500 mx-auto">
+                                                    <div className="absolute bottom-0 left-0">
+                                                        <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 2}.png` } alt="Pokemon Image"/>
+                                                    </div>
                                                 </div>
 
                                     </ul>
