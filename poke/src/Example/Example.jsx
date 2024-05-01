@@ -91,6 +91,15 @@ function Example({setpokeData}) {
         
     }, [kantoPokemon]);
     
+    // function getTypeClassNames(types) {
+    //     if (types.length === 0) {
+    //         return "justify-center px-2 pt-5"
+    //     } else {
+           
+    //         // const classNames = types.map(type => getTypeClassName(type.type.name));
+    //         return "text-center m-1"
+    //     }
+    // }
    
     const HandleClick = async (e, i) => {
             e.preventDefault();
@@ -120,6 +129,24 @@ function Example({setpokeData}) {
             {
               
                 <div className=" flex flex-wrap  justify-around  ">
+                    <div className="navbar bg-base-400 rounded-box">
+                        <div className="flex-1 px-2 lg:flex-none">
+                            <a className="text-lg font-bold text-slate-50">daisyUI</a>
+                        </div> 
+                        <div className="flex justify-end flex-1 px-2">
+                            <div className="flex items-stretch">
+                                <div className="dropdown dropdown-end">
+                                    <div tabIndex={0} role="button" className="text-xl btn btn-ghost rounded-btn text-slate-50">Filter/Types</div>
+                                    <div tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-96 h-96 mt-4">
+                                        <div className="flex">
+                                            <h1>yoo</h1>
+                                            <button>H</button>
+                                        </div>
+                                    </div>
+                                </div>
+                          </div>
+                        </div>
+                    </div>
                     {clickpokedata.map((pokemon, index) => (
                     <div key={index} className="relative flex flex-col w-1/3 h-52  hover:shadow-inner bg-slate-900 rounded mt-8 m-3 " >
                     
@@ -134,13 +161,23 @@ function Example({setpokeData}) {
                                             className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
                                             alt={pokemon.data.name} />
-                                            {/* {kantoPokemon.types.map((type, i)=>(
-                                                <div key={i} className="">
-                                                    <p>{type.type.name}</p>
-                                                </div>
-
-                                            ))} */}
                                     </div>
+                                    {/* Fix this Shit */}
+                                    <div className="flex">
+                                        <ul className="flex">
+                                            {pokemon.data.types.map((type, i)=> {
+                                           return( <li key={i} className="justify-center px-1">
+                                                <p className="text-xl text-white text-center"> {capitalizeFirstLetter(type.type.name)}</p>
+                                                
+                                            </li>     
+                                           )    
+                                                    })}
+                                                    {pokemon.data.types.length === 1 && (
+                                                        <li className="flex-auto"></li>
+                                                    )}
+                                        </ul>
+                                    </div>
+
                                 </div>
                             </div>
                     </div>
