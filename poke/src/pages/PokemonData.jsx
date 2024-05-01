@@ -480,8 +480,8 @@ function PokemonData() {
                                             <div className="timeline-end timeline-box">{capitalizeFirstLetter(pokedata.name)}</div>
                                             <hr/>
                                         </li>
-                                        <div className="outline flex justify-center align-middle h-52 w-52 bg-slate-500 mx-auto"> 
-                                            <div className="justify-center">
+                                        <div className="group outline flex justify-center align-middle h-52 w-52 bg-slate-500 mx-auto"> 
+                                            <div className="group-hover:bg-orange-900 justify-center transition-all ease-in-out duration-300 outline hover:outline-offset-1">
                                                 <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
                                             </div>
                                         </div>
@@ -497,8 +497,8 @@ function PokemonData() {
                                             </div>
                                             <hr/>
                                         </li>
-                                                <div className=" outline relative flex justify-center align-middle h-52 w-52 bg-slate-500 mx-auto">
-                                                    <div className="justify-center">
+                                                <div className=" group outline relative flex justify-center align-middle h-52 w-52 bg-slate-500 mx-auto">
+                                                    <div className="group-hover:bg-orange-900 justify-center transition-all ease-in-out duration-300 outline hover:outline-offset-1">
                                                         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 1}.png` } alt="Pokemon Image"/>
                                                     </div>
                                                 </div>
@@ -514,8 +514,8 @@ function PokemonData() {
                                             </div>
                                             <hr/>
                                         </li>
-                                                <div className=" outline hover:outline-offset-1  relative flex justify-center align-middle h-52 w-52 bg-slate-500 mx-auto">
-                                                    <div className="absolute bottom-0 left-0">
+                                                <div className="group relative flex justify-center align-middle h-52 w-52 bg-slate-500 mx-auto">
+                                                    <div className="group-hover:bg-orange-900 justify-center transition-all ease-in-out duration-200 outline group-hover:outline-offset-4">
                                                         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 2}.png` } alt="Pokemon Image"/>
                                                     </div>
                                                 </div>
