@@ -530,29 +530,31 @@ function PokemonData() {
         
         
 
-        <div className="mt-10 bg-black rounded ">
-            <div className="carousel rounded-box w-auto h-96">
-                <div className="carousel-item w-1/2">
+        <div className="mt-10 bg-gray-700 rounded-3xl border-4 border-black overflow-x-auto outline-2 ">
+            <div className="carousel w-auto h-60 divide-x divide-dashed ">
+                <div className="carousel-item w-1/3">
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} className="w-full" />
-                    <h1 className="text-white">Front Default</h1>
+                    <h1 className="text-white ">Front Default</h1>
                 </div> 
-                <div className="carousel-item w-1/2">
+                <div className="carousel-item w-1/3">
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokedata.id}.png`} className="w-full"/>
                     <h1 className="text-white">Back Default</h1>
                 </div> 
-                <div className="carousel-item w-1/2">
+                <div className="carousel-item w-1/3">
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokedata.id}.png`} className="w-full" />
                     <h1 className="text-white">Front Shiny</h1>
                 </div> 
-                <div className="carousel-item w-1/2">
+                <div className="carousel-item w-1/3">
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${pokedata.id}.png`} className="w-full" />
                     <h1 className="text-white">Back Shiny</h1>
                 </div> 
-                <div className="carousel-item w-1/2">
-                    <img src={`https://daisyui.com/images/stock/photo-1559181567-c3190ca9959b.jpg`} className="w-full" />
+                <div className="carousel-item w-1/3">
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokedata.id}.gif`} className="w-full" />
+                    <h1 className="text-white">Back Shiny</h1>
                 </div> 
-                <div className="carousel-item w-1/2">
-                    <img src={`https://daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.jpg`} className="w-full" />
+                <div className="carousel-item w-1/3">
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/back/${pokedata.id}.gif`} className="w-full" />
+                    <h1 className="text-white">Back Shiny</h1>
                 </div>
             </div>
         </div>
