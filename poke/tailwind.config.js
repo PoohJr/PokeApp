@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: theme => ({
-        'pokemon-wild': "url('./bg-img/best.webp')",
+        'pokemon-rep': "url('./bg-img/pokemon-ball.jpg')",
       }), 
       content:{
         'grass' : 'url("./type/grass.svg")',
