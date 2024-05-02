@@ -128,7 +128,7 @@ function Example({setpokeData}) {
         <>
             {
               
-                <div className=" flex flex-wrap  justify-around  ">
+                <div className=" flex flex-wrap">
                     <div className="navbar bg-base-400 rounded-box">
                         <div className="flex-1 px-2 lg:flex-none">
                             <a className="text-lg font-bold text-slate-50">daisyUI</a>
@@ -147,42 +147,47 @@ function Example({setpokeData}) {
                           </div>
                         </div>
                     </div>
-                    {clickpokedata.map((pokemon, index) => (
-                    <div key={index} className="relative flex flex-col w-1/3 h-52  hover:shadow-inner bg-slate-900 rounded mt-8 m-3 " >
-                    
-                            <div className=" text-md text-center  rounded-lg  mt-3 mb-3">
-                                <div className="text-white absolute top-0 left-0 w-7 h-6 "><strong>{pokemon.data.id}</strong></div>
-                                <strong className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.data.name)}</strong>
-                            </div>
-                            <div className="flex justify-center">
-                                <div className="bg-white h-32 w-40 rounded-full border-8 border-slate-800 ">
-                                    <div className="h-full flex items-center justify-center">
-                                        <img onClick={(e) => HandleClick(e, index)} 
-                                            className="max-h-24 hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
-                                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
-                                            alt={pokemon.data.name} />
+                    <div className="flex justify-evenly w-full flex-wrap">
+                            {clickpokedata.map((pokemon, index) => (
+                            <div key={index} className="relative flex flex-col w-1/3 h-40  hover:shadow-inner bg-slate-900 rounded mt-4 mx-3 " >
+                            
+                                    <div className=" text-md text-center  rounded-lg  mt-1 mb-1">
+                                        <div className="text-white absolute top-0 left-0 w-7 h-8 "><strong>#{pokemon.data.id}</strong></div>
+                                        <strong className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.data.name)}</strong>
                                     </div>
-                                    {/* Fix this Shit */}
-                                    <div className="flex">
-                                        <ul className="flex">
-                                            {pokemon.data.types.map((type, i)=> {
-                                           return( <li key={i} className="justify-center px-1">
-                                                <p className="text-xl text-white text-center"> {capitalizeFirstLetter(type.type.name)}</p>
-                                                
-                                            </li>     
-                                           )    
-                                                    })}
-                                                    {pokemon.data.types.length === 1 && (
-                                                        <li className="flex-auto"></li>
-                                                    )}
-                                        </ul>
-                                    </div>
+                                    <div className="flex justify-center">
+                                        <div className="group: bg-white h-24 w-24 rounded-full border-8 border-slate-800 transition-all group-hover:rounded-none">
+                                            <div className="h-full flex items-center justify-center">
+                                                <img onClick={(e) => HandleClick(e, index)} 
+                                                    className=" hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
+                                                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
+                                                    alt={pokemon.data.name} />
+                                            </div>
+                                            {/* Fix this Shit */}
+                                            <div className="flex">
+                                                <ul className="flex">
+                                                    {pokemon.data.types.map((type, i)=> {
+                                                return( <li key={i} className="justify-center px-1">
+                                                        <p className="text-xl text-white text-center"> {capitalizeFirstLetter(type.type.name)}</p>
+                                                        
+                                                    </li>     
+                                                )    
+                                                            })}
+                                                            {pokemon.data.types.length === 1 && (
+                                                                <li className="flex-auto"></li>
+                                                            )}
+                                                </ul>
+                                            </div>
 
-                                </div>
+                                        </div>
+                                    </div>
                             </div>
+                            ))}
+                            {/* this the divi added  */}
                     </div>
-           ))}
-                </div>}
+                </div>
+                
+            }
         </>
     );
 }
