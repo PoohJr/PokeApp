@@ -308,7 +308,7 @@ function PokemonData() {
 
     return ( 
         // Fix the background img 
-        <div className=" relative p-10 h-cover bg-pokemon-wild" > {/* div 1*/}
+        <div className=" relative p-10 bg-cover bg-pokemon-wild bg-no-repeat bg-center" > {/* div 1*/}
              
             {pokedata && (
                 <div className="">   {/* div 2*/}

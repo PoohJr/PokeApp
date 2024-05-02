@@ -4,7 +4,10 @@ export default {
     "./index.html",
   "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
-    extend: { 
+    extend: {
+      backgroundImage: theme => ({
+        'pokemon-wild': "url('./bg-img/best.webp')",
+      }), 
       content:{
         'grass' : 'url("./type/grass.svg")',
         'poison' : 'url("./type/poison.svg")',
@@ -24,7 +27,8 @@ export default {
         'rock' : 'url("./type/rock.svg")',
         'steel' : 'url("./type/steel.svg")',
         'water' : 'url("./type/water.svg")',
-        'pokemon-wild': "url('./bg-img/Best.webp')",
+        'card-bg': "url('.src/bg-img/databack.jpg')",
+        'new' : "url('https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/sword-shield/galar-scenery.png')",
         }
       },
   },
