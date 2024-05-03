@@ -418,7 +418,7 @@ function PokemonData() {
 
                 
                     
-                        <div className=" mt-10 pb-4 bg-slate-200 flex flex-wrap">
+                        <div className=" my-10 pb-4 bg-slate-200 flex flex-wrap">
                             
                             
                             
@@ -439,18 +439,18 @@ function PokemonData() {
                                             ))}
                                     </ul> 
                         </div>
-
-                        <div className="flex md:flex-col justify-around px-20 sm:px-0 xl:px-1 pt-10 ">                     
-                            <div className="max-h-[910px] overflow-y-auto overflow-x "> 
-                                <p className="font-bold  text-3xl  text-center">Pokemon Moves Overview </p>
-                                    <table className="mt-2 table-auto min-w-full">
-                                        <thead className="sticky top-0 bg-gray-300 p-10 z-10">
+                            {/* i changed the sm vp now chaange other while i style the tabke cuz it looks wack asf */}
+                        <div className="flex sm:flex-col justify-around px-20 sm:px-0 xl:px-1 pt-10 py-10">                     
+                            <div className="max-h-[800px] md:max-h-[400px] sm:mb-5 overflow-y-auto overflow-x "> 
+                                <p className="font-bold  text-3xl  text-center text-black bg-">Pokemon Moves Overview </p>
+                                    <table className="mt-2 table-auto min-w-full bg-black">
+                                        <thead className="sticky top-0 bg-gray-300 p-10 z-10 scroll-m-14">
                                             <tr className="">
-                                                <th className="px-4 border border-slate-600">Move</th>
-                                                <th className="px-4 border border-slate-600">Type</th>
-                                                <th className="px-4 border border-slate-600">Accuracy</th>
-                                                <th className="px-4 border border-slate-600">Power</th>
-                                                <th className="px-4 border border-slate-600">PP</th> 
+                                                <th className="px-4 bg-[#D9CD45] text-white">Move</th>
+                                                <th className="px-4 bg-[#D94575] text-white">Type</th>
+                                                <th className="px-4 bg-[#46B9DA] text-white">Accuracy</th>
+                                                <th className="px-4 bg-[#EE5E38] text-white">Power</th>
+                                                <th className="px-4 bg-[#E9C4D4] text-white">PP</th> 
                                             </tr>
                                         </thead>
                                             <tbody className="p-2">

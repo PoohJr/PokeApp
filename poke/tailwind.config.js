@@ -4,6 +4,9 @@ export default {
     "./index.html",
   "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
+    screens:{
+      'sm': '390px',
+    
     extend: {
       backgroundImage: theme => ({
         'pokemon-rep': "url('./bg-img/pokemon-ball.jpg')",
@@ -31,6 +34,7 @@ export default {
         'new' : "url('https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/sword-shield/galar-scenery.png')",
         }
       },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
