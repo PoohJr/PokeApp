@@ -440,9 +440,9 @@ function PokemonData() {
                                     </ul> 
                         </div>
 
-                        <div className="flex justify-around px-20 xl:px-1 pt-10 ">                     
-                            <div className="max-h-[800px] overflow-y-auto overflow-x-hidden "> 
-                                <p className=" mt-6 font-bold text-3xl  text-center">Pokemon Moves Overview </p>
+                        <div className="flex md:flex-col justify-around px-20 sm:px-0 xl:px-1 pt-10 ">                     
+                            <div className="max-h-[910px] overflow-y-auto overflow-x "> 
+                                <p className="font-bold  text-3xl  text-center">Pokemon Moves Overview </p>
                                     <table className="mt-2 table-auto min-w-full">
                                         <thead className="sticky top-0 bg-gray-300 p-10 z-10">
                                             <tr className="">

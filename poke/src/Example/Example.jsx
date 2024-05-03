@@ -149,13 +149,14 @@ function Example({setpokeData}) {
                     </div>
                     <div className="flex justify-evenly w-full flex-wrap">
                             {clickpokedata.map((pokemon, index) => (
-                            <div key={index} className="relative flex flex-col md:w-1/12 lg:w-2/12 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner bg-slate-900 rounded mt-4 mx-3 " >
+                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner bg-slate-900 rounded mt-4 mx-3 " >
                             
                                     <div className=" text-md text-center  rounded-lg  mt-1 mb-1">
                                         <div className="text-white absolute top-0 left-0 w-7 h-8 "><strong>#{pokemon.data.id}</strong></div>
                                         <strong className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.data.name)}</strong>
                                     </div>
                                     <div className="flex justify-center">
+                                        {/* Chnage what small is in tailwind.config */}
                                         <div className="group: bg-white h-24 w-24 rounded-full border-8 border-slate-800 transition-all group-hover:rounded-none">
                                             <div className="h-full flex items-center justify-center">
                                                 <img onClick={(e) => HandleClick(e, index)} 
