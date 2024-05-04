@@ -6,6 +6,10 @@ export default {
   theme: {
     screens:{
       'sm': '390px',
+      'md': '680px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
     
     extend: {
       backgroundImage: theme => ({
@@ -30,8 +34,7 @@ export default {
         'rock' : 'url("./type/rock.svg")',
         'steel' : 'url("./type/steel.svg")',
         'water' : 'url("./type/water.svg")',
-        'card-bg': "url('.src/bg-img/databack.jpg')",
-        'new' : "url('https://assets.pokemon.com//assets/cms2/img/misc/virtual-backgrounds/sword-shield/galar-scenery.png')",
+
         }
       },
     },

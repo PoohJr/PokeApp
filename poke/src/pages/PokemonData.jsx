@@ -440,8 +440,8 @@ function PokemonData() {
                                     </ul> 
                         </div>
                             {/* i changed the sm vp now chaange other while i style the tabke cuz it looks wack asf */}
-                        <div className="flex sm:flex-col justify-around px-20 sm:px-0 xl:px-1 pt-10 py-10">                     
-                            <div className="max-h-[800px] md:max-h-[400px] sm:mb-5 overflow-y-auto overflow-x "> 
+                        <div className=" lg:flex justify-around px-20  xl:px-1 pt-10 py-10 ">                     
+                            <div className=" max-h-[910px]  sm:mb-5 overflow-y-auto overflow-x sm-w-[400px]"> 
                                 <p className="font-bold  text-3xl  text-center text-black bg-">Pokemon Moves Overview </p>
                                     <table className="mt-2 table-auto min-w-full bg-black">
                                         <thead className="sticky top-0 bg-gray-300 p-10 z-10 scroll-m-14">
@@ -534,8 +534,8 @@ function PokemonData() {
         
         
 
-        <div className="mt-10 bg-gray-700 rounded-3xl border-4 border-black overflow-x-auto outline-2 ">
-            <div className="carousel h-60 divide-x divide-dashed ">
+        <div className="mt-16 bg-gray-700 rounded-3xl border-4 border-black overflow-x-auto outline-2 ">
+            <div className="carousel h-60 divide-x divide-dashed">
                 <div className="carousel-item w-1/3">
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} className="w-full" />
                     <h1 className="text-white ">Front Default</h1>
