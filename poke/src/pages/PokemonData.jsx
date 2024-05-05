@@ -74,10 +74,11 @@ function PokemonData() {
     useEffect (()=> {
         const EvolutionApi = async () => {
             try{
+                if(pokedata && pokedata.id){
                 const res = await axios.get(`https://pokeapi.co/api/v2/evolution-chain/${pokedata.id}/`)
                 setevoPoke(res.data)
                 console.log(res.data)
-                
+                }
             } catch (error){
                 console.error('Error fetching EvolutionApi data:', error);
 
@@ -146,6 +147,7 @@ function PokemonData() {
     }
 
     function capitalizeFirstLetter(string) {
+        if (!string) return '';
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
@@ -159,7 +161,7 @@ function PokemonData() {
     function handleStrongto(i){
 
     }
-
+    
     
     function TypeColor(typename){
         switch(typename){
@@ -248,45 +250,47 @@ function PokemonData() {
     function HandletypeColor(typename){
         switch(typename){
             case "grass":
-                return "bg-[#7AC74C]"
+                return "text-[#7AC74C] "
             case "poison":
-                return "bg-[#A33EA1] "
+                return "text-[#A33EA1] "
             case "fire":
-                return "bg-[#EE8130] "
+                return "text-[#EE8130] "
             case "normal":
-                return "bg-[#A8A77A] "
+                return "text-[#A8A77A] "
             case "water":
-                return "bg-[#6390F0] "
+                return "text-[#6390F0] "
             case "electric":
-                return "bg-[#F7D02C] "
+                return "text-[#F7D02C] "
             case "ice":
-                 return "bg-[#96D9D6] "
+                 return "text-[#96D9D6] "
             case "fighting":
-                 return "bg-[#C22E28] "
+                 return "text-[#C22E28] "
             case "ground":
-                 return "bg-[#E2BF65] "
+                 return "text-[#E2BF65] "
             case "flying":
-                return "bg-[#A98FF3] "
+                return "text-[#A98FF3] "
             case "psychic":
-                return "bg-[#F95587] "
+                return "text-[#F95587] "
             case "bug":
-                return "bg-[#A6B91A] "
+                return "text-[#A6B91A] "
             case "rock":
-                return "bg-[#B6A136] "
+                return "text-[#B6A136] "
             case "ghost":
-                return "bg-[#735797] "
+                return "text-[#735797] "
             case "dragon":
-                return "bg-[#6F35FC] "
+                return "text-[#6F35FC] "
             case "dark":
-                return "bg-[#705746] "
+                return "text-[#705746] "
             case "steel":
-                return "bg-[#B7B7CE] "
+                return "text-[#B7B7CE] "
             case "fairy":
-                return "bg-[#D685AD] "
+                return "text-[#D685AD] "
         }
     }
 
-    
+    // function capitalizeAndColorizeType(string) {
+    //     return HandletypeColor(capitalizeFirstLetter(string));
+    // }
 
         function getColorClass(statName){
             switch (statName){
@@ -341,7 +345,7 @@ function PokemonData() {
                                         ))}
                         </ul>
                     </div>
-
+                    
                     
                 <div className="flex justify-center">
                     <div className="flex justify-between">
@@ -392,7 +396,7 @@ function PokemonData() {
                                             ))}
                                         </ul> 
                                     </div>  
-
+                                    
                                         <div className=" bg">
                                           <h1 className="mt-6 font-bold text-3xl text-center">PokeMon Locations</h1>
                                         <div className="bg-slate-300">
@@ -413,7 +417,7 @@ function PokemonData() {
                      </div>
                 </div>
 
-                    
+          
 
 
                 
@@ -441,9 +445,9 @@ function PokemonData() {
                         </div>
                             {/* i changed the sm vp now chaange other while i style the tabke cuz it looks wack asf */}
                         <div className=" lg:flex justify-around px-20  xl:px-1 pt-10 py-10 ">                     
-                            <div className=" max-h-[910px]  sm:mb-5 overflow-y-auto overflow-x sm-w-[400px]"> 
+                            <div className=" max-h-[910px] sm:mb-5 overflow-y-auto overflow-x sm-w-[400px]"> 
                                 <p className="font-bold  text-3xl  text-center text-black bg-">Pokemon Moves Overview </p>
-                                    <table className="mt-2 table-auto min-w-full bg-black">
+                                    <table className="mt-2 table-auto min-w-full bg-zinc-900">
                                         <thead className="sticky top-0 bg-gray-300 p-10 z-10 scroll-m-14">
                                             <tr className="">
                                                 <th className="px-4 bg-[#D9CD45] text-white">Move</th>
@@ -455,12 +459,12 @@ function PokemonData() {
                                         </thead>
                                             <tbody className="p-2">
                                                 {pokedata.moves.map((move, index) => (
-                                                <tr className=" rounded-md border-black border-2"  key={index}>
-                                                    <td className="text-center">{capitalizeFirstLetter(move.move.name)}</td>
-                                                    <td className="text-center">{movedata[index]?.type.name}</td>
-                                                    <td className="text-center">{movedata[index]?.accuracy || "0"}</td>
-                                                    <td className="text-center">{movedata[index]?.power || "0"}</td>
-                                                    <td className="text-center">{movedata[index]?.pp || "0"}</td>
+                                                <tr className=" border-b-2"  key={index}>
+                                                    <td className=" text-center  text-white">{capitalizeFirstLetter(move.move.name)}</td>
+                                                    <td className={` ${HandletypeColor(movedata[index]?.type.name)}text-center `}>{capitalizeFirstLetter(movedata[index]?.type.name)}</td>
+                                                    <td className="text-center text-white">{movedata[index]?.accuracy || "0"}</td>
+                                                    <td className="text-center text-white">{movedata[index]?.power || "0"}</td>
+                                                    <td className="text-center text-white">{movedata[index]?.pp || "0"}</td>
                                                 </tr>
                                                 ))}
                                             </tbody>
@@ -482,9 +486,9 @@ function PokemonData() {
                                             <div className="timeline-end timeline-box">{capitalizeFirstLetter(pokedata.name)}</div>
                                             <hr/>
                                         </li>
-                                        <div className="group outline flex justify-center align-middle h-60 w-52 rounded-full bg-slate-500 mx-auto"> 
-                                            <div className="  group-hover:shadow-2xl  group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200 outline group-hover:outline-offset-4">
-                                                <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
+                                        <div className="transition-all ease-in-out group border hover:border-8 hover:border-blue-300   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-blue-600 mx-auto"> 
+                                            <div className=" group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200 ">
+                                                <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125 " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
                                             </div>
                                         </div>
                                         <li>
@@ -499,8 +503,8 @@ function PokemonData() {
                                             </div>
                                             <hr/>
                                         </li>
-                                                <div className=" group outline relative flex justify-center align-middle h-60 w-52 rounded-full bg-slate-500 mx-auto">
-                                                    <div className="  group-hover:shadow-2xl  group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200 outline group-hover:outline-offset-4">
+                                                <div className=" transition-all ease-in-out group border hover:border-8 hover:border-blue-300   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-blue-600 mx-auto">
+                                                    <div className="group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200 ">
                                                         <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 1}.png` } alt="Pokemon Image"/>
                                                     </div>
                                                 </div>
@@ -516,8 +520,8 @@ function PokemonData() {
                                             </div>
                                             <hr/>
                                         </li>
-                                                <div className="group relative flex justify-center align-middle h-60 w-52 rounded-full bg-slate-200 mx-auto">
-                                                    <div className="  group-hover:shadow-2xl  group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200 outline group-hover:outline-offset-4">
+                                                <div className="transition-all ease-in-out group border hover:border-8 hover:border-blue-300   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-blue-600 mx-auto">
+                                                    <div className="  group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200">
                                                         <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 2}.png` } alt="Pokemon Image"/>
                                                     </div>
                                                 </div>
@@ -554,11 +558,11 @@ function PokemonData() {
                 </div> 
                 <div className="carousel-item w-1/3">
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokedata.id}.gif`} className="w-full" />
-                    <h1 className="text-white">Back Shiny</h1>
+                    <h1 className="text-white">ShowDown Front</h1>
                 </div> 
                 <div className="carousel-item w-1/3">
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/back/${pokedata.id}.gif`} className="w-full" />
-                    <h1 className="text-white">Back Shiny</h1>
+                    <h1 className="text-white">ShowDown Back</h1>
                 </div>
             </div>
         </div>
