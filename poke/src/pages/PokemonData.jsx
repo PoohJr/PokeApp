@@ -332,7 +332,7 @@ function PokemonData() {
                 <div className="">   {/* div 2*/}
                 
             
-                    <div className="flex justify-center mt-6 rounded-2xl bg-black w-97">
+                    <div className="flex justify-center mt-6 rounded-2xl bg-slate-500 mx-auto">
                         <h2 className="font-sans my-auto text-white text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
                             <svg className="cursor-pointer" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
                                 <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
@@ -352,8 +352,8 @@ function PokemonData() {
 
                         <ul className="flex">
                                 {pokedata.types.map((type, index) => (
-                            <li key={index} className={` cursor-pointer font  align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm
-                                ${TypeColor(type.type.name)}`}>
+                            <li key={index} className={` ${TypeColor(type.type.name)} cursor-pointer font  align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm
+                                `}>
                                 {type.type.name}
                             </li>
                                         ))}
@@ -414,8 +414,8 @@ function PokemonData() {
                                     {encounterData && encounterData.length > 0 &&  (
 
                                      
-                                        <div className=" bg">
-                                          <h1 className="mt-6 font-bold text-3xl text-center">PokeMon Locations</h1>
+                                        <div className="my-4 bg-slate-500">
+                                          <h1 className="py-4 font-bold text-3xl text-center text-white  ">PokeMon Locations</h1>
                                         <div className="bg-slate-300">
                                             {encounterData && encounterData.map((encounter, index) => (
                                                 <div key={index} className="  pt-2 px-5">
