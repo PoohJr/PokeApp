@@ -10,7 +10,7 @@ export default {
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
-    
+    },
     extend: {
       backgroundImage: theme => ({
         'pokemon-rep': "url('./bg-img/pokemon-ball.jpg')",
@@ -34,10 +34,9 @@ export default {
         'rock' : 'url("./type/rock.svg")',
         'steel' : 'url("./type/steel.svg")',
         'water' : 'url("./type/water.svg")',
-
         }
       },
-    },
+    
   },
   plugins: [require("daisyui")],
   daisyui: {

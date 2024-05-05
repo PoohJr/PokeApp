@@ -292,6 +292,19 @@ function PokemonData() {
     //     return HandletypeColor(capitalizeFirstLetter(string));
     // }
 
+    function TypeImg(type) {
+        switch(type) {
+            case "grass":
+                return " content-grass ";
+            case "poison":
+                return " content-poison ";
+            case "bug":
+                return "content-bug";
+            // Handle other types similarly
+            default:
+                return ""; // Return an empty string for unknown types
+        }
+    }
         function getColorClass(statName){
             switch (statName){
                 case 'hp':
@@ -319,7 +332,7 @@ function PokemonData() {
                 <div className="">   {/* div 2*/}
                 
             
-                    <div className="flex justify-center mt-6 rounded-2xl bg-black">
+                    <div className="flex justify-center mt-6 rounded-2xl bg-black w-97">
                         <h2 className="font-sans my-auto text-white text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
                             <svg className="cursor-pointer" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
                                 <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
@@ -332,13 +345,14 @@ function PokemonData() {
                                 <path fill="#000000" d="M401.1,82.05c-6.1-4.3-14.5-2.8-18.8,3.4c-4.3,6.1-2.8,14.5,3.4,18.8c45.3,31.6,72.3,83.3,72.3,138.3
                                     s-27,106.8-72.3,138.3c-6.1,4.3-7.6,12.7-3.4,18.8c2.6,3.8,6.8,5.8,11.1,5.8c2.7,0,5.4-0.8,7.7-2.4
                                     c52.5-36.6,83.9-96.6,83.9-160.5S453.7,118.65,401.1,82.05z"/>
+                                    
                             </svg>
 
-
+                            
 
                         <ul className="flex">
                                 {pokedata.types.map((type, index) => (
-                            <li key={index} className={`cursor-pointer font  align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm
+                            <li key={index} className={` cursor-pointer font  align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm
                                 ${TypeColor(type.type.name)}`}>
                                 {type.type.name}
                             </li>
@@ -346,7 +360,7 @@ function PokemonData() {
                         </ul>
                     </div>
                     
-                    
+                    <img src='extend-content-grass' alt="HELLO" />
                 <div className="flex justify-center">
                     <div className="flex justify-between">
                         
@@ -397,22 +411,27 @@ function PokemonData() {
                                         </ul> 
                                     </div>  
                                     
+                                    {encounterData && encounterData.length > 0 &&  (
+
+                                     
                                         <div className=" bg">
                                           <h1 className="mt-6 font-bold text-3xl text-center">PokeMon Locations</h1>
                                         <div className="bg-slate-300">
                                             {encounterData && encounterData.map((encounter, index) => (
-                                                <div key={index} className=" pt-2 px-5">
+                                                <div key={index} className="  pt-2 px-5">
                                                     <p className="">Verson: {capitalizeFirstLetter(encounter.version_details[0].version.name)}</p>
                                                     <p>Location Area:{encounter.location_area.name}</p>
-                                                    <p> Chance: {encounter.version_details[0].encounter_details[0].chance}%</p>
+                                                    <p> Chances of Encountering : {encounter.version_details[0].encounter_details[0].chance}%</p>
                                                     <p>Max Level: {encounter.version_details[0].encounter_details[0].max_level}Lv</p>
                                                     <p>Max Chance: {encounter.version_details[0].max_chance}%</p>
                                                     <p> Method: {encounter.version_details[0].encounter_details[0].method.name}</p>
                                                     
                                                 </div>
                                             ))}
-                                        </div>      
+                                        </div>   
+                                     
                                     </div>
+                                    )}  
                         </div>
                      </div>
                 </div>
@@ -423,9 +442,6 @@ function PokemonData() {
                 
                     
                         <div className=" my-10 pb-4 bg-slate-200 flex flex-wrap">
-                            
-                            
-                            
                                 <div className="">
                                     <p className="font-bold h-12 ">Stats:</p>
                                 </div>
@@ -445,10 +461,10 @@ function PokemonData() {
                         </div>
                             {/* i changed the sm vp now chaange other while i style the tabke cuz it looks wack asf */}
                         <div className=" lg:flex justify-around px-20  xl:px-1 pt-10 py-10 ">                     
-                            <div className=" max-h-[910px] sm:mb-5 overflow-y-auto overflow-x sm-w-[400px]"> 
-                                <p className="font-bold  text-3xl  text-center text-black bg-">Pokemon Moves Overview </p>
-                                    <table className="mt-2 table-auto min-w-full bg-zinc-900">
-                                        <thead className="sticky top-0 bg-gray-300 p-10 z-10 scroll-m-14">
+                            <div className=" max-h-[910px] sm:mb-5 overflow-y-auto overflow-x sm-w-[400px] border-black border-8"> 
+                                <p className="font-bold  text-3xl  text-center text-white bg-black py-3">Pokemon Moves Overview </p>
+                                    <table className="table-auto min-w-full bg-zinc-900">
+                                        <thead className="sticky top-0 z-10 ">
                                             <tr className="">
                                                 <th className="px-4 bg-[#D9CD45] text-white">Move</th>
                                                 <th className="px-4 bg-[#D94575] text-white">Type</th>
@@ -457,14 +473,14 @@ function PokemonData() {
                                                 <th className="px-4 bg-[#E9C4D4] text-white">PP</th> 
                                             </tr>
                                         </thead>
-                                            <tbody className="p-2">
+                                            <tbody className="">
                                                 {pokedata.moves.map((move, index) => (
                                                 <tr className=" border-b-2"  key={index}>
-                                                    <td className=" text-center  text-white">{capitalizeFirstLetter(move.move.name)}</td>
-                                                    <td className={` ${HandletypeColor(movedata[index]?.type.name)}text-center `}>{capitalizeFirstLetter(movedata[index]?.type.name)}</td>
-                                                    <td className="text-center text-white">{movedata[index]?.accuracy || "0"}</td>
-                                                    <td className="text-center text-white">{movedata[index]?.power || "0"}</td>
-                                                    <td className="text-center text-white">{movedata[index]?.pp || "0"}</td>
+                                                    <td className=" text-center  text-white font-semibold">{capitalizeFirstLetter(move.move.name)}</td>
+                                                    <td className={` ${HandletypeColor(movedata[index]?.type.name)}text-center font-semibold`}>{capitalizeFirstLetter(movedata[index]?.type.name)}</td>
+                                                    <td className="text-center font-semibold text-white">{movedata[index]?.accuracy || "0"}</td>
+                                                    <td className="text-center text-white font-semibold">{movedata[index]?.power || "0"}</td>
+                                                    <td className="text-center text-white font-semibold">{movedata[index]?.pp || "0"}</td>
                                                 </tr>
                                                 ))}
                                             </tbody>
