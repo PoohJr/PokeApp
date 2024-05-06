@@ -332,9 +332,9 @@ function PokemonData() {
                 <div className="">   {/* div 2*/}
                 
             
-                    <div className="flex justify-center mt-6 rounded-2xl bg-slate-500 mx-auto">
-                        <h2 className="font-sans my-auto text-white text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
-                            <svg className="cursor-pointer" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
+                    <div className="flex justify-center mt-6 rounded-2xl bg-slate-200 mx-auto">
+                        <h2 className="font-sans my-auto txt-blacks text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
+                            <svg className="cursor-pointer mt-5" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
                                 <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
                                     c0,29.1,23.6,52.7,52.7,52.7h71.6c15.9,25,37.6,46,63.2,61.1c28.7,16.9,61.5,25.8,95,25.8c7.5,0,13.5-6,13.5-13.5V68.65
                                     C296,61.25,290,55.15,282.5,55.15z M118.4,315.95H52.7c-14.2,0-25.7-11.5-25.7-25.7v-95.5c0-14.2,11.5-25.7,25.7-25.7h65.7V315.95
@@ -360,7 +360,7 @@ function PokemonData() {
                         </ul>
                     </div>
                     
-                    <img src='extend-content-grass' alt="HELLO" />
+                   
                 <div className="flex justify-center">
                     <div className="flex justify-between">
                         
@@ -441,16 +441,18 @@ function PokemonData() {
 
                 
                     
-                        <div className=" my-10 pb-4 bg-slate-200 flex flex-wrap">
+                        <div className=" my-10 pb-4 bg-slate-200">
                                 <div className="">
                                     <p className="font-bold h-12 ">Stats:</p>
                                 </div>
                                     <ul className="w-60">
                                         {pokedata.stats.map((stat, index) => (   
-                                        <div key={index} className="bg">
+                                        <div key={index} className="">
                                             <strong className="" >
                                                 {capitalizeFirstLetter(stat.stat.name )}
-                                                </strong>  <strong className="ml-4">{stat.base_stat}%</strong>
+                                            </strong> 
+
+                                                <strong className="ml-2">{stat.base_stat}%</strong>
                                                 <progress className={`progress w-56 mt-2" ${getColorClass(stat.stat.name)} `}
                                                 value={stat.base_stat} 
                                                 max="200">

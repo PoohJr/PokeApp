@@ -123,6 +123,9 @@ function Example({setpokeData}) {
             
         };
 
+        function HandleFilterbtn(){
+            pok
+        }
 
     return (
         <>
@@ -130,26 +133,37 @@ function Example({setpokeData}) {
               
                 <div className=" flex flex-wrap">
                     <div className="navbar bg-base-400 rounded-box mb-12">
-                        <div className="flex-1 px-2 lg:flex-none">
+                        {/* <div className="flex-1 px-2 lg:flex-none">
                             <a className="text-lg font-bold text-slate-50 ">daisyUI</a>
-                        </div> 
+                        </div>  */}
                         <div className="flex justify-end flex-1 px-2">
                             <div className="flex items-stretch">
                                 <div className="dropdown dropdown-end">
-                                    <div tabIndex={0} role="button" className="text-xl btn btn-ghost rounded-btn text-slate-50 ">Filter/Types</div>
-                                    <div tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-96 h-96 mt-4">
-                                        <div className="flex">
-                                            <h1>yoo</h1>
-                                            <button>H</button>
+                                    <div tabIndex={0} role="button" className="text-xl btn btn-ghost rounded-btn text-slate-50 ">Filter</div>
+                                    <div tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 h-50 mt-2">
+                                    
+                                        <div class="flex flex-col space-y-4">
+                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                Types
+                                            </button>
+                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                Lowest #
+                                            </button>
+                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                Highest #
+                                            </button>
+                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                                Types
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                           </div>
                         </div>
                     </div>
-                    <div className="lg:bg-red-800 md:bg-blue-800 bg-white  w-full h-96">
+                    {/* <div className="lg:bg-red-800 md:bg-blue-800 bg-white  w-full h-96">
 
-                    </div>
+                    </div> */}
                     <div className="flex justify-evenly w-full flex-wrap">
                             {clickpokedata.map((pokemon, index) => (
                             <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner bg-slate-900 rounded mt-4 mx-3 " >
@@ -168,8 +182,8 @@ function Example({setpokeData}) {
                                                     alt={pokemon.data.name} />
                                             </div>
                                             {/* Fix this Shit */}
-                                            <div className="flex">
-                                                <ul className="flex">
+                                            <div className="">
+                                                <ul className="flex w-auto">
                                                     {pokemon.data.types.map((type, i)=> {
                                                 return( <li key={i} className="justify-center px-1">
                                                         <p className="text-xl text-white text-center"> {capitalizeFirstLetter(type.type.name)}</p>
