@@ -13,7 +13,7 @@ export default {
     },
     extend: {
       backgroundImage: theme => ({
-        'pokemon-rep': "url('./bg-img/pokemon-ball.jpg')",
+        'pokemon-rep': "url('./bg-img/rep2.jpg')",
       }), 
       content:{
         'grass' : 'url("./type/grass.svg")',

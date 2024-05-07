@@ -139,20 +139,20 @@ function Example({setpokeData}) {
                         <div className="flex justify-end flex-1 px-2">
                             <div className="flex items-stretch">
                                 <div className="dropdown dropdown-end">
-                                    <div tabIndex={0} role="button" className="text-xl btn btn-ghost rounded-btn text-slate-50 ">Filter</div>
+                                    <div tabIndex={0} role="button" className="text-4xl btn btn-ghost rounded-btn text-slate-50 ">Filter</div>
                                     <div tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 h-50 mt-2">
                                     
-                                        <div class="flex flex-col space-y-4">
-                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        <div className="flex flex-col space-y-4">
+                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                                 Types
                                             </button>
-                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                                 Lowest #
                                             </button>
-                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                                 Highest #
                                             </button>
-                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                                 Types
                                             </button>
                                         </div>

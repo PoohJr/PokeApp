@@ -166,41 +166,41 @@ function PokemonData() {
     function TypeColor(typename){
         switch(typename){
             case "grass":
-                return "bg-[#7AC74C] uppercase drop-shadow-lg before:content-grass h-min"
+                return "bg-[#7AC74C] uppercase drop-shadow-lg before:content-grass "
             case "poison":
-                return "bg-[#A33EA1] uppercase drop-shadow-lg before:content-poison h-min"
+                return "bg-[#A33EA1] uppercase drop-shadow-lg before:content-poison "
             case "fire":
-                return "bg-[#EE8130] uppercase drop-shadow-lg before:content-fire h-min"
+                return "bg-[#EE8130] uppercase drop-shadow-lg before:content-fire "
             case "normal":
-                return "bg-[#A8A77A] uppercase drop-shadow-lg before:content-normal h-min"
+                return "bg-[#A8A77A] uppercase drop-shadow-lg before:content-normal "
             case "water":
-                return "bg-[#6390F0] uppercase drop-shadow-lg before:content-water h-min"
+                return "bg-[#6390F0] uppercase drop-shadow-lg before:content-water "
             case "electric":
-                return "bg-[#F7D02C] uppercase drop-shadow-lg before:content-electric h-min"
+                return "bg-[#F7D02C] uppercase drop-shadow-lg before:content-electric "
             case "ice":
-                 return "bg-[#96D9D6] uppercase drop-shadow-lg before:content-ice h-min"
+                 return "bg-[#96D9D6] uppercase drop-shadow-lg before:content-ice "
             case "fighting":
-                 return "bg-[#C22E28] uppercase drop-shadow-lg before:content-fighting h-min"
+                 return "bg-[#C22E28] uppercase drop-shadow-lg before:content-fighting "
             case "ground":
-                 return "bg-[#E2BF65] uppercase drop-shadow-lg before:content-ground h-min"
+                 return "bg-[#E2BF65] uppercase drop-shadow-lg before:content-ground "
             case "flying":
-                return "bg-[#A98FF3] uppercase drop-shadow-lg before:content-flying h-min"
+                return "bg-[#A98FF3] uppercase drop-shadow-lg before:content-flying "
             case "psychic":
-                return "bg-[#F95587] uppercase drop-shadow-lg before:content-psychic h-min"
+                return "bg-[#F95587] uppercase drop-shadow-lg before:content-psychic "
             case "bug":
-                return "bg-[#A6B91A] uppercase drop-shadow-lg before:content-bug h-min"
+                return "bg-[#A6B91A] uppercase drop-shadow-lg before:content-bug "
             case "rock":
-                return "bg-[#B6A136] uppercase drop-shadow-lg before:content-rock h-min"
+                return "bg-[#B6A136] uppercase drop-shadow-lg before:content-rock "
             case "ghost":
-                return "bg-[#735797] uppercase drop-shadow-lg before:content-ghost h-min"
+                return "bg-[#735797] uppercase drop-shadow-lg before:content-ghost "
             case "dragon":
-                return "bg-[#6F35FC] uppercase drop-shadow-lg before:content-dragon h-min"
+                return "bg-[#6F35FC] uppercase drop-shadow-lg before:content-dragon "
             case "dark":
-                return "bg-[#705746] uppercase drop-shadow-lg before:content-dark h-min"
+                return "bg-[#705746] uppercase drop-shadow-lg before:content-dark "
             case "steel":
-                return "bg-[#B7B7CE] uppercase drop-shadow-lg before:content-steel h-min"
+                return "bg-[#B7B7CE] uppercase drop-shadow-lg before:content-steel "
             case "fairy":
-                return "bg-[#D685AD] uppercase drop-shadow-lg before:content-fairy h-min"
+                return "bg-[#D685AD] uppercase drop-shadow-lg before:content-fairy "
         }
     }
     
@@ -325,14 +325,14 @@ function PokemonData() {
 
     return ( 
         // Fix the background img 
-        <div className=" relative p-10 " > {/* div 1*/}
+        <div className=" relative p-10 bg-pokemon-rep" > {/* div 1*/}
         <div className="w-full h-full bg-pokemon-rep bg-repeat blur-sm"></div>
              
             {pokedata && (
                 <div className="">   {/* div 2*/}
                 
             
-                    <div className="flex justify-center mt-6 rounded-2xl bg-slate-200 mx-auto">
+                    <div className="flex justify-center mt-6 rounded-2xl bg-white border-black border-4 mx-auto w-3/4">
                         <h2 className="font-sans my-auto txt-blacks text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
                             <svg className="cursor-pointer mt-5" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
                                 <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
@@ -352,8 +352,7 @@ function PokemonData() {
 
                         <ul className="flex">
                                 {pokedata.types.map((type, index) => (
-                            <li key={index} className={` ${TypeColor(type.type.name)} cursor-pointer font  align-middle mx-2 p-4 bg-lg h-14  text-white rounded-sm
-                                `}>
+                            <li key={index} className={` ${TypeColor(type.type.name)} cursor-pointer font align-middle mx-3 p-4 my-3 w-20 text-white rounded-sm h-24 font-semibold text-md `}>
                                 {type.type.name}
                             </li>
                                         ))}
@@ -364,20 +363,20 @@ function PokemonData() {
                 <div className="flex justify-center">
                     <div className="flex justify-between">
                         
-                         <div className= "flex flex-col bg-slate-200 p-10 mt-5 w-full">
+                         <div className= "flex flex-col bg-white border-black border-4 p-10 mt-5 w-full rounded-2xl">
                            
 
-                                <div className="  mt-16 w-fit mr-auto ml-auto">
-                                    <div className=" h-full  bg-slate-800 bo rounded-3xl border-8  ">
+                                <div className="  mt-4 w-fit mr-auto ml-auto">
+                                    <div className=" h-full  bg-slate-800 bo rounded-3xl border-8 border-red-600 ">
                                         <img className=" h-96 animate-bounce  " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
                                     </div>
                                 </div>
 
 
-                            <div className="">
-                                <div className="pl-4 bg-slate-300">
+                            <div className="mt-4">
+                                <div className="pl-4 py-2 bg-white rounded-2xl border-red-600 border-2">
                                     <h1 className=" text-center font-bold text-2xl">PokeMon #<span>{pokedata.id}</span></h1>
-                                    <p className="font-bold">Height: {heightConver(pokedata.height)}</p>
+                                    <p className=" font-bold">Height: {heightConver(pokedata.height)}</p>
                                     <p className="font-bold">Weight: {weightConver(pokedata.weight)}</p>
                                 </div>
                             </div>
@@ -388,7 +387,7 @@ function PokemonData() {
 
                                         <ul>
                                             {abilityDes.map((ability, index) => (
-                                                <div key={index} className="mt-6 overflow-x-auto bg-slate-300">
+                                                <div key={index} className="mt-6 overflow-x-auto bg-white border-red-600 border-2">
                                                     <table className="table-md ">
                                                         <thead className=""> 
                                                             <tr className=" flex justify-evenly">
@@ -396,13 +395,13 @@ function PokemonData() {
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                            <th>Name:</th>
-                                                            <td>{capitalizeFirstLetter(ability.name)}</td>
+                                                            <th className="text-xl">Name:</th>
+                                                            <td className="text-red-600 text-xl">{capitalizeFirstLetter(ability.name)}</td>
                                                         </tr>
                                                                                         
                                                         <tr>
-                                                        <th>Description:</th>
-                                                            <td className="">{ability.description}</td>
+                                                        <th className="text-xl">Description:</th>
+                                                            <td className="text-lg">{ability.description}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -439,13 +438,13 @@ function PokemonData() {
           
 
 
-                
-                    
-                        <div className=" my-10 pb-4 bg-slate-200">
-                                <div className="">
-                                    <p className="font-bold h-12 ">Stats:</p>
+                                    
+                    <div className="flex justify-center items-center h-auto">
+                        <div className=" flex flex-col items-center my-10 pb-4 rounded-xl bg-white border-4 border-black w-1/2">
+                                <div className=" mt-3 justify-center bg-white h-20 w-28">
+                                    <p className="mt-6 font-bold text-3xl text-center text-black">Stats</p>
                                 </div>
-                                    <ul className="w-60">
+                                    <ul className="flex flex-col  space-y-3 w-60 p-1 border-4 border-red-600  mb-5">
                                         {pokedata.stats.map((stat, index) => (   
                                         <div key={index} className="">
                                             <strong className="" >
@@ -461,8 +460,9 @@ function PokemonData() {
                                             ))}
                                     </ul> 
                         </div>
+                    </div>
                             {/* i changed the sm vp now chaange other while i style the tabke cuz it looks wack asf */}
-                        <div className=" lg:flex justify-around px-20  xl:px-1 pt-10 py-10 ">                     
+                        <div className=" lg:flex justify-around px-20  xl:px-1 pt-10 py-10 bg-white border-4 border-black rounded-xl">                     
                             <div className=" max-h-[910px] sm:mb-5 overflow-y-auto overflow-x sm-w-[400px] border-black border-8"> 
                                 <p className="font-bold  text-3xl  text-center text-white bg-black py-3">Pokemon Moves Overview </p>
                                     <table className="table-auto min-w-full bg-zinc-900">
@@ -495,7 +495,7 @@ function PokemonData() {
                             {evoPoke && (
                                     <ul className="md-32 timeline timeline-vertical">
                                         <li>
-                                            <p className="font-bold text-3xl  text-center">Evloutions </p>
+                                            <p className="font-bold text-3xl  text-center mb-4">Evloutions </p>
                                             <div className="timeline-start">1st Evo</div>
                                             <div className="timeline-middle">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
@@ -504,7 +504,7 @@ function PokemonData() {
                                             <div className="timeline-end timeline-box">{capitalizeFirstLetter(pokedata.name)}</div>
                                             <hr/>
                                         </li>
-                                        <div className="transition-all ease-in-out group border hover:border-8 hover:border-blue-300   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-blue-600 mx-auto"> 
+                                        <div className="transition-all ease-in-out group border hover:border-8 hover:border-black   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-red-500 mx-auto"> 
                                             <div className=" group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200 ">
                                                 <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125 " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
                                             </div>
@@ -521,7 +521,7 @@ function PokemonData() {
                                             </div>
                                             <hr/>
                                         </li>
-                                                <div className=" transition-all ease-in-out group border hover:border-8 hover:border-blue-300   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-blue-600 mx-auto">
+                                                <div className=" transition-all ease-in-out group border hover:border-8 hover:border-black   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-red-500 mx-auto">
                                                     <div className="group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200 ">
                                                         <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 1}.png` } alt="Pokemon Image"/>
                                                     </div>
@@ -538,7 +538,7 @@ function PokemonData() {
                                             </div>
                                             <hr/>
                                         </li>
-                                                <div className="transition-all ease-in-out group border hover:border-8 hover:border-blue-300   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-blue-600 mx-auto">
+                                                <div className="transition-all ease-in-out group border hover:border-8 hover:border-black   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-red-500 mx-auto">
                                                     <div className="  group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200">
                                                         <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 2}.png` } alt="Pokemon Image"/>
                                                     </div>
