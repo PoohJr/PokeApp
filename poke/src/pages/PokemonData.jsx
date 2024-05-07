@@ -332,7 +332,7 @@ function PokemonData() {
                 <div className="">   {/* div 2*/}
                 
             
-                    <div className="flex justify-center mt-6 rounded-2xl bg-white border-black border-4 mx-auto w-3/4">
+                    <div className="flex justify-center mt-6 rounded-2xl bg-white border-black border-4 mx-auto w-3/4 px-10">
                         <h2 className="font-sans my-auto txt-blacks text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
                             <svg className="cursor-pointer mt-5" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
                                 <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
@@ -375,9 +375,9 @@ function PokemonData() {
 
                             <div className="mt-4">
                                 <div className="pl-4 py-2 bg-white rounded-2xl border-red-600 border-2">
-                                    <h1 className=" text-center font-bold text-2xl">PokeMon #<span>{pokedata.id}</span></h1>
-                                    <p className=" font-bold">Height: {heightConver(pokedata.height)}</p>
-                                    <p className="font-bold">Weight: {weightConver(pokedata.weight)}</p>
+                                    <h1 className=" text-center font-bold text-3xl">PokeMon #<span>{pokedata.id}</span></h1>
+                                    <p className=" font-bold text-xl">Height: {heightConver(pokedata.height)}</p>
+                                    <p className="font-bold text-xl">Weight: {weightConver(pokedata.weight)}</p>
                                 </div>
                             </div>
 
@@ -469,6 +469,7 @@ function PokemonData() {
                                         <thead className="sticky top-0 z-10 ">
                                             <tr className="">
                                                 <th className="px-4 bg-[#D9CD45] text-white">Move</th>
+                                                {/* <th>    hello</th> */}
                                                 <th className="px-4 bg-[#D94575] text-white">Type</th>
                                                 <th className="px-4 bg-[#46B9DA] text-white">Accuracy</th>
                                                 <th className="px-4 bg-[#EE5E38] text-white">Power</th>
@@ -479,6 +480,7 @@ function PokemonData() {
                                                 {pokedata.moves.map((move, index) => (
                                                 <tr className=" border-b-2"  key={index}>
                                                     <td className=" text-center  text-white font-semibold">{capitalizeFirstLetter(move.move.name)}</td>
+                                                    {/* <td className=" text-center  text-white font-semibold">{capitalizeFirstLetter(move.move.effect_entries[index].effect)}</td> */}
                                                     <td className={` ${HandletypeColor(movedata[index]?.type.name)}text-center font-semibold`}>{capitalizeFirstLetter(movedata[index]?.type.name)}</td>
                                                     <td className="text-center font-semibold text-white">{movedata[index]?.accuracy || "0"}</td>
                                                     <td className="text-center text-white font-semibold">{movedata[index]?.power || "0"}</td>
