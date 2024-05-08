@@ -410,30 +410,31 @@ function PokemonData() {
                                         </ul> 
                                     </div>  
                                     
-                                    {encounterData && encounterData.length > 0 &&  (
-
-                                     
-                                        <div className="my-4 bg-slate-500">
-                                          <h1 className="py-4 font-bold text-3xl text-center text-white  ">PokeMon Locations</h1>
-                                        <div className="bg-slate-300">
-                                            {encounterData && encounterData.map((encounter, index) => (
-                                                <div key={index} className="  pt-2 px-5">
-                                                    <p className="">Verson: {capitalizeFirstLetter(encounter.version_details[0].version.name)}</p>
-                                                    <p>Location Area:{encounter.location_area.name}</p>
-                                                    <p> Chances of Encountering : {encounter.version_details[0].encounter_details[0].chance}%</p>
-                                                    <p>Max Level: {encounter.version_details[0].encounter_details[0].max_level}Lv</p>
-                                                    <p>Max Chance: {encounter.version_details[0].max_chance}%</p>
-                                                    <p> Method: {encounter.version_details[0].encounter_details[0].method.name}</p>
-                                                    
-                                                </div>
-                                            ))}
-                                        </div>   
-                                     
-                                    </div>
-                                    )}  
+                                    
                         </div>
                      </div>
                 </div>
+
+                {encounterData && encounterData.length > 0 &&  (
+                                        
+            <div className=" border-4 border-black rounded-lg my-4 bg-slate-500 ">
+            <h1 className="py-4 font-bold text-3xl text-center text-white  ">PokeMon Locations</h1>
+            <div className="bg-white ">
+                {encounterData && encounterData.map((encounter, index) => (
+                    <div key={index} className="  pt-2 px-5 pb-4">
+                        <p className="">Verson: {capitalizeFirstLetter(encounter.version_details[0].version.name)}</p>
+                        <p>Location Area:{encounter.location_area.name}</p>
+                        <p> Chances of Encountering : {encounter.version_details[0].encounter_details[0].chance}%</p>
+                        <p>Max Level: {encounter.version_details[0].encounter_details[0].max_level}Lv</p>
+                        <p>Max Chance: {encounter.version_details[0].max_chance}%</p>
+                        <p> Method: {encounter.version_details[0].encounter_details[0].method.name}</p>
+                        
+                    </div>
+                ))}
+            </div>   
+
+            </div>
+            )}  
 
           
 
@@ -557,8 +558,8 @@ function PokemonData() {
            
         
         
-
-        <div className="mt-16 bg-gray-700 rounded-3xl border-4 border-black overflow-x-auto outline-2 ">
+    
+        <div className="mt-16 mx-auto bg-gray-700 rounded-3xl border-4 border-black  overflow-y-auto outline-2 w-[1000px] p-2">
             <div className="carousel h-60 divide-x divide-dashed">
                 <div className="carousel-item w-1/3">
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} className="w-full" />
