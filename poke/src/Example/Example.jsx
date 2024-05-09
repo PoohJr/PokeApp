@@ -135,41 +135,41 @@ function Example({setpokeData}) {
         function handleTypeImg(type) {
             switch(type) {
                 case "grass":
-                    return 'bg-content-grass before:content-grass';
+                    return 'bg-[#7AC74C] before:content-grass';
                  case "poison":
-                    return './type/poison.svg';
+                    return 'content-poison';
                  case "bug":
-                     return 'url("./type/bug.svg")';
-                // case "dark":
-                //     return 'url("./type/dark.svg")';
-                // case "dragon":
-                //     return 'url("./type/dragon.svg")';
-                // case "electric":
-                //     return 'url("./type/eletric.svg")';
-                // case "fairy":
-                //     return 'url("./type/fairy.svg")';
-                // case "fighting":
-                //     return 'url("./type/fighting.svg")';
-                // case "fire":
-                //     return 'url("./type/fire.svg")';
-                // case "flying":
-                //     return 'url("./type/flying.svg")';
-                // case "ghost":
-                //     return 'url("./type/ghost.svg")';
-                // case "ground":
-                //     return 'url("./type/ground.svg")';
-                // case "ice":
-                //     return 'url("./type/ice.svg")';
-                // case "psychic":
-                //     return 'url("./type/psychic.svg")';
-                // case "normal":
-                //     return 'url("./type/normal.svg")';
-                // case "rock":
-                //     return 'url("./type/rock.svg")';
-                // case "steel":
-                //     return 'url("./type/steel.svg")';
-                // case "water":
-                //     return 'url("./type/water.svg")';
+                     return 'before:content-bug';
+                case "dark":
+                    return 'before:content-dark';
+                case "dragon":
+                    return 'before:content-dargon';
+                case "electric":
+                    return 'before:content-electric';
+                case "fairy":
+                    return ' before:content-fairy';
+                case "fighting":
+                    return 'before:content-fighting';
+                case "fire":
+                    return 'before:content-fire';
+                case "flying":
+                    return 'before:content-flying';
+                case "ghost":
+                    return ' before:content-ghost';
+                case "ground":
+                    return 'before:content-ground';
+                case "ice":
+                    return 'before:content-ice';
+                case "psychic":
+                    return 'before:content-psychic';
+                case "normal":
+                    return 'before:content-normal';
+                case "rock":
+                    return 'before:content-rock';
+                case "steel":
+                    return ' before:content-steel';
+                case "water":
+                    return ' before:content-water';
                 default:
                     return 'ERROR';
             }
@@ -207,31 +207,36 @@ function Example({setpokeData}) {
                  
                         <p className="text-white justify-center text-center text-5xl mt-4 pb-5 ">Pokémon Types</p>
                         
+                        <div className="flex flex-row ">
+                            <ul className=" flex flex-wrap justify-evenly">
                         {datatypes.results?.map((type, index) => (
-                            <ul key={index} className="flex">
-                                <li className={handleTypeImg(type.name)}>
-                                     <p>{type.name}</p>
-                                 </li>
-                                 
-                            </ul>
-                           
+                            
+                            <li key={index} className="cursor-pointer m-3 px-8">
+                            <img 
+                                src={handleTypeImg(type.name)} 
+                                alt={type.name} 
+                                className={`h-15`} 
+                            />
+                            <p className="text-white">{type.name}</p>
+                        </li>
                         ))} 
+                        </ul>
 
-
+                        </div>
                    </div>
                 )}
                    <hr className="w-full h-1.5" />
                     <div className="flex justify-evenly w-full flex-wrap">
                             {clickpokedata.map((pokemon, index) => (
-                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner bg-slate-900 rounded mt-4 mx-3 " >
+                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner nded mt-4 mx-3 " >
                             
                                     <div className=" text-md text-center  rounded-lg  mt-1 mb-1">
                                         <div className="text-white absolute top-0 left-0 w-7 h-8 "><strong>#{pokemon.data.id}</strong></div>
                                         <strong className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.data.name)}</strong>
                                     </div>
                                     <div className="flex justify-center">
-                                        {/* Chnage what small is in tailwind.config */}
-                                        <div className="group: bg-white h-24 w-24 rounded-full border-8 border-slate-800 transition-all group-hover:rounded-none">
+                                        
+                                        <div className="group: 24 rounded-full border-8 border-slate-800 transition-all group-hover:rounded-none">
                                             <div className="h-full flex items-center justify-center">
                                                 <img onClick={(e) => HandleClick(e, index)} 
                                                     className=" hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
