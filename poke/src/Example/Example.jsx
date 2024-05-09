@@ -135,43 +135,43 @@ function Example({setpokeData}) {
         function handleTypeImg(type) {
             switch(type) {
                 case "grass":
-                    return 'url("./type/grass.svg")';
-                case "poison":
-                    return 'url("./type/poison.svg")';
-                case "bug":
-                    return 'url("./type/bug.svg")';
-                case "dark":
-                    return 'url("./type/dark.svg")';
-                case "dragon":
-                    return 'url("./type/dragon.svg")';
-                case "electric":
-                    return 'url("./type/eletric.svg")';
-                case "fairy":
-                    return 'url("./type/fairy.svg")';
-                case "fighting":
-                    return 'url("./type/fighting.svg")';
-                case "fire":
-                    return 'url("./type/fire.svg")';
-                case "flying":
-                    return 'url("./type/flying.svg")';
-                case "ghost":
-                    return 'url("./type/ghost.svg")';
-                case "ground":
-                    return 'url("./type/ground.svg")';
-                case "ice":
-                    return 'url("./type/ice.svg")';
-                case "psychic":
-                    return 'url("./type/psychic.svg")';
-                case "normal":
-                    return 'url("./type/normal.svg")';
-                case "rock":
-                    return 'url("./type/rock.svg")';
-                case "steel":
-                    return 'url("./type/steel.svg")';
-                case "water":
-                    return 'url("./type/water.svg")';
+                    return 'bg-content-grass before:content-grass';
+                 case "poison":
+                    return './type/poison.svg';
+                 case "bug":
+                     return 'url("./type/bug.svg")';
+                // case "dark":
+                //     return 'url("./type/dark.svg")';
+                // case "dragon":
+                //     return 'url("./type/dragon.svg")';
+                // case "electric":
+                //     return 'url("./type/eletric.svg")';
+                // case "fairy":
+                //     return 'url("./type/fairy.svg")';
+                // case "fighting":
+                //     return 'url("./type/fighting.svg")';
+                // case "fire":
+                //     return 'url("./type/fire.svg")';
+                // case "flying":
+                //     return 'url("./type/flying.svg")';
+                // case "ghost":
+                //     return 'url("./type/ghost.svg")';
+                // case "ground":
+                //     return 'url("./type/ground.svg")';
+                // case "ice":
+                //     return 'url("./type/ice.svg")';
+                // case "psychic":
+                //     return 'url("./type/psychic.svg")';
+                // case "normal":
+                //     return 'url("./type/normal.svg")';
+                // case "rock":
+                //     return 'url("./type/rock.svg")';
+                // case "steel":
+                //     return 'url("./type/steel.svg")';
+                // case "water":
+                //     return 'url("./type/water.svg")';
                 default:
-                    return '';
+                    return 'ERROR';
             }
         }
         
@@ -202,21 +202,20 @@ function Example({setpokeData}) {
             {
               
                 <div className=" flex flex-wrap">
-                     {console.log(datatypes.results)}
                 {datatypes && (
                    <div className="">
                  
                         <p className="text-white justify-center text-center text-5xl mt-4 pb-5 ">Pokémon Types</p>
                         
-                        {datatypes.results?.map((type, index) => {
-                            <div key={index} className="">
-                                 {console.log(datatypes)}
-                                {console.log(type.name)}
-                                <img src={handleTypeImg(type.name)} alt={type.name} />
-                                 <p>{type.name}</p>
-                            </div>
+                        {datatypes.results?.map((type, index) => (
+                            <ul key={index} className="flex">
+                                <li className={handleTypeImg(type.name)}>
+                                     <p>{type.name}</p>
+                                 </li>
+                                 
+                            </ul>
                            
-                        })} 
+                        ))} 
 
 
                    </div>
