@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 function Example({setpokeData}) {
     const [kantoPokemon, setKantoPokemon] = useState([]);
     const [clickpokedata, setclickpokedata] = useState([])
+    const [datatypes, setdatatypes] = useState([])
 
     const navigate = useNavigate();
     function capitalizeFirstLetter(string) {
@@ -14,41 +15,41 @@ function Example({setpokeData}) {
     function TypeColor(typename){
         switch(typename){
             case "grass":
-                return "bg-[#7AC74C] uppercase drop-shadow-lg before:content-grass h-min"
+                return "content-grass h-min"
             case "poison":
-                return "bg-[#A33EA1] uppercase drop-shadow-lg before:content-poison h-min"
+                return "content-poison h-min"
             case "fire":
-                return "bg-[#EE8130] uppercase drop-shadow-lg before:content-fire h-min"
+                return "content-fire h-min"
             case "normal":
-                return "bg-[#A8A77A] uppercase drop-shadow-lg before:content-normal h-min"
+                return "content-normal h-min"
             case "water":
-                return "bg-[#6390F0] uppercase drop-shadow-lg before:content-water h-min"
+                return "content-water h-min"
             case "electric":
-                return "bg-[#F7D02C] uppercase drop-shadow-lg before:content-electric h-min"
+                return "content-electric h-min"
             case "ice":
-                 return "bg-[#96D9D6] uppercase drop-shadow-lg before:content-ice h-min"
+                 return "content-ice h-min"
             case "fighting":
-                 return "bg-[#C22E28] uppercase drop-shadow-lg before:content-fighting h-min"
+                 return "content-fighting h-min"
             case "ground":
-                 return "bg-[#E2BF65] uppercase drop-shadow-lg before:content-ground h-min"
+                 return "content-ground h-min"
             case "flying":
-                return "bg-[#A98FF3] uppercase drop-shadow-lg before:content-flying h-min"
+                return "content-flying h-min"
             case "psychic":
-                return "bg-[#F95587] uppercase drop-shadow-lg before:content-psychic h-min"
+                return "content-psychic h-min"
             case "bug":
-                return "bg-[#A6B91A] uppercase drop-shadow-lg before:content-bug h-min"
+                return "content-bug h-min"
             case "rock":
-                return "bg-[#B6A136] uppercase drop-shadow-lg before:content-rock h-min"
+                return "content-rock h-min"
             case "ghost":
-                return "bg-[#735797] uppercase drop-shadow-lg before:content-ghost h-min"
+                return "content-ghost h-min"
             case "dragon":
-                return "bg-[#6F35FC] uppercase drop-shadow-lg before:content-dragon h-min"
+                return "content-dragon h-min"
             case "dark":
-                return "bg-[#705746] uppercase drop-shadow-lg before:content-dark h-min"
+                return "content-dark h-min"
             case "steel":
-                return "bg-[#B7B7CE] uppercase drop-shadow-lg before:content-steel h-min"
+                return "content-steel h-min"
             case "fairy":
-                return "bg-[#D685AD] uppercase drop-shadow-lg before:content-fairy h-min"
+                return "content-fairy h-min"
         }
     }
 
@@ -91,15 +92,24 @@ function Example({setpokeData}) {
         
     }, [kantoPokemon]);
     
-    // function getTypeClassNames(types) {
-    //     if (types.length === 0) {
-    //         return "justify-center px-2 pt-5"
-    //     } else {
-           
-    //         // const classNames = types.map(type => getTypeClassName(type.type.name));
-    //         return "text-center m-1"
-    //     }
-    // }
+    useEffect(() => {
+       const fetchtype = async () => {
+        try{
+            const url = await axios.get(`https://pokeapi.co/api/v2/type`)
+            const res = url.data
+            
+            setdatatypes(res)
+            console.log(res)
+
+
+
+        } catch(error) {
+            "Couldnt Find the" + error
+        }
+        
+        }
+        fetchtype()
+    },[])
    
     const HandleClick = async (e, i) => {
             e.preventDefault();
@@ -121,49 +131,93 @@ function Example({setpokeData}) {
             }
             
             
-        };
-
-        function HandleFilterbtn(){
-            pok
+        }
+        function handleTypeImg(type){
+            switch(type){
+                case "grass":
+                return "content-grass "
+            case "poison":
+                return "content-poison "
+            case "fire":
+                return "content-fire "
+            case "normal":
+                return "content-normal "
+            case "water":
+                return "content-water "
+            case "electric":
+                return "content-electric "
+            case "ice":
+                 return "content-ice "
+            case "fighting":
+                 return "content-fighting "
+            case "ground":
+                 return "content-ground "
+            case "flying":
+                return "content-flying "
+            case "psychic":
+                return "content-psychic "
+            case "bug":
+                return "content-bug "
+            case "rock":
+                return "content-rock "
+            case "ghost":
+                return "content-ghost "
+            case "dragon":
+                return "content-dragon "
+            case "dark":
+                return "content-dark "
+            case "steel":
+                return "content-steel "
+            case "fairy":
+                return "content-fairy "
+            }
         }
 
+   
+
+    
+
+        function handleLowestid(){
+           
+        }
+
+        function handleHighestid(){
+           
+        }
+
+        function handleAZ(){
+           
+        }
+
+        function handleAZ(){
+           
+        }
+
+        
     return (
         <>
             {
               
                 <div className=" flex flex-wrap">
-                    <div className="navbar bg-base-400 rounded-box mb-12">
-                        {/* <div className="flex-1 px-2 lg:flex-none">
-                            <a className="text-lg font-bold text-slate-50 ">daisyUI</a>
-                        </div>  */}
-                        <div className="flex justify-end flex-1 px-2">
-                            <div className="flex items-stretch">
-                                <div className="dropdown dropdown-end">
-                                    <div tabIndex={0} role="button" className="text-4xl btn btn-ghost rounded-btn text-slate-50 ">Filter</div>
-                                    <div tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 h-50 mt-2">
-                                    
-                                        <div className="flex flex-col space-y-4">
-                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                Types
-                                            </button>
-                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                Lowest #
-                                            </button>
-                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                Highest #
-                                            </button>
-                                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                                Types
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                          </div>
-                        </div>
-                    </div>
-                    {/* <div className="lg:bg-red-800 md:bg-blue-800 bg-white  w-full h-96">
+                     {console.log(datatypes.results)}
+                {/* {datatypes && (
+                   <div className="">
+                 
+                        <p className="text-white justify-center text-center text-5xl mt-4 pb-5 ">Pokémon Types</p>
+                        
+                        {datatypes.results.map((type, index) => {
+                            <div key={index} className="">
+                                 {console.log(datatypes)}
+                                {console.log(type.name)}
+                                 <img src={handleTypeImg(type.name)} />
+                            </div>
+                           
+                        })} 
 
-                    </div> */}
+
+                   </div>
+                )} */}
+                   <hr className="w-full h-1.5" />
                     <div className="flex justify-evenly w-full flex-wrap">
                             {clickpokedata.map((pokemon, index) => (
                             <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner bg-slate-900 rounded mt-4 mx-3 " >
