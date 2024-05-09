@@ -132,46 +132,49 @@ function Example({setpokeData}) {
             
             
         }
-        function handleTypeImg(type){
-            switch(type){
+        function handleTypeImg(type) {
+            switch(type) {
                 case "grass":
-                return "content-grass "
-            case "poison":
-                return "content-poison "
-            case "fire":
-                return "content-fire "
-            case "normal":
-                return "content-normal "
-            case "water":
-                return "content-water "
-            case "electric":
-                return "content-electric "
-            case "ice":
-                 return "content-ice "
-            case "fighting":
-                 return "content-fighting "
-            case "ground":
-                 return "content-ground "
-            case "flying":
-                return "content-flying "
-            case "psychic":
-                return "content-psychic "
-            case "bug":
-                return "content-bug "
-            case "rock":
-                return "content-rock "
-            case "ghost":
-                return "content-ghost "
-            case "dragon":
-                return "content-dragon "
-            case "dark":
-                return "content-dark "
-            case "steel":
-                return "content-steel "
-            case "fairy":
-                return "content-fairy "
+                    return 'url("./type/grass.svg")';
+                case "poison":
+                    return 'url("./type/poison.svg")';
+                case "bug":
+                    return 'url("./type/bug.svg")';
+                case "dark":
+                    return 'url("./type/dark.svg")';
+                case "dragon":
+                    return 'url("./type/dragon.svg")';
+                case "electric":
+                    return 'url("./type/eletric.svg")';
+                case "fairy":
+                    return 'url("./type/fairy.svg")';
+                case "fighting":
+                    return 'url("./type/fighting.svg")';
+                case "fire":
+                    return 'url("./type/fire.svg")';
+                case "flying":
+                    return 'url("./type/flying.svg")';
+                case "ghost":
+                    return 'url("./type/ghost.svg")';
+                case "ground":
+                    return 'url("./type/ground.svg")';
+                case "ice":
+                    return 'url("./type/ice.svg")';
+                case "psychic":
+                    return 'url("./type/psychic.svg")';
+                case "normal":
+                    return 'url("./type/normal.svg")';
+                case "rock":
+                    return 'url("./type/rock.svg")';
+                case "steel":
+                    return 'url("./type/steel.svg")';
+                case "water":
+                    return 'url("./type/water.svg")';
+                default:
+                    return '';
             }
         }
+        
 
    
 
@@ -200,23 +203,24 @@ function Example({setpokeData}) {
               
                 <div className=" flex flex-wrap">
                      {console.log(datatypes.results)}
-                {/* {datatypes && (
+                {datatypes && (
                    <div className="">
                  
                         <p className="text-white justify-center text-center text-5xl mt-4 pb-5 ">Pokémon Types</p>
                         
-                        {datatypes.results.map((type, index) => {
+                        {datatypes.results?.map((type, index) => {
                             <div key={index} className="">
                                  {console.log(datatypes)}
                                 {console.log(type.name)}
-                                 <img src={handleTypeImg(type.name)} />
+                                <img src={handleTypeImg(type.name)} alt={type.name} />
+                                 <p>{type.name}</p>
                             </div>
                            
                         })} 
 
 
                    </div>
-                )} */}
+                )}
                    <hr className="w-full h-1.5" />
                     <div className="flex justify-evenly w-full flex-wrap">
                             {clickpokedata.map((pokemon, index) => (
