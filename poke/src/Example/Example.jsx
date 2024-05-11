@@ -135,41 +135,41 @@ function Example({setpokeData}) {
         function handleTypeImg(type) {
             switch(type) {
                 case "grass":
-                    return 'bg-[#7AC74C] before:content-grass';
-                 case "poison":
-                    return 'content-poison';
-                 case "bug":
-                     return 'before:content-bug';
+                    return 'content-grass'
+                case "poison":
+                    return 'content-poison'
+                case "bug":
+                    return 'content-bug'
                 case "dark":
-                    return 'before:content-dark';
+                    return 'content-dark'
                 case "dragon":
-                    return 'before:content-dargon';
+                    return 'content-dragon'
                 case "electric":
-                    return 'before:content-electric';
+                    return 'content-electric'
                 case "fairy":
-                    return ' before:content-fairy';
+                    return 'content-fairy'
                 case "fighting":
-                    return 'before:content-fighting';
+                    return 'content-fighting '
                 case "fire":
-                    return 'before:content-fire';
+                    return 'content-fire'
                 case "flying":
-                    return 'before:content-flying';
+                    return 'content-flying'
                 case "ghost":
-                    return ' before:content-ghost';
+                    return 'content-ghost'
                 case "ground":
-                    return 'before:content-ground';
+                    return 'content-ground'
                 case "ice":
-                    return 'before:content-ice';
+                    return 'content-ice'
                 case "psychic":
-                    return 'before:content-psychic';
+                    return 'content-psychic'
                 case "normal":
-                    return 'before:content-normal';
+                    return 'content-normal'
                 case "rock":
-                    return 'before:content-rock';
+                    return 'content-rock'
                 case "steel":
-                    return ' before:content-steel';
+                    return 'content-stell'
                 case "water":
-                    return ' before:content-water';
+                    return 'content-water'
                 default:
                     return 'ERROR';
             }
@@ -200,43 +200,36 @@ function Example({setpokeData}) {
     return (
         <>
             {
-              
-                <div className=" flex flex-wrap">
-                {datatypes && (
-                   <div className="">
-                 
-                        <p className="text-white justify-center text-center text-5xl mt-4 pb-5 ">Pokémon Types</p>
+            <div className="">
+              {datatypes && (
+                <div className="">
+                     <p className="text-white text-5xl mt-4 pb-5 text-center font-bold">Pokémon Types</p>
+                     <div className="flex flex-row flex-wrap justify-evenly">
+                     {datatypes.results?.map((type, index) => (
+                         <div key={index} className="bg-slate-700 px-4 py-3 my-3">
+                             <img className={`h-16  cursor-pointer ${handleTypeImg(type.name)}`} alt={type.name}/>
+                                  <p className="text-white text-center">{capitalizeFirstLetter(type.name)}</p>
+                         </div>
                         
-                        <div className="flex flex-row ">
-                            <ul className=" flex flex-wrap justify-evenly">
-                        {datatypes.results?.map((type, index) => (
-                            
-                            <li key={index} className="cursor-pointer m-3 px-8">
-                            <img 
-                                src={handleTypeImg(type.name)} 
-                                alt={type.name} 
-                                className={`h-15`} 
-                            />
-                            <p className="text-white">{type.name}</p>
-                        </li>
-                        ))} 
-                        </ul>
+                     ))} 
+                    </div>
 
-                        </div>
-                   </div>
-                )}
+                </div>
+             )}
+                <div className=" flex flex-wrap">
+                
                    <hr className="w-full h-1.5" />
                     <div className="flex justify-evenly w-full flex-wrap">
                             {clickpokedata.map((pokemon, index) => (
-                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner nded mt-4 mx-3 " >
+                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner bg-slate-900 rounded mt-4 mx-3 " >
                             
                                     <div className=" text-md text-center  rounded-lg  mt-1 mb-1">
                                         <div className="text-white absolute top-0 left-0 w-7 h-8 "><strong>#{pokemon.data.id}</strong></div>
                                         <strong className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.data.name)}</strong>
                                     </div>
                                     <div className="flex justify-center">
-                                        
-                                        <div className="group: 24 rounded-full border-8 border-slate-800 transition-all group-hover:rounded-none">
+                                       
+                                        <div className="group: bg-white h-24 w-24 rounded-full border-8 border-slate-800 transition-all group-hover:rounded-none">
                                             <div className="h-full flex items-center justify-center">
                                                 <img onClick={(e) => HandleClick(e, index)} 
                                                     className=" hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
@@ -266,6 +259,7 @@ function Example({setpokeData}) {
                             {/* this the divi added  */}
                     </div>
                 </div>
+            </div>
                 
             }
         </>
