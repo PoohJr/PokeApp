@@ -21,7 +21,7 @@ export default {
         'bug' : 'url("./type/bug.svg")',
         'dark' : 'url("./type/dark.svg")',
         'dragon' : 'url("./type/dragon.svg")',
-        'eletric' : 'url("./type/eletric.svg")',
+        'electric' : 'url("./type/electric.svg")',
         'fairy' : 'url("./type/fairy.svg")',
         'fighting' : 'url("./type/fighting.svg")',
         'fire' : 'url("./type/fire.svg")',
