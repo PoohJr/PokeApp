@@ -21,7 +21,7 @@ function Example({setpokeData}) {
                 const allPoke = res.data.results;
                 setKantoPokemon(allPoke);
             } catch (error) {
-                console.error(error + " This is the error");
+                console.error(error + " is the error");
             }
         };
     
@@ -33,23 +33,25 @@ function Example({setpokeData}) {
             try {
                 const fetchedPokemon = await Promise.all(
                     kantoPokemon.map(async (pokemon) => {
-                        const response = await axios.get(pokemon.url);  
-                         
+                        const response = await axios.get(pokemon.url);
                         return {data: response.data, url: pokemon.url};
                     })
                 );
+                
                 setclickpokedata(fetchedPokemon)
-                console.log(fetchedPokemon)
-               
+                
+             
 
-            
             } catch (error) {
-                console.error(error + " that is the error");
-                return []
+                console.error(error + " is the error");
+                return null;
             }
         }
 
         fetchPokemonData();
+       
+        
+                
         
     }, [kantoPokemon]);
     
@@ -77,10 +79,11 @@ function Example({setpokeData}) {
             try {
            if (clickpokedata) {
                 const pokeid = clickpokedata[i].data.id
+                console.log(pokeid)
                 const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokeid}`;
                 
                 const res = await axios.get(apiUrl);
-                // console.log(res)
+                console.log(res)
                 if (res.status === 200) {
                     setpokeData(res.data);
                     navigate("./PokemonData", {state: {pokedata: res.data} });
@@ -173,7 +176,7 @@ function Example({setpokeData}) {
                      {datatypes.results?.slice(0,19).map((type, index) => (
                          <div key={index} className="bg-slate-700 px-10 py-3 my-3">
                              <img className={`h-16  cursor-pointer ${handleTypeImg(type.name)}`} alt={type.name}/>
-                                  <p className="text-white text-center">{capitalizeFirstLetter(type.name)}</p>
+                                  <p className="text-white text-center pt-1">{capitalizeFirstLetter(type.name)}</p>
                          </div>
                         
                      ))} 
