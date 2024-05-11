@@ -185,6 +185,7 @@ function Example({setpokeData}) {
                 
                    <hr className="w-full h-1.5" />
                     <div className="flex justify-evenly w-full flex-wrap">
+                        {console.log(clickpokedata)}
                             {clickpokedata.map((pokemon, index) => (
                             <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner bg-slate-900 rounded mt-4 mx-3 " >
                             
