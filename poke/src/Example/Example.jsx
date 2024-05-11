@@ -12,46 +12,7 @@ function Example({setpokeData}) {
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
-    // function TypeColor(typename){
-    //     switch(typename){
-    //         case "grass":
-    //             return "content-grass h-min"
-    //         case "poison":
-    //             return "content-poison h-min"
-    //         case "fire":
-    //             return "content-fire h-min"
-    //         case "normal":
-    //             return "content-normal h-min"
-    //         case "water":
-    //             return "content-water h-min"
-    //         case "electric":
-    //             return "content-electric h-min"
-    //         case "ice":
-    //              return "content-ice h-min"
-    //         case "fighting":
-    //              return "content-fighting h-min"
-    //         case "ground":
-    //              return "content-ground h-min"
-    //         case "flying":
-    //             return "content-flying h-min"
-    //         case "psychic":
-    //             return "content-psychic h-min"
-    //         case "bug":
-    //             return "content-bug h-min"
-    //         case "rock":
-    //             return "content-rock h-min"
-    //         case "ghost":
-    //             return "content-ghost h-min"
-    //         case "dragon":
-    //             return "content-dragon h-min"
-    //         case "dark":
-    //             return "content-dark h-min"
-    //         case "steel":
-    //             return "content-steel h-min"
-    //         case "fairy":
-    //             return "content-fairy h-min"
-    //     }
-    // }
+
 
     useEffect(() => {
         const PokeArr = async () => {
@@ -170,6 +131,10 @@ function Example({setpokeData}) {
                     return 'content-steel'
                 case "water":
                     return 'content-water'
+                case "stellar": 
+                    return "content-stellar"
+                case "unknown":
+                    return""
                 default:
                     return 'ERROR';
             }
@@ -203,9 +168,9 @@ function Example({setpokeData}) {
             <div className="">
               {datatypes && (
                 <div className="">
-                     <p className="text-white text-5xl mt-4 pb-5 text-center font-bold">Pokémon Types</p>
+                     <p className="text-white text-5xl mt-10 pb-5 text-center font-bold">Pokémon Types</p>
                      <div className="flex flex-row flex-wrap justify-evenly">
-                     {datatypes.results?.map((type, index) => (
+                     {datatypes.results?.slice(0,19).map((type, index) => (
                          <div key={index} className="bg-slate-700 px-10 py-3 my-3">
                              <img className={`h-16  cursor-pointer ${handleTypeImg(type.name)}`} alt={type.name}/>
                                   <p className="text-white text-center">{capitalizeFirstLetter(type.name)}</p>

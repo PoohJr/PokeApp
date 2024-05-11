@@ -34,6 +34,7 @@ export default {
         'rock' : 'url("./type/rock.svg")',
         'steel' : 'url("./type/steel.svg")',
         'water' : 'url("./type/water.svg")',
+        'stellar': 'url("./type/stellar.svg")',
         }
       },
     
