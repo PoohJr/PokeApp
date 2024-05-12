@@ -288,9 +288,6 @@ function PokemonData() {
         }
     }
 
-    // function capitalizeAndColorizeType(string) {
-    //     return HandletypeColor(capitalizeFirstLetter(string));
-    // }
 
     function TypeImg(type) {
         switch(type) {
