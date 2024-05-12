@@ -62,7 +62,7 @@ function Example({setpokeData}) {
             const res = url.data
             
             setdatatypes(res)
-            console.log(res)
+            // console.log(res)
 
 
 
@@ -96,6 +96,11 @@ function Example({setpokeData}) {
             
             
         }
+
+        const HandleTypeClick = async (index, e) =>{
+            navigate(`./${capitalizeFirstLetter(index)}`)
+           }
+
         function handleTypeImg(type) {
             switch(type) {
                 case "grass":
@@ -144,10 +149,6 @@ function Example({setpokeData}) {
         }
         
 
-   
-
-    
-
         function handleLowestid(){
            
         }
@@ -174,8 +175,8 @@ function Example({setpokeData}) {
                      <p className="text-white text-5xl mt-10 pb-5 text-center font-bold">Pokémon Types</p>
                      <div className="flex flex-row flex-wrap justify-evenly">
                      {datatypes.results?.slice(0,19).map((type, index) => (
-                         <div key={index} className="bg-slate-700 px-10 py-3 my-3">
-                             <img className={`h-16  cursor-pointer ${handleTypeImg(type.name)}`} alt={type.name}/>
+                         <div key={index}  className="bg-slate-900 px-10 py-3 my-3">
+                             <img onClick={(e) => HandleTypeClick(type.name)}  className={`transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125 h-16 cursor-pointer ${handleTypeImg(type.name)}`} alt={type.name}/>
                                   <p className="text-white text-center pt-1">{capitalizeFirstLetter(type.name)}</p>
                          </div>
                         
@@ -188,7 +189,6 @@ function Example({setpokeData}) {
                 
                    <hr className="w-full h-1.5" />
                     <div className="flex justify-evenly w-full flex-wrap">
-                        {console.log(clickpokedata)}
                             {clickpokedata.map((pokemon, index) => (
                             <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner bg-slate-900 rounded mt-4 mx-3 " >
                             
