@@ -467,7 +467,6 @@ function PokemonData() {
                                         <thead className="sticky top-0 z-10 ">
                                             <tr className="">
                                                 <th className="px-4 bg-[#D9CD45] text-white">Move</th>
-                                                {/* <th>    hello</th> */}
                                                 <th className="px-4 bg-[#D94575] text-white">Type</th>
                                                 <th className="px-4 bg-[#46B9DA] text-white">Accuracy</th>
                                                 <th className="px-4 bg-[#EE5E38] text-white">Power</th>
