@@ -43,7 +43,7 @@ function Bug (){
 <div className=" h-screen bg-contain bg-pokemon-rep bg-repeat" >
     {typeinfo &&(
     
-        <div className=" px-8">
+        <div className=" p-8 ">
             <div className="">
                
                 <div className="flex justify-center">
@@ -66,9 +66,9 @@ function Bug (){
                 </thead>
                 <tbody>
                     {typeinfo.damage_relations.double_damage_from.map((e, index) => (
-                        <tr key={index} className="flex px-2">
+                        <tr key={index} className="flex flex-wrap px-2">
                         <td className={`flex-col px-2 h-20 cursor-pointer content-${e.name}`}>{e.name}</td>
-                        <td className="flex flex-wrap">
+                        <td className="">
                             {typeinfo.damage_relations.double_damage_to.map((f, idx) => (
                             <div key={idx} className={`px-2 h-20 cursor-pointer content-${f.name}`}>
                                 {f.name}
