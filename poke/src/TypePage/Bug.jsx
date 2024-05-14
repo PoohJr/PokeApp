@@ -15,6 +15,11 @@ function Bug (){
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
+    // this is for generation url
+    useEffect(() => {
+        
+    },[])
+
     useEffect(() =>  {
         const FetchType =  async() =>{
         try{
@@ -40,7 +45,7 @@ function Bug (){
     return(<>
 
     {console.log(typeinfo)}
-<div className=" h-screen bg-contain bg-pokemon-rep bg-repeat" >
+<div className=" h-full bg-contain bg-pokemon-rep bg-repeat" >
     {typeinfo &&(
     
         <div className=" p-8 ">
@@ -51,11 +56,13 @@ function Bug (){
                     <div className= " bg-white h-52 border-black border-2 rounded-2xl ">
                         <img className={`content-${typeinfo.name} h-40 p-5`}  alt="Pokemon Img" />
                         <p className="text-center font-bold text-3xl">{capitalizeFirstLetter(typeinfo.name)}</p>
+                        {/* do something with this  */}
+                        <p>{typeinfo.move_damage_class.name}</p>
                     </div>
                 </div>
             </div>
 
-            <table className="table-auto bg-white border-black border-2">
+            <table className="table-auto bg-white border-black border-2 mt-5">
                 <thead className="sticky top-0 z-10">
                     <tr className="flex">
                         <th className="px-4"> Weak to</th>
@@ -81,7 +88,8 @@ function Bug (){
                 </tbody>
 
             </table>
-            <div className="flex pt-8 justify-between">
+                   
+            {/* <div className="flex pt-8 justify-between">
                
                 <div className="flex flex-col border-2 border-black h-[500px] rounded-2xl bg-white p-3">
                     <div className="flex flex-row ">
@@ -156,9 +164,27 @@ function Bug (){
                     )}
                     
                 </div>
+            </div> */}
+
+            <div className="">
+                <p className="mt-8 text-center">Bug Pokemons</p>
+                {typeinfo.pokemon.map((poke, i) => (
+                   
+                    <div key={i} className="">
+                        <p>{capitalizeFirstLetter(poke.pokemon.name)}</p>
+                    </div>
+                ))}
             </div>
 
-            
+            <div className="">
+                <p className="mt-8 text-center">Bug Moves Pokemons</p>
+                {typeinfo.moves.map((move, idx) => (
+                   
+                    <div key={idx} className="">
+                        <p>{capitalizeFirstLetter(move.name)}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     )}
 </div>
