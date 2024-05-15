@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 function Bug (){
     const [typeinfo, settypeinfo] = useState(null)
     const [newdata, setnewdata] = useState([])
+    const [movedata, setmovedata] = useState([])
     // const history = useHistory();
 
     // const HandleTypeClick = async (index, e) =>{
@@ -39,7 +40,6 @@ function Bug (){
                 
                     const fetchedpokemon = await Promise.all(
                         typeinfo.pokemon.map(async (poke) => {
-                            console.log(poke)
                             const res = await axios.get(poke.pokemon.url);
                             return { data: res.data };
                         })
@@ -51,6 +51,27 @@ function Bug (){
         };
     
         fetchurl();
+        
+       
+    }, [typeinfo]);
+
+    useEffect(() => {
+        const fetchMoveurl = async () => {
+            try { 
+                
+                    const fetchedpokemon = await Promise.all(
+                        typeinfo.moves.map(async (move) => {
+                            const res = await axios.get(move.url);
+                            return { data: res.data };
+                        })
+                    );
+                    setmovedata(fetchedpokemon);
+            } catch (error) {
+                console.error(error + " is the error");
+            }
+        };
+    
+        fetchMoveurl();
         
        
     }, [typeinfo]);
@@ -186,33 +207,44 @@ function Bug (){
                 </div>
             </div> */}
 
-        {typeinfo && (
-           
-            <div className="mt-8 bg-white p-3 border-black border-4 rounded-2xl">
-                <p className="text-center">Bug Pokemons</p>
-                <div className=" flex flex-wrap justify-evenly">
-                    {typeinfo.pokemon.map((poke, i) => (
-                        <div key={i} className="">
-                            <div className="p-3">
-                                {/* this logs idk how to fix yet  */}
-                                {console.log(newdata)}
-                                {/* <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${newdata[i].data.id}.png`}></img> */}
-                                <p className="">{capitalizeFirstLetter(poke.pokemon.name)}</p>
-                            </div>
-                        </div>
-                    ))}
+{typeinfo && (
+    <div className="mt-8 bg-white p-3 border-black border-8 rounded-2xl">
+        <p className="text-center font-extrabold mb-10 text-5xl">Bug Pokemons</p>
+        <div className="flex flex-wrap justify-evenly">
+            {typeinfo.pokemon.map((poke, i) => (
+                <div key={i} className="bg-slate-900 m-2 rounded-3xl">
+                    <div className="p-3 m-5 bg-slate-700 rounded-3xl border-white border-4"> 
+                        {newdata.length > 0 && newdata[i] && newdata[i].data && (
+                            <img className="h-36 cursor-pointer" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${newdata[i].data.id}.png`} alt={`Sprite of ${capitalizeFirstLetter(poke.pokemon.name)}`} />
+                        )}
+                        {!newdata.length || !newdata[i] || !newdata[i].data && (
+                            <img src='./img-svg/noimg.gif' alt="No Image Available" /> 
+                        )}
+                        <p className="font-bold text-white text-center">{capitalizeFirstLetter(poke.pokemon.name)}</p>
+                    </div>
                 </div>
-            </div>
-            )}
+            ))}
+        </div>
+    </div>
+)}
+
             <div className="mt-8 bg-white p-3 border-black border-4 rounded-2xl">
-                <p className="text-center">Bug Moves Pokemons</p>
+                <p className="text-center font-extrabold mb-10 text-5xl">Bug Moves Pokemons</p>
                 <div className=" border-4 border-blue-300">
                     <table>
                         <thead>
-                            <th>Move</th>
+                            <tr>
+                                <th className="px-4 bg-[#D9CD45] text-white">Move</th>
+                                <th className="px-4 bg-[#D94575] text-white">Des</th>
+                                <th className="px-4 bg-[#46B9DA] text-white">Accuracy</th>
+                                <th className="px-4 bg-[#EE5E38] text-white">Power</th>                                                <th className="px-4 bg-[#E9C4D4] text-white">PP</th> 
+                            </tr>
                         </thead>
+                        {console.log(movedata)}
                     {typeinfo.moves.map((move, idx) => (
-                    
+                        // {movedata.length > 0 && (
+
+                        // )}
                     <div key={idx} className="bg-blue-500 ">
                         <p className=" text-white">{capitalizeFirstLetter(move.name)}</p>
                     </div>
