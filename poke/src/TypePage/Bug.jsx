@@ -21,12 +21,12 @@ function Bug (){
             try {
                 const fetchedpokemon = await Promise.all(
                     typeinfo.pokemon.map(async (poke) => {
-                        const res = await axios.get(poke.url);
+                        const res = await axios.get(poke.pokemon.url);
                         return { data: res.data };
                     })
                 );
                 setnewdata(fetchedpokemon);
-                console.log(fetchedpokemon)
+                
             } catch (error) {
                 console.error(error + " is the error");
             }
@@ -34,7 +34,7 @@ function Bug (){
     
         fetchurl();
        
-    }, [typeinfo.pokemon]);
+    }, [typeinfo]);
     
 
     useEffect(() =>  {
@@ -61,7 +61,7 @@ function Bug (){
 
     return(<>
 
-    {console.log(typeinfo)}
+    
 <div className=" h-full bg-contain bg-pokemon-rep bg-repeat" >
     {typeinfo &&(
     
@@ -80,7 +80,7 @@ function Bug (){
             </div>
 
             <table className="table-auto bg-white border-black border-2 mt-5">
-                <thead className="sticky top-0 z-10">
+                <thead className="">
                     <tr className="flex">
                         <th className="px-4"> Weak to</th>
                         <th className="px-4"> Strong Against</th>
@@ -185,26 +185,39 @@ function Bug (){
         {typeinfo && (
            
             <div className="mt-8 bg-white p-3 border-black border-4 rounded-2xl">
-                <p className="mt-8 text-center">Bug Pokemons</p>
-                {typeinfo.pokemon.map((poke, i) => (
-                   
-                    <div key={i} className="">
-                        <p>{capitalizeFirstLetter(poke.pokemon.name)}</p>
-                    </div>
-                ))}
+                <p className="text-center">Bug Pokemons</p>
+                <div className=" flex flex-wrap justify-evenly">
+                    {typeinfo.pokemon.map((poke, i) => (
+                    
+                        <div key={i} className="">
+                            <div className="p-3">
+                                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${newdata[i].data.id}.png`}></img>
+                                <p className="">{capitalizeFirstLetter(poke.pokemon.name)}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
             )}
         {newdata && (
             console.log(newdata)
         )}
             <div className="mt-8 bg-white p-3 border-black border-4 rounded-2xl">
-                <p className="mt-8 text-center">Bug Moves Pokemons</p>
-                {typeinfo.moves.map((move, idx) => (
-                   
-                    <div key={idx} className="">
-                        <p>{capitalizeFirstLetter(move.name)}</p>
+                <p className="text-center">Bug Moves Pokemons</p>
+                <div className=" border-4 border-blue-300">
+                    <table>
+                        <thead>
+                            <th>Move</th>
+                        </thead>
+                    {typeinfo.moves.map((move, idx) => (
+                    
+                    <div key={idx} className="bg-blue-500 ">
+                        <p className=" text-white">{capitalizeFirstLetter(move.name)}</p>
                     </div>
                 ))}
+                    </table>
+                    
+                </div>
             </div>
         </div>
     )}
