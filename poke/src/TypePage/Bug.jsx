@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 function Bug (){
     const [typeinfo, settypeinfo] = useState(null)
-
+    const [newdata, setnewdata] = useState([])
     // const history = useHistory();
 
     // const HandleTypeClick = async (index, e) =>{
@@ -17,8 +17,25 @@ function Bug (){
 
     // this is for generation url
     useEffect(() => {
-        
-    },[])
+        const fetchurl = async () => {
+            try {
+                const fetchedpokemon = await Promise.all(
+                    typeinfo.pokemon.map(async (poke) => {
+                        const res = await axios.get(poke.url);
+                        return { data: res.data };
+                    })
+                );
+                setnewdata(fetchedpokemon);
+                console.log(fetchedpokemon)
+            } catch (error) {
+                console.error(error + " is the error");
+            }
+        };
+    
+        fetchurl();
+       
+    }, [typeinfo.pokemon]);
+    
 
     useEffect(() =>  {
         const FetchType =  async() =>{
@@ -165,8 +182,9 @@ function Bug (){
                     
                 </div>
             </div> */}
-
-            <div className="">
+        {typeinfo && (
+           
+            <div className="mt-8 bg-white p-3 border-black border-4 rounded-2xl">
                 <p className="mt-8 text-center">Bug Pokemons</p>
                 {typeinfo.pokemon.map((poke, i) => (
                    
@@ -175,8 +193,11 @@ function Bug (){
                     </div>
                 ))}
             </div>
-
-            <div className="">
+            )}
+        {newdata && (
+            console.log(newdata)
+        )}
+            <div className="mt-8 bg-white p-3 border-black border-4 rounded-2xl">
                 <p className="mt-8 text-center">Bug Moves Pokemons</p>
                 {typeinfo.moves.map((move, idx) => (
                    
