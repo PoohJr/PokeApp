@@ -15,28 +15,6 @@ function Bug (){
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    // this is for generation url
-    useEffect(() => {
-        const fetchurl = async () => {
-            try {
-                const fetchedpokemon = await Promise.all(
-                    typeinfo.pokemon.map(async (poke) => {
-                        const res = await axios.get(poke.pokemon.url);
-                        return { data: res.data };
-                    })
-                );
-                setnewdata(fetchedpokemon);
-                
-            } catch (error) {
-                console.error(error + " is the error");
-            }
-        };
-    
-        fetchurl();
-       
-    }, [typeinfo]);
-    
-
     useEffect(() =>  {
         const FetchType =  async() =>{
         try{
@@ -52,9 +30,34 @@ function Bug (){
             }
         }
         FetchType()
-
-
     },[])
+
+    // this is for generation url
+    useEffect(() => {
+        const fetchurl = async () => {
+            try { 
+                
+                    const fetchedpokemon = await Promise.all(
+                        typeinfo.pokemon.map(async (poke) => {
+                            console.log(poke)
+                            const res = await axios.get(poke.pokemon.url);
+                            return { data: res.data };
+                        })
+                    );
+                    setnewdata(fetchedpokemon);
+            } catch (error) {
+                console.error(error + " is the error");
+            }
+        };
+    
+        fetchurl();
+        
+       
+    }, [typeinfo]);
+    
+    
+
+
 
 
 
@@ -182,16 +185,18 @@ function Bug (){
                     
                 </div>
             </div> */}
+
         {typeinfo && (
            
             <div className="mt-8 bg-white p-3 border-black border-4 rounded-2xl">
                 <p className="text-center">Bug Pokemons</p>
                 <div className=" flex flex-wrap justify-evenly">
                     {typeinfo.pokemon.map((poke, i) => (
-                    
                         <div key={i} className="">
                             <div className="p-3">
-                                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${newdata[i].data.id}.png`}></img>
+                                {/* this logs idk how to fix yet  */}
+                                {console.log(newdata)}
+                                {/* <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${newdata[i].data.id}.png`}></img> */}
                                 <p className="">{capitalizeFirstLetter(poke.pokemon.name)}</p>
                             </div>
                         </div>
@@ -199,9 +204,6 @@ function Bug (){
                 </div>
             </div>
             )}
-        {newdata && (
-            console.log(newdata)
-        )}
             <div className="mt-8 bg-white p-3 border-black border-4 rounded-2xl">
                 <p className="text-center">Bug Moves Pokemons</p>
                 <div className=" border-4 border-blue-300">
