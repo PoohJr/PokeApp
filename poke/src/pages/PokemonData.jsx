@@ -364,7 +364,7 @@ function PokemonData() {
                            
 
                                 <div className="  mt-4 w-fit mr-auto ml-auto">
-                                    <div className=" h-full  bg-slate-800 bo rounded-3xl border-8 border-red-600 ">
+                                    <div className=" h-full mt-[-25px] bg-slate-800 bo rounded-3xl border-8 border-red-600 ">
                                         <img className=" h-96 animate-bounce  " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
                                     </div>
                                 </div>

@@ -232,7 +232,7 @@ function Bug (){
                         {!newdata.length || !newdata[i] || !newdata[i].data && (
                             <img src='./img-svg/noimg.gif' alt="No Image Available" /> 
                         )}
-                        <p className="font-bold text-white text-center">{capitalizeFirstLetter(poke.pokemon.name)}</p>
+                        <p className="mt-[-20px] font-bold text-white text-center">{capitalizeFirstLetter(poke.pokemon.name)}</p>
                     </div>
                 </div>
             ))}
@@ -240,28 +240,28 @@ function Bug (){
     </div>
 )}
 
-            <div className="mt-8 bg-white p-3 border-black border-4 rounded-2xl">
+            <div className="mt-8 bg-white p-3 border-black border-8 rounded-2xl">
                 <p className="text-center font-extrabold mb-10 text-5xl">Bug Moves Pokemons</p>
-                <div className=" border-4 border-blue-300">
-                    <table>
-                        <thead>
+                <div className=" border-8 border-black rounded-xl sm:overflow-y-auto h-[400px]">
+                    <table className="rounded-2xl ">
+                        <thead className="rounded-2xl sticky top-0">
                             <tr className="">
                                 <th className="px-4 bg-[#D9CD45] text-white">Move</th>
-                                <th className="px-4 w-40 bg-[#D94575] text-white">Des</th>
+                                <th className="px-4 w-40 bg-[#D94575] text-white">Description</th>
                                 <th className="px-4 bg-[#46B9DA] text-white">Accuracy</th>
                                 <th className="px-4 bg-[#EE5E38] text-white">Power</th> 
                                 {/* chnage color of last */}
-                                <th className="px-4 bg-[#EE5E38] text-white">Damage Class</th>                                              
+                                <th className="px-4 bg-[#96be25] text-white">Damage Class</th>                                              
                             </tr>
                         </thead>
 
                {console.log(movedata)}
                 {movedata.map((data, i) => (
                      <tr className="border-b-2" key={i}>
-                        <td className="text-center ">{capitalizeFirstLetter(data.data.name)}</td>
+                        <td className="text-center font-semibold">{capitalizeFirstLetter(data.data.name)}</td>
                         {englishText(data)}
                         <td className=" text-center">{data.data.accuracy || 0}</td>
-                        <td className="text-center">{data.data.power || 0}</td>
+                        <td className="text-center ">{data.data.power || 0}</td>
                         <td className="text-center">{capitalizeFirstLetter(data.data.damage_class.name)}</td>
 
                         {/* {console.log(data.data.flavor_text_entries)} */}
