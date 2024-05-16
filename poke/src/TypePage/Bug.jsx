@@ -16,14 +16,15 @@ function Bug (){
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    function englishText(i) {
-        const en = "en"
-        i.find(en)
+    // make useeffct to find the english language 
+    function englishText(movedata) {
+        const name = "en";
+        const englishEntry = movedata.data.flavor_text_entries.find(entry => entry.language.name === name);
+        return <td className="text-center">{englishEntry ? englishEntry.flavor_text : "English text not found"}</td>;
     }
-// make useeffct to find the english language 
-    useEffect(() => {
+    
 
-    },[movedata])
+
 
     useEffect(() =>  {
         const FetchType =  async() =>{
@@ -216,8 +217,10 @@ function Bug (){
                 </div>
             </div> */}
 
+<div className="">
 {typeinfo && (
-    <div className="mt-8 bg-white p-3 border-black border-8 rounded-2xl">
+    
+    <div className="mt-8 sm:overflow-y-auto bg-white p-3 border-black border-8 rounded-2xl sm:w-[600px] sm:px-auto lg:w-[600px] sm:h-[1100px]">
         <p className="text-center font-extrabold mb-10 text-5xl">Bug Pokemons</p>
         <div className="flex flex-wrap justify-evenly">
             {typeinfo.pokemon.map((poke, i) => (
@@ -251,29 +254,16 @@ function Bug (){
                                 <th className="px-4 bg-[#EE5E38] text-white">Damage Class</th>                                              
                             </tr>
                         </thead>
-                        
-                     
-                    {/* {typeinfo.moves.map((move, idx) => (  
-                    <tr key={idx} className="bg-blue-500 ">
-                        
-                        <td className=" text-white">{capitalizeFirstLetter(move.name)}</td>
-                            {movedata.length > 0 && movedata[idx] && movedata[idx].data && (
-                            <>
-                                <td className="" >{movedata[idx].data.flavor_text_entries[idx]}</td>
-                                <td> {movedata[idx].data.accuracy}</td>
 
-                            </>
-                        )}
-                        
-                    </tr>
-                     
-                ))} */} 
                {console.log(movedata)}
                 {movedata.map((data, i) => (
-                     <tr key={i}>
-                        <td className="text-center">{capitalizeFirstLetter(data.data.name)}</td>
-                        <td className=""> {console.log(data.data.flavor_text_entries)}</td>
+                     <tr className="border-b-2" key={i}>
+                        <td className="text-center ">{capitalizeFirstLetter(data.data.name)}</td>
+                        {englishText(data)}
                         <td className=" text-center">{data.data.accuracy || 0}</td>
+                        <td className="text-center">{data.data.power || 0}</td>
+                        <td className="text-center">{capitalizeFirstLetter(data.data.damage_class.name)}</td>
+
                         {/* {console.log(data.data.flavor_text_entries)} */}
                         
                     </tr>
@@ -286,6 +276,7 @@ function Bug (){
                 </div>
             </div>
         </div>
+    </div>
     )}
 </div>
         </>)
