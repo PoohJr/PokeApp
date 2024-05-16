@@ -16,6 +16,15 @@ function Bug (){
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
+    function englishText(i) {
+        const en = "en"
+        i.find(en)
+    }
+// make useeffct to find the english language 
+    useEffect(() => {
+
+    },[movedata])
+
     useEffect(() =>  {
         const FetchType =  async() =>{
         try{
@@ -233,11 +242,13 @@ function Bug (){
                 <div className=" border-4 border-blue-300">
                     <table>
                         <thead>
-                            <tr>
+                            <tr className="">
                                 <th className="px-4 bg-[#D9CD45] text-white">Move</th>
-                                <th className="px-4 bg-[#D94575] text-white">Des</th>
+                                <th className="px-4 w-40 bg-[#D94575] text-white">Des</th>
                                 <th className="px-4 bg-[#46B9DA] text-white">Accuracy</th>
-                                <th className="px-4 bg-[#EE5E38] text-white">Power</th>                                                <th className="px-4 bg-[#E9C4D4] text-white">PP</th> 
+                                <th className="px-4 bg-[#EE5E38] text-white">Power</th> 
+                                {/* chnage color of last */}
+                                <th className="px-4 bg-[#EE5E38] text-white">Damage Class</th>                                              
                             </tr>
                         </thead>
                         
@@ -260,8 +271,11 @@ function Bug (){
                {console.log(movedata)}
                 {movedata.map((data, i) => (
                      <tr key={i}>
-                        <td>{capitalizeFirstLetter(data.data.name)}</td>
-                        {/* <td>{data.data.flavor_text_entries[i]}</td> */}
+                        <td className="text-center">{capitalizeFirstLetter(data.data.name)}</td>
+                        <td className=""> {console.log(data.data.flavor_text_entries)}</td>
+                        <td className=" text-center">{data.data.accuracy || 0}</td>
+                        {/* {console.log(data.data.flavor_text_entries)} */}
+                        
                     </tr>
                 ))}
                 
