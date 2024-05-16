@@ -24,7 +24,7 @@ function Bug (){
     }
     
 
-
+console.log(typeinfo)
 
     useEffect(() =>  {
         const FetchType =  async() =>{
@@ -112,33 +112,45 @@ function Bug (){
                     </div>
                 </div>
             </div>
-
+            
+        <div className="">
             <table className="table-auto bg-white border-black border-2 mt-5">
                 <thead className="">
                     <tr className="flex">
                         <th className="px-4"> Weak to</th>
                         <th className="px-4"> Strong Against</th>
-                        <th className="px-4"> Weak to</th>
-                        <th className="px-4"> Weak to</th>
+                        <th className="px-4">Half Damg to</th>
+                        <th className="px-4"> Half Damg From</th>
                     </tr>
                 </thead>
                 <tbody>
+                
                     {typeinfo.damage_relations.double_damage_from.map((e, index) => (
-                        <tr key={index} className="flex flex-wrap px-2">
-                        <td className={`flex-col px-2 h-20 cursor-pointer content-${e.name}`}>{e.name}</td>
-                        <td className="">
-                            {typeinfo.damage_relations.double_damage_to.map((f, idx) => (
-                            <div key={idx} className={`px-2 h-20 cursor-pointer content-${f.name}`}>
+                        <tr key={index}  className="flex flex-wrap px-2">
+                        <td className={`px-2 h-20 cursor-pointer content-${e.name}`}>{e.name}</td>
+                    
+                        {typeinfo.damage_relations.double_damage_to.map((f, idx) => (
+                            <td key={idx} className={`px-2 h-20 cursor-pointer content-${f.name}`}>
                                 {f.name}
-                            </div>
+                            </td>
                             ))}
-                            
-                        </td>
+                            {/* {typeinfo.damage_relations.half_damage_from.map((f, idx) => (
+                            <td key={idx} className={`px-2 h-20 cursor-pointer content-${f.name}`}>
+                                {f.name}
+                            </td>
+                            ))}
+                            {typeinfo.damage_relations.half_damage_to.map((f, idx) => (
+                            <td key={idx} className={`px-2 h-20 cursor-pointer content-${f.name}`}>
+                                {f.name}
+                            </td>
+                            ))} */}
+
                         </tr>
-                    ))}
+                  ))}
                 </tbody>
 
             </table>
+        </div>
                    
             {/* <div className="flex pt-8 justify-between">
                
@@ -217,62 +229,64 @@ function Bug (){
                 </div>
             </div> */}
 
-<div className="">
+<div className="2xl:flex 2xl:justify-around">
 {typeinfo && (
-    
-    <div className="mt-8 sm:overflow-y-auto bg-white p-3 border-black border-8 rounded-2xl sm:w-[600px] sm:px-auto lg:w-[600px] sm:h-[1100px]">
-        <p className="text-center font-extrabold mb-10 text-5xl">Bug Pokemons</p>
-        <div className="flex flex-wrap justify-evenly">
-            {typeinfo.pokemon.map((poke, i) => (
-                <div key={i} className="bg-slate-900 m-2 rounded-3xl">
-                    <div className="p-3 m-5 bg-slate-700 rounded-3xl border-white border-4"> 
-                        {newdata.length > 0 && newdata[i] && newdata[i].data && (
-                            <img className="h-36 cursor-pointer" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${newdata[i].data.id}.png`} alt={`Sprite of ${capitalizeFirstLetter(poke.pokemon.name)}`} />
-                        )}
-                        {!newdata.length || !newdata[i] || !newdata[i].data && (
-                            <img src='./img-svg/noimg.gif' alt="No Image Available" /> 
-                        )}
-                        <p className="mt-[-20px] font-bold text-white text-center">{capitalizeFirstLetter(poke.pokemon.name)}</p>
+    <div className="sm:flex sm:justify-center items-center">
+        <div className=" align-center mt-8 sm:overflow-y-auto bg-white p-3 border-black border-8 rounded-2xl sm:w-[800px] sm:px-auto lg:w-[800px] sm:h-[1100px]">
+            <p className="text-center font-extrabold mb-10 text-5xl">Bug Pokemons</p>
+            <div className="flex flex-wrap justify-evenly">
+                {typeinfo.pokemon.map((poke, i) => (
+                    <div key={i} className="bg-slate-900 m-2 rounded-3xl">
+                        <div className="p-3 m-5 bg-slate-700 rounded-3xl border-white border-4"> 
+                            {newdata.length > 0 && newdata[i] && newdata[i].data && (
+                                <img className="h-36 cursor-pointer" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${newdata[i].data.id}.png`} alt={`Sprite of ${capitalizeFirstLetter(poke.pokemon.name)}`} />
+                            )}
+                            {!newdata.length || !newdata[i] || !newdata[i].data && (
+                                <img src='./img-svg/noimg.gif' alt="No Image Available" /> 
+                            )}
+                            <p className="mt-[-20px] font-bold text-white text-center">{capitalizeFirstLetter(poke.pokemon.name)}</p>
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
     </div>
 )}
+            <div className="sm:flex sm:justify-center">
+                <div className="mt-12 bg-white p-3 border-black border-8 rounded-2xl h-[800px] xl:h-[1100px] max-w-[680px]">
+                    <p className="text-center font-extrabold mb-10 text-5xl">Bug Moves Pokemons</p>
+                    <div className=" border-8 border-black rounded-xl sm:overflow-y-auto h-[650px] xl:h-[950px]">
+                        <table className="rounded-2xl ">
+                            <thead className="rounded-2xl sticky top-0">
+                                <tr className="">
+                                    <th className="px-4 bg-[#D9CD45] text-white">Move</th>
+                                    <th className="px-4 w-40 bg-[#D94575] text-white">Description</th>
+                                    <th className="px-4 bg-[#46B9DA] text-white">Accuracy</th>
+                                    <th className="px-4 bg-[#EE5E38] text-white">Power</th> 
+                                    {/* chnage color of last */}
+                                    <th className="px-4 bg-[#96be25] text-white">Damage Class</th>                                              
+                                </tr>
+                            </thead>
 
-            <div className="mt-8 bg-white p-3 border-black border-8 rounded-2xl">
-                <p className="text-center font-extrabold mb-10 text-5xl">Bug Moves Pokemons</p>
-                <div className=" border-8 border-black rounded-xl sm:overflow-y-auto h-[400px]">
-                    <table className="rounded-2xl ">
-                        <thead className="rounded-2xl sticky top-0">
-                            <tr className="">
-                                <th className="px-4 bg-[#D9CD45] text-white">Move</th>
-                                <th className="px-4 w-40 bg-[#D94575] text-white">Description</th>
-                                <th className="px-4 bg-[#46B9DA] text-white">Accuracy</th>
-                                <th className="px-4 bg-[#EE5E38] text-white">Power</th> 
-                                {/* chnage color of last */}
-                                <th className="px-4 bg-[#96be25] text-white">Damage Class</th>                                              
-                            </tr>
-                        </thead>
+                {console.log(movedata)}
+                    {movedata.map((data, i) => (
+                        <tr className="border-b-2" key={i}>
+                            <td className="text-center font-semibold">{capitalizeFirstLetter(data.data.name)}</td>
+                            {englishText(data)}
+                            <td className=" text-center">{data.data.accuracy || 0}</td>
+                            <td className="text-center ">{data.data.power || 0}</td>
+                            <td className="text-center">{capitalizeFirstLetter(data.data.damage_class.name)}</td>
 
-               {console.log(movedata)}
-                {movedata.map((data, i) => (
-                     <tr className="border-b-2" key={i}>
-                        <td className="text-center font-semibold">{capitalizeFirstLetter(data.data.name)}</td>
-                        {englishText(data)}
-                        <td className=" text-center">{data.data.accuracy || 0}</td>
-                        <td className="text-center ">{data.data.power || 0}</td>
-                        <td className="text-center">{capitalizeFirstLetter(data.data.damage_class.name)}</td>
-
-                        {/* {console.log(data.data.flavor_text_entries)} */}
-                        
-                    </tr>
-                ))}
-                
-                
-           
-                    </table>
+                            
+                            
+                        </tr>
+                    ))}
                     
+                    
+            
+                        </table>
+                        
+                    </div>
                 </div>
             </div>
         </div>
