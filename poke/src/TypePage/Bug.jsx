@@ -240,15 +240,33 @@ function Bug (){
                                 <th className="px-4 bg-[#EE5E38] text-white">Power</th>                                                <th className="px-4 bg-[#E9C4D4] text-white">PP</th> 
                             </tr>
                         </thead>
-                        {console.log(movedata)}
-                    {typeinfo.moves.map((move, idx) => (
-                        // {movedata.length > 0 && (
+                        
+                     
+                    {/* {typeinfo.moves.map((move, idx) => (  
+                    <tr key={idx} className="bg-blue-500 ">
+                        
+                        <td className=" text-white">{capitalizeFirstLetter(move.name)}</td>
+                            {movedata.length > 0 && movedata[idx] && movedata[idx].data && (
+                            <>
+                                <td className="" >{movedata[idx].data.flavor_text_entries[idx]}</td>
+                                <td> {movedata[idx].data.accuracy}</td>
 
-                        // )}
-                    <div key={idx} className="bg-blue-500 ">
-                        <p className=" text-white">{capitalizeFirstLetter(move.name)}</p>
-                    </div>
+                            </>
+                        )}
+                        
+                    </tr>
+                     
+                ))} */} 
+               {console.log(movedata)}
+                {movedata.map((data, i) => (
+                     <tr key={i}>
+                        <td>{capitalizeFirstLetter(data.data.name)}</td>
+                        {/* <td>{data.data.flavor_text_entries[i]}</td> */}
+                    </tr>
                 ))}
+                
+                
+           
                     </table>
                     
                 </div>
