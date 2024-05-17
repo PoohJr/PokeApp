@@ -7,6 +7,8 @@ function Example({setpokeData}) {
     const [kantoPokemon, setKantoPokemon] = useState([]);
     const [clickpokedata, setclickpokedata] = useState([])
     const [datatypes, setdatatypes] = useState([])
+    const [loadmore, setloadmore] = useState(25)
+    const [desiredLoad, setDesiredLoad] = useState(25);
 
     const navigate = useNavigate();
     function capitalizeFirstLetter(string) {
@@ -15,9 +17,16 @@ function Example({setpokeData}) {
 
 
     useEffect(() => {
+        
+        setloadmore(desiredLoad);
+    }, [desiredLoad]);
+
+
+
+    useEffect(() => {
         const PokeArr = async () => {
             try {
-                const res = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=200");
+                const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${loadmore}`);
                 const allPoke = res.data.results;
                 setKantoPokemon(allPoke);
             } catch (error) {
@@ -169,13 +178,14 @@ function Example({setpokeData}) {
     return (
         <>
             {
+
             <div className="">
               {datatypes && (
                 <div className="">
                      <p className="text-white text-5xl mt-10 pb-5 text-center font-bold">Pokémon Types</p>
                      <div className="flex flex-row flex-wrap justify-evenly">
                      {datatypes.results?.slice(0,19).map((type, index) => (
-                         <div key={index}  className="bg-slate-900 px-10 py-3 my-3">
+                         <div key={index}  className="rounded-2xl border-slate-600 border-2 bg-slate-900 px-10 py-3 my-3">
                              <img onClick={(e) => HandleTypeClick(type.name)}  className={`transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125 h-16 cursor-pointer ${handleTypeImg(type.name)}`} alt={type.name}/>
                                   <p className="text-white text-center pt-1">{capitalizeFirstLetter(type.name)}</p>
                          </div>
@@ -185,12 +195,27 @@ function Example({setpokeData}) {
 
                 </div>
              )}
+             
                 <div className=" flex flex-wrap">
                 
                    <hr className="w-full h-1.5" />
+
+                   <div className="ml-20 flex my-10">
+                        <p className="text-center text-white justify-center text-3xl">Display</p>
+                            <div className="ml-5 flex justify-center bg-white border-blue-900 rounded-full border-4 w-8">
+                                <button onClick={() => setDesiredLoad(50)} className="text-center text-slate-800">50</button>
+                            </div>
+                            <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-8">
+                                <button onClick={() => setDesiredLoad(75)} className="text-center text-slate-800">75</button>
+                            </div>
+                            <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-8">
+                                <button  onClick={() => setDesiredLoad(100)} className="text-center text-slate-800">100</button>
+                            </div>
+                    </div>
+                    
                     <div className="flex justify-evenly w-full flex-wrap">
                             {clickpokedata.map((pokemon, index) => (
-                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner bg-slate-900 rounded mt-4 mx-3 " >
+                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner bg-slate-900 border-slate-600 border-2 rounded mt-4 mx-3 " >
                             
                                     <div className=" text-md text-center  rounded-lg  mt-1 mb-1">
                                         <div className="text-white absolute top-0 left-0 w-7 h-8 "><strong>#{pokemon.data.id}</strong></div>
