@@ -8,7 +8,7 @@ function Example({setpokeData}) {
     const [clickpokedata, setclickpokedata] = useState([])
     const [datatypes, setdatatypes] = useState([])
     const [loadmore, setloadmore] = useState(25)
-    const [desiredLoad, setDesiredLoad] = useState(25);
+
 
     const navigate = useNavigate();
     function capitalizeFirstLetter(string) {
@@ -17,9 +17,10 @@ function Example({setpokeData}) {
 
 
     useEffect(() => {
+        console.log("loadmore state updated to:", loadmore);
+       
         
-        setloadmore(desiredLoad);
-    }, [desiredLoad]);
+    }, [loadmore]);
 
 
 
@@ -201,15 +202,15 @@ function Example({setpokeData}) {
                    <hr className="w-full h-1.5" />
 
                    <div className="ml-20 flex my-10">
-                        <p className="text-center text-white justify-center text-3xl">Display</p>
-                            <div className="ml-5 flex justify-center bg-white border-blue-900 rounded-full border-4 w-8">
-                                <button onClick={() => setDesiredLoad(50)} className="text-center text-slate-800">50</button>
+                        <p className="text-center text-white justify-center text-3xl font-bold">Display</p>
+                            <div className="ml-5 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
+                                <button onClick={() => setloadmore(50)} className="text-center text-slate-800">50</button>
                             </div>
-                            <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-8">
-                                <button onClick={() => setDesiredLoad(75)} className="text-center text-slate-800">75</button>
+                            <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
+                                <button onClick={() => setloadmore(75)} className="text-center text-slate-800">75</button>
                             </div>
-                            <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-8">
-                                <button  onClick={() => setDesiredLoad(100)} className="text-center text-slate-800">100</button>
+                            <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
+                                <button  onClick={() => setloadmore(100)} className="text-center text-slate-800">100</button>
                             </div>
                     </div>
                     
@@ -218,7 +219,7 @@ function Example({setpokeData}) {
                             <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12  h-40  hover:shadow-inner bg-slate-900 border-slate-600 border-2 rounded mt-4 mx-3 " >
                             
                                     <div className=" text-md text-center  rounded-lg  mt-1 mb-1">
-                                        <div className="text-white absolute top-0 left-0 w-7 h-8 "><strong>#{pokemon.data.id}</strong></div>
+                                        <div className="text-white absolute top-0 left-0 w-7 h-8 "><strong className="text-[#FFD700]">#{pokemon.data.id}</strong></div>
                                         <strong className=" mt-2 text-white ">{capitalizeFirstLetter(pokemon.data.name)}</strong>
                                     </div>
                                     <div className="flex justify-center">
