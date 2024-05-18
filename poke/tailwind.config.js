@@ -35,6 +35,7 @@ export default {
         'steel' : 'url("./type/steel.svg")',
         'water' : 'url("./type/water.svg")',
         'stellar': 'url("./type/stellar.svg")',
+        'nopic': 'url("./img-svg/noimg.gif")',
         }
       },
     

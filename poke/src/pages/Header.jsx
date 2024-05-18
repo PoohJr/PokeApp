@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Example from "../Example/Example";
 import Preloader from "../Loader/Preloader";
+import Bug from "../TypePage/Bug";
 
 export function Header() {
     const [userInput, setUserInput] = useState("");
@@ -92,6 +93,7 @@ export function Header() {
                         </div>
                        
                         <Example setpokeData={setpokeData} pokedata ={pokedata}/>
+                        {false && <Bug setpokeData={setpokeData} pokedata={pokedata} />}
                     </div>
 
                     

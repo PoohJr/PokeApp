@@ -8,8 +8,8 @@ function Example({ setpokeData }) {
     const [clickpokedata, setclickpokedata] = useState([]);
     const [datatypes, setdatatypes] = useState([]);
     const [loadmore, setloadmore] = useState(25);
-    const [offset, setOffset] = useState(0); // Track the offset for pagination
-    const [totalPokemon, setTotalPokemon] = useState(0); // Track total number of Pokémon
+    const [offset, setOffset] = useState(0); 
+    const [totalPokemon, setTotalPokemon] = useState(0); 
 
     const navigate = useNavigate();
 
