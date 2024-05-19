@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
+
 // import { useLocation } from "react-router-dom";
 
-function Bug ({ setpokeData }){
+function Bug (){
     const [typeinfo, settypeinfo] = useState(null)
     const [newdata, setnewdata] = useState([])
     const [movedata, setmovedata] = useState([])
+    const [pokeData, setnewpokedata] = useState("")
     
 
     const navigate = useNavigate();
@@ -95,6 +98,7 @@ console.log(typeinfo)
         navigate(`/${typeName}`);
     }
 
+    // Fix this 
     const HandleClick = async (i) => {
         try {
             if (newdata) {
@@ -102,8 +106,9 @@ console.log(typeinfo)
                 const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokeid}`;
                 const res = await axios.get(apiUrl);
                 if (res.status === 200) {
-                    setpokeData(res.data);
-                    navigate("./PokemonData", { state: { pokedata: res.data } });
+                    setnewpokedata(res.data);
+                    
+                    navigate("./PokemonData", { state: { pokeData: res.data } });
                 }
             }
         } catch (error) {

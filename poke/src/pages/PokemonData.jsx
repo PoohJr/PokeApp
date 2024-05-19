@@ -6,7 +6,7 @@ import axios from "axios";
 function PokemonData() {
     const location = useLocation();
     const pokedata = location.state ? location.state.pokedata : null;
-    console.log(location.state.pokedata)
+    // console.log(location.state.pokedata)
     const locationURL = pokedata.location_area_encounters;
 
 
@@ -15,6 +15,7 @@ function PokemonData() {
     const [evoPoke, setevoPoke] = useState (null)
     const [movedata, setmovedata] = useState([])
     const [strongAgainst, setstrongAgainst] = useState ([])
+    const [newevo , setnewevo] = useState([])
 
     // useEffect(() =>{
     //     const FetchAllDataUrl = async () =>{
@@ -35,7 +36,7 @@ function PokemonData() {
 
                 )
                     setstrongAgainst(typeurl)
-                    console.log(typeurl)
+    
                 }
             } catch(error){
                 console.error('Error fetching type Strength to data:', error);
@@ -61,7 +62,7 @@ function PokemonData() {
                     
                 )
                 setmovedata(moveDes)
-                console.log(moveDes)
+                // console.log(moveDes)
             }
             } catch (error){
                 console.error('Error fetching Move data:', error);
@@ -71,21 +72,113 @@ function PokemonData() {
         fetchMoveData()
     },[pokedata])
 
-    useEffect (()=> {
-        const EvolutionApi = async () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    useEffect(() => {
+        const Species = async () => {
             try{
-                if(pokedata && pokedata.id){
-                const res = await axios.get(`https://pokeapi.co/api/v2/evolution-chain/${pokedata.id}/`)
+                const res = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokedata.name}/`);
                 setevoPoke(res.data)
                 console.log(res.data)
-                }
+
             } catch (error){
-                console.error('Error fetching EvolutionApi data:', error);
+                console.error('Error fetching Species Api data:', error);
+            }
+
+        }
+        Species()
+
+    },[pokedata.name])
+   
+  
+    useEffect(() => {
+        const fetchEvo = async () => {
+            if (evoPoke && evoPoke.evolution_chain && evoPoke.evolution_chain.url) {
+            try{
+                const res = axios.get(evoPoke.evolution_chain.url)
+                console.log(res);
+                setnewevo(res.data)
+                
+            }catch(error){
+                "there was an" , error
 
             }
         }
-        EvolutionApi()
-    },[pokedata.id])
+    }
+        fetchEvo()
+
+    },[evoPoke])
+
+
+    useEffect(() => {
+        console.log('Updated newevo:', newevo);
+    }, [newevo]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     useEffect(() => {
       const fetchData = async () => {
@@ -489,11 +582,15 @@ function PokemonData() {
                             </div>
                                     
                                     
-                                
+                                {newevo && (
+                                    console.log(newevo)
+                                )}
                             
                             {evoPoke && (
+                                    
                                     <ul className="md-32 timeline timeline-vertical">
                                         <li>
+                                        {/* {console.log(newevo)} */} {console.log(evoPoke.evolution_chain.url)}
                                             <p className="font-bold text-3xl  text-center mb-4">Evloutions </p>
                                             <div className="timeline-start">1st Evo</div>
                                             <div className="timeline-middle">
@@ -515,6 +612,7 @@ function PokemonData() {
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                                             </div>
                                             <div className="timeline-end timeline-box">    
+                                           
                                             <p>{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].species.name)}</p>
                                     
                                             </div>
