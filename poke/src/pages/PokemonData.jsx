@@ -15,7 +15,7 @@ function PokemonData() {
     const [evoPoke, setevoPoke] = useState (null)
     const [movedata, setmovedata] = useState([])
     const [strongAgainst, setstrongAgainst] = useState ([])
-    const [newevo , setnewevo] = useState([])
+    const [newevo , setnewevo] = useState(null)
 
     // useEffect(() =>{
     //     const FetchAllDataUrl = async () =>{
@@ -105,6 +105,7 @@ function PokemonData() {
                 const res = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokedata.name}/`);
                 setevoPoke(res.data)
                 console.log(res.data)
+              
 
             } catch (error){
                 console.error('Error fetching Species Api data:', error);
@@ -118,26 +119,23 @@ function PokemonData() {
   
     useEffect(() => {
         const fetchEvo = async () => {
-            if (evoPoke && evoPoke.evolution_chain && evoPoke.evolution_chain.url) {
+            if (evoPoke && evoPoke.evolution_chain) {
             try{
                 const res = axios.get(evoPoke.evolution_chain.url)
+                setnewevo(res)
                 console.log(res);
-                setnewevo(res.data)
                 
-            }catch(error){
-                "there was an" , error
-
+            } catch(error){
+                console.error("there was an" , error)
             }
+            
         }
     }
         fetchEvo()
 
+
     },[evoPoke])
 
-
-    useEffect(() => {
-        console.log('Updated newevo:', newevo);
-    }, [newevo]);
 
 
 
@@ -340,6 +338,7 @@ function PokemonData() {
         }
 
     }
+
     function HandletypeColor(typename){
         switch(typename){
             case "grass":
@@ -414,7 +413,7 @@ function PokemonData() {
 
 
     return ( 
-        // Fix the background img 
+    
         <div className=" relative p-10 bg-pokemon-rep" > {/* div 1*/}
         <div className="w-full h-full bg-pokemon-rep bg-repeat blur-sm"></div>
              
@@ -590,7 +589,8 @@ function PokemonData() {
                                     
                                     <ul className="md-32 timeline timeline-vertical">
                                         <li>
-                                        {/* {console.log(newevo)} */} {console.log(evoPoke.evolution_chain.url)}
+                                        {console.log(evoPoke.evolution_chain.url)}
+                                        {console.log(evoPoke)}
                                             <p className="font-bold text-3xl  text-center mb-4">Evloutions </p>
                                             <div className="timeline-start">1st Evo</div>
                                             <div className="timeline-middle">
@@ -613,7 +613,7 @@ function PokemonData() {
                                             </div>
                                             <div className="timeline-end timeline-box">    
                                            
-                                            <p>{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].species.name)}</p>
+                                            {/* <p>{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].species.name)}</p> */}
                                     
                                             </div>
                                             <hr/>
@@ -631,7 +631,7 @@ function PokemonData() {
                                             </div>
                                             <div className="timeline-end timeline-box">
                                                 
-                                                <p>{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].evolves_to[0].species.name)}</p>
+                                                {/* <p>{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].evolves_to[0].species.name)}</p> */}
                                             </div>
                                             <hr/>
                                         </li>

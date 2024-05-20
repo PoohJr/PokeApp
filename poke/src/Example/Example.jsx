@@ -23,7 +23,6 @@ function Example({ setpokeData }) {
 
     useEffect(() => {
         fetchPokemon(offset, loadmore);
-        console.log(fetchPokemon(offset, loadmore))
     }, [offset, loadmore]);
 
     const fetchTotalPokemon = async () => {
@@ -202,7 +201,7 @@ function Example({ setpokeData }) {
 
                     <div className="flex justify-evenly w-full flex-wrap">
                         {clickpokedata.map((pokemon, index) => (
-                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/2 xl:w-1/5 2xl:w-3/12 h-40 hover:shadow-inner bg-slate-900 border-slate-600 border-2 rounded mt-4 mx-3">
+                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/3 xl:w-1/5 2xl:w-3/12 h-40 hover:shadow-inner bg-slate-900 border-slate-600 border-2 rounded  m-4 mb-6">
                                 <div className="text-md text-center rounded-lg mt-1 mb-1">
                                     <div className="text-white absolute top-0 left-0 w-7 h-8">
                                         <strong className="text-[#FFD700]">#{pokemon.data.id}</strong>
