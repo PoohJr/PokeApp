@@ -16,6 +16,9 @@ function PokemonData() {
     const [movedata, setmovedata] = useState([])
     const [strongAgainst, setstrongAgainst] = useState ([])
     const [newevo , setnewevo] = useState(null)
+    const [speciesEvo1, setspeciesEvo1] = useState(null)
+    const [speciesEvo2, setspeciesEvo2] = useState(null)
+    const [speciesEvo3, setspeciesEvo3] = useState(null)
 
     // useEffect(() =>{
     //     const FetchAllDataUrl = async () =>{
@@ -75,30 +78,6 @@ function PokemonData() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     useEffect(() => {
         const Species = async () => {
             try{
@@ -121,9 +100,22 @@ function PokemonData() {
         const fetchEvo = async () => {
             if (evoPoke && evoPoke.evolution_chain) {
             try{
-                const res = axios.get(evoPoke.evolution_chain.url)
-                setnewevo(res)
-                console.log(res);
+                const res = await axios.get(evoPoke.evolution_chain.url)
+                setnewevo(res.data)
+                console.log(res.data);
+
+                const Poke1url = res.data.chain.species.url
+                const Poke2url = res.data.chain.evolves_to[0].species.url
+                const Poke3url = res.data.chain.evolves_to[0].evolves_to[0].species.url
+
+                const fetchPoke1 = await axios.get(Poke1url)
+                const fetchPoke2 = await axios.get(Poke2url)
+                const fetchPoke3 = await axios.get(Poke3url)
+
+                setspeciesEvo1(fetchPoke1.data)
+                setspeciesEvo2(fetchPoke2.data)
+                setspeciesEvo3(fetchPoke3.data)
+
                 
             } catch(error){
                 console.error("there was an" , error)
@@ -135,47 +127,6 @@ function PokemonData() {
 
 
     },[evoPoke])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     useEffect(() => {
@@ -585,24 +536,24 @@ function PokemonData() {
                                     console.log(newevo)
                                 )}
                             
-                            {evoPoke && (
+                            {newevo && (
                                     
                                     <ul className="md-32 timeline timeline-vertical">
                                         <li>
-                                        {console.log(evoPoke.evolution_chain.url)}
-                                        {console.log(evoPoke)}
                                             <p className="font-bold text-3xl  text-center mb-4">Evloutions </p>
                                             <div className="timeline-start">1st Evo</div>
                                             <div className="timeline-middle">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                                                 
                                             </div>
-                                            <div className="timeline-end timeline-box">{capitalizeFirstLetter(pokedata.name)}</div>
+                                            <div className="timeline-end timeline-box">{capitalizeFirstLetter(newevo.chain.species.name)}</div>
                                             <hr/>
                                         </li>
                                         <div className="transition-all ease-in-out group border hover:border-8 hover:border-black   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-red-500 mx-auto"> 
                                             <div className=" group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200 ">
-                                                <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125 " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
+                                                {speciesEvo1 &&(
+                                                <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125 " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${speciesEvo1.id}.png` } alt="Pokemon Image"/>
+                                            )}
                                             </div>
                                         </div>
                                         <li>
@@ -613,14 +564,17 @@ function PokemonData() {
                                             </div>
                                             <div className="timeline-end timeline-box">    
                                            
-                                            {/* <p>{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].species.name)}</p> */}
+                                            <p>{capitalizeFirstLetter(newevo.chain.evolves_to[0].species.name)}</p>
                                     
                                             </div>
                                             <hr/>
                                         </li>
                                                 <div className=" transition-all ease-in-out group border hover:border-8 hover:border-black   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-red-500 mx-auto">
                                                     <div className="group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200 ">
-                                                        <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 1}.png` } alt="Pokemon Image"/>
+                                                        {speciesEvo2 && (
+
+                                                        <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${speciesEvo2.id}.png` } alt="Pokemon Image"/>
+                                                    )}
                                                     </div>
                                                 </div>
                                         <li>
@@ -631,13 +585,17 @@ function PokemonData() {
                                             </div>
                                             <div className="timeline-end timeline-box">
                                                 
-                                                {/* <p>{capitalizeFirstLetter(evoPoke.chain.evolves_to[0].evolves_to[0].species.name)}</p> */}
+                                                <p>{capitalizeFirstLetter(newevo.chain.evolves_to[0].evolves_to[0].species.name)}</p>
                                             </div>
                                             <hr/>
                                         </li>
                                                 <div className="transition-all ease-in-out group border hover:border-8 hover:border-black   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-red-500 mx-auto">
                                                     <div className="  group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200">
-                                                        <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id + 2}.png` } alt="Pokemon Image"/>
+                                                        {speciesEvo3 && (
+
+                                                       
+                                                        <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${speciesEvo3.id}.png` } alt="Pokemon Image"/>
+                                                    )}
                                                     </div>
                                                 </div>
 
