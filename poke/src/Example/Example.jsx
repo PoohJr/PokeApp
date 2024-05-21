@@ -149,7 +149,7 @@ function Example({ setpokeData }) {
                         <p className="text-white text-5xl mt-10 pb-5 text-center font-bold">Pokémon Types</p>
                         <div className="flex flex-row flex-wrap justify-evenly">
                             {datatypes.results?.slice(0, 19).map((type, index) => (
-                                <div key={index} className="rounded-2xl border-slate-600 border-2 bg-slate-900 px-10 py-3 my-3">
+                                <div key={index} className="rounded-2xl border-slate-600 border-2 bg-slate-900 px-10 m-2 py-3 my-3">
                                     <img
                                         onClick={() => HandleTypeClick(type.name)}
                                         className={`transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125 h-16 cursor-pointer ${handleTypeImg(type.name)}`}
@@ -164,17 +164,27 @@ function Example({ setpokeData }) {
 
                 <div className="flex flex-wrap">
                     <hr className="w-full h-1.5" />
+                    <div className="flex justify-center w-full">
+                        .
+                        <div className=" flex  my-10">
+                            <p className=" text-white  text-3xl font-bold">Display</p>
+                            <div className="ml-5 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
+                                <button onClick={() => handleLoadMore(50)} className="text-center text-slate-800">50</button>
+                            </div>
+                            <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
+                                <button onClick={() => handleLoadMore(75)} className="text-center text-slate-800">75</button>
+                            </div>
+                            <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
+                                <button onClick={() => handleLoadMore(100)} className="text-center text-slate-800">100</button>
+                            </div>
 
-                    <div className="ml-20 flex my-10">
-                        <p className="text-center text-white justify-center text-3xl font-bold">Display</p>
-                        <div className="ml-5 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
-                            <button onClick={() => handleLoadMore(50)} className="text-center text-slate-800">50</button>
-                        </div>
-                        <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
-                            <button onClick={() => handleLoadMore(75)} className="text-center text-slate-800">75</button>
-                        </div>
-                        <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
-                            <button onClick={() => handleLoadMore(100)} className="text-center text-slate-800">100</button>
+                            <div className="mx-10 dropdown">
+                                <div tabIndex={0} role="button" className="text-3xl font-bold btn m-1">Filter</div>
+                                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                    <li><a>Item 1</a></li>
+                                    <li><a>Item 2</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 

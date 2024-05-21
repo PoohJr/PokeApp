@@ -105,20 +105,24 @@ function PokemonData() {
                 console.log(res.data);
 
                 const Poke1url = res.data.chain.species.url
-                const Poke2url = res.data.chain.evolves_to[0].species.url
-                const Poke3url = res.data.chain.evolves_to[0].evolves_to[0].species.url
-
                 const fetchPoke1 = await axios.get(Poke1url)
-                const fetchPoke2 = await axios.get(Poke2url)
-                const fetchPoke3 = await axios.get(Poke3url)
-
                 setspeciesEvo1(fetchPoke1.data)
                 console.log(fetchPoke1.data);
-                setspeciesEvo2(fetchPoke2.data)
-                console.log(fetchPoke2.data);
-                setspeciesEvo3(fetchPoke3.data)
-                console.log(fetchPoke3.data);
 
+                    if( res.data.chain.evolves_to.length > 0) {
+                    const Poke2url = res.data.chain.evolves_to[0].species.url
+                    const fetchPoke2 = await axios.get(Poke2url)
+                    setspeciesEvo2(fetchPoke2.data)
+                    console.log(fetchPoke2.data);
+                    }
+
+                    if(res.data.chain.evolves_to[0].evolves_to.length > 0) {
+
+                    const Poke3url = res.data.chain.evolves_to[0].evolves_to[0].species.url
+                    const fetchPoke3 = await axios.get(Poke3url)
+                    setspeciesEvo3(fetchPoke3.data)
+                    console.log(fetchPoke3.data);
+                }
                 
             } catch(error){
                 console.error("there was an" , error)
@@ -535,9 +539,7 @@ function PokemonData() {
                             </div>
                                     
                                     
-                                {newevo && (
-                                    console.log(newevo)
-                                )}
+          
                             
                             {newevo && (
                                     
@@ -559,6 +561,9 @@ function PokemonData() {
                                             )}
                                             </div>
                                         </div>
+                                        {speciesEvo2 && (
+                                            <>
+                                        
                                         <li>
                                             <hr/>
                                             <div className="timeline-start">2nd Evo</div>
@@ -567,15 +572,14 @@ function PokemonData() {
                                             </div>
                                             <div className="timeline-end timeline-box">    
                                            
-                                            <p>{capitalizeFirstLetter(newevo.chain.evolves_to[0].species.name)}</p>
+                                            <p>{capitalizeFirstLetter(speciesEvo2.name)}</p>
                                     
                                             </div>
                                             <hr/>
                                         </li>
 
                                         
-                                        {speciesEvo2 && (
-                                            
+                                       
                                                 <div className=" transition-all ease-in-out group border hover:border-8 hover:border-black   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-red-500 mx-auto">
                                                     <div className="group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200 ">
                                                         
@@ -584,7 +588,11 @@ function PokemonData() {
                                                    
                                                     </div>
                                                 </div>
-                                                 )}
+                                                </>
+                                                )}
+                                        
+                                        {speciesEvo3 && (
+                                            <>
                                         <li>
                                             <hr/>
                                             <div className="timeline-start">3rd Evo</div>
@@ -593,20 +601,23 @@ function PokemonData() {
                                             </div>
                                             <div className="timeline-end timeline-box">
                                                 
-                                                <p>{capitalizeFirstLetter(newevo.chain.evolves_to[0].evolves_to[0].species.name)}</p>
+                                                <p>{capitalizeFirstLetter(speciesEvo3.name)}</p>
                                             </div>
                                             <hr/>
                                         </li>
                                                 <div className="transition-all ease-in-out group border hover:border-8 hover:border-black   flex justify-center align-middle h-60 w-52 rounded-full  bg-slate-800  hover:bg-red-500 mx-auto">
                                                     <div className="  group-hover:shadow-blue-500/40 justify-center transition-all ease-in-out duration-200">
-                                                        {speciesEvo3 && (
+                                                        
                                                             
                                                         <img className="pt-3 transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${speciesEvo3.id}.png` } alt="Pokemon Image"/>
-                                                    )}
+                                                   
                                                     </div>
                                                 </div>
+                                                </>
+                                            )}
 
                                     </ul>
+                                   
                                 )}
 
                         </div>
