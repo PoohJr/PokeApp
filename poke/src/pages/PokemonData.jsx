@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, version } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -461,21 +461,34 @@ function PokemonData() {
                         </div>
                      </div>
                 </div>
-
+                {console.log(pokedata)} 
                 {encounterData && encounterData.length > 0 &&  (
-                                        
+                                       
             <div className=" border-4 border-black rounded-lg my-4 bg-slate-500 ">
             <h1 className="py-4 font-bold text-3xl text-center text-white  ">PokeMon Locations</h1>
             <div className="bg-white ">
                 {encounterData && encounterData.map((encounter, index) => (
                     <div key={index} className="  pt-2 px-5 pb-4">
-                        <p className="">Verson: {capitalizeFirstLetter(encounter.version_details[0].version.name)}</p>
-                        <p>Location Area:{encounter.location_area.name}</p>
-                        <p> Chances of Encountering : {encounter.version_details[0].encounter_details[0].chance}%</p>
-                        <p>Max Level: {encounter.version_details[0].encounter_details[0].max_level}Lv</p>
-                        <p>Max Chance: {encounter.version_details[0].max_chance}%</p>
-                        <p> Method: {encounter.version_details[0].encounter_details[0].method.name}</p>
-                        
+
+                        {encounter.version_details.map((versionDetail, Vidx) => {
+                            <div key={Vidx} className="">
+                                {console.log(versionDetail.version.name)}
+                                {console.log(versionDetail)}
+                             <p className="font-bold">Verson: <span className={``}>{versionDetail.version.name}</span></p>
+                             <p className="">Location Area: <span>{capitalizeFirstLetter(encounter.location_area.name)}</span></p>
+                             </div>
+
+                            {versionDetail.encounter_details.map(( VD, i) => {
+                            <div key={i} className="">
+                                {console.log(VD)}
+                                <p className=""> Chances of Encountering : <span>{encounter.version_details[0].encounter_details[0].chance}%</span></p>
+                                <p className="">Max Level: <span>{encounter.version_details[0].encounter_details[0].max_level}Lv</span></p>
+                                <p className="">Max Chance: <span>{encounter.version_details[0].max_chance}%</span></p>
+                                <p className=""> Method: <span>{capitalizeFirstLetter(encounter.version_details[0].encounter_details[0].method.name)}</span></p>
+                            </div>
+                            })} 
+                        })}
+=
                     </div>
                 ))}
             </div>   
