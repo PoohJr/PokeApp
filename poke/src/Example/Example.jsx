@@ -199,9 +199,9 @@ function Example({ setpokeData }) {
                         </div>
                     )}
 
-                    <div className="flex justify-evenly w-full flex-wrap">
+                    <div className="flex justify-evenly w-full flex-wrap mt-16">
                         {clickpokedata.map((pokemon, index) => (
-                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/3 xl:w-1/5 2xl:w-3/12 h-40 hover:shadow-inner bg-slate-900 border-slate-600 border-2 rounded  m-4 mb-6">
+                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/3 xl:w-1/5 2xl:w-[300px] h-40 hover:shadow-inner bg-slate-900 border-slate-600 border-2 rounded  m-4 mb-6">
                                 <div className="text-md text-center rounded-lg mt-1 mb-1">
                                     <div className="text-white absolute top-0 left-0 w-7 h-8">
                                         <strong className="text-[#FFD700]">#{pokemon.data.id}</strong>
