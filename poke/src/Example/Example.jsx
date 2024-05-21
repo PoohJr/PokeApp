@@ -177,12 +177,15 @@ function Example({ setpokeData }) {
                             <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
                                 <button onClick={() => handleLoadMore(100)} className="text-center text-slate-800">100</button>
                             </div>
-
+                    { console.log(totalPokemon)}
                             <div className="mx-10 dropdown">
                                 <div tabIndex={0} role="button" className="text-3xl font-bold btn m-1">Filter</div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li><a>Item 1</a></li>
-                                    <li><a>Item 2</a></li>
+                                    <li><a>A-Z</a></li>
+                                    <li><a>Z-A</a></li>
+                                    <li className=""><a className="">1-{totalPokemon}</a></li>
+                                    <li><a>{totalPokemon}-1</a></li>
+                                    <li><a>Type</a></li>
                                 </ul>
                             </div>
                         </div>

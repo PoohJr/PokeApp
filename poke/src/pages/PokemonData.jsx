@@ -369,6 +369,36 @@ function PokemonData() {
             }
         }
 
+        function ColorVersion(version) {
+            switch(version){
+                case 'red':
+                    return 'text-red-600'
+                case 'green':
+                    return 'text-green-600'
+                case 'yellow':
+                    return 'text-yellow-500'
+                case 'blue':
+                    return 'text-blue-600'
+                case 'firered':
+                    return 'text-red-900'
+                case 'leafgreen':
+                    return 'text-green-900'
+                case 'heartgold':
+                    return 'text-orange-600'
+                case 'soulsilver':
+                    return 'text-gray-600'
+                case 'x':
+                    return 'text-cyan-400'
+                case 'y':
+                    return 'text-slate-700'
+                case 'ultra-sun':
+                    return 'text-orange-800'
+                case 'ultra-moon':
+                    return 'text-sky-600'
+
+            }
+            
+        }
 
     return ( 
     
@@ -462,39 +492,35 @@ function PokemonData() {
                      </div>
                 </div>
                 {console.log(pokedata)} 
-                {encounterData && encounterData.length > 0 &&  (
-                                       
-            <div className=" border-4 border-black rounded-lg my-4 bg-slate-500 ">
-            <h1 className="py-4 font-bold text-3xl text-center text-white  ">PokeMon Locations</h1>
-            <div className="bg-white ">
-                {encounterData && encounterData.map((encounter, index) => (
-                    <div key={index} className="  pt-2 px-5 pb-4">
+                {encounterData && encounterData.length > 0 && (
+    <div className="border-4 border-black rounded-lg my-4 bg-slate-500">
+        <h1 className="py-4 font-bold text-3xl text-center text-white">Pokemon Locations</h1>
+        <div className="bg-white">
+            {encounterData.map((encounter, encounterIndex) => (
+               
+                <div key={encounterIndex} className=" px-5 py-1">
+                    {encounter.version_details.map((versionDetail, versionIndex) => (
+                        <div className="border-b-2 border-black py-1" key={versionIndex}>
+                            <p className="font-bold">Version: <span className={`${ColorVersion(versionDetail.version.name)}`}>{capitalizeFirstLetter(versionDetail.version.name)}</span></p>
+                            <p className="">Location Area: <span>{capitalizeFirstLetter(encounter.location_area.name)}</span></p>
+                            {versionDetail.encounter_details.map((detail, detailIndex) => (
+                                <div key={detailIndex}>
+                                    {console.log(detail)}
+                                    <p className="">Chances of Encountering: <span>{detail.chance}%</span></p>
+                                    <p className="">Max Level: <span>{detail.max_level}Lv</span></p>
+                                    <p className="">Min Level: <span>{detail.min_level}Lv</span></p>
+                                    <p className="">Method: <span>{capitalizeFirstLetter(detail.method.name)}</span></p>
+                                </div>
+                            ))}
+                            <p className="">Max Chance: <span>{versionDetail.max_chance}%</span></p>
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </div>
+    </div>
+)}
 
-                        {encounter.version_details.map((versionDetail, Vidx) => {
-                            <div key={Vidx} className="">
-                                {console.log(versionDetail.version.name)}
-                                {console.log(versionDetail)}
-                             <p className="font-bold">Verson: <span className={``}>{versionDetail.version.name}</span></p>
-                             <p className="">Location Area: <span>{capitalizeFirstLetter(encounter.location_area.name)}</span></p>
-                             </div>
-
-                            {versionDetail.encounter_details.map(( VD, i) => {
-                            <div key={i} className="">
-                                {console.log(VD)}
-                                <p className=""> Chances of Encountering : <span>{encounter.version_details[0].encounter_details[0].chance}%</span></p>
-                                <p className="">Max Level: <span>{encounter.version_details[0].encounter_details[0].max_level}Lv</span></p>
-                                <p className="">Max Chance: <span>{encounter.version_details[0].max_chance}%</span></p>
-                                <p className=""> Method: <span>{capitalizeFirstLetter(encounter.version_details[0].encounter_details[0].method.name)}</span></p>
-                            </div>
-                            })} 
-                        })}
-=
-                    </div>
-                ))}
-            </div>   
-
-            </div>
-            )}  
 
           
 
