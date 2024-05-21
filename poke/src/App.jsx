@@ -21,7 +21,7 @@ import Dragon from './TypePage/Dragon.jsx';
 import Dark from './TypePage/Dark.jsx';
 import Fairy from './TypePage/Fairy.jsx';
 import Stellar from './TypePage/Stellar.jsx';
-
+import ClickedType from './pages/ClickedType.jsx'
 
 // import NonLoad from './pages/NonLoad.jsx';
 
@@ -35,6 +35,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Header />} /> 
           <Route path="/pokemonData" element={<PokemonData />} /> 
+          <Route path="/ClickedType" element={<ClickedType />} /> 
           <Route path="/Clicked" element={<Clicked />} /> 
           <Route path="/Normal" element={<Normal />} />
           <Route path="/Fire" element={<Fire />} />  

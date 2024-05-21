@@ -1,14 +1,13 @@
-import React, { useEffect, useState, version } from "react";
+import React, { useEffect, useState} from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 
 function PokemonData() {
     const location = useLocation();
-    const pokedata = location.state ? location.state.pokedata : null;
-    // console.log(location.state.pokedata)
-
-    const locationURL = pokedata.location_area_encounters;
+    const pokeData = location.state ? location.state.pokeData : null;
+    // console.log(location.state.pokeData)
+    const locationURL = pokeData.location_area_encounters;
 
 
     const [encounterData, setencounterData] = useState ()
@@ -25,15 +24,15 @@ function PokemonData() {
     //     const FetchAllDataUrl = async () =>{
 
     //     }
-    // },[pokedata])
+    // },[pokeData])
     // This a work around to work on all of them in one useeffect
 
     useEffect(() => {
         const handletypeLink = async() => {
             try{
-                if(pokedata){
+                if(pokeData){
                     const typeurl = Promise.all(
-                    pokedata.types.map(async(type) =>{
+                    pokeData.types.map(async(type) =>{
                         const res = await axios.get(type.type.url)
                         return res.data
                     })
@@ -50,14 +49,14 @@ function PokemonData() {
         handletypeLink()
         
         
-    },[pokedata])
+    },[pokeData])
 
     useEffect (() =>{
         const fetchMoveData = async () =>{
             try{
-                if(pokedata && pokedata.moves){
+                if(pokeData && pokeData.moves){
                 const moveDes = await Promise.all(
-                    pokedata.moves.map(async (move) =>{
+                    pokeData.moves.map(async (move) =>{
                         const UrlMoves = await axios.get(move.move.url) 
                         
                         return UrlMoves.data
@@ -74,7 +73,7 @@ function PokemonData() {
             }
         }
         fetchMoveData()
-    },[pokedata])
+    },[pokeData])
 
 
 
@@ -82,7 +81,7 @@ function PokemonData() {
     useEffect(() => {
         const Species = async () => {
             try{
-                const res = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokedata.name}/`);
+                const res = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokeData.name}/`);
                 setevoPoke(res.data)
                 console.log(res.data)
               
@@ -94,7 +93,7 @@ function PokemonData() {
         }
         Species()
 
-    },[pokedata.name])
+    },[pokeData.name])
    
   
     useEffect(() => {
@@ -166,9 +165,9 @@ function PokemonData() {
 
     useEffect(() => {
         async function fetchAbilityData() {
-            if (pokedata) {
+            if (pokeData) {
                 const abilitiesWithDetails = await Promise.all(
-                    pokedata.abilities.map(async (ability) => {
+                    pokeData.abilities.map(async (ability) => {
                         const description = await CallApi(ability.ability.url);
                         return {
                             name: ability.ability.name,
@@ -181,12 +180,12 @@ function PokemonData() {
         }
 
         fetchAbilityData();
-    }, [pokedata]);
+    }, [pokeData]);
 
 
     const Playaudio = () => { 
-        if(pokedata){
-        new Audio(`https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${pokedata.id}.ogg`).play()
+        if(pokeData){
+        new Audio(`https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${pokeData.id}.ogg`).play()
         }
     }
     function weightConver(hec){
@@ -406,12 +405,12 @@ function PokemonData() {
         <div className=" relative p-10 bg-pokemon-rep" > {/* div 1*/}
         <div className="w-full h-full bg-pokemon-rep bg-repeat blur-sm"></div>
              
-            {pokedata && (
+            {pokeData && (
                 <div className="">   {/* div 2*/}
                 
             
                     <div className="flex justify-center mt-6 rounded-2xl bg-white border-black border-4 mx-auto w-3/4 px-10">
-                        <h2 className="font-sans my-auto txt-blacks text-5xl font-semibold">{capitalizeFirstLetter(pokedata.name)}</h2>
+                        <h2 className="font-sans my-auto txt-blacks text-5xl font-semibold">{capitalizeFirstLetter(pokeData.name)}</h2>
                             <svg className="cursor-pointer mt-5" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
                                 <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
                                     c0,29.1,23.6,52.7,52.7,52.7h71.6c15.9,25,37.6,46,63.2,61.1c28.7,16.9,61.5,25.8,95,25.8c7.5,0,13.5-6,13.5-13.5V68.65
@@ -429,7 +428,7 @@ function PokemonData() {
                             
 
                         <ul className="flex">
-                                {pokedata.types.map((type, index) => (
+                                {pokeData.types.map((type, index) => (
                             <li key={index} className={` ${TypeColor(type.type.name)} cursor-pointer font align-middle mx-3 p-4 my-3 w-20 text-white rounded-sm h-24 font-semibold text-md `}>
                                 {type.type.name}
                             </li>
@@ -446,16 +445,16 @@ function PokemonData() {
 
                                 <div className="  mt-4 w-fit mr-auto ml-auto">
                                     <div className=" h-full mt-[-25px] bg-slate-800 bo rounded-3xl border-8 border-red-600 ">
-                                        <img className=" h-96 animate-bounce  " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokedata.id}.png` } alt="Pokemon Image"/>
+                                        <img className=" h-96 animate-bounce  " src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeData.id}.png` } alt="Pokemon Image"/>
                                     </div>
                                 </div>
 
 
                             <div className="mt-4">
                                 <div className="pl-4 py-2 bg-white rounded-2xl border-red-600 border-2">
-                                    <h1 className=" text-center font-bold text-3xl">PokeMon #<span>{pokedata.id}</span></h1>
-                                    <p className=" font-bold text-xl">Height: {heightConver(pokedata.height)}</p>
-                                    <p className="font-bold text-xl">Weight: {weightConver(pokedata.weight)}</p>
+                                    <h1 className=" text-center font-bold text-3xl">PokeMon #<span>{pokeData.id}</span></h1>
+                                    <p className=" font-bold text-xl">Height: {heightConver(pokeData.height)}</p>
+                                    <p className="font-bold text-xl">Weight: {weightConver(pokeData.weight)}</p>
                                 </div>
                             </div>
 
@@ -492,7 +491,7 @@ function PokemonData() {
                         </div>
                      </div>
                 </div>
-                {console.log(pokedata)} 
+                {console.log(pokeData)} 
                 {encounterData && encounterData.length > 0 && (
     <div className="border-4 border-black rounded-lg my-4 bg-slate-500">
         <h1 className="py-4 font-bold text-3xl text-center text-white">Pokemon Locations</h1>
@@ -533,7 +532,7 @@ function PokemonData() {
                                     <p className="mt-6 font-bold text-3xl text-center text-black">Stats</p>
                                 </div>
                                     <ul className="flex flex-col  space-y-3 w-60 p-1 border-4 border-red-600  mb-5">
-                                        {pokedata.stats.map((stat, index) => (   
+                                        {pokeData.stats.map((stat, index) => (   
                                         <div key={index} className="">
                                             <strong className="" >
                                                 {capitalizeFirstLetter(stat.stat.name )}
@@ -564,7 +563,7 @@ function PokemonData() {
                                             </tr>
                                         </thead>
                                             <tbody className="">
-                                                {pokedata.moves.map((move, index) => (
+                                                {pokeData.moves.map((move, index) => (
                                                 <tr className=" border-b-2"  key={index}>
                                                     <td className=" text-center  text-white font-semibold">{capitalizeFirstLetter(move.move.name)}</td>
                                                     {/* <td className=" text-center  text-white font-semibold">{capitalizeFirstLetter(move.move.effect_entries[index].effect)}</td> */}
@@ -672,27 +671,27 @@ function PokemonData() {
         <div className="mt-16 mx-auto bg-gray-700 rounded-3xl border-4 border-black  overflow-y-auto outline-2 w-[1000px] p-2">
             <div className="carousel h-60 divide-x divide-dashed">
                 <div className="carousel-item w-1/3">
-                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} className="w-full" />
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeData.id}.png`} className="w-full" />
                     <h1 className="text-white ">Front Default</h1>
                 </div> 
                 <div className="carousel-item w-1/3">
-                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokedata.id}.png`} className="w-full"/>
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/${pokeData.id}.png`} className="w-full"/>
                     <h1 className="text-white">Back Default</h1>
                 </div> 
                 <div className="carousel-item w-1/3">
-                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokedata.id}.png`} className="w-full" />
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokeData.id}.png`} className="w-full" />
                     <h1 className="text-white">Front Shiny</h1>
                 </div> 
                 <div className="carousel-item w-1/3">
-                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${pokedata.id}.png`} className="w-full" />
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/${pokeData.id}.png`} className="w-full" />
                     <h1 className="text-white">Back Shiny</h1>
                 </div> 
                 <div className="carousel-item w-1/3">
-                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokedata.id}.gif`} className="w-full" />
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokeData.id}.gif`} className="w-full" />
                     <h1 className="text-white">ShowDown Front</h1>
                 </div> 
                 <div className="carousel-item w-1/3">
-                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/back/${pokedata.id}.gif`} className="w-full" />
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/back/${pokeData.id}.gif`} className="w-full" />
                     <h1 className="text-white">ShowDown Back</h1>
                 </div>
             </div>

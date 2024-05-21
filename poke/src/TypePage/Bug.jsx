@@ -9,7 +9,7 @@ function Bug (){
     const [typeinfo, settypeinfo] = useState(null)
     const [newdata, setnewdata] = useState([])
     const [movedata, setmovedata] = useState([])
-    const [pokeData, setnewpokedata] = useState("")
+    const [pokeData, setnewpokedata] = useState(null)
     
 
     const navigate = useNavigate();
@@ -24,7 +24,6 @@ function Bug (){
         return <td className="text-center">{englishEntry ? englishEntry.flavor_text : "English text not found"}</td>;
     }
     
-
 
 
     useEffect(() =>  {
@@ -51,12 +50,14 @@ function Bug (){
                     const fetchedpokemon = await Promise.all(
                         
                         typeinfo.pokemon.map(async (poke) => {
+                            
                             const res = await axios.get(poke.pokemon.url);
                             return { data: res.data };
                         })
                     );
                     setnewdata(fetchedpokemon);
                    
+
             } catch (error) {
                 console.error(error + " is the error");
             }
@@ -71,10 +72,12 @@ function Bug (){
                     const fetchedpokemon = await Promise.all(
                         typeinfo.moves.map(async (move) => {
                             const res = await axios.get(move.url);
+                            
                             return { data: res.data };
                         })
                     );
                     setmovedata(fetchedpokemon);
+
             } catch (error) {
                 console.error(error + " is the error");
             }
@@ -85,9 +88,6 @@ function Bug (){
        
     }, [typeinfo]);
     
-    
-console.log(typeinfo)
-
 
     function PrevPage(){
         navigate("/")
@@ -102,13 +102,16 @@ console.log(typeinfo)
     const HandleClick = async (i) => {
         try {
             if (newdata) {
+                console.log(newdata);
                 const pokeid = newdata[i].data.id;
+                console.log(pokeid);
                 const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokeid}`;
+                console.log(apiUrl);
                 const res = await axios.get(apiUrl);
                 if (res.status === 200) {
-                    setnewpokedata(res.data);
-                    
-                    navigate("./PokemonData", { state: { pokeData: res.data } });
+                    setnewpokedata(newdata);
+                    console.log(newdata);
+                    navigate("/ClickedType", { state: { pokeData: newdata } });
                 }
             }
         } catch (error) {
@@ -232,7 +235,7 @@ console.log(typeinfo)
                             )}
                         </div>
                     </div>
-
+                    {console.log(newdata)}
 
 <div className="2xl:flex 2xl:justify-around">
 {typeinfo && (
@@ -244,6 +247,7 @@ console.log(typeinfo)
                     <div key={i} className="bg-slate-900 m-2 rounded-3xl">
                         <div className="p-3 m-5 bg-slate-700 rounded-3xl border-white border-4"> 
                             {newdata.length > 0 && newdata[i] && newdata[i].data && (
+                              
                                 <img onClick={() => HandleClick(i)} className="h-36 cursor-pointer" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${newdata[i].data.id}.png`} alt={`Sprite of ${capitalizeFirstLetter(poke.pokemon.name)}`} />
                             )}
                             {!newdata.length || !newdata[i] || !newdata[i].data && (
@@ -280,9 +284,6 @@ console.log(typeinfo)
                             <td className=" text-center">{data.data.accuracy || 0}</td>
                             <td className="text-center ">{data.data.power || 0}</td>
                             <td className="text-center">{capitalizeFirstLetter(data.data.damage_class.name)}</td>
-
-                            
-                            
                         </tr>
                     ))}
                         </table>
