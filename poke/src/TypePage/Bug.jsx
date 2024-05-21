@@ -137,7 +137,7 @@ console.log(typeinfo)
             </div>
             
                    
-                   <div className="xl:flex my-16 xl:justify-evenly">
+                   <div className="lg:flex my-16 lg:justify-evenly">
                     
 
                     <div className="sm:flex sm:justify-center">
@@ -159,7 +159,7 @@ console.log(typeinfo)
                         </div>
                     </div>
 
-                        <div className="flex flex-col border-8 border-black rounded-2xl bg-white p-3 sm:w-[1100px]  w-full">
+                        <div className="flex flex-col border-8 border-black rounded-2xl bg-white p-3 lg:[1100px] md:w-[650px]  w-full">
                             <div className="flex flex-row items-center mb-6 border-b-2">
                             <p className="text-2xl font-bold pr-10 w-1/5">Weak To:</p>
                             <div className="flex flex-wrap w-4/5">
@@ -258,9 +258,9 @@ console.log(typeinfo)
     </div>
 )}
             <div className="sm:flex sm:justify-center">
-                <div className="mt-12 bg-white p-3 border-black border-8 rounded-2xl h-[800px] xl:h-[1100px] max-w-[680px]">
+                <div className="mt-12 bg-white  border-black border-8 rounded-2xl  xl:h-[1100px] w-[680px]">
                     <p className="text-center font-extrabold mb-10 text-5xl">Bug Moves Pokemons</p>
-                    <div className=" border-8 border-black rounded-xl sm:overflow-y-auto h-[650px] xl:h-[950px]">
+                    <div className=" border-8 border-black rounded-xl sm:overflow-y-auto h-[650px] xl:h-[950px] ">
                         <table className="rounded-2xl ">
                             <thead className="rounded-2xl sticky top-0">
                                 <tr className="">
