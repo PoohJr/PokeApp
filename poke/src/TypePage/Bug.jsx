@@ -8,8 +8,9 @@ import PropTypes from 'prop-types';
 function Bug (){
     const [typeinfo, settypeinfo] = useState(null)
     const [newdata, setnewdata] = useState([])
+    const [loading, setLoading] = useState(true);
     const [movedata, setmovedata] = useState([])
-    const [pokeData, setnewpokedata] = useState(null)
+    const [pokeData, setnewpokedata] = useState([])
     
 
     const navigate = useNavigate();
@@ -77,7 +78,7 @@ function Bug (){
                         })
                     );
                     setmovedata(fetchedpokemon);
-
+                    setLoading(false)
             } catch (error) {
                 console.error(error + " is the error");
             }
@@ -100,24 +101,33 @@ function Bug (){
 
     // Fix this 
     const HandleClick = async (i) => {
-        try {
-            if (newdata) {
-                console.log(newdata);
-                const pokeid = newdata[i].data.id;
-                console.log(pokeid);
-                const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokeid}`;
-                console.log(apiUrl);
-                const res = await axios.get(apiUrl);
-                if (res.status === 200) {
-                    setnewpokedata(newdata);
-                    console.log(newdata);
-                    navigate("/ClickedType", { state: { pokeData: newdata } });
-                }
+    try {
+        if (newdata && newdata[i] && newdata[i].data && newdata[i].data.id) {
+            console.log('newdata:', newdata);
+            console.log('Selected index:', i);
+            console.log('Selected item:', newdata[i]);
+            console.log('Selected item data:', newdata[i].data);
+            console.log('Selected item data id:', newdata[i].data.id);
+
+            const pokeid = newdata[i].data.id;
+            const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokeid}`;
+            console.log('API URL:', apiUrl);
+
+            const res = await axios.get(apiUrl);
+            if (res.status === 200) {
+                const updatedPokeData = res.data;
+                setnewpokedata(updatedPokeData);
+                console.log('Fetched Pokémon data:', updatedPokeData);
+
+                navigate("/ClickedType", { state: { pokeData: updatedPokeData } });
             }
-        } catch (error) {
-            console.error("Error Fetching Api", error);
+        } else {
+            console.error('Invalid newdata structure or index:', newdata, i);
         }
-    };
+    } catch (error) {
+        console.error("Error fetching API:", error);
+    }
+};
 
     return(<>
 

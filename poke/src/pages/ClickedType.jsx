@@ -5,7 +5,7 @@ import axios from "axios";
 
 function PokemonData() {
     const location = useLocation();
-    const pokeData = location.state ? location.state.pokeData : null;
+    const pokeData  = location.state?.pokeData 
     // console.log(location.state.pokeData)
     const locationURL = pokeData.location_area_encounters;
 

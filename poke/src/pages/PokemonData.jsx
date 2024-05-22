@@ -5,7 +5,7 @@ import axios from "axios";
 
 function PokemonData() {
     const location = useLocation();
-    const pokedata = location.state ? location.state.pokedata : null;
+    const pokedata = location.state?.pokedata ? location.state.pokedata : null;
     // console.log(location.state.pokedata)
 
     const locationURL = pokedata.location_area_encounters;
@@ -348,9 +348,8 @@ function PokemonData() {
                 return " content-poison ";
             case "bug":
                 return "content-bug";
-            // Handle other types similarly
             default:
-                return ""; // Return an empty string for unknown types
+                return ""; 
         }
     }
         function getColorClass(statName){
@@ -396,6 +395,16 @@ function PokemonData() {
                     return 'text-orange-800'
                 case 'ultra-moon':
                     return 'text-sky-600'
+                case 'platinum':
+                        return 'text-slate-400'
+                case 'ruby':
+                    return 'text-[#E0115F]'
+                case 'sapphire':
+                    return 'text-[#0F52BA]'
+                case 'emerald':
+                    return 'text-[#028f1e]'
+                default:
+                    return ""
 
             }
             
