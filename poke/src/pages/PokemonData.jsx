@@ -503,8 +503,8 @@ function PokemonData() {
                 </div>
                 {console.log(pokedata)} 
                 {encounterData && encounterData.length > 0 && (
-    <div className="border-4 border-black rounded-lg my-4 bg-slate-500">
-        <h1 className="py-4 font-bold text-3xl text-center text-white">Pokemon Locations</h1>
+    <div className="max-h-[1000px] overflow-auto border-4 border-black rounded-lg my-4  bg-slate-500 ">
+        <h1 className="py-4 font-bold text-3xl text-center text-white ">Pokemon Locations</h1>
         <div className="bg-white">
             {encounterData.map((encounter, encounterIndex) => (
                
@@ -677,8 +677,8 @@ function PokemonData() {
            
         
         
-    
-        <div className="mt-16 mx-auto bg-gray-700 rounded-3xl border-4 border-black  overflow-y-auto outline-2 w-[1000px] p-2">
+    <div className="flex justify-center">
+        <div className="mt-16 mx-auto bg-gray-700 rounded-3xl border-4 border-black  overflow-y-auto outline-2 md:w-[1000px]  sm:w-[600px] p-2">
             <div className="carousel h-60 divide-x divide-dashed">
                 <div className="carousel-item w-1/3">
                     <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokedata.id}.png`} className="w-full" />
@@ -706,6 +706,7 @@ function PokemonData() {
                 </div>
             </div>
         </div>
+    </div>
 
            
         </div> // end of 1 div

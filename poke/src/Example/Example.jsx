@@ -181,11 +181,13 @@ function Example({ setpokeData }) {
                             <div className="mx-10 dropdown">
                                 <div tabIndex={0} role="button" className="shadow-lg shadow-gray-500-50 box text-3xl font-bold btn m-1">Filter</div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                    <li><a>A-Z</a></li>
-                                    <li><a>Z-A</a></li>
-                                    <li className=""><a className="">1-{totalPokemon}</a></li>
-                                    <li><a>{totalPokemon}-1</a></li>
-                                    <li><a>Type</a></li>
+                                    <div className="flex  flex-wrap flex-row justify-center">
+                                        <li><a className="text-lg">A-Z</a></li>
+                                        <li><a className="text-lg">Z-A</a></li>
+                                        <li className=""><a className="text-lg">1-{totalPokemon}</a></li>
+                                        <li><a className="text-lg">{totalPokemon}-1</a></li>
+                                        <li><a className="text-lg">Type</a></li>
+                                    </div>
                                 </ul>
                             </div>
                         </div>
@@ -214,7 +216,7 @@ function Example({ setpokeData }) {
 
                     <div className="flex justify-evenly w-full flex-wrap mt-16">
                         {clickpokedata.map((pokemon, index) => (
-                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/3 xl:w-1/5 2xl:w-[300px] h-40 hover:shadow-inner bg-slate-900 border-slate-600 border-2 rounded  m-4 mb-6">
+                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/3 xl:w-1/5 2xl:w-[300px] h-40 bg-slate-900 shadow-xl shadow-slate-500/65 hover:shadow-slate-300/50 border-slate-600 border-2 rounded  m-4 mb-6">
                                 <div className="text-md text-center rounded-lg mt-1 mb-1">
                                     <div className="text-white absolute top-0 left-0 w-7 h-8">
                                         <strong className="text-[#FFD700]">#{pokemon.data.id}</strong>
