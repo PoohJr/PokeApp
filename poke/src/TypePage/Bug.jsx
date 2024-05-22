@@ -138,7 +138,7 @@ function Bug (){
         <div className=" p-8 ">
             <div className="">
                     <div className="">
-                        <button onClick={PrevPage}  className="text-4xl text-white bg-orange-700 p-2 rounded-2xl font-bold hover:bg-orange-600 transition-all 2s ease-in-out ">Go Back</button>
+                        <button onClick={PrevPage}  className="text-4xl text-white bg-slate-700 p-2 rounded-2xl font-bold hover:bg-slate-600 transition-all 2s ease-in-out ">Go Back</button>
                     </div>
                 <div className="flex justify-center">
                     <p></p>

@@ -149,7 +149,7 @@ function Example({ setpokeData }) {
                         <p className="text-white text-5xl my-10 pb-5 text-center font-bold">Pokémon Types</p>
                         <div className="flex flex-row flex-wrap justify-evenly">
                             {datatypes.results?.slice(0, 19).map((type, index) => (
-                                <div key={index} className="rounded-2xl border-slate-600 border-2 bg-slate-900 px-10 m-2 py-3 my-3">
+                                <div key={index} className="rounded-2xl border-slate-600 border-2 bg-slate-900 transition-all ease-in-out duration-500 shadow-xl shadow-slate-500/65 hover:shadow-slate-300/50 px-10 m-2 py-3 my-3">
                                     <img
                                         onClick={() => HandleTypeClick(type.name)}
                                         className={`transition-all ease-in-out duration-200 hover:rotate-12 hover:scale-125 h-16 cursor-pointer ${handleTypeImg(type.name)}`}
@@ -177,16 +177,28 @@ function Example({ setpokeData }) {
                             <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
                                 <button onClick={() => handleLoadMore(100)} className="text-center text-slate-800">100</button>
                             </div>
-                    { console.log(totalPokemon)}
-                            <div className="mx-10 dropdown">
+                    
+                            {/* <div className="mx-10 dropdown">
                                 <div tabIndex={0} role="button" className="shadow-lg shadow-gray-500-50 box text-3xl font-bold btn m-1">Filter</div>
-                                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                    <div className="flex  flex-wrap flex-row justify-center">
-                                        <li><a className="text-lg">A-Z</a></li>
+                                <ul tabIndex={0} className="  dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-96">
+                                    <div className="flex m-2 flex-wrap flex-col justify-center">
+                                        <li clas><a className="text-lg">A-Z</a></li>
                                         <li><a className="text-lg">Z-A</a></li>
                                         <li className=""><a className="text-lg">1-{totalPokemon}</a></li>
                                         <li><a className="text-lg">{totalPokemon}-1</a></li>
-                                        <li><a className="text-lg">Type</a></li>
+                                        <li className="text-lg">Type</li>
+                                    </div>
+                                </ul>
+                            </div> */}
+                            <div className="mx-10 dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn shadow-lg shadow-gray-500-50 box text-3xl font-bold  m-1">Filter</div>
+                                <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                <div className="flex m-2 flex-wrap flex-col justify-center">
+                                        <li clas><a className="text-lg">A-Z</a></li>
+                                        <li><a className="text-lg">Z-A</a></li>
+                                        <li className=""><a className="text-lg">1-{totalPokemon}</a></li>
+                                        <li><a className="text-lg">{totalPokemon}-1</a></li>
+                                        <li className="text-lg">Type:</li>
                                     </div>
                                 </ul>
                             </div>
@@ -216,7 +228,7 @@ function Example({ setpokeData }) {
 
                     <div className="flex justify-evenly w-full flex-wrap mt-16">
                         {clickpokedata.map((pokemon, index) => (
-                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/3 xl:w-1/5 2xl:w-[300px] h-40 bg-slate-900 shadow-xl shadow-slate-500/65 hover:shadow-slate-300/50 border-slate-600 border-2 rounded  m-4 mb-6">
+                            <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/3 xl:w-1/5 2xl:w-[300px] h-40 bg-slate-900 transition-all ease-in-out duration-500 shadow-xl shadow-slate-500/65 hover:shadow-slate-300/50 border-slate-600 border-2 rounded  m-4 mb-6">
                                 <div className="text-md text-center rounded-lg mt-1 mb-1">
                                     <div className="text-white absolute top-0 left-0 w-7 h-8">
                                         <strong className="text-[#FFD700]">#{pokemon.data.id}</strong>
@@ -224,7 +236,7 @@ function Example({ setpokeData }) {
                                     <strong className="mt-2 text-white">{capitalizeFirstLetter(pokemon.data.name)}</strong>
                                 </div>
                                 <div className="flex justify-center">
-                                    <div className="group: bg-white h-24 w-24 rounded-full border-8 border-slate-800 transition-all group-hover:rounded-none">
+                                    <div className="group: bg-white h-24 w-24 rounded-full border-8 border-slate-800 hover:border-slate-600 transition-all ease-in-out duration-300">
                                         <div className="h-full flex items-center justify-center">
                                             <img
                                                 onClick={(e) => HandleClick(e, index)}
