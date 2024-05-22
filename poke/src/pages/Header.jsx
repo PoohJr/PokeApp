@@ -68,6 +68,12 @@ export function Header() {
                                         text-black rounded-2xl border-none ring-2 ring-gray-300 
                                         focus:ring-gray-500 focus:ring-2 
                                         align-middle
+                                        transition-all 
+                                        ease-in-out 
+                                        duration-500 
+                                        shadow-xl 
+                                        shadow-slate-500/65 
+                                        hover:shadow-slate-300/50
                                         ${() => handleError() }`}
                                         id="in"
                                         onChange={(e) => setUserInput(e.target.value)}
@@ -85,7 +91,18 @@ export function Header() {
                                     </button>
                                     <br />
                                     {/* Work on Button to have random Pokemon */}
-                                    <button type="submit" className="btn bg-slate-800 border-black text-white hover:bg-slate-600">Surprise Me!</button>
+                                    <button type="submit" className="btn 
+                                    bg-slate-800 
+                                    border-black 
+                                    text-white 
+                                    hover:bg-slate-600
+                                    transition-all 
+                                    ease-in-out 
+                                    duration-500 
+                                    shadow-xl 
+                                    shadow-slate-500/65 
+                                    hover:shadow-slate-300/50
+                                    ">Surprise Me!</button>
 
                                     
                                 </div>
