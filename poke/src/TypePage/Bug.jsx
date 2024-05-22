@@ -154,25 +154,27 @@ function Bug (){
                     
 
                     <div className="sm:flex sm:justify-center">
-                        <div className=" bg-white border-8 border-black rounded-2xl m-10 w-96">
+                        <div className=" bg-white border-8 border-black rounded-2xl m-10 w-96 h-52">
                             <div className="m-4">
                                 <p className="text-center text-2xl font my-2">ID Type: <span className="font-bold">#{typeinfo.id}</span></p>
                                 <p className="text-center text-2xl  my-2">Move Damage Class: <span className="font-bold">{capitalizeFirstLetter(typeinfo.move_damage_class.name)}</span></p> 
-                                <details className=" dropdown">
-                                    <summary className="btn text-2xl font-bold">{capitalizeFirstLetter(typeinfo.generation.name)}</summary>
-                                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                                    {typeinfo.game_indices.map((game, index) => (
-                                        <li key={index} className="text-2xl font-bold">{capitalizeFirstLetter(game.generation.name)}</li>
-                                    ))}
-                                    </ul>
-                                </details>
+                                <div className="mt-3 flex justify-center">
+                                    <details className=" dropdown">
+                                        <summary className="btn text-2xl font-bold">{capitalizeFirstLetter(typeinfo.generation.name)}</summary>
+                                        <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                                        {typeinfo.game_indices.map((game, index) => (
+                                            <li key={index} className="text-2xl font-bold">{capitalizeFirstLetter(game.generation.name)}</li>
+                                        ))}
+                                        </ul>
+                                    </details>
+                                </div>
                                 
                             
                             </div>                    
                         </div>
                     </div>
 
-                        <div className="flex flex-col border-8 border-black rounded-2xl bg-white p-3 lg:[1100px] md:w-[650px]  w-full">
+                        <div className="flex flex-col justify-center border-8 border-black rounded-2xl bg-white p-3 lg:[1100px] lg:w-[800px]  w-full">
                             <div className="flex flex-row items-center mb-6 border-b-2">
                             <p className="text-2xl font-bold pr-10 w-1/5">Weak To:</p>
                             <div className="flex flex-wrap w-4/5">
@@ -272,9 +274,10 @@ function Bug (){
     </div>
 )}
             <div className="sm:flex sm:justify-center">
-                <div className="mt-12 bg-white  border-black border-8 rounded-2xl  xl:h-[1100px] w-[680px]">
-                    <p className="text-center font-extrabold mb-10 text-5xl">Bug Moves Pokemons</p>
+                <div className="mt-12 bg-white   rounded-2xl  xl:h-[1100px] w-[680px]">
+                    
                     <div className=" border-8 border-black rounded-xl sm:overflow-y-auto h-[650px] xl:h-[950px] ">
+                    <p className="text-center font-extrabold mb-10 text-5xl mt-8">Bug Moves Pokemons</p>
                         <table className="rounded-2xl ">
                             <thead className="rounded-2xl sticky top-0">
                                 <tr className="">
