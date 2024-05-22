@@ -1,7 +1,6 @@
 import Header from './pages/Header.jsx';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PokemonData from "./pages/PokemonData.jsx";
-import Clicked from './Clicked.jsx';
 import Normal from './TypePage/Normal.jsx';
 import Fire from './TypePage/Fire.jsx';
 import Fighting from './TypePage/Fighting.jsx';
@@ -35,8 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Header />} /> 
           <Route path="/pokemonData" element={<PokemonData />} /> 
-          <Route path="/ClickedType" element={<ClickedType />} /> 
-          <Route path="/Clicked" element={<Clicked />} /> 
+          <Route path="/ClickedType" element={<ClickedType />} />  
           <Route path="/Normal" element={<Normal />} />
           <Route path="/Fire" element={<Fire />} />  
           <Route path="/Fighting" element={<Fighting />} />  

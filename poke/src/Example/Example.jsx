@@ -146,7 +146,7 @@ function Example({ setpokeData }) {
             <div>
                 {datatypes && (
                     <div>
-                        <p className="text-white text-5xl mt-10 pb-5 text-center font-bold">Pokémon Types</p>
+                        <p className="text-white text-5xl my-10 pb-5 text-center font-bold">Pokémon Types</p>
                         <div className="flex flex-row flex-wrap justify-evenly">
                             {datatypes.results?.slice(0, 19).map((type, index) => (
                                 <div key={index} className="rounded-2xl border-slate-600 border-2 bg-slate-900 px-10 m-2 py-3 my-3">
@@ -179,7 +179,7 @@ function Example({ setpokeData }) {
                             </div>
                     { console.log(totalPokemon)}
                             <div className="mx-10 dropdown">
-                                <div tabIndex={0} role="button" className="text-3xl font-bold btn m-1">Filter</div>
+                                <div tabIndex={0} role="button" className="shadow-lg shadow-gray-500-50 box text-3xl font-bold btn m-1">Filter</div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                     <li><a>A-Z</a></li>
                                     <li><a>Z-A</a></li>
@@ -194,18 +194,18 @@ function Example({ setpokeData }) {
                     {offset + loadmore < totalPokemon && (
                         <div className="flex justify-center w-full mt-4">
                             <div className="px-8">
-                                <button onClick={handleNextPage} className="text-center  text-white bg-blue-500 px-4 py-2 rounded-full">
+                                <button onClick={handleNextPage} className="text-center  text-white bg-cyan-500 shadow-lg shadow-cyan-500/50 hover:shadow-cyan-400/50 transition-all ease-in-out duration-500 px-4 py-2 rounded-full">
                                     Next Page
                                 </button>
                             </div>
                             <div className={offset > 0 ? "px-8" : "px-8 hidden"}>
-                                <button onClick={handleResetPage} className="text-center  text-white bg-blue-500 px-4 py-2 rounded-full">
+                                <button onClick={handleResetPage} className="text-center  text-white bg-gray-500 shadow-lg shadow-gray-500/50 hover:shadow-gray-400/50 transition-all ease-in-out duration-500 px-4 py-2 rounded-full">
                                     Reset to 1
                                 </button>
                             </div>
 
                             <div className={offset > 0 ? "px-8" : "px-8 hidden"}>
-                                <button onClick={handlePrevPage} className="text-center text-white bg-blue-500 px-4 py-2 rounded-full">
+                                <button onClick={handlePrevPage} className="text-center text-white bg-red-500 shadow-lg shadow-red-500/50 hover:shadow-red-400/50 transition-all ease-in-out duration-500 px-4 py-2 rounded-full">
                                     Prev Page
                                 </button>
                             </div>
