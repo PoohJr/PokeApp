@@ -11,6 +11,7 @@ function Example({ setpokeData }) {
     const [offset, setOffset] = useState(0); 
     const [totalPokemon, setTotalPokemon] = useState(0); 
     const[filteredPokemon, setfilteredPokemon] = useState([])
+    const [selectedTypes, setSelectedTypes] = useState([]);
 
     const navigate = useNavigate();
 
@@ -169,6 +170,14 @@ function Example({ setpokeData }) {
         
     // }
 
+    const handleTypeSelect = (type) => {
+        if (selectedTypes.includes(type)) {
+            setSelectedTypes(selectedTypes.filter(t => t !== type));
+        } else {
+            setSelectedTypes([...selectedTypes, type]);
+        }
+    };
+
     return (
         <>
             <div>
@@ -221,11 +230,20 @@ function Example({ setpokeData }) {
                                         <li><a className="text-lg">Z-A</a></li>
                                         <li className=""><a className="text-lg">1-{totalPokemon}</a></li>
                                         <li><a className="text-lg">{totalPokemon}-1</a></li>
-                                        <li>Type:</li>
-                                        {datatypes && datatypes.map((type, i) =>(
-                                            <li key={i}>{console.log(type)}</li>
-                                        ))}
-
+                                        <li className="text-center text-xl font-bold">Type</li>
+                                            {datatypes &&  datatypes.results && datatypes.results.slice(0,19).map((type, i) => {
+                                                return ( <li key={i}>
+                                                    <label>
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={selectedTypes.includes(type.name)}
+                                                            onChange={() => handleTypeSelect(type.name)}
+                                                        />
+                                                        {capitalizeFirstLetter(type.name)}
+                                                    </label>
+                                                </li>
+                                                    )
+                                                })}
                                         
                                     </div>
                                 </ul>
