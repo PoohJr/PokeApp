@@ -178,6 +178,18 @@ function Example({ setpokeData }) {
         }
     };
 
+    const handleSubmit = () => {
+        if(clickpokedata && clickpokedata.data) {
+            console.log(clickpokedata);
+            let filtering = clickpokedata;
+            console.log(filtering);
+            
+        }
+
+        
+    }
+  
+
     return (
         <>
             <div>
@@ -227,9 +239,13 @@ function Example({ setpokeData }) {
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <div className="flex m-2 flex-wrap flex-col justify-center">
                                         <li clas><a className="text-lg">A-Z</a></li>
+                                        <hr className="w-full h-1.5" />
                                         <li><a className="text-lg">Z-A</a></li>
+                                        <hr className="w-full h-1.5" />
                                         <li className=""><a className="text-lg">1-{totalPokemon}</a></li>
+                                        <hr className="w-full h-1.5" />
                                         <li><a className="text-lg">{totalPokemon}-1</a></li>
+                                        <hr className="w-full h-1.5" />
                                         <li className="text-center text-xl font-bold">Type</li>
                                             {datatypes &&  datatypes.results && datatypes.results.slice(0,19).map((type, i) => {
                                                 return ( <li key={i}>
@@ -241,10 +257,22 @@ function Example({ setpokeData }) {
                                                         />
                                                         {capitalizeFirstLetter(type.name)}
                                                     </label>
+                                                   
                                                 </li>
                                                     )
                                                 })}
-                                        
+                                         <button onClick={() => handleSubmit ()} className="text-center 
+                                                     text-white
+                                                      bg-cyan-500 
+                                                      shadow-lg 
+                                                      shadow-cyan-500/50 
+                                                      hover:shadow-cyan-400/50 
+                                                      transition-all 
+                                                      ease-in-out 
+                                                      duration-500 
+                                                      px-4 py-2 
+                                                      mt-3
+                                                      rounded-full">Submit</button>
                                     </div>
                                 </ul>
                             </div>
