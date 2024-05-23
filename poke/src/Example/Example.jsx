@@ -152,19 +152,22 @@ function Example({ setpokeData }) {
     }
 // End type 
 
-const getfilterpoke = (name) => {
-if(clickpokedata.length > 0 ){
-  
-    const filtering = clickpokedata.filter(pokemon => pokemon.data.types.some(type => type.type.name === name));
-    setfilteredPokemon(filtering)
-    return filtering;
-}
-   
-    const handleTypefilter = (index) => {
-        getfilterpoke(index)
-    }
+    // const getfilterpoke = () => {
+    // if(clickpokedata.length > 0 ){
+    //      function inFill(name ,i ) {
+    //        const hello = clickpokedata[i].data.types.name === name
+    //        console.log(hello);
+    //        return hello
+    //     }
+    //  const filtering = clickpokedata.filter(inFill);
+    //  console.log(filtering);
+    //  return filtering
+    // }
     
-}
+    // console.log(getfilterpoke('grass'));
+
+        
+    // }
 
     return (
         <>
@@ -219,7 +222,11 @@ if(clickpokedata.length > 0 ){
                                         <li className=""><a className="text-lg">1-{totalPokemon}</a></li>
                                         <li><a className="text-lg">{totalPokemon}-1</a></li>
                                         <li>Type:</li>
-                                        <button onClick={() => getfilterpoke('grass')} className="text-lg" type="radio">Grass</button>
+                                        {datatypes && datatypes.map((type, i) =>(
+                                            <li key={i}>{console.log(type)}</li>
+                                        ))}
+
+                                        
                                     </div>
                                 </ul>
                             </div>
@@ -249,7 +256,7 @@ if(clickpokedata.length > 0 ){
 
                     <div className="flex justify-evenly w-full flex-wrap mt-16">
 
-                        {filteredPokemon || clickpokedata.map((pokemon, index) => (
+                        {filteredPokemon.length > 0 ? filteredPokemon: clickpokedata.map((pokemon, index) => (
                             <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/3 xl:w-1/5 2xl:w-[300px] h-40 bg-slate-900 transition-all ease-in-out duration-500 shadow-xl shadow-slate-500/65 hover:shadow-slate-300/50 border-slate-600 border-2 rounded  m-4 mb-6">
                                 <div className="text-md text-center rounded-lg mt-1 mb-1">
                                     <div className="text-white absolute top-0 left-0 w-7 h-8">
