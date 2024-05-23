@@ -58,6 +58,7 @@ function Example({ setpokeData }) {
                     })
                 );
                 setclickpokedata(fetchedPokemon);
+                setfilteredPokemon(fetchedPokemon)
             } catch (error) {
                 console.error(error + " is the error");
                 return null;
@@ -177,16 +178,11 @@ function Example({ setpokeData }) {
             setSelectedTypes([...selectedTypes, type]);
         }
     };
-
-    const handleSubmit = () => {
-        if(clickpokedata && clickpokedata.data) {
-            console.log(clickpokedata);
-            let filtering = clickpokedata;
-            console.log(filtering);
+console.log(selectedTypes);
+    const handleSubmit = ( ) => {
+        if(clickpokedata && clickpokedata.data ){
             
         }
-
-        
     }
   
 
