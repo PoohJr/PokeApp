@@ -1,14 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PropTypes from 'prop-types';
+
 
 // import { useLocation } from "react-router-dom";
 
 function Fairy (){
     const [typeinfo, settypeinfo] = useState(null)
     const [newdata, setnewdata] = useState([])
-    const [loading, setLoading] = useState(true);
     const [movedata, setmovedata] = useState([])
     const [pokeData, setnewpokedata] = useState([])
     
@@ -78,7 +77,7 @@ function Fairy (){
                         })
                     );
                     setmovedata(fetchedpokemon);
-                    setLoading(false)
+                    
             } catch (error) {
                 console.error(error + " is the error");
             }
@@ -150,7 +149,7 @@ function Fairy (){
             </div>
             
                    
-                   <div className="lg:flex my-16 lg:justify-evenly">
+                   <div className="">
                     
 
                     <div className="sm:flex sm:justify-center">
@@ -173,8 +172,9 @@ function Fairy (){
                             </div>                    
                         </div>
                     </div>
-
-                        <div className="flex flex-col justify-center border-8 border-black rounded-2xl bg-white p-3 lg:[1100px] lg:w-[800px]  w-full">
+                    
+                    <div className="flex justify-center">
+                        <div className="flex flex-col  border-8 border-black rounded-2xl bg-white p-3 lg:[1100px] lg:w-[800px]  w-full">
                             <div className="flex flex-row items-center mb-6 border-b-2">
                             <p className="text-2xl font-bold pr-10 w-1/5">Weak To:</p>
                             <div className="flex flex-wrap w-4/5">
@@ -246,6 +246,7 @@ function Fairy (){
                             </div>
                             )}
                         </div>
+                    </div>
                     </div>
                     {console.log(newdata)}
 

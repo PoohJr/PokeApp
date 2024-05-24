@@ -10,8 +10,8 @@ function Example({ setpokeData }) {
     const [loadmore, setloadmore] = useState(25);
     const [offset, setOffset] = useState(0); 
     const [totalPokemon, setTotalPokemon] = useState(0); 
-    const[filteredPokemon, setfilteredPokemon] = useState([])
-    const [selectedTypes, setSelectedTypes] = useState([]);
+    // const[filteredPokemon, setfilteredPokemon] = useState([])
+    // const [selectedTypes, setSelectedTypes] = useState([]);
 
     const navigate = useNavigate();
 
@@ -58,7 +58,7 @@ function Example({ setpokeData }) {
                     })
                 );
                 setclickpokedata(fetchedPokemon);
-                setfilteredPokemon(fetchedPokemon);
+                // setfilteredPokemon(fetchedPokemon);
             } catch (error) {
                 console.error(error + " is the error");
                 return null;
@@ -156,17 +156,19 @@ function Example({ setpokeData }) {
 
 
 
-    const handleTypeSelect = (type) => {
-        if (selectedTypes.includes(type)) {
-            setSelectedTypes(selectedTypes.filter(t => t !== type));
-        } else {
-            setSelectedTypes([...selectedTypes, type]);
-        }
-    };
-console.log(selectedTypes);
-    const handleSubmit = () => {
-        return console.log(selectedTypes);
-    }
+// This is for filter 
+
+    // const handleTypeSelect = (type) => {
+    //     if (selectedTypes.includes(type)) {
+    //         setSelectedTypes(selectedTypes.filter(t => t !== type));
+    //     } else {
+    //         setSelectedTypes([...selectedTypes, type]);
+    //     }
+    // };
+// console.log(selectedTypes);
+    // const handleSubmit = () => {
+    //     return console.log(selectedTypes);
+    // }
   
 
     return (
@@ -177,7 +179,8 @@ console.log(selectedTypes);
                         <p className="text-white text-5xl my-10 pb-5 text-center font-bold">Pokémon Types</p>
                         <div className="flex flex-row flex-wrap justify-evenly">
                             {datatypes.results?.slice(0, 19).map((type, index) => (
-                                <div key={index} className="rounded-2xl 
+                                <div key={index} className="
+                                rounded-2xl 
                                 border-slate-600 
                                 border-2 
                                 bg-slate-900 
@@ -224,7 +227,7 @@ console.log(selectedTypes);
                                 <button onClick={() => handleLoadMore(100)} className="text-center text-slate-800">100</button>
                             </div>
                 
-                            <div className="mx-10 dropdown dropdown-end">
+                            {/* <div className="mx-10 dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn shadow-lg shadow-gray-500-50 box text-3xl font-bold  m-1">Filter</div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <div className="flex m-2 flex-wrap flex-col justify-center">
@@ -265,7 +268,7 @@ console.log(selectedTypes);
                                                       rounded-full">Submit</button>
                                     </div>
                                 </ul>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 
@@ -291,8 +294,8 @@ console.log(selectedTypes);
                     )}
 
                     <div className="flex justify-evenly w-full flex-wrap mt-16">
-
-                        {filteredPokemon.length > 0 ? filteredPokemon: clickpokedata.map((pokemon, index) => (
+                    {/* filteredPokemon.length > 0 ? filteredPokemon: add this to clickdata when i fix the filter btn */}
+                        {clickpokedata.map((pokemon, index) => (
                             <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/3 xl:w-1/5 2xl:w-[300px] h-40 bg-slate-900 transition-all ease-in-out duration-500 shadow-xl shadow-slate-500/65 hover:shadow-slate-300/50 border-slate-600 border-2 rounded  m-4 mb-6">
                                 <div className="text-md text-center rounded-lg mt-1 mb-1">
                                     <div className="text-white absolute top-0 left-0 w-7 h-8">

@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 function Dark (){
     const [typeinfo, settypeinfo] = useState(null)
     const [newdata, setnewdata] = useState([])
-    const [loading, setLoading] = useState(true);
     const [movedata, setmovedata] = useState([])
     const [pokeData, setnewpokedata] = useState([])
     
@@ -78,7 +77,7 @@ function Dark (){
                         })
                     );
                     setmovedata(fetchedpokemon);
-                    setLoading(false)
+                    
             } catch (error) {
                 console.error(error + " is the error");
             }
@@ -150,7 +149,7 @@ function Dark (){
             </div>
             
                    
-                   <div className="lg:flex my-16 lg:justify-evenly">
+                   <div className="">
                     
 
                     <div className="sm:flex sm:justify-center">
@@ -173,8 +172,9 @@ function Dark (){
                             </div>                    
                         </div>
                     </div>
-
-                        <div className="flex flex-col justify-center border-8 border-black rounded-2xl bg-white p-3 lg:[1100px] lg:w-[800px]  w-full">
+                    
+                    <div className="flex justify-center">
+                        <div className="flex flex-col  border-8 border-black rounded-2xl bg-white p-3 lg:[1100px] lg:w-[800px]  w-full">
                             <div className="flex flex-row items-center mb-6 border-b-2">
                             <p className="text-2xl font-bold pr-10 w-1/5">Weak To:</p>
                             <div className="flex flex-wrap w-4/5">
@@ -247,13 +247,14 @@ function Dark (){
                             )}
                         </div>
                     </div>
+                    </div>
                     {console.log(newdata)}
 
 <div className="2xl:flex 2xl:justify-around">
 {typeinfo && (
     <div className="sm:flex sm:justify-center items-center">
         <div className=" align-center mt-8 sm:overflow-y-auto bg-white p-3 border-black border-8 rounded-2xl sm:w-[800px] sm:px-auto lg:w-[800px] sm:h-[1100px]">
-            <p className="text-center font-extrabold mb-10 text-5xl">Bug Pokemons</p>
+            <p className="text-center font-extrabold mb-10 text-5xl">Dark Pokemons</p>
             <div className="flex flex-wrap justify-evenly">
                 {typeinfo.pokemon.map((poke, i) => (
                     <div key={i} className="bg-slate-900 m-2 rounded-3xl">
@@ -277,7 +278,7 @@ function Dark (){
                 <div className="mt-12 bg-white   rounded-2xl  xl:h-[1100px] w-[680px]">
                     
                     <div className=" border-8 border-black rounded-xl sm:overflow-y-auto h-[650px] xl:h-[950px] ">
-                    <p className="text-center font-extrabold mb-10 text-5xl mt-8">Bug Moves Pokemons</p>
+                    <p className="text-center font-extrabold mb-10 text-5xl mt-8">Dark Moves Pokemons</p>
                         <table className="rounded-2xl ">
                             <thead className="rounded-2xl sticky top-0">
                                 <tr className="">

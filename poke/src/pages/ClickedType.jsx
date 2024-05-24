@@ -395,10 +395,44 @@ function PokemonData() {
                     return 'text-orange-800'
                 case 'ultra-moon':
                     return 'text-sky-600'
+                case 'platinum':
+                        return 'text-slate-400'
+                case 'ruby':
+                    return 'text-[#E0115F]'
+                case 'sapphire':
+                    return 'text-[#0F52BA]'
+                case 'emerald':
+                    return 'text-[#028f1e]'
+                case 'diamond':
+                    return 'text-[#B9F2FF]';
+                case 'pearl':
+                    return 'text-[#966FD6]';
+                case 'gold':
+                    return 'text-[#FFD700]';
+                case 'crystal':
+                    return 'text-[#a7d8de]';
+                case 'sun':
+                    return 'text-[#FCE570]';
+                case 'moon':
+                    return 'text-[#9400d3]';
+                case 'silver':
+                    return 'text-[#c0c0c0]'
+                case 'black':
+                    return 'text-[#888B8D]'
+                case 'black-2':
+                    return 'text-[#888B8D]'
+                case 'white':
+                    return 'text-[#d3d3d3]'
+                case 'white-2':
+                    return 'text-[#d3d3d3]'
+
+                default:
+                    return ""
 
             }
             
         }
+
 
     return ( 
     
@@ -430,7 +464,7 @@ function PokemonData() {
                         <ul className="flex">
                                 {pokeData.types.map((type, index) => (
                             <li key={index} className={` ${TypeColor(type.type.name)} cursor-pointer font align-middle mx-3 p-4 my-3 w-20 text-white rounded-sm h-24 font-semibold text-md `}>
-                                {type.type.name}
+                                 <span className="flex justify-center">{type.type.name}</span>
                             </li>
                                         ))}
                         </ul>
@@ -493,7 +527,7 @@ function PokemonData() {
                 </div>
                 {console.log(pokeData)} 
                 {encounterData && encounterData.length > 0 && (
-    <div className="border-4 border-black rounded-lg my-4 bg-slate-500">
+    <div className="max-h-[1000px] overflow-auto border-4 border-black rounded-lg my-4  bg-slate-500 ">
         <h1 className="py-4 font-bold text-3xl text-center text-white">Pokemon Locations</h1>
         <div className="bg-white">
             {encounterData.map((encounter, encounterIndex) => (
