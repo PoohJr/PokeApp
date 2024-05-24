@@ -58,7 +58,7 @@ function Example({ setpokeData }) {
                     })
                 );
                 setclickpokedata(fetchedPokemon);
-                setfilteredPokemon(fetchedPokemon)
+                setfilteredPokemon(fetchedPokemon);
             } catch (error) {
                 console.error(error + " is the error");
                 return null;
@@ -154,22 +154,7 @@ function Example({ setpokeData }) {
     }
 // End type 
 
-    // const getfilterpoke = () => {
-    // if(clickpokedata.length > 0 ){
-    //      function inFill(name ,i ) {
-    //        const hello = clickpokedata[i].data.types.name === name
-    //        console.log(hello);
-    //        return hello
-    //     }
-    //  const filtering = clickpokedata.filter(inFill);
-    //  console.log(filtering);
-    //  return filtering
-    // }
-    
-    // console.log(getfilterpoke('grass'));
 
-        
-    // }
 
     const handleTypeSelect = (type) => {
         if (selectedTypes.includes(type)) {
@@ -179,10 +164,8 @@ function Example({ setpokeData }) {
         }
     };
 console.log(selectedTypes);
-    const handleSubmit = ( ) => {
-        if(clickpokedata && clickpokedata.data ){
-            
-        }
+    const handleSubmit = () => {
+        return console.log(selectedTypes);
     }
   
 
@@ -194,7 +177,18 @@ console.log(selectedTypes);
                         <p className="text-white text-5xl my-10 pb-5 text-center font-bold">Pokémon Types</p>
                         <div className="flex flex-row flex-wrap justify-evenly">
                             {datatypes.results?.slice(0, 19).map((type, index) => (
-                                <div key={index} className="rounded-2xl border-slate-600 border-2 bg-slate-900 transition-all ease-in-out duration-500 shadow-xl shadow-slate-500/65 hover:shadow-slate-300/50 px-10 m-2 py-3 my-3">
+                                <div key={index} className="rounded-2xl 
+                                border-slate-600 
+                                border-2 
+                                bg-slate-900 
+                                transition-all 
+                                ease-in-out 
+                                duration-500 
+                                shadow-xl 
+                                shadow-slate-500/65 
+                                hover:shadow-slate-300/50 
+                                px-10 py-3
+                                m-2  my-3">
                                     <img
                                         onClick={() => HandleTypeClick(type.name)}
                                         className={`
@@ -234,7 +228,7 @@ console.log(selectedTypes);
                                 <div tabIndex={0} role="button" className="btn shadow-lg shadow-gray-500-50 box text-3xl font-bold  m-1">Filter</div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <div className="flex m-2 flex-wrap flex-col justify-center">
-                                        <li clas><a className="text-lg">A-Z</a></li>
+                                        <li ><a className="text-lg">A-Z</a></li>
                                         <hr className="w-full h-1.5" />
                                         <li><a className="text-lg">Z-A</a></li>
                                         <hr className="w-full h-1.5" />
