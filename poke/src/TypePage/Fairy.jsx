@@ -48,18 +48,20 @@ function Fairy (){
     useEffect(() => {
         const fetchurl = async () => {
             try { 
+                console.log('Fetching data...');
+                console.log('Typeinfo:', typeinfo);
                     const fetchedpokemon = await Promise.all(
                         
-                        typeinfo.pokemon.map(async (poke) => {
-                            console.log(poke);
+                        typeinfo.pokemon.map(async (poke, index) => {
+                            console.log(`Processing Pokemon ${index + 1}:`, poke);
                             console.log(poke.pokemon);
                             const res = await axios.get(poke.pokemon.url);
-                            console.log(res);
+                            console.log(res.data);
                             return { data: res.data };
                         })
                     );
                     setnewdata(fetchedpokemon);
-                   
+                   console.log(fetchedpokemon);
 
             } catch (error) {
                 console.error(error + " is the error");
@@ -69,6 +71,8 @@ function Fairy (){
         fetchurl();
     }, [typeinfo]);
 
+    
+    
     useEffect(() => {
         const fetchMoveurl = async () => {
             try { 
@@ -104,6 +108,7 @@ function Fairy (){
     // Fix this 
     const HandleClick = async (i) => {
     try {
+        console.log("before ");
         if (newdata && newdata[i] && newdata[i].data && newdata[i].data.id) {
             console.log('newdata:', newdata);
             console.log('Selected index:', i);
@@ -135,7 +140,7 @@ function Fairy (){
 
     
 <div className=" h-full bg-contain bg-pokemon-rep bg-repeat" >
-    {typeinfo &&(
+    {typeinfo && typeinfo.name && (
     
         <div className=" p-8 ">
             <div className="">
@@ -159,7 +164,7 @@ function Fairy (){
                         <div className=" bg-white border-8 border-black rounded-2xl m-10 w-96 h-52">
                             <div className="m-4">
                                 <p className="text-center text-2xl font my-2">ID Type: <span className="font-bold">#{typeinfo.id}</span></p>
-                                <p className="text-center text-2xl  my-2">Move Damage Class: <span className="font-bold">{capitalizeFirstLetter(typeinfo.move_damage_class.name)}</span></p> 
+                                <p className="text-center text-2xl  my-2">Move Damage Class: <span className="font-bold">{typeinfo.move_damage_class ? capitalizeFirstLetter(typeinfo.move_damage_class.name) : 'Not Available'}</span></p> 
                                 <div className="mt-3 flex justify-center">
                                     <details className=" dropdown">
                                         <summary className="btn text-2xl font-bold">{capitalizeFirstLetter(typeinfo.generation.name)}</summary>
@@ -255,6 +260,7 @@ function Fairy (){
 
 <div className="2xl:flex 2xl:justify-around">
 {typeinfo && (
+    
     <div className="sm:flex sm:justify-center items-center">
         <div className=" align-center mt-8 sm:overflow-y-auto bg-white p-3 border-black border-8 rounded-2xl sm:w-[800px] sm:px-auto lg:w-[800px] sm:h-[1100px]">
             <p className="text-center font-extrabold mb-10 text-5xl">Fairy Pokemons</p>
@@ -263,7 +269,6 @@ function Fairy (){
                     <div key={i} className="bg-slate-900 m-2 rounded-3xl">
                         <div className="p-3 m-5 bg-slate-700 rounded-3xl border-white border-4"> 
                             {newdata.length > 0 && newdata[i] && newdata[i].data && (
-                              
                                 <img onClick={() => HandleClick(i)} className="h-36 cursor-pointer" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${newdata[i].data.id}.png`} alt={`Sprite of ${capitalizeFirstLetter(poke.pokemon.name)}`} />
                             )}
                             {!newdata.length || !newdata[i] || !newdata[i].data && (
@@ -276,7 +281,8 @@ function Fairy (){
             </div>
         </div>
     </div>
-)}
+)}                          
+
             <div className="sm:flex sm:justify-center">
                 <div className="mt-12 bg-white   rounded-2xl  xl:h-[1100px] w-[680px]">
                     
@@ -293,16 +299,19 @@ function Fairy (){
                                     <th className="px-4 bg-[#96be25] text-white">Damage Class</th>                                              
                                 </tr>
                             </thead>
+                    
+                            {movedata.length > 0 && (
+                                movedata.map((data, i) => (
+                                    <tr className="border-b-2" key={i}>
+                                        <td className="text-center font-semibold">{capitalizeFirstLetter(data.data.name)}</td>
+                                        {englishText(data)}
+                                        <td className="text-center">{data.data.accuracy || 0}</td>
+                                        <td className="text-center">{data.data.power || 0}</td>
+                                        <td className="text-center">{capitalizeFirstLetter(data.data.damage_class.name)}</td>
+                                    </tr>
+                                ))
+                            )}
 
-                    {movedata.map((data, i) => (
-                        <tr className="border-b-2" key={i}>
-                            <td className="text-center font-semibold">{capitalizeFirstLetter(data.data.name)}</td>
-                            {englishText(data)}
-                            <td className=" text-center">{data.data.accuracy || 0}</td>
-                            <td className="text-center ">{data.data.power || 0}</td>
-                            <td className="text-center">{capitalizeFirstLetter(data.data.damage_class.name)}</td>
-                        </tr>
-                    ))}
                         </table>
                         
                     </div>

@@ -185,7 +185,7 @@ console.log(selectedTypes);
                     <div>
                         <p className="text-white text-5xl my-10 pb-5 text-center font-bold">Pokémon Types</p>
                         <div className="flex flex-row flex-wrap justify-evenly">
-                            {datatypes.results?.slice(0, 19).map((type, index) => (
+                            {datatypes.results?.slice(0, 18).map((type, index) => (
                                 <div key={index} className="
                                 rounded-2xl 
                                 border-slate-600 
