@@ -19,7 +19,6 @@ import Ice from './TypePage/Ice.jsx';
 import Dragon from './TypePage/Dragon.jsx';
 import Dark from './TypePage/Dark.jsx';
 import Fairy from './TypePage/Fairy.jsx';
-import Stellar from './TypePage/Stellar.jsx';
 import ClickedType from './pages/ClickedType.jsx'
 
 // import NonLoad from './pages/NonLoad.jsx';
@@ -52,8 +51,7 @@ function App() {
           <Route path="/Ice" element={<Ice />} /> 
           <Route path="/Dragon" element={<Dragon />} /> 
           <Route path="/Dark" element={<Dark />} /> 
-          <Route path="/Fairy" element={<Fairy />} /> 
-          <Route path="/Stellar" element={<Stellar />} /> 
+          <Route path="/Fairy" element={<Fairy />} />  
           {/* { <Route path="*" element={<NonLoad />} /> } */}
         </Routes>
       </BrowserRouter>

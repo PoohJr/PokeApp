@@ -183,39 +183,45 @@ function Normal (){
                     
                     <div className="flex justify-center">
                         <div className="flex flex-col  border-8 border-black rounded-2xl bg-white p-3 lg:[1100px] lg:w-[800px]  w-full">
-                            <div className="flex flex-row items-center mb-6 border-b-2">
-                            <p className="text-2xl font-bold pr-10 w-1/5">Weak To:</p>
-                            <div className="flex flex-wrap w-4/5">
-                                {typeinfo.damage_relations.double_damage_from.map((e, index) => (
-                                <div key={index} className="flex flex-col items-center px-2">
-                                    <img onClick={() => ToTypePage(e.name)}  className={`h-20 cursor-pointer content-${e.name}`} src="" alt="" />
-                                    <p className="text-center font-semibold">{capitalizeFirstLetter(e.name)}</p>
+                            {typeinfo && typeinfo.damage_relations &&typeinfo.damage_relations.double_damage_from  && (  
+                                <div className="flex flex-row items-center mb-6 border-b-2">
+                                <p className="text-2xl font-bold pr-10 w-1/5">Weak To:</p>
+                                <div className="flex flex-wrap w-4/5">
+                                    {typeinfo.damage_relations.double_damage_from.map((e, index) => (
+                                    <div key={index} className="flex flex-col items-center px-2">
+                                        <img onClick={() => ToTypePage(e.name)}  className={`h-20 cursor-pointer content-${e.name}`} src="" alt="" />
+                                        <p className="text-center font-semibold">{capitalizeFirstLetter(e.name)}</p>
+                                    </div>
+                                    ))}
                                 </div>
-                                ))}
-                            </div>
-                            </div>
-                            <div className="flex flex-row items-center mb-6 border-b-2">
-                            <p className="text-2xl font-bold pr-10 w-1/5">Strong Against:</p>
-                            <div className="flex flex-wrap w-4/5">
-                                {typeinfo.damage_relations.double_damage_to.map((e, index) => (
-                                <div key={index} className="flex flex-col items-center px-2">
-                                    <img onClick={() => ToTypePage(e.name)} className={`h-20 cursor-pointer content-${e.name}`} src="" alt="" />
-                                    <p className="text-center font-semibold">{capitalizeFirstLetter(e.name)}</p>
                                 </div>
-                                ))}
-                            </div>
-                            </div>
-                            <div className="flex flex-row items-center mb-6 border-b-2">
-                            <p className="text-2xl font-bold pr-10 w-1/5">Half Damage from:</p>
-                            <div className="flex flex-wrap w-4/5">
-                                {typeinfo.damage_relations.half_damage_from.map((e, index) => (
-                                <div key={index} className="flex flex-col items-center px-2">
-                                    <img onClick={() => ToTypePage(e.name)} className={`h-20 cursor-pointer content-${e.name}`} src="" alt="" />
-                                    <p className="text-center font-semibold">{capitalizeFirstLetter(e.name)}</p>
+                            ) }
+                            {typeinfo && typeinfo.damage_relations &&typeinfo.damage_relations.double_damage_to.length > 0  && (  
+                                <div className="flex flex-row items-center mb-6 border-b-2">
+                                <p className="text-2xl font-bold pr-10 w-1/5">Strong Against:</p>
+                                <div className="flex flex-wrap w-4/5">
+                                    {typeinfo.damage_relations.double_damage_to.map((e, index) => (
+                                    <div key={index} className="flex flex-col items-center px-2">
+                                        <img onClick={() => ToTypePage(e.name)} className={`h-20 cursor-pointer content-${e.name}`} src="" alt="" />
+                                        <p className="text-center font-semibold">{capitalizeFirstLetter(e.name)}</p>
+                                    </div>
+                                    ))}
                                 </div>
-                                ))}
-                            </div>
-                            </div>
+                                </div>
+                            )}
+                            {typeinfo && typeinfo.damage_relations &&typeinfo.damage_relations.double_damage_to.length > 0  && ( 
+                                <div className="flex flex-row items-center mb-6 border-b-2">
+                                <p className="text-2xl font-bold pr-10 w-1/5">Half Damage from:</p>
+                                <div className="flex flex-wrap w-4/5">
+                                    {typeinfo.damage_relations.half_damage_from.map((e, index) => (
+                                    <div key={index} className="flex flex-col items-center px-2">
+                                        <img onClick={() => ToTypePage(e.name)} className={`h-20 cursor-pointer content-${e.name}`} src="" alt="" />
+                                        <p className="text-center font-semibold">{capitalizeFirstLetter(e.name)}</p>
+                                    </div>
+                                    ))}
+                                </div>
+                                </div>
+                            ) }
                             <div className="flex flex-row items-center mb-6 border-b-2">
                             <p className="text-2xl font-bold pr-10 w-1/5">Half Damage To:</p>
                             <div className="flex flex-wrap w-4/5">

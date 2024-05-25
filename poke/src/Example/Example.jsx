@@ -312,12 +312,16 @@ console.log(selectedTypes);
                                 <div className="flex justify-center">
                                     <div className="group: bg-white h-24 w-24 rounded-full border-8 border-slate-800 hover:border-slate-600 transition-all ease-in-out duration-300">
                                         <div className="h-full flex items-center justify-center">
+                                            {pokemon ? (
+
+                                            
                                             <img
                                                 onClick={(e) => HandleClick(e, index)}
                                                 className="hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.data.id}.png`}
                                                 alt={pokemon.data.name}
                                             />
+                                            ) : <img src="./img-svg"></img>}
                                         </div>
                                         <div>
                                             {/* <ul className="flex w-auto">
