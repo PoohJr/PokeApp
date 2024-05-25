@@ -10,8 +10,8 @@ function Example({ setpokeData }) {
     const [loadmore, setloadmore] = useState(25);
     const [offset, setOffset] = useState(0); 
     const [totalPokemon, setTotalPokemon] = useState(0); 
-    // const[filteredPokemon, setfilteredPokemon] = useState([])
-    // const [selectedTypes, setSelectedTypes] = useState([]);
+    const[filteredPokemon, setfilteredPokemon] = useState([])
+    const [selectedTypes, setSelectedTypes] = useState([]);
 
     const navigate = useNavigate();
 
@@ -58,7 +58,7 @@ function Example({ setpokeData }) {
                     })
                 );
                 setclickpokedata(fetchedPokemon);
-                // setfilteredPokemon(fetchedPokemon);
+                setfilteredPokemon(fetchedPokemon);
             } catch (error) {
                 console.error(error + " is the error");
                 return null;
@@ -158,18 +158,25 @@ function Example({ setpokeData }) {
 
 // This is for filter 
 
-    // const handleTypeSelect = (type) => {
-    //     if (selectedTypes.includes(type)) {
-    //         setSelectedTypes(selectedTypes.filter(t => t !== type));
-    //     } else {
-    //         setSelectedTypes([...selectedTypes, type]);
-    //     }
-    // };
-// console.log(selectedTypes);
-    // const handleSubmit = () => {
-    //     return console.log(selectedTypes);
-    // }
+    const handleTypeSelect = (type) => {
+        if (selectedTypes.includes(type)) {
+            setSelectedTypes(selectedTypes.filter(t => t !== type));
+        } else {
+            setSelectedTypes([...selectedTypes, type]);
+        }
+    };
+console.log(selectedTypes);
+    const handleSubmit = () => {
+        return console.log(selectedTypes);
+    }
   
+    useEffect(() => {
+        setclickpokedata(filteredPokemon);
+        setfilteredPokemon(filteredPokemon);
+        
+    }, [filteredPokemon]);
+
+    const pokemonData = filteredPokemon.length > 0 ? filteredPokemon : clickpokedata;
 
     return (
         <>
@@ -227,7 +234,7 @@ function Example({ setpokeData }) {
                                 <button onClick={() => handleLoadMore(100)} className="text-center text-slate-800">100</button>
                             </div>
                 
-                            {/* <div className="mx-10 dropdown dropdown-end">
+                            <div className="mx-10 dropdown dropdown-end">
                                 <div tabIndex={0} role="button" className="btn shadow-lg shadow-gray-500-50 box text-3xl font-bold  m-1">Filter</div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <div className="flex m-2 flex-wrap flex-col justify-center">
@@ -268,7 +275,7 @@ function Example({ setpokeData }) {
                                                       rounded-full">Submit</button>
                                     </div>
                                 </ul>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
 
@@ -294,8 +301,7 @@ function Example({ setpokeData }) {
                     )}
 
                     <div className="flex justify-evenly w-full flex-wrap mt-16">
-                    {/* filteredPokemon.length > 0 ? filteredPokemon: add this to clickdata when i fix the filter btn */}
-                        {clickpokedata.map((pokemon, index) => (
+                        {pokemonData.map((pokemon, index) => (
                             <div key={index} className="relative flex flex-col md:w-1/4 sm:w-1/3 xl:w-1/5 2xl:w-[300px] h-40 bg-slate-900 transition-all ease-in-out duration-500 shadow-xl shadow-slate-500/65 hover:shadow-slate-300/50 border-slate-600 border-2 rounded  m-4 mb-6">
                                 <div className="text-md text-center rounded-lg mt-1 mb-1">
                                     <div className="text-white absolute top-0 left-0 w-7 h-8">

@@ -33,6 +33,7 @@ function Fairy (){
             const get = await axios.get("https://pokeapi.co/api/v2/type/fairy/") 
             const res = get.data
             settypeinfo(res)
+            
    
 
         } catch(error){
@@ -50,8 +51,10 @@ function Fairy (){
                     const fetchedpokemon = await Promise.all(
                         
                         typeinfo.pokemon.map(async (poke) => {
-                            
+                            console.log(poke);
+                            console.log(poke.pokemon);
                             const res = await axios.get(poke.pokemon.url);
+                            console.log(res);
                             return { data: res.data };
                         })
                     );
