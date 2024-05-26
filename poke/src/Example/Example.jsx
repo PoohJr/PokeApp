@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
+import noImage from  './img-svg/noimg.gif'
 
 function Example({ setpokeData }) {
     const [kantoPokemon, setKantoPokemon] = useState([]);
@@ -165,7 +166,7 @@ function Example({ setpokeData }) {
             setSelectedTypes([...selectedTypes, type]);
         }
     };
-console.log(selectedTypes);
+// console.log(selectedTypes);
     const handleSubmit = () => {
         return console.log(selectedTypes);
     }
@@ -286,7 +287,7 @@ console.log(selectedTypes);
                                     Next Page
                                 </button>
                             </div>
-                            <div className={offset > 0 ? "px-8" : "px-8 hidden"}>
+                            <div className={offset > 0  ? "px-8" : "px-8 hidden"}>
                                 <button onClick={handleResetPage} className="text-center  text-white bg-gray-500 shadow-lg shadow-gray-500/50 hover:shadow-gray-400/50 transition-all ease-in-out duration-500 px-4 py-2 rounded-full">
                                     Reset to 1
                                 </button>
@@ -321,19 +322,9 @@ console.log(selectedTypes);
                                                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.data.id}.png`}
                                                 alt={pokemon.data.name}
                                             />
-                                            ) : <img src="./img-svg"></img>}
+                                            ) : <img className="" src={noImage} alt="No Image Avalible"></img>}
                                         </div>
                                         <div>
-                                            {/* <ul className="flex w-auto">
-                                                {pokemon.data.types.map((type, i) => (
-                                                    <li key={i} className="justify-center px-1">
-                                                        <p className="text-xl text-white text-center">{capitalizeFirstLetter(type.type.name)}</p>
-                                                    </li>
-                                                ))}
-                                                {pokemon.data.types.length === 1 && (
-                                                    <li className="flex-auto"></li>
-                                                )}
-                                            </ul> */}
                                         </div>
                                     </div>
                                 </div>

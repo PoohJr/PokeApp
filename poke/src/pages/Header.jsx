@@ -25,27 +25,36 @@ export function Header() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const trimmedInput = userInput.trim();
+        const validInput = /^[a-zA-Z0-9]*$/.test(trimmedInput);
+        if (!trimmedInput) {
+            setinputerror("Input cannot be empty");
+            return;
+        }
+        if (!validInput) {
+            setinputerror("Input contains invalid characters");
+            return;
+        }
+        if (!userInput.trim()) {
+            setinputerror("Input cannot be empty");
+            return;
+        }
         try {
             const apiUrl = `https://pokeapi.co/api/v2/pokemon/${userInput.toLowerCase()}`;
             const res = await axios.get(apiUrl);
             if (res.status === 200) {
                 setpokeData(res.data);
                 navigate("./PokemonData", {state: {pokedata: res.data} });
+                setinputerror(""); 
             } 
         } catch (error) {
-            console.error("Error Fetching Api", error);
-            setNewError("Error Fetching Api: " + error.message);
-            handleError()
+            setNewError(console.error("Error Fetching Api", error));
+            setinputerror("Failed to fetch Pokemon. Please try again.");
+            
             
         }
         
     };
-
-     function handleError(){
-            setUserInput("")
-            return "border-2 border-rose-500"
-        
-    }
 
 
 
@@ -74,7 +83,7 @@ export function Header() {
                                         shadow-xl 
                                         shadow-slate-500/65 
                                         hover:shadow-slate-300/50
-                                        ${() => handleError() }`}
+                                        `}
                                         id="in"
                                         onChange={(e) => setUserInput(e.target.value)}
                                         type="text"
@@ -83,6 +92,8 @@ export function Header() {
                                         aria-label="Search Pokemon"
                                         style={{ borderColor: newerror ? 'red' : 'initial'}}
                                     />
+                                    {inputerror && <p className="text-rose-500">{inputerror}</p>}
+                                    
                                     <button
                                     type="submit"
                                         className="hidden"
@@ -90,19 +101,6 @@ export function Header() {
                                         Search
                                     </button>
                                     <br />
-                                    {/* Work on Button to have random Pokemon */}
-                                    <button type="submit" className="btn 
-                                    bg-slate-800 
-                                    border-black 
-                                    text-white 
-                                    hover:bg-slate-600
-                                    transition-all 
-                                    ease-in-out 
-                                    duration-500 
-                                    shadow-xl 
-                                    shadow-slate-500/65 
-                                    hover:shadow-slate-300/50
-                                    ">Surprise Me!</button>
 
                                     
                                 </div>
