@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
-import noImage from  './img-svg/noimg.gif'
+
 
 function Example({ setpokeData }) {
     const [kantoPokemon, setKantoPokemon] = useState([]);
@@ -314,15 +314,17 @@ function Example({ setpokeData }) {
                                     <div className="group: bg-white h-24 w-24 rounded-full border-8 border-slate-800 hover:border-slate-600 transition-all ease-in-out duration-300">
                                         <div className="h-full flex items-center justify-center">
                                             {pokemon ? (
-
-                                            
                                             <img
                                                 onClick={(e) => HandleClick(e, index)}
                                                 className="hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.data.id}.png`}
                                                 alt={pokemon.data.name}
                                             />
-                                            ) : <img className="" src={noImage} alt="No Image Avalible"></img>}
+                                            ) : 
+                                            <>
+                                            <div className="w-24 h-24 bg-nopic"></div>
+                                            </>
+                                                }
                                         </div>
                                         <div>
                                         </div>
