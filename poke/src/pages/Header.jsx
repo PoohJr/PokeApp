@@ -35,16 +35,19 @@ export function Header() {
         } catch (error) {
             console.error("Error Fetching Api", error);
             setNewError("Error Fetching Api: " + error.message);
-            handleError()
+         
             
         }
         
     };
 
-     function handleError(){
-            setUserInput("")
-            return "border-2 border-rose-500"
-        
+    const handleInputChange = (e) => {
+        const value = e.target.value;
+        if(value === 'error'){
+            setinputerror(true); 
+        } else{
+            setinputerror(false)
+        }
     }
 
 
@@ -73,16 +76,15 @@ export function Header() {
                                         duration-500 
                                         shadow-xl 
                                         shadow-slate-500/65 
-                                        hover:shadow-slate-300/50
-                                        ${() => handleError() }`}
+                                        hover:shadow-slate-300/50`}
                                         id="in"
-                                        onChange={(e) => setUserInput(e.target.value)}
+                                        onChange={handleInputChange}
                                         type="text"
                                         placeholder="Choose Your Pokemon!" 
                                         autoComplete="off"
                                         aria-label="Search Pokemon"
-                                        style={{ borderColor: newerror ? 'red' : 'initial'}}
                                     />
+                                    {inputerror && <p style={{color: 'red'}}>There was an error</p>}
                                     <button
                                     type="submit"
                                         className="hidden"
