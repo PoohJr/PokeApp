@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Example from "../Example/Example";
@@ -13,6 +13,7 @@ export function Header() {
     const navigate = useNavigate();
     const [inputerror, setinputerror] = useState(false)
     
+    const pokeRef = useRef(null)
 // Add  FILTER for Height, weight,  Types, 
     useEffect(() => {
         const timeout = setTimeout(() => {
@@ -91,7 +92,8 @@ export function Header() {
                                         hover:shadow-slate-300/50
                                         ${() => handleError() }`}
                                         id="in"
-                                        onChange={handleInputChange}
+                                        ref={pokeRef}
+                                        onChange={(e) => setUserInput(e.target.value)}
                                         type="text"
                                         placeholder="Choose Your Pokemon!" 
                                         autoComplete="off"
