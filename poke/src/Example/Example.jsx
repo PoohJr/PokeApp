@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 
+
 function Example({ setpokeData }) {
     const [kantoPokemon, setKantoPokemon] = useState([]);
     const [clickpokedata, setclickpokedata] = useState([]);
@@ -165,7 +166,7 @@ function Example({ setpokeData }) {
             setSelectedTypes([...selectedTypes, type]);
         }
     };
-console.log(selectedTypes);
+// console.log(selectedTypes);
     const handleSubmit = () => {
         return console.log(selectedTypes);
     }
@@ -286,7 +287,7 @@ console.log(selectedTypes);
                                     Next Page
                                 </button>
                             </div>
-                            <div className={offset > 0 ? "px-8" : "px-8 hidden"}>
+                            <div className={offset > 0  ? "px-8" : "px-8 hidden"}>
                                 <button onClick={handleResetPage} className="text-center  text-white bg-gray-500 shadow-lg shadow-gray-500/50 hover:shadow-gray-400/50 transition-all ease-in-out duration-500 px-4 py-2 rounded-full">
                                     Reset to 1
                                 </button>
@@ -313,27 +314,19 @@ console.log(selectedTypes);
                                     <div className="group: bg-white h-24 w-24 rounded-full border-8 border-slate-800 hover:border-slate-600 transition-all ease-in-out duration-300">
                                         <div className="h-full flex items-center justify-center">
                                             {pokemon ? (
-
-                                            
                                             <img
                                                 onClick={(e) => HandleClick(e, index)}
                                                 className="hover:-translate-y-3 ease-in-out duration-200 cursor-pointer"
                                                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.data.id}.png`}
                                                 alt={pokemon.data.name}
                                             />
-                                            ) : <img src="./img-svg"></img>}
+                                            ) : 
+                                            <>
+                                            <div className="w-24 h-24 bg-nopic"></div>
+                                            </>
+                                                }
                                         </div>
                                         <div>
-                                            {/* <ul className="flex w-auto">
-                                                {pokemon.data.types.map((type, i) => (
-                                                    <li key={i} className="justify-center px-1">
-                                                        <p className="text-xl text-white text-center">{capitalizeFirstLetter(type.type.name)}</p>
-                                                    </li>
-                                                ))}
-                                                {pokemon.data.types.length === 1 && (
-                                                    <li className="flex-auto"></li>
-                                                )}
-                                            </ul> */}
                                         </div>
                                     </div>
                                 </div>
