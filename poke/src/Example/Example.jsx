@@ -221,22 +221,22 @@ function Example({ setpokeData }) {
 
                 <div className="flex flex-wrap">
                     <hr className="w-full h-1.5" />
-                    <div className="flex justify-center w-full">
-                        .
-                        <div className=" flex  my-10">
+                    <div className="my-10 flex justify-center w-full">
+                        
+                        <div className=" flex md:my-10 sm:w-96">
                             <p className=" text-white  text-3xl font-bold">Display</p>
-                            <div className="ml-5 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
-                                <button onClick={() => handleLoadMore(50)} className="text-center text-slate-800">50</button>
+                            <div className="px-5 mx-1 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
+                                <button onClick={() => handleLoadMore(50)} className="text-center sm:w-30 text-slate-800">50</button>
                             </div>
-                            <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
+                            <div className="px-5 mx-1 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
                                 <button onClick={() => handleLoadMore(75)} className="text-center text-slate-800">75</button>
                             </div>
-                            <div className="ml-2 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
+                            <div className="px-2  mx-1 flex justify-center bg-white border-blue-900 rounded-full border-4 w-12">
                                 <button onClick={() => handleLoadMore(100)} className="text-center text-slate-800">100</button>
                             </div>
                 
-                            <div className="mx-10 dropdown dropdown-end">
-                                <div tabIndex={0} role="button" className="btn shadow-lg shadow-gray-500-50 box text-3xl font-bold  m-1">Filter</div>
+                            <div className="md:mx-10 sm:mx-5 dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn shadow-lg shadow-gray-500-50 box text-3xl font-bold m-1">Filter</div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <div className="flex m-2 flex-wrap flex-col justify-center">
                                         <li ><a className="text-lg">A-Z</a></li>

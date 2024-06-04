@@ -443,7 +443,7 @@ function PokemonData() {
                 <div className="">   {/* div 2*/}
                 
             
-                    <div className="flex justify-center mt-6 rounded-2xl bg-white border-black border-4 mx-auto w-3/4 px-10">
+                <div className="flex justify-center my-2 rounded-2xl bg-white border-black border-4 mx-auto md:w-[650px] sm:w-[450px] px-10">
                         <h2 className="font-sans my-auto txt-blacks text-5xl font-semibold">{capitalizeFirstLetter(pokeData.name)}</h2>
                             <svg className="cursor-pointer mt-5" onClick={Playaudio} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 485 485" width="20" height="20">
                                 <path fill="#000000" d="M282.5,55.15c-33.5,0-66.3,8.9-95,25.8c-25.6,15.1-47.3,36.1-63.2,61.1H52.7c-29.1,0-52.7,23.6-52.7,52.7v95.5
@@ -561,7 +561,7 @@ function PokemonData() {
 
                                     
                     <div className="flex justify-center items-center h-auto">
-                        <div className=" flex flex-col items-center my-10 pb-4 rounded-xl bg-white border-4 border-black w-1/2">
+                    <div className=" flex flex-col items-center my-10 pb-4 rounded-xl bg-white border-4 border-black md:w-1/2 sm:w-72">
                                 <div className=" mt-3 justify-center bg-white h-20 w-28">
                                     <p className="mt-6 font-bold text-3xl text-center text-black">Stats</p>
                                 </div>
@@ -619,7 +619,7 @@ function PokemonData() {
                                     <ul className="md-32 timeline timeline-vertical">
                                         <li>
                                             <p className="font-bold text-3xl  text-center mb-4">Evloutions </p>
-                                            <div className="timeline-start">1st Evo</div>
+                                            <div className="timeline-start text-xl font-semibold">Base Form</div>
                                             <div className="timeline-middle">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                                                 
@@ -639,7 +639,7 @@ function PokemonData() {
                                         
                                         <li>
                                             <hr/>
-                                            <div className="timeline-start">2nd Evo</div>
+                                            <div className="timeline-start text-xl font-semibold">2nd Evo</div>
                                             <div className="timeline-middle">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                                             </div>
@@ -668,7 +668,7 @@ function PokemonData() {
                                             <>
                                         <li>
                                             <hr/>
-                                            <div className="timeline-start">3rd Evo</div>
+                                            <div className="timeline-start text-xl font-semibold">3rd Evo</div>
                                             <div className="timeline-middle ">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clipRule="evenodd" /></svg>
                                             </div>
